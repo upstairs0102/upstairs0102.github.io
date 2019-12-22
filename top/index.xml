@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tops on Thunder Boy</title>
+    <link>https://shangdeyou.github.io/top/</link>
+    <description>Recent content in Tops on Thunder Boy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://shangdeyou.github.io/top/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://shangdeyou.github.io/top/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/top/about/</guid>
+      <description>啊… 還沒時間寫這個</description>
+    </item>
+    
+  </channel>
+</rss>
