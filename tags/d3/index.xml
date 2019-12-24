@@ -6,7 +6,7 @@
     <description>Recent content in d3 on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/tags/d3/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>從D3.js的select(this)探討的函式中的this指向</title>
       <link>https://shangdeyou.github.io/2019/12/22/d3js-select-this/</link>
-      <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://shangdeyou.github.io/2019/12/22/d3js-select-this/</guid>
       <description>其實這個標題下的有點不太精確，但我想從我自己本身遇到的問題的角度來切入，然後再進一步深入說明… 事情是這樣的，在函式中使用d3.select(</description>
