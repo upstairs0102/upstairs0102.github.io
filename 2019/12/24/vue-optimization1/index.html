@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
+    <meta property="og:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
+    <meta property="twitter:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
+    
+
+    
+    <meta name="description" content="寫寫程式，拍拍照">
+    <meta property="og:description" content="寫寫程式，拍拍照" />
+    <meta property="twitter:description" content="寫寫程式，拍拍照" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="thunder blog,program,frontend">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading-Thunder Boy</title>
+
+    <link rel="canonical" href="/2019/12/24/vue-optimization1/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/javascript">javascript</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        Tuesday, December 24, 2019
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#譯者說明">譯者說明</a></li>
+<li><a href="#lazy-loading-vue-components">Lazy loading Vue components</a></li>
+<li><a href="#結語">結語</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="譯者說明">譯者說明</h2>
+
+<p>最近使用Vue.js投入公司產品開發花了不少心血，關於前端的效能是一件很重要的事情，這個系列文有做了一些有趣的探討，原文作者似乎也還沒寫完，我先從第一篇開始翻起，原文在此：</p>
+
+<p><a href="https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019">https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019</a></p>
+
+<hr />
+
+<p>當行動優先導向成為標準、並且不確定性的網路環境也成為我們必須考慮的因素時，讓應用程式保持高速成為越來越困難的事情。在這個系列當中我會挖掘更深的Vue優化技術 – 我們在Vue Storefront當中所使用的技術，而你也可以用在你的Vue.js應用程式當中來讓他們瞬間讀取並且表現得平滑。我的目的是在這系列中對於Vue.js應用程式效能給出一個完整的指南。</p>
+
+<ul>
+<li>Part 1 – 介紹效能優化及lazy loading</li>
+<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
+<li>Part 3 – Lazy loading Vuex模組</li>
+<li>Part 4 – Lazy loading單一Component</li>
+<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
+<li>Part 6 – 使用Service Worker cache</li>
+<li>Part 7 – 預讀取</li>
+</ul>
+
+<p>##Webpack打包如何運作？</p>
+
+<p>本系列中大部份的提示都是聚焦在使我們的js bundle更小。為了了解這是至關重要的，我們需要了解Webpack是如何把全部檔案打包來起的。</p>
+
+<p>當Webpack打包所有資源時會產生依賴樹，這是一個連結所有我們使用import引入檔案的圖型。假設我們在Webpack config中使用main.js作為特定入口，他就會是整個依賴樹的根節點。那每一個import到該檔案底下的js module都會成為圖型當中的葉節點，並且每一個import進該葉節點的module也成為他的葉節點。</p>
+
+<p>Wabpack使用這個依賴樹圖型偵測該納入打包輸出當中。打包出來會是一個包含所有依賴樹中的module的單一javascript檔案（或者多個，後面章節會寫）</p>
+
+<p>我們可以把這個進程繪製成以下如圖：</p>
+
+<p><img src="https://lh3.googleusercontent.com/m95zzt2Rc-ZkWMHQf0i7uVTeUuIw7Z9Srcf17kwJ2g23Q2dIy45uX9e74RvN9_6_pHhwtKc-AZleJwAjFEOvIaOEY40n7ZviRzw3Cmm8rDaLn5p1BVGPfiOEegKmJm3QsIZLeBE8Rvp-bxWoz4jQkBNUzzBJEDGUBgaaPVfRQ3AcP_Z7-Na5UgO6bylEEw01s7q_ingJqvqvT1j6QjzgKubYCuNwrLKCcJ0k7jMJZ9elc6FOanygURFP-zzVylJ1LO5OjMNMqrtLQp-PNGWTYN0dU9OZ8o6EqxjWxg8xJgPpqt6bOTA-HL-jfyz2Mudp9LYhT8c9_dX_qWthY7toehnsCsKO9kXJ5uqHZUcLQrMoZ-2v2bGOJPz6XKvowVDjmWPLeGVWYSpdN-NvBHJefbnEZF84PTzbe5a9xLR9vsnEK2mvJQ9hG9v00k9Yu6-fDmHmBku48hKppd_NFkvGPRDsdRqKpQDkfNjgNlfeZ0MEFgDvmziC0snklZb-t1lnIqX0CGVSdefRyo3F5BucZ4Q1VZ99ddwvkQLOWRvZRTor0r3fORNfwvTYSY-scYDkGBUwSk0PisbeWkdZs1sRvwTuD_YYB_vKU1vV1SKUFHk2cmd5KX4aGnMfplmAXJWBxZQicuaMwspNaB8oyIx0V_Lvhan8MeJ0uFabNIj3Zm3x1NJqHqC9BQ=w1312-h574-no" alt="" /></p>
+
+<p>現在我們知道打包是如何運作的，很明顯的他會成長到專案內最大化的初始javascript打包檔案。檔案愈大代表使用者需花更多時間下載，也代表使用使用者更可能離開我們的網站。</p>
+
+<p>簡而言之，大部份的情況下愈大的打包=愈少的用戶。</p>
+
+<p>##Lazy loading</p>
+
+<p>所以為了改進我們的應用程式，當我們需要增加功能時該如何減少打包檔案的大小？當案很簡單-lazy loading和程式碼切割。</p>
+
+<p>從字面上來看lazy loading就是懶惰得只載入應用程式的一部份。另外一種說法就是-只載入我們真的需要的部份。程式碼切割只切割出這個載入的部份。</p>
+
+<p><img src="https://lh3.googleusercontent.com/j-WGTq0F1njjCDvbnqetL0wZw9IqsIuGszfWkOb0oZAmeA4sNAyEfr735KRBEHainC8LCqnsx1UVKb02ZgruqEL_Q-dmnc6p0ZJx0jeyL5GRTYugD7PpqkCg2OmggHIKHI6HUrlezAgZCrJx1FqmJbyZpwtwkr3Ip2_VeLYqjX1HZfLxJ2qg6T3DdvJ2qnJqnKVIU_oGbtTHQtHcWu1t07MU3odxWaitUcmmRkgJGwpgsPew3y1hcoSyEDfT7xzE0_Sqbuu8hu1hiV8vvrEwNTpsEd4qOtneIy4px63uoUxUgHjHb5FgJQc4TJQTItk9yDzZdtK9hBAqSW3d_qg65CJJt9vdks1dVbQN16nIOtneTyx3of2-747nuNwiKGvfjzu48hUSvkEiSkLmJ6H4kzZb9M_eMUWv0dGkS05S-AtAl4fdrya8cKMwNIUOLHKaLugnt6F6fTcszUynIk96a8fL47wzL1e8Xcq3mggN8kr9YBViXpuVF1RCV5W2xMc2ISgbtJID6hsHnlCadiqxZSfQqX1h7QV7u3E8GSMkQFYwXbXXQe2_NgjShr_M19W6LATcjDE6GdVu5cPuuV584OCK2O6jHWZ15qVVEAK6q_pIgBbx85AALNu8AshW5tXbrVnRcFM8khMetC2DXr88opvszLZaBBtTJLRKtEiTl-gAsKIr-B2LDQ=w1036-h302-no" alt="" /></p>
+
+<p>大部份的情況下當使用者進入網站時不需要javascript打包中的所有程式，就算我們有3個不同的路由位置而使用者無論如何都需要下載、解析、並執行打包程式-不論他們是否會需要用到。這是多麼浪費時間和力氣！</p>
+
+<p>Lazy loading允許我們切割打包並提供所需要的部份，使用者不需要浪費時間下載及解析他們不需要的程式。要看網站實際上使用到的javascript程式我們可以到開發者工具-&gt;cmd+shift+p -&gt;輸入”coverage”-&gt;點擊”錄製”，接著我們應該可以看到下載了多少實際上使用到的程式。</p>
+
+<p><img src="https://lh3.googleusercontent.com/nFtzvlspud14TtU4Zo2noCdybNwnton7XbbhhAQFWcE_3KD8F6J_jPY9GDTq9ht2fzfVek7qed3Mwx7ldPr_2eScq4FwcdEaS8ARcO5fYXKbYNUlzC2KGH9OVRnaq-J7IqRzG78krOU4XWwezz36a3904Vov74OTTFh7Vrzpyu8CKI-JxuOzLFtj2gbjPXDaFLjW0RVjwE5j5DXbSG-BUDa1ebRwxzpJgoC4Ng-zBzPR5BfQzmhopZD5M_-oC2BHtWFWbNuKkhxLC_PxBsIvC6Leu5AbnZV-NcQH7F7wyyBPxDvORvLThuDH8qzV2CCoa1ActcjM2EelCx7OV0KxEiNksdP_H5dOSLcjkZbvqEQ2mkZMXBluWvQFZWnSFfel87juaF5yBaGCXLJoFw4kcZ67ZANkMKvnPmmPnClO0d4Nvy1tK_zGSEdZGdGuRuSdnitWso6nahbgZoehH8UpAJjM74Wm46dErG8xupyj5C6QoLyQGzH8KeuGPs36lQsTPzryn4Xjwmd3bBQ64uKCJRirMpMsPdalxhgHkepQMioPxfyWWalrLOT3RBSM4WJzuOnEspvoI-SaQtouLOMJDjjq4CubTsT1VfDebR4aT6gp_0Q8d5RZLjAlbK4NYBDtHRWAq9jmLp_KLmE3pYWoucCogdMXblFGwk9j7DT6ouXF2ZR73YR-ow=w1920-h810-no" alt="" /></p>
+
+<p>每一個被標成紅色的就是目前路由裡不需要並可以被延遲載入的程式，如果你有用到source map那你可以點選清單裡任何沒有被引用到的檔案。從以上觀察可知甚至vuejs.org也有很大的進步空間^_^。</p>
+
+<p>透過lazy loading特性的component和程式庫，我們砍掉了60%d Vue Storefront的打包檔案容量。</p>
+
+<p>OK，我們現在知道lazy loading是什麼而且有多實用了^_^，現在我們來看他可以如何用在我們的Vue.js應用程式。</p>
+
+<p>##Dynamic imports</p>
+
+<p>透過webpack的dynamic imports可以很輕易的延遲載入部份程式，我們來看他是如何運作並且和一般的import有什麼不同。</p>
+
+<p>如果我們使用一般的方式import JS module會像如下：</p>
+
+<pre><code>// main.js
+ 
+import ModuleA from './module_a.js'
+ 
+ModuleA.doStuff()
+</code></pre>
+
+<p>他會被加入到main.js的依賴樹中的葉節點並被打包進去。</p>
+
+<p>但如果我們只有在特定情況下才會用到ModuleA呢（比如說使用者互動的事件）？在最一開始的時候就打包進去不是一個好主題。我們需要一個方式告訴我們的應用程式何時該下載這個部份的程式。</p>
+
+<p>這也就是動態載入所能解決的問題！現在來看看以下例子：</p>
+
+<pre><code>//main.js
+ 
+const getModuleA = () =&gt; import('./module_a.js')
+ 
+// invoked as a response to some user interaction
+ 
+getModuleA()
+ 
+.then({ doStuff } =&gt; doStuff())
+</code></pre>
+
+<p>來快速看一下會發生什麼事：</p>
+
+<p>我們寫一個function回傳import()函式以取代直接引入module_a.js。現在webpack動態import進來的部份程式，除非函式被呼叫否則程式不會被import並下載。之後這段程式將只會在特定的操作中被下載下來。</p>
+
+<p>透過動態載入我們基本上隔離了特定的葉節點（在此例中為module_a），他會在我們決定載入的時候才加入依賴樹並下載（這暗示了我們同時也切割了module_a.js當中依賴的module）</p>
+
+<p>我們來看另一個更好的例子來說明這個機制。假設我們有4個檔案：main.js、module_a.js、module_b.js、module_c.js，來了解動態載入是如何運作的，我們只需要main和module_a的原始碼：</p>
+
+<pre><code>//main.js
+ 
+import ModuleB from './mobile_b.js'
+ 
+const getModuleA = () =&gt; import('./module_a.js')
+ 
+getModuleA()
+ 
+.then({ doStuff } =&gt; doStuff()
+ 
+)
+ 
+//module_a.js
+ 
+import ModuleC from './module_c.js'
+</code></pre>
+
+<p>把module_a作為一個動態載入用的module可以切割掉依賴樹中的module_a和他的子節點。當module_a動態載入時會連同裡面import的檔案一起載入。換句話說，我們可以建置了一個新的依賴圖的進入點。</p>
+
+<p><img src="https://lh3.googleusercontent.com/IyZu5M7ERYw6yGotPGu87WvW8jnUfAHVF3b7eeZyatVWE0moFb5cO8O3tdORrMaBUjH8bgSEWK8_ZgSxftDmJoXg5L3mqfZgXD-NNJ2ug_Ugsdyd4zVE0SOK3LYVQDYu6eRTr7ifzA-4GBoG8-JScEfFpaozepkG9qR2ARWUJk5y-qQ8morDrIayr5Hg_xzdw006TfypHq_XyMjgnfQCR5EnmPheGtjYHNN0jJG4aYT4DUuHI301oX2slLOuNkxDMi784DQn54Ssm-XPJ2VAxyc5LGmVnlIM1znmdIZtJM5sDX8VyFc_5d9ULGllR6Pnxtfwf1q13xVYyJYvdAza5_WMbHGZalUMS0V4U3WvGSFkSY-qyVzyLz8HsXPeRX99y-Nfz304nTZUYJxVk0AJ3J6Wo2kxpvt_MgU5_1f_kmieLk7W_Y9ou8GPCoL1ggvfSfcB0vQSnzU0CpJfhhJkWyvoVnncezzjdd8vU0yeYJwOfID0SE56mNkZLA3nW_b1Czq-TKb3_2xx9Z9qFDeEiYHbugz4kxmDCLcBRGtoUoMZyJOUTjZkfhKIDTlCZGexBW5F1-3QsAD4Nod-QbdjfyZbGz4Dy2UrOReH2iCi5Xu2n--c_10DAXxprunre8QDTTH5bK8hbdBujAIc1YBJUl1eUzIH6SQzJIrdxrvqufZnHMxLu0Tm9A=w1276-h808-no" alt="" /></p>
+
+<p>這就是這個依賴圖和打包會長的樣子。</p>
+
+<h2 id="lazy-loading-vue-components">Lazy loading Vue components</h2>
+
+<p>我們現在知道lazy loading是什麼並且為何需要了，現在是時候來看我們可以如何在Vue應用程式當中使用。</p>
+
+<p>好消息是，透過以上語法可以超級簡單的載入整個SFC（單文件Component-也就是.vue檔）、包含css和html。</p>
+
+<pre><code>const lazyComponent = () =&gt; import('Component.vue')
+</code></pre>
+
+<p>…只要這樣就搞定了！現在component只有在你呼叫他時才會載入。以下是最常使用動態載入Vue component的方法：</p>
+
+<ul>
+<li><p>把import寫成可呼叫的函式</p>
+
+<pre><code>const lazyComponent = () =&gt; import('Component.vue')
+ 
+lazyComponent()
+</code></pre></li>
+
+<li><p>component被呼叫後渲染</p></li>
+</ul>
+
+<p>請注意lazyComponent函式只有在呼叫他時才會渲染進template。</p>
+
+<pre><code>&lt;template&gt;
+&lt;div&gt;
+&lt;lazy-component /&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+const lazyComponent = () =&gt; import('Component.vue')
+export default {
+components: { lazyComponent }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>例如：</p>
+
+<pre><code>&lt;lazy-component v-if=&quot;false&quot;&gt;
+</code></pre>
+
+<p>這樣寫的話他是不會加入到dom當中的（但當v-if參數變為true時就會載入，這也是個不錯的方法）</p>
+
+<h2 id="結語">結語</h2>
+
+<p>Lazy loading是一個使你的網站更有效減少容量的好方法，我們學到如何在Vue component當中使用lazy loading。下一個篇文章我會告訴你如何使用vue-router和動態路由減少你的Vue應用程式容量。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/12/22/d3js-select-this/" data-toggle="tooltip" data-placement="top" title="從D3.js的select(this)探討的函式中的this指向">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/12/24/vue-optimization2/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

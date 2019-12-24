@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
+    <meta property="og:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
+    <meta property="twitter:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
+    
+
+    
+    <meta name="description" content="寫寫程式，拍拍照">
+    <meta property="og:description" content="寫寫程式，拍拍照" />
+    <meta property="twitter:description" content="寫寫程式，拍拍照" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="thunder blog,program,frontend">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)-Thunder Boy</title>
+
+    <link rel="canonical" href="/2019/12/24/vue-optimization2/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/javascript">javascript</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        Tuesday, December 24, 2019
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#結語">結語</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<p>在前一篇文章當中我們學到了什麼是切割程式碼、它是如何運作的以及在Vue.js應用程式中如何和lazy loading一起使用。現在我們將稍微深入一點的來看程式碼，並學習在Vue.js應用程式中最實用的程式碼切割的模式。</p>
+
+<p>這個系列是基於從<a href="https://github.com/DivanteLtd/vue-storefront">Vue Storefront</a>的效能優化處理中所學到的。透過以下的技術我們可以砍掉我們最初的打包的70%，使他載入在一眨間就完成。</p>
+
+<ul>
+<li>Part 1 – 介紹效能優化及lazy loading</li>
+<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
+<li>Part 3 – Lazy loading Vuex模組</li>
+<li>Part 4 – Lazy loading單一Component</li>
+<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
+<li>Part 6 – 使用Service Worker cache</li>
+<li>Part 7 – 預讀取</li>
+</ul>
+
+<p>##成長中的應用程式的問題</p>
+
+<p>Vue-router是一個可以切割我們的網頁應用程式成為各別頁面。各自的頁面對應到特定的URL路徑。</p>
+
+<p>有了這個想像之後我們有以下一個簡單的作品集程式架構：</p>
+
+<p><img src="https://lh3.googleusercontent.com/tzeGsMxVH2CmMIws95fQzW8cynYxl1aFVpbRFct8f92dokWyJ4y7WPLpZgH1sdfXowmVjhJmu5DRxNDWfkklMUhET-sEb28Z1vaecNJWr8uf0W7j_jzVrAEwsr6QpRNdAK33eiUn7LsJK9Fzuf1PlklIVVRgb5iZAnfrNQrA5pEWkni6FTIrY99GLXCI4Fcnwf3IZpnA7Gb01UAsTjwFt2hYTb2Q8c8uEeizNOaS3LIw1q2OBhu8KtBBjyfJI4QB7Be9aivaXPuddJGGx7kx5Xb8MZhJskpYzFTVz__23AomjQjdVRHK41Whe4QanZmUzJhnw_Zf0J809RhwDczSEcpNME1Yv7Fb74QGgBdLQ014Oz8qq64zgupCQwl9SxmicOQiNlaMXPnIOpzfnDd6WJ7hu9AnuvFt2Kg11fGZoy1rff_jnDqcx2pbXjVG1ci_-dIID5llCvPB9svNpQsb21rZouAWDTNKPPL13fWua4t6MwdlGBrtRCesmq-m31G6GEKmaq4lciQL0P3-qSz3Ewn7vtwmBL6oRcEcrSct6HmbFKIWo8hYWRK2C3eIafGgfb9RTYScum7gp9LeTW7j3WiJET20znMA1c9CiEPOcjC5MJ3M-DhWWMYN_08jceJaUQNIWIjcjYR82p0L6pxRqDgBlrYj_0n0qflCVVVQqMaed2t1UyBNzg=w1200-h687-no" alt="" /></p>
+
+<p><img src="https://lh3.googleusercontent.com/bmGZXHGKlcd3Z5IP4DJxA-0T7TZGOVPXIgFdPY8hljWXKHQfMUKVkXUEcTPU-odw2rrqwoFWAIAzdfylJQlH5w_Ul15oVTM2DiutmiWpixOQDWfqzJXcoAZuTHjcRkzfQJ9M_Q-JU_ZEcqKd5Fn7Sr7YvBDCEY-45LQiK32LYa0EhfprtuAAn3RxGB_geLIkfkewLoNW0HkhslfWXFLJz5uMyrQPih-YZCC36G8IdE2irpaTn1UHhWHH_6yBtRaZza8HL9oUi3fLC8tAjYubYj6ZonEE_1zT4fH9L6S8jiMNrHXsPP75RmLw1gsOI_xgj8OnwFij5XBnQOUfuQUziyKDWZc97rN3w7b-GDGjIOqiRG4yu5UgKMGFSxnDl7hP_Fi13MANKtMEwBsLB7ukW6lkD-zoqmFDQouIPolbnaAxhJHblkA9LBE264fZr3qw9ol85PSghddD6nOe4JPQLh_-OGjlqNnHDTy89zEMXaQk4Ue9ZK8mOO8rK0m6hMP7LPBfzLz5aCkiBvw_A4Xiad1x2kKpMesYOvCEjcPm8vg5Rw2pm0MQUmqErBauusCvj5mbrRxL400o00B909athDRYCYGHw6gCsFAAuuFmZC6u3nEuzfKOfi2LISKakSpBe4fOsr-brZEbOXXDbbkHs0ALPnwHj2BP6xweiTQEGEsyYT2v9JRy8A=w912-h630-no" alt="" /></p>
+
+<p>你可能會注意到我們還不需要app.js打包中依賴的Home.vue和About.vue(以及其依賴的lodash)、並且無論使用者訪問哪個路由都會把他們下載下來。這很浪費下載流量而且浪費時間！</p>
+
+<p>如果只是多下載一個程式這沒什麼大不了的，但你可以想如果這個程式成長得愈來愈大，每一個額外增長代表在初次訪問時需下載更大的打包。</p>
+
+<p>就算只有1秒的時間是足以讓使用者分心並有可能離開我們的網站，這是不能夠被接受的！</p>
+
+<p><img src="https://lh3.googleusercontent.com/G1Cgu6duf5e7rrSSA5L72u6hwMg4lKIZUFbZFhsSlqFwJwVIms4pA1Ir2ZvK87_cPqo3htemLyGlnfmP3T6FWAwMAs1Qu4jZaH-EidG3IRR9rDNEhaa3Ep8cUylRFBm5nhUDt0tXjFffhcbQ-b0Mn-e7cVmdhapIyYfecmIwQQtDRkY-Tq88Z6OcznUz6j56htUzHFULtEGlXBiBUBMfK_xtMTmEeEKdQYbSvGcB1Ymqn23i0Ovzj_CEXhkGSjOw1w-4SQYKkvGO_g9thrdbsSERmziohQ9ptzhxP0tDHL-Iv3wH7UG8NfMxop-YScbcIOHVBKFbQZGKdUq4ywKEyx3gQso3OAgqsjRWnc8b1lqj1a2U3lZ214J4zYn829bP8aqy6xALMMiUPVJG3LhclVVN96oMy5U8t1-dqdeH37n85lGHbwARBNNTYMswJvM5HUvFtO93WYstmFdV9FiqOVeUwYIMDIwHqUnSMbyrxIFz3IRoDubCjJrivjMfHD0DjA_jBl3Nu8rK_dWVQkDik8Pro5BkDdiW4Z5IaWkNlASCwyL1I31d6Ofx7aT4i1tOWsbOtNUseQe9efvZG8WsjP5bfVELfeooaWmphsTYSAtAvWrFpOOi6P-_JrLfj3UEcc8JeP4DVUJEfawvctTzImO0_qRPenHj8TO3aI-g_SOHp9oLDvE-fw=w1446-h926-no" alt="關於性能及人類感知的演講投影片 (Ilya Grigorik)" /></p>
+
+<p>圖：關於性能及人類感知的演講投影片 (Ilya Grigorik)
+<a href="https://www.youtube.com/watch?v=7ubJzEi3HuA">https://www.youtube.com/watch?v=7ubJzEi3HuA</a></p>
+
+<p>##使用vue-router以路由為基準的程式碼切割</p>
+
+<p>為解決決這個情況 ，我們只需要使用前一篇文章學到的import語法、根據每個路由來切割打包。</p>
+
+<p>就像Vue.js裡其他的任何東西 – 超級簡單。要取代掉直接地import component到路由物件裡，我們只需要貼上動態import的function就可以了。Component只有在路由要對應過去時才會被下載下來。</p>
+
+<p>所以取代像這樣子直接載入路由component：</p>
+
+<pre><code>import RouteComponent form './RouteComponent.vue'
+const routes = [
+  { path: /foo', component: RouteComponent }
+]
+</code></pre>
+
+<p>我們需要在這個路由上的入口處加入能產生新的打包的動態import。</p>
+
+<pre><code>const routes = [ 
+  { path: /foo', component: () =&gt; import('./RouteComponent.vue') } 
+]
+</code></pre>
+
+<p>來看這個動態import的打包和路由長什麼樣子：</p>
+
+<ul>
+<li>app.js – 在每個路由中都需要的主要的app入口處打包(main.js)及函式庫/component。</li>
+<li>home.js – 首頁的打包，只有在路由進入時才會下載下來。</li>
+<li>about.js – 「關於」頁面（及他的依賴lodash），只有在路由進入時才會下載下來。</li>
+</ul>
+
+<p>*打包名稱並不是戴正由webpack產生出來的而是為了方便理解而已。Webpack實際產生出來的名稱會像是0js 1.js，要依據你的webpack config設定而定。</p>
+
+<p>這個技巧對幾乎所有的應用程式都是足以應付、都能有非常好的效果。</p>
+
+<p>基於路由的程式碼切割在許多場合都能夠解決所有你的效能問題，幾乎所有的應用程式都能使用而且只花不到幾分鐘的時間就能實作！</p>
+
+<p>##Vue生態體系中的程式碼切割</p>
+
+<p>你可能會使用Nuxt或vue-cli來建置你的應用程式。這種情況就需要知道這兩者關於程式碼切割的自訂行為。</p>
+
+<ul>
+<li><strong>在vue-cli 3</strong> 所有的lazy loading模塊都預設是預加載(prefetch)的。我們稍後會學習預加載的使用。如果你希望知道更多關於vue-cli的預加載可以參考這邊。</li>
+<li><strong>在Nuxt</strong> 如果使用Nuxt的路由系統，則所有的頁面路由都是程式切割的開箱即用。</li>
+</ul>
+
+<p>現在來看看非常給力且常見的反向模式(anti-pattern)可以帶給你的路由為基準的程式碼切割更厲害一些。</p>
+
+<p>##函式庫打包反向模式</p>
+
+<p>函式庫打包(vendor bundle)非常常見使用node_modules把全部各自獨立的js檔案全部納入。</p>
+
+<p>僅管這個方法把全部的依賴放進同一個地方很吸引人，但這依然有綁住所有路由在一起的問題。</p>
+
+<p><img src="https://lh3.googleusercontent.com/jP8HEXSohT1H1euyCUgF2JBkYYVsTBimuRGeyWlJnX7RyDCUVWjJarQvsdYiBU--4UDYTkvU8Pd86HFUSk2fHoDVjN1ts92CkH6FzMMZX5z7w3aYYukVtc7xPMiRGFoqrSR2Iw2otwxm85ip0scqQPfkTWG0DxbiC_w7MztRxES1fgcqcrODDxcNj1ntHV-PdyEuMhayC9e8c0vXlrmtLeHokz2FZXNbESR0JSXEDwUB4Z3hvJ1Re2294cViXyHRwA5D71pStCnyQMVkoeWzvSBJgtciWJdCst64GC3Z0JMjLOqhje4tIgBUoL1WlhzCAtbfS_zpRSeOv3e4-v5pILlE_74bP8kndWBCNBQpG7N6HZNHBlnn4SzA23U-rlySRAuvMj-ORRavOshsDGJCe-hnPcWjeQ_5-nuSazAtKOz4OEM1wOy6ruMhe1uxxNQNdkCHZgTPtzWsVoDZIIzabw0VlTvUH8OxDYybt5bwyQzOqCCuxF_kYTOtp1HYUQx2IjH97YunfFF0eTwOEWqcqYSMOxKcASlfE6YRv55u9dpe8jXo_YwzEOvFAqgJYlq36y2UMszgqo2PTVd2nBk6Sbk-w7zRjGqg1-DsE9wb0tAMIwp8duL2-Uv8_z0ZRBl86PDVpBQfN6LvG_Sc0XobqOjIwfXvGXfHeInNpJQO_QDcvjXO7nZWVA=w1470-h842-no" alt="" /></p>
+
+<p>你看到問題了嗎？僅管我們只有在其中一個路由當中需要lodash（是當中的依賴），vendor.js綁定了全部的依賴所以無論如果他一定會被下載。</p>
+
+<p>在同一個檔案綁定全部的依賴聽起來很誘人但也會導致你的應用程式會一次讀取全部的檔案。我們有更好的方法！</p>
+
+<p>維持我們剛剛使用基於路由的程式碼切割足以確保只有需要時才下載，但這會導致一些程式碼的重覆。</p>
+
+<p>我們假設Home.vue也需要lodash。</p>
+
+<p><img src="https://lh3.googleusercontent.com/ZnrJBa42T0cOBARI5kMDlOFHwkLKKazdWKa6ncxJGlGIb_7Q9rPhiTxVix1ecpxzazJlsrJzlV88uN4MJrIe-ie6gj9PNAiCa3FdwKgQQu_dtE-xM50RZRC_wBJxJkmgKyHUZ5MGfYo3XYxaIhvi_iOycy1Hj5XBKP7AKhXJbI2davot_gJCeXdafZmowxDpMROpClUKqwpyJKn8p8JQIvaSIGFaDNkM4yNFh_meuzIWZ5fM7idZ7bCRGdx8L52TOrwNQaCI2gxasNHdGnuIUvb0I-USgdV_MLDFtq3Rpw1OdC3ty7QvPsMaivPgWW4ytSXiMIHpCmkFMuVC3PQmboFuxvB3YQg1kLxV9gr1oNH4rPy_9NmQdrRa5NWcMJIoNfpe6a7hJVxzHj7qPVAhdgT2nxDQcCQtn-H4mKJ8V2G4QFPm8QFukK4WjgvBzX0fQ2LkPUjqbG38LMv2CCEz99-Ol3k4-a2TlbowKfJENiNTyb50Eb5JCEgksYEJmeCHu2f8a197un7fc232Yv7xD3d9r8g5h4jw1DAA0Cy7HcfjpqlDn1Ju9pUe0CmoYU4Yc6oLu_R1INBmwk8MDQi5mNXqux6sKcQ0tZ-oKBkdF6xVz3QSHm80N5hZHH2onZJH5MU56JmeNURcvN5DP1svr_TVoR-x2WOfil6M-5JQPrp_WpcZRznbog=w1600-h921-no" alt="" /></p>
+
+<p>這個情況下從 /aboug (About.vue) 導向到 / (Home.vue) 會導致lodash下載了兩次。</p>
+
+<p>這仍然比下載了一堆多餘的程式碼還要來的好，但如果我們已經有了這些依賴而不重覆利用是很沒意義的沒錯吧？</p>
+
+<p>這也就是webpack <a href="https://webpack.js.org/plugins/split-chunks-plugin/">splitChunksPlugin</a>也以幫助我們的地方。只要在webpack config當中增加幾行，我們就可以把分散的打包中常用的依賴給聚起來，使他們可以被分享。</p>
+
+<pre><code>// webpack.config.js
+optimization: {
+  splitChunks: {
+    chunks: 'all'
+  }
+}
+</code></pre>
+
+<p>在模塊的屬性中我們只要告訴webpack哪個模塊程式應該被優化。設定這個屬性為all表示他應該優化所有的模塊。</p>
+
+<p>你可以閱讀更多相關的處理 <a href="https://webpack.js.org/guides/code-splitting/#prevent-duplication">webpack docs</a></p>
+
+<h2 id="結語">結語</h2>
+
+<p>透過路由切割你的程式是其中之一最棒（也最簡單）的方法來維持初始下載打包小的容量。下一個部份我們會學習關於其他較細的部份（Vuex stores以及獨立的component），從主要的打包中砍掉並延遲載入。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/12/24/vue-optimization1/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/12/24/vue-optimization3/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

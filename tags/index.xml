@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Dec 2019 16:04:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>javascript</title>
+      <link>https://shangdeyou.github.io/tags/javascript/</link>
+      <pubDate>Tue, 24 Dec 2019 16:04:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vue</title>
+      <link>https://shangdeyou.github.io/tags/vue/</link>
+      <pubDate>Tue, 24 Dec 2019 16:04:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/tags/vue/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>d3</title>
@@ -17,15 +35,6 @@
       <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://shangdeyou.github.io/tags/d3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://shangdeyou.github.io/tags/javascript/</link>
-      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://shangdeyou.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     

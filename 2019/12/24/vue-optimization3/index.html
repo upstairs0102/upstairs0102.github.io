@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules" />
+    <meta property="og:title" content="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules" />
+    <meta property="twitter:title" content="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules" />
+    
+
+    
+    <meta name="description" content="寫寫程式，拍拍照">
+    <meta property="og:description" content="寫寫程式，拍拍照" />
+    <meta property="twitter:description" content="寫寫程式，拍拍照" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="thunder blog,program,frontend">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules-Thunder Boy</title>
+
+    <link rel="canonical" href="/2019/12/24/vue-optimization3/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/javascript">javascript</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        Tuesday, December 24, 2019
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#正確地切割vuex-module程式碼">正確地切割Vuex module程式碼</a></li>
+<li><a href="#lazy-loading-vuex-modules">Lazy loading Vuex modules</a></li>
+<li><a href="#總結">總結</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<p>在前一個部份我們學到可以大幅度改善你的應用程式效能的模式 – 透過路由來切割程式碼。僅管透過路由切割程式碼是非常有幫助的但仍然有很多程式是使用者剛進去網站時使用不到的。在本篇我們將專注在我們的狀態管理的程式碼切割 – Vuex modules。</p>
+
+<p>這個系列是基於從Vue Storefront的效能優化處理中所學到的。透過以下的技術我們可以砍掉我們最初的打包的70%，使他載入在一眨間就完成。</p>
+
+<p>##兩種Vuex modules的類型</p>
+
+<p>在我們繼續往下看Vuex modules的lazy loading之前，這裡有一件很重要的事你需要注意的。你需要了解有哪些可以注冊Vuex modules的方法以及他們的優缺點。</p>
+
+<p><strong>靜態Vuex modules</strong>在store初始化時就宣告了。以下是個明確的建置靜態模組的範例：</p>
+
+<pre><code>// store.js
+import { userAccountModule } from './modules/userAccount'
+const store = new Vuex.Store({
+  modules: {
+    user: userAccountModule
+  }
+})
+</code></pre>
+
+<p>上面的程式碼會new一個新的Vuex Store以及靜態模組userAccountModule。靜態模組不能被取消註冊（並且不能被延遲註冊）以及他們的架構（這是不是指state）在初始化後不能被改變。</p>
+
+<p>僅管這個限制對於大部份的module來說不會是個問題，並且把全部的modules宣告在同一個地方對於讓資料的關聯在同一個地方維持一致是很好用的，但這個方法還是有些缺點。</p>
+
+<p>假設我們的應用程式裡有一個管理者儀表板以及它專用的Vuex module。</p>
+
+<pre><code>// store.js
+import { userAccountModule } from './modules/userAccount'
+import { adminModule } from './modules/admin'
+const store = new Vuex.Store({
+  modules: {
+    user: userAccountModule, 
+    admin: adminModule
+  }
+})
+</code></pre>
+
+<p>你可以想像這樣子的module可以是非常大的。即使儀表板只有限於一部份的使用者使用（也可想成只在特定的/admin路由），由於統一註冊了靜態Vuex module它所有的程式碼還是會在主要的打包程式當中。</p>
+
+<p><img src="https://lh3.googleusercontent.com/WUW2y4p8kVqdVj42g4WKKX3ORPCxgjTI4n9_ZTLjXRxKqnP7P7VceFegtAbW-XQHZ_q7ZoI03VNqWnKTmK2FQTdxZBlY1__KP5Z8yQ7ILRxEYrrkVPpPnjhSwWw5x_dHXNwnVLLilPuTs_SpItAKxwsfSuFaCT5QLvtq-N9TE60Z0kTwWYr7Li1fXONz5q5D7iiMVBb7JkpvNRmwOnYmvEve3xOX1Fvd9PJL2z7jh2r1t2WAJnYpvm1rtsqq7S-6f6LPX-vQsXcbNhJgian4TauwWVRJJ4OCjv56wmh1WS8qE252y-1diIRGbjMB7Rf4p4ojbUN-0c1QjMh9mcCDFHrWETL8ON02sXe09Q1MDGxVH9YG4KlYQ5-WldJQDstcFUz5TAkozXL7jYtHLipKYx75RlPJDYcpxOM04ariXbHLiok1j3bCeFjVlpw-qjd22XbCwy1dEMNvOwOxMwie6dt85JAMSiKwsKpiJVrHYeZwhQqRBRs7hwQ3l3YwmtHQV0cQ_ZSvPaRv13GgMbxW4lPXTI_LMRyz7Fh1fHKG2u70M9njuXQVEYJcctalOCK29O1VzyIVyrL2K5_bZVL_luzXNtAgSPQyIDzPYb1y0r8l7tCCNKYVJL80zQJ95vKpAm2Q051NtrX1J3kV7ja7dFEvrR_FtasnWpr7CCeSkzKihxGEIStKVQ=w1418-h882-no" alt="" /></p>
+
+<p>這個情況當然不是我們所要的結果，我們需要一個方法只在/admin路由當中讀取它。你可能已經猜到靜態module不能滿足我們的需求，全部的靜態module必須在Vuex Store被建置時被註冊、因此無法延後註冊的時機。</p>
+
+<p>這也就是動態module幫的上忙的地方！</p>
+
+<p>動態module和靜態的相反，它可以在Vuex store創建之後才註冊。這個聰明的特性暗示我們不需要在應用程式初始化時做動態載入，可以打包成不同的模塊或在需要的時候才延遲載入。</p>
+
+<p>首先，我們來看前面所說的動態註冊admin module會長什麼樣子。</p>
+
+<pre><code>// store.js
+import { userAccountModule } from './modules/userAccount'
+import { adminModule } from './modules/admin'
+const store = new Vuex.Store({
+  modules: {
+    user: userAccountModule, 
+  }
+})
+store.registerModule('admin', adminModule)
+</code></pre>
+
+<p>取代直接把adminModule物件直接放入store裡的property，我們在store建置出來後使用registerModule方法註冊它。</p>
+
+<p>動態註冊並不需要更改module本身，所以所有的Vuex module都可以直接註冊或動態的註冊。</p>
+
+<p>當然，以目前這個寫法來說動態註冊module沒有給我們任何優勢。</p>
+
+<h2 id="正確地切割vuex-module程式碼">正確地切割Vuex module程式碼</h2>
+
+<p>延續前面的討論，現在我們知道如何動態地註冊admin module、所以我們當然可以試著把它放入/admin路由的綁定。</p>
+
+<p>我們暫且停一下，來簡單理解一下我們的應用程式的運作方式。</p>
+
+<p><img src="https://lh3.googleusercontent.com/JUCHrCoynlm2FiyyTIm5I2zKVQD6fvCGOke9KPIiwgGT5-LT3bXkikt81cZl6j34VxRzgy_lwkYMT8fXV2wG_q1lYqJsvfeUCUn6nO1QhI-lIWugRcHcMv1-bTw48wfNqovlZP0FpZf0vVW4o3LbgOD-lmSu9iTPVjuZfWyGDoJVOhp8Waj-7pvWtQlP2lgTP6f4Z58RiLvBlJAWQbyne0sjUsIDPgEAyArVCuK2QuaVzZ-19C4TCZ38wTYsqXVjbITe-H8WXKa8UKnGHjXI7OA5pyFM-owrfBINqGAiazf5o59e1VAi_qdws2HT5SOZYBaV3_n5a1ZAcmkQOjpwvL11Pi4zjbOnqBUGmhPcr1Pjoz8XcZwJyWHZWEEkdiGZIM5ELbCwV4eBDCw8nQH-RzsineptZNjCpnXmFQ_5U6tsMFC6BvBCKA2pVq6bkcECqo9i7bajYYxWfrsRmy_frIMA1DE3f72xzaS8lGuGZwMZNgqIVCPMjWuBfts3EQ3DlboGkG2li4iIReKXf_MpjkfZ2sluCuoGlqDrG8qpAzrDDaYZBIh9owrZc-SZow3vt9nFjL4cyvKrp6jepb9u63DwyDRoO3BDddOLEovjlsmKCwDZvX6UE7KMeSoNXmjUBskvXpAVr0j6VVyTV4hBs8HnTQjOGgfZ2Yp9RFz6rgJol1A8OcFMRA=w928-h575-no" alt="" /></p>
+
+<pre><code>// router.js
+import VueRouter from 'vue-router'
+const Home = () =&gt; import('./Home.vue')
+const Admin = () =&gt; import('./Admin.vue')
+const routes = [
+  { path: '/', component: Home },
+  { path: '/admin', component: Admin }
+]
+export const router = new VueRouter({ routes }) 
+</code></pre>
+
+<p>我們來瞧瞧這裡做了什麼！</p>
+
+<p>我們在Admin.vue(路由/admin)的mounted裡import並註冊admin store。稍後程式裡我們會在使用者離開的時候把module給取消註冊，以避免同樣的module被重覆註冊。</p>
+
+<p>現在因為admin module被import到Admin.vue裡取代原本的store.js，它現在和程式切割了的Admin.vue綁定在一起。</p>
+
+<p><img src="https://lh3.googleusercontent.com/UVdmEbOaputDJEjtJHauYteUpAGxniA9K8pc4FBJFQC8dNzugNaH07YaCAcBGLr8v7NYDDYJwbbKE7mBQ7Nr7JEe9NTC4I_YIoCEoE8yWBsYY37gyF0CEFnOnVjcnYE519AuYDeCVXSCu9bpIw4spzHyBSSSFw9gw2pqKVtkItv96s37QVWeGKgVX-7HuNwCXWcgu6eAKL_dQgy4Fl-4UTxlJmKW44e3oCwjwRBldljvpEZX_VmrInwFCc1ZAdUJf0WD4S_ODlI4HK4EfrUdC0KrhojqjrjO13Rhmz0xEyxojF9YirmBqzNmpqz0ZnGDJOh__9e8FcWFwKy65wAt7zA_7ukDtXV0rIAqCJDW-fc_8oVrvrnCgsa3oiJgSZ_muOEKVCGxNxPR5aLu6HrCLZjbho0iH9I9ySFddHAGQ6agXPYIqUiYE38qtsTd2eKM4c_ht8EH7evLqmBT4PJF5abzVjW1zlf9yVjxw35PuZStzXkhIro8ftP3dtDyVMZ2xj65srXLmHqREb-vupnZ2ZpczckxNkiwFyfAhFIxvaCefYIv8lCQpESVlz1XzWfyVr3bR5xvYMQak2JK_Uck0czjn-IDKMizB2694O8RNe6GNd0YzrdidD0WdsfeEEZ0_F9NBSn7VlQ4v57lKg5J3S2k-qAiVJ7kHCLsDQulCYZIzU7fWhPS3A=w911-h577-no" alt="" /></p>
+
+<blockquote>
+<p><strong>重要注意：</strong>如果你使用SSR模式請確保你把註冊module放在mounted裡，否則的話當beforeDestory鈎子沒設好可能會導致memory leak。</p>
+</blockquote>
+
+<p>現在我們知道如何使用動態Vuex module註冊，來分開我們特定路由的module到適當的打包中。我們來看看稍微複雜一點的使用方式。</p>
+
+<h2 id="lazy-loading-vuex-modules">Lazy loading Vuex modules</h2>
+
+<p>假設我們有的Home.vue有一個推薦區塊，我們希望能展示關於我們服務的正面意見。因為數量會很多所以我們不需要在使用者進入後就馬上呈現，比較好的展示方式是當使用者看的時候。我們可以增加一個”檢視推薦”按鈕當點擊時我們才把推薦內容給呈現出來。</p>
+
+<p><img src="https://lh3.googleusercontent.com/lRomRgeUyvACn33VlhL7wq3ER73nyBrYPq5ov0adJrKMm7PuLy58gnI3GSL106OWDqquR534H3bfAyrUH0hD90Or3Wq4HGY6MNIy4rCaX3KErJEZS4aVHy8cl8QQjennMALzcmL4si1_JmeaGMqq9akbl8NavKDGqbLVdAe1gy50Ki8bllyadFW-lePj_fia86R2GZ0LRBNyE1ePAZfPex1AtSknv4O4uKnO4LOLQ2xdYS9ZG9M9c3AiZ50XKyqU4vRroBSuhxowfXSCM6IJZnG43Vj8m9GwHNchZiG8uKj8DvLVKz4STz1LDx3547JrbN4oxR8mhJH6CMwNmQU8Og4OkkyWepLxVipF05fHz_t_moNC3fWmf1bavife3f6QviKDfvF0T1jUNrQYJsN0gESEwcrcf69G6gsB89laM665AL1HQgni6fvCaVDf_iajgM8TSuDn_nkoiKhQZ3ktzBc65pUaYbm5FGeMme2nj5Af4bGDaj9rOKaxFUIhBL0vPq-HXnXYXItKwilLY5TPHLc9-lJnXVkG4Hkehgb_3dN6wfLnotbwFnNvcjOlXtfvBSSXG-kk-3Z5GG1IRpWgQJoVwG5Zy9VW_ukyiF_o-WLKSKcb0TswgemEAl7Ut8-4g1FadYaT0xP3gjpbLyPpIRSukFRnbMgKa8ggXJX11FkOKlvqBaMdog=w1183-h88-no" alt="" /></p>
+
+<p>為儲存推薦資料我們需要再一個Vuex module命名為testimonials。這個module負責呈現前一個加入的推薦並新增一個新的，我們不需要知道關於它實作的細節。</p>
+
+<p>我們希望testimonials module只有在使用者點擊按鈕的時候下載，因為在這之前並不需要它。我們來看這個動態import及註冊module的功能該如何實現。Testimonials.vue是Home.vue裡的一個子component。</p>
+
+<p><img src="https://lh3.googleusercontent.com/Vq4Lt02kcmr9GdHNoQxr02nU687_sH7yXELzuOKuPLtzpbOYB1I2p3NWTLN5Bd5X45nrmciwyPucYPo5DQmpAF8WqJsBSL1Leo_1M54Xl1L9zJy_0eApD43ElPGoJBHB22XpZdkXufi5qO1Xy74W9YAbbCZMAUWXptqD2bUZxLNKL3Q4RlhD2e33W1nLE6-0RKFETfqMzE39rZhNqGk7OlTiwzgPyAdGKblOtKyFqL3rXhAa1qfqsmufQ4LywpBrqVfJLDzJLuFOH7KtYT_fe4MB51wX7WxM8hDLkCb0aVEhzfW1-L6jW4MMa4RTEfqvc-DqOMAzOP0wss9QDRELYnw12nJ8YaZ1qfF9YIeea9jw63WSi2ZJNyNzh0E3JiYahBRHGnbySltVeYHm497V6yNHVkvXZWt7DnddJW6Hu6e_qPyhxfw4NYM4K-X6Q_lh7bKIrm46w7Q_WYZzRidJyT3SFjXRzLaR7Ctshx6Z6zL8zNZLJh9p4v9MpXYC4zwawYI7gLeixxJusHn-XcOXI0hKm2Ab-pNy4iRt1nlvEvYVWG8peKx0aWVU9grSoVieAkuvV4Xpm1NzJh3hpEMAAG-HQ8PtovZSDoHw5A5957OoYx9K2AXesG_TmQ6xGH4zjPk7BFLx_ulZD1ozK1_dFm5B5YhmT07bB9gXtNIFnGBANVs0OvVwoA=w1089-h952-no" alt="" /></p>
+
+<p>![](我們來快速檢視一下程式碼。</p>
+
+<p>當使用者點擊「檢視推薦」按鈕時呼叫getTestimonials()方法，getTestimonialsModule()負責取得testimonials.js。當promise被resolved（代表module被讀取）我們動態地註冊它並dispatch action來取得推薦內容。</p>
+
+<p>感謝動態import，testimonial.js的內容被綁定到分開的檔案中，只有當getTestimonialsModule方法被呼叫時才會被下載。)</p>
+
+<p><img src="https://lh3.googleusercontent.com/Ar88BWMw4A5aVZo-hs0DcRUKZUX-wQKugykmBUuBqQBjL2TvW0zpf0kuNd8Cow6esoYlX8Y3CI0gt05lPbU7H2309gfeoZOEzvwDcOQcPZ0xnAyt3LOnFgQZZ4XKM8gMCBQ2TntYmZdqwixmGst0RYZ3LyX1ekg4VurRvqWMy4BqTNEVyXKwtL-7dzwlcbYQNEsADMizdrfNjnCIFl8MkSlh1o-fvxQUbc6pysontWrWGqn0VxeYMMxGFCYZzoMbpADYSZ_hSW73ZAbtXgx5eKOZ4k2F7mJ4az7dkBfGOequjOWwgrAlw9kS1x7_OBmiOVnXbxj0OS8Ptr6k4_jVbVV0MLDJHtdje2G7aqJz8gLeiQgy5mgLC8KCSRuJsJ9hlt4ALyKifa1C8W4-U1koIVUUZbxnVbzfeYYDVex8Re3cqKasspsQcEpfRq1VlvnrGkHmrjqtS6S9A9gXEOdqsq0TUT8uQbZn3aDZEdh50NNR1I225ce0U0e0UPQZWUpAj-WhvsZdaKWnBknFBAYaQe51rekXlIf8nop99-C9b1g0DUH_JQ9qBp4AtlxbOL3okWsuwbcnzDM3ub3CdTJ-fdcJRfn2c1i7Qqfm64SY5HM8sNCTWp6x66z6U43EDc-88J8hrumA3psXIAe14EqIQotaXYSAJ9oRCUUDlrexBMLEi7MtmA1tag=w1600-h817-no" alt="" /></p>
+
+<p>當我們需要離開管理者平台，我們在剛才的beforeDestory生命週期鉤子裡有取消註冊，所以如果我們要再次進入路由它不會被重覆。</p>
+
+<h2 id="總結">總結</h2>
+
+<p>僅管理靜態Vuex module註冊足以應付大部份的使用情況，還是有些特定情況我們還是需要動態註冊。</p>
+
+<ul>
+<li><strong>如果只有在特定路由需要module</strong>，那我們可以在特定的路由component裡動態的註冊，所以不會出現在主要的打包當中。</li>
+<li><strong>如果只有在特定的互動需要module</strong>，那我們需要在特定的方法中合併動態註冊module和動態import、延遲載入。</li>
+</ul>
+
+<p>切割Vuex module程式碼是一個強而有力的工具。在應用程式裡處理得愈多資料相關的操作，表示能節省愈多的打包容量。</p>
+
+<p>在下一篇我們將學習如何延遲載入獨立的component，以及更重要的是哪個component應該被延遲載入。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2019/12/24/vue-optimization2/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2019
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
