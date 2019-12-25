@@ -265,7 +265,7 @@ const store = new Vuex.Store({
 
 <p>你可以想像這樣子的module可以是非常大的。即使儀表板只有限於一部份的使用者使用（也可想成只在特定的/admin路由），由於統一註冊了靜態Vuex module它所有的程式碼還是會在主要的打包程式當中。</p>
 
-<p><img src="https://lh3.googleusercontent.com/WUW2y4p8kVqdVj42g4WKKX3ORPCxgjTI4n9_ZTLjXRxKqnP7P7VceFegtAbW-XQHZ_q7ZoI03VNqWnKTmK2FQTdxZBlY1__KP5Z8yQ7ILRxEYrrkVPpPnjhSwWw5x_dHXNwnVLLilPuTs_SpItAKxwsfSuFaCT5QLvtq-N9TE60Z0kTwWYr7Li1fXONz5q5D7iiMVBb7JkpvNRmwOnYmvEve3xOX1Fvd9PJL2z7jh2r1t2WAJnYpvm1rtsqq7S-6f6LPX-vQsXcbNhJgian4TauwWVRJJ4OCjv56wmh1WS8qE252y-1diIRGbjMB7Rf4p4ojbUN-0c1QjMh9mcCDFHrWETL8ON02sXe09Q1MDGxVH9YG4KlYQ5-WldJQDstcFUz5TAkozXL7jYtHLipKYx75RlPJDYcpxOM04ariXbHLiok1j3bCeFjVlpw-qjd22XbCwy1dEMNvOwOxMwie6dt85JAMSiKwsKpiJVrHYeZwhQqRBRs7hwQ3l3YwmtHQV0cQ_ZSvPaRv13GgMbxW4lPXTI_LMRyz7Fh1fHKG2u70M9njuXQVEYJcctalOCK29O1VzyIVyrL2K5_bZVL_luzXNtAgSPQyIDzPYb1y0r8l7tCCNKYVJL80zQJ95vKpAm2Q051NtrX1J3kV7ja7dFEvrR_FtasnWpr7CCeSkzKihxGEIStKVQ=w1418-h882-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_10.png" alt="" /></p>
 
 <p>這個情況當然不是我們所要的結果，我們需要一個方法只在/admin路由當中讀取它。你可能已經猜到靜態module不能滿足我們的需求，全部的靜態module必須在Vuex Store被建置時被註冊、因此無法延後註冊的時機。</p>
 
@@ -298,7 +298,7 @@ store.registerModule('admin', adminModule)
 
 <p>我們暫且停一下，來簡單理解一下我們的應用程式的運作方式。</p>
 
-<p><img src="https://lh3.googleusercontent.com/JUCHrCoynlm2FiyyTIm5I2zKVQD6fvCGOke9KPIiwgGT5-LT3bXkikt81cZl6j34VxRzgy_lwkYMT8fXV2wG_q1lYqJsvfeUCUn6nO1QhI-lIWugRcHcMv1-bTw48wfNqovlZP0FpZf0vVW4o3LbgOD-lmSu9iTPVjuZfWyGDoJVOhp8Waj-7pvWtQlP2lgTP6f4Z58RiLvBlJAWQbyne0sjUsIDPgEAyArVCuK2QuaVzZ-19C4TCZ38wTYsqXVjbITe-H8WXKa8UKnGHjXI7OA5pyFM-owrfBINqGAiazf5o59e1VAi_qdws2HT5SOZYBaV3_n5a1ZAcmkQOjpwvL11Pi4zjbOnqBUGmhPcr1Pjoz8XcZwJyWHZWEEkdiGZIM5ELbCwV4eBDCw8nQH-RzsineptZNjCpnXmFQ_5U6tsMFC6BvBCKA2pVq6bkcECqo9i7bajYYxWfrsRmy_frIMA1DE3f72xzaS8lGuGZwMZNgqIVCPMjWuBfts3EQ3DlboGkG2li4iIReKXf_MpjkfZ2sluCuoGlqDrG8qpAzrDDaYZBIh9owrZc-SZow3vt9nFjL4cyvKrp6jepb9u63DwyDRoO3BDddOLEovjlsmKCwDZvX6UE7KMeSoNXmjUBskvXpAVr0j6VVyTV4hBs8HnTQjOGgfZ2Yp9RFz6rgJol1A8OcFMRA=w928-h575-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_11.png" alt="" /></p>
 
 <pre><code>// router.js
 import VueRouter from 'vue-router'
@@ -317,7 +317,7 @@ export const router = new VueRouter({ routes })
 
 <p>現在因為admin module被import到Admin.vue裡取代原本的store.js，它現在和程式切割了的Admin.vue綁定在一起。</p>
 
-<p><img src="https://lh3.googleusercontent.com/UVdmEbOaputDJEjtJHauYteUpAGxniA9K8pc4FBJFQC8dNzugNaH07YaCAcBGLr8v7NYDDYJwbbKE7mBQ7Nr7JEe9NTC4I_YIoCEoE8yWBsYY37gyF0CEFnOnVjcnYE519AuYDeCVXSCu9bpIw4spzHyBSSSFw9gw2pqKVtkItv96s37QVWeGKgVX-7HuNwCXWcgu6eAKL_dQgy4Fl-4UTxlJmKW44e3oCwjwRBldljvpEZX_VmrInwFCc1ZAdUJf0WD4S_ODlI4HK4EfrUdC0KrhojqjrjO13Rhmz0xEyxojF9YirmBqzNmpqz0ZnGDJOh__9e8FcWFwKy65wAt7zA_7ukDtXV0rIAqCJDW-fc_8oVrvrnCgsa3oiJgSZ_muOEKVCGxNxPR5aLu6HrCLZjbho0iH9I9ySFddHAGQ6agXPYIqUiYE38qtsTd2eKM4c_ht8EH7evLqmBT4PJF5abzVjW1zlf9yVjxw35PuZStzXkhIro8ftP3dtDyVMZ2xj65srXLmHqREb-vupnZ2ZpczckxNkiwFyfAhFIxvaCefYIv8lCQpESVlz1XzWfyVr3bR5xvYMQak2JK_Uck0czjn-IDKMizB2694O8RNe6GNd0YzrdidD0WdsfeEEZ0_F9NBSn7VlQ4v57lKg5J3S2k-qAiVJ7kHCLsDQulCYZIzU7fWhPS3A=w911-h577-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_12.png" alt="" /></p>
 
 <blockquote>
 <p><strong>重要注意：</strong>如果你使用SSR模式請確保你把註冊module放在mounted裡，否則的話當beforeDestory鈎子沒設好可能會導致memory leak。</p>
@@ -329,13 +329,13 @@ export const router = new VueRouter({ routes })
 
 <p>假設我們有的Home.vue有一個推薦區塊，我們希望能展示關於我們服務的正面意見。因為數量會很多所以我們不需要在使用者進入後就馬上呈現，比較好的展示方式是當使用者看的時候。我們可以增加一個”檢視推薦”按鈕當點擊時我們才把推薦內容給呈現出來。</p>
 
-<p><img src="https://lh3.googleusercontent.com/lRomRgeUyvACn33VlhL7wq3ER73nyBrYPq5ov0adJrKMm7PuLy58gnI3GSL106OWDqquR534H3bfAyrUH0hD90Or3Wq4HGY6MNIy4rCaX3KErJEZS4aVHy8cl8QQjennMALzcmL4si1_JmeaGMqq9akbl8NavKDGqbLVdAe1gy50Ki8bllyadFW-lePj_fia86R2GZ0LRBNyE1ePAZfPex1AtSknv4O4uKnO4LOLQ2xdYS9ZG9M9c3AiZ50XKyqU4vRroBSuhxowfXSCM6IJZnG43Vj8m9GwHNchZiG8uKj8DvLVKz4STz1LDx3547JrbN4oxR8mhJH6CMwNmQU8Og4OkkyWepLxVipF05fHz_t_moNC3fWmf1bavife3f6QviKDfvF0T1jUNrQYJsN0gESEwcrcf69G6gsB89laM665AL1HQgni6fvCaVDf_iajgM8TSuDn_nkoiKhQZ3ktzBc65pUaYbm5FGeMme2nj5Af4bGDaj9rOKaxFUIhBL0vPq-HXnXYXItKwilLY5TPHLc9-lJnXVkG4Hkehgb_3dN6wfLnotbwFnNvcjOlXtfvBSSXG-kk-3Z5GG1IRpWgQJoVwG5Zy9VW_ukyiF_o-WLKSKcb0TswgemEAl7Ut8-4g1FadYaT0xP3gjpbLyPpIRSukFRnbMgKa8ggXJX11FkOKlvqBaMdog=w1183-h88-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_15.png" alt="" /></p>
 
 <p>為儲存推薦資料我們需要再一個Vuex module命名為testimonials。這個module負責呈現前一個加入的推薦並新增一個新的，我們不需要知道關於它實作的細節。</p>
 
 <p>我們希望testimonials module只有在使用者點擊按鈕的時候下載，因為在這之前並不需要它。我們來看這個動態import及註冊module的功能該如何實現。Testimonials.vue是Home.vue裡的一個子component。</p>
 
-<p><img src="https://lh3.googleusercontent.com/Vq4Lt02kcmr9GdHNoQxr02nU687_sH7yXELzuOKuPLtzpbOYB1I2p3NWTLN5Bd5X45nrmciwyPucYPo5DQmpAF8WqJsBSL1Leo_1M54Xl1L9zJy_0eApD43ElPGoJBHB22XpZdkXufi5qO1Xy74W9YAbbCZMAUWXptqD2bUZxLNKL3Q4RlhD2e33W1nLE6-0RKFETfqMzE39rZhNqGk7OlTiwzgPyAdGKblOtKyFqL3rXhAa1qfqsmufQ4LywpBrqVfJLDzJLuFOH7KtYT_fe4MB51wX7WxM8hDLkCb0aVEhzfW1-L6jW4MMa4RTEfqvc-DqOMAzOP0wss9QDRELYnw12nJ8YaZ1qfF9YIeea9jw63WSi2ZJNyNzh0E3JiYahBRHGnbySltVeYHm497V6yNHVkvXZWt7DnddJW6Hu6e_qPyhxfw4NYM4K-X6Q_lh7bKIrm46w7Q_WYZzRidJyT3SFjXRzLaR7Ctshx6Z6zL8zNZLJh9p4v9MpXYC4zwawYI7gLeixxJusHn-XcOXI0hKm2Ab-pNy4iRt1nlvEvYVWG8peKx0aWVU9grSoVieAkuvV4Xpm1NzJh3hpEMAAG-HQ8PtovZSDoHw5A5957OoYx9K2AXesG_TmQ6xGH4zjPk7BFLx_ulZD1ozK1_dFm5B5YhmT07bB9gXtNIFnGBANVs0OvVwoA=w1089-h952-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_13.png" alt="" /></p>
 
 <p>![](我們來快速檢視一下程式碼。</p>
 
@@ -343,7 +343,7 @@ export const router = new VueRouter({ routes })
 
 <p>感謝動態import，testimonial.js的內容被綁定到分開的檔案中，只有當getTestimonialsModule方法被呼叫時才會被下載。)</p>
 
-<p><img src="https://lh3.googleusercontent.com/Ar88BWMw4A5aVZo-hs0DcRUKZUX-wQKugykmBUuBqQBjL2TvW0zpf0kuNd8Cow6esoYlX8Y3CI0gt05lPbU7H2309gfeoZOEzvwDcOQcPZ0xnAyt3LOnFgQZZ4XKM8gMCBQ2TntYmZdqwixmGst0RYZ3LyX1ekg4VurRvqWMy4BqTNEVyXKwtL-7dzwlcbYQNEsADMizdrfNjnCIFl8MkSlh1o-fvxQUbc6pysontWrWGqn0VxeYMMxGFCYZzoMbpADYSZ_hSW73ZAbtXgx5eKOZ4k2F7mJ4az7dkBfGOequjOWwgrAlw9kS1x7_OBmiOVnXbxj0OS8Ptr6k4_jVbVV0MLDJHtdje2G7aqJz8gLeiQgy5mgLC8KCSRuJsJ9hlt4ALyKifa1C8W4-U1koIVUUZbxnVbzfeYYDVex8Re3cqKasspsQcEpfRq1VlvnrGkHmrjqtS6S9A9gXEOdqsq0TUT8uQbZn3aDZEdh50NNR1I225ce0U0e0UPQZWUpAj-WhvsZdaKWnBknFBAYaQe51rekXlIf8nop99-C9b1g0DUH_JQ9qBp4AtlxbOL3okWsuwbcnzDM3ub3CdTJ-fdcJRfn2c1i7Qqfm64SY5HM8sNCTWp6x66z6U43EDc-88J8hrumA3psXIAe14EqIQotaXYSAJ9oRCUUDlrexBMLEi7MtmA1tag=w1600-h817-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_14.png" alt="" /></p>
 
 <p>當我們需要離開管理者平台，我們在剛才的beforeDestory生命週期鉤子裡有取消註冊，所以如果我們要再次進入路由它不會被重覆。</p>
 

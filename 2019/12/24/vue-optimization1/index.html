@@ -257,7 +257,7 @@
 
 <p>我們可以把這個進程繪製成以下如圖：</p>
 
-<p><img src="https://lh3.googleusercontent.com/m95zzt2Rc-ZkWMHQf0i7uVTeUuIw7Z9Srcf17kwJ2g23Q2dIy45uX9e74RvN9_6_pHhwtKc-AZleJwAjFEOvIaOEY40n7ZviRzw3Cmm8rDaLn5p1BVGPfiOEegKmJm3QsIZLeBE8Rvp-bxWoz4jQkBNUzzBJEDGUBgaaPVfRQ3AcP_Z7-Na5UgO6bylEEw01s7q_ingJqvqvT1j6QjzgKubYCuNwrLKCcJ0k7jMJZ9elc6FOanygURFP-zzVylJ1LO5OjMNMqrtLQp-PNGWTYN0dU9OZ8o6EqxjWxg8xJgPpqt6bOTA-HL-jfyz2Mudp9LYhT8c9_dX_qWthY7toehnsCsKO9kXJ5uqHZUcLQrMoZ-2v2bGOJPz6XKvowVDjmWPLeGVWYSpdN-NvBHJefbnEZF84PTzbe5a9xLR9vsnEK2mvJQ9hG9v00k9Yu6-fDmHmBku48hKppd_NFkvGPRDsdRqKpQDkfNjgNlfeZ0MEFgDvmziC0snklZb-t1lnIqX0CGVSdefRyo3F5BucZ4Q1VZ99ddwvkQLOWRvZRTor0r3fORNfwvTYSY-scYDkGBUwSk0PisbeWkdZs1sRvwTuD_YYB_vKU1vV1SKUFHk2cmd5KX4aGnMfplmAXJWBxZQicuaMwspNaB8oyIx0V_Lvhan8MeJ0uFabNIj3Zm3x1NJqHqC9BQ=w1312-h574-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_1.png" alt="" /></p>
 
 <p>現在我們知道打包是如何運作的，很明顯的他會成長到專案內最大化的初始javascript打包檔案。檔案愈大代表使用者需花更多時間下載，也代表使用使用者更可能離開我們的網站。</p>
 
@@ -269,13 +269,13 @@
 
 <p>從字面上來看lazy loading就是懶惰得只載入應用程式的一部份。另外一種說法就是-只載入我們真的需要的部份。程式碼切割只切割出這個載入的部份。</p>
 
-<p><img src="https://lh3.googleusercontent.com/j-WGTq0F1njjCDvbnqetL0wZw9IqsIuGszfWkOb0oZAmeA4sNAyEfr735KRBEHainC8LCqnsx1UVKb02ZgruqEL_Q-dmnc6p0ZJx0jeyL5GRTYugD7PpqkCg2OmggHIKHI6HUrlezAgZCrJx1FqmJbyZpwtwkr3Ip2_VeLYqjX1HZfLxJ2qg6T3DdvJ2qnJqnKVIU_oGbtTHQtHcWu1t07MU3odxWaitUcmmRkgJGwpgsPew3y1hcoSyEDfT7xzE0_Sqbuu8hu1hiV8vvrEwNTpsEd4qOtneIy4px63uoUxUgHjHb5FgJQc4TJQTItk9yDzZdtK9hBAqSW3d_qg65CJJt9vdks1dVbQN16nIOtneTyx3of2-747nuNwiKGvfjzu48hUSvkEiSkLmJ6H4kzZb9M_eMUWv0dGkS05S-AtAl4fdrya8cKMwNIUOLHKaLugnt6F6fTcszUynIk96a8fL47wzL1e8Xcq3mggN8kr9YBViXpuVF1RCV5W2xMc2ISgbtJID6hsHnlCadiqxZSfQqX1h7QV7u3E8GSMkQFYwXbXXQe2_NgjShr_M19W6LATcjDE6GdVu5cPuuV584OCK2O6jHWZ15qVVEAK6q_pIgBbx85AALNu8AshW5tXbrVnRcFM8khMetC2DXr88opvszLZaBBtTJLRKtEiTl-gAsKIr-B2LDQ=w1036-h302-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_2.png" alt="" /></p>
 
 <p>大部份的情況下當使用者進入網站時不需要javascript打包中的所有程式，就算我們有3個不同的路由位置而使用者無論如何都需要下載、解析、並執行打包程式-不論他們是否會需要用到。這是多麼浪費時間和力氣！</p>
 
 <p>Lazy loading允許我們切割打包並提供所需要的部份，使用者不需要浪費時間下載及解析他們不需要的程式。要看網站實際上使用到的javascript程式我們可以到開發者工具-&gt;cmd+shift+p -&gt;輸入”coverage”-&gt;點擊”錄製”，接著我們應該可以看到下載了多少實際上使用到的程式。</p>
 
-<p><img src="https://lh3.googleusercontent.com/nFtzvlspud14TtU4Zo2noCdybNwnton7XbbhhAQFWcE_3KD8F6J_jPY9GDTq9ht2fzfVek7qed3Mwx7ldPr_2eScq4FwcdEaS8ARcO5fYXKbYNUlzC2KGH9OVRnaq-J7IqRzG78krOU4XWwezz36a3904Vov74OTTFh7Vrzpyu8CKI-JxuOzLFtj2gbjPXDaFLjW0RVjwE5j5DXbSG-BUDa1ebRwxzpJgoC4Ng-zBzPR5BfQzmhopZD5M_-oC2BHtWFWbNuKkhxLC_PxBsIvC6Leu5AbnZV-NcQH7F7wyyBPxDvORvLThuDH8qzV2CCoa1ActcjM2EelCx7OV0KxEiNksdP_H5dOSLcjkZbvqEQ2mkZMXBluWvQFZWnSFfel87juaF5yBaGCXLJoFw4kcZ67ZANkMKvnPmmPnClO0d4Nvy1tK_zGSEdZGdGuRuSdnitWso6nahbgZoehH8UpAJjM74Wm46dErG8xupyj5C6QoLyQGzH8KeuGPs36lQsTPzryn4Xjwmd3bBQ64uKCJRirMpMsPdalxhgHkepQMioPxfyWWalrLOT3RBSM4WJzuOnEspvoI-SaQtouLOMJDjjq4CubTsT1VfDebR4aT6gp_0Q8d5RZLjAlbK4NYBDtHRWAq9jmLp_KLmE3pYWoucCogdMXblFGwk9j7DT6ouXF2ZR73YR-ow=w1920-h810-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_3.png" alt="" /></p>
 
 <p>每一個被標成紅色的就是目前路由裡不需要並可以被延遲載入的程式，如果你有用到source map那你可以點選清單裡任何沒有被引用到的檔案。從以上觀察可知甚至vuejs.org也有很大的進步空間^_^。</p>
 
@@ -340,7 +340,7 @@ import ModuleC from './module_c.js'
 
 <p>把module_a作為一個動態載入用的module可以切割掉依賴樹中的module_a和他的子節點。當module_a動態載入時會連同裡面import的檔案一起載入。換句話說，我們可以建置了一個新的依賴圖的進入點。</p>
 
-<p><img src="https://lh3.googleusercontent.com/IyZu5M7ERYw6yGotPGu87WvW8jnUfAHVF3b7eeZyatVWE0moFb5cO8O3tdORrMaBUjH8bgSEWK8_ZgSxftDmJoXg5L3mqfZgXD-NNJ2ug_Ugsdyd4zVE0SOK3LYVQDYu6eRTr7ifzA-4GBoG8-JScEfFpaozepkG9qR2ARWUJk5y-qQ8morDrIayr5Hg_xzdw006TfypHq_XyMjgnfQCR5EnmPheGtjYHNN0jJG4aYT4DUuHI301oX2slLOuNkxDMi784DQn54Ssm-XPJ2VAxyc5LGmVnlIM1znmdIZtJM5sDX8VyFc_5d9ULGllR6Pnxtfwf1q13xVYyJYvdAza5_WMbHGZalUMS0V4U3WvGSFkSY-qyVzyLz8HsXPeRX99y-Nfz304nTZUYJxVk0AJ3J6Wo2kxpvt_MgU5_1f_kmieLk7W_Y9ou8GPCoL1ggvfSfcB0vQSnzU0CpJfhhJkWyvoVnncezzjdd8vU0yeYJwOfID0SE56mNkZLA3nW_b1Czq-TKb3_2xx9Z9qFDeEiYHbugz4kxmDCLcBRGtoUoMZyJOUTjZkfhKIDTlCZGexBW5F1-3QsAD4Nod-QbdjfyZbGz4Dy2UrOReH2iCi5Xu2n--c_10DAXxprunre8QDTTH5bK8hbdBujAIc1YBJUl1eUzIH6SQzJIrdxrvqufZnHMxLu0Tm9A=w1276-h808-no" alt="" /></p>
+<p><img src="/article/20191224/20191224_4.png" alt="" /></p>
 
 <p>這就是這個依賴圖和打包會長的樣子。</p>
 
