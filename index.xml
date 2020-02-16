@@ -6,10 +6,19 @@
     <description>Recent content on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Dec 2019 16:04:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2020 05:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Typescript | 我的Interface檔案命名和管理方式</title>
+      <link>https://shangdeyou.github.io/2020/02/16/ts-interface-import/</link>
+      <pubDate>Sun, 16 Feb 2020 05:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2020/02/16/ts-interface-import/</guid>
+      <description>最近在公司開發Vue.js專案開始試著使用Typescript，目前來說我最常使用的功能就是Interface；雖然以前工作也有寫過C#等的</description>
+    </item>
     
     <item>
       <title>(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules</title>
