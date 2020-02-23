@@ -17,7 +17,7 @@
       <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://shangdeyou.github.io/2020/02/13/pdfmake-chinese-font/</guid>
-      <description>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC） 工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdf</description>
+      <description>工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdfmake這個套件。 不過這個套件有個問題，他的預設字型是英文字型，而且似</description>
     </item>
     
     <item>
