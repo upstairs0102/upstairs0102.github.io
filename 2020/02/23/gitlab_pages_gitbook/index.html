@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
-    <meta property="og:title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
-    <meta property="twitter:title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
+    <meta name="title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
+    <meta property="og:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
+    <meta property="twitter:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
     
 
     
@@ -34,7 +34,7 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>用Gitlab Pages架設Gitbook(v2)共筆文件-Thunder Boy</title>
+    <title>不需花錢將Gitbook(v2)架設在Gitlab Pages上-Thunder Boy</title>
 
     <link rel="canonical" href="/2020/02/23/gitlab_pages_gitbook/">
 
@@ -169,12 +169,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/pdfmake" title="pdfmake">
-                            pdfmake
+                        <a class="tag" href="/tags/gitbook" title="gitbook">
+                            gitbook
+                        </a>
+                        
+                        <a class="tag" href="/tags/gitlab-pages" title="gitlab pages">
+                            gitlab pages
                         </a>
                         
                     </div>
-                    <h1>用Gitlab Pages架設Gitbook(v2)共筆文件</h1>
+                    <h1>不需花錢將Gitbook(v2)架設在Gitlab Pages上</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -223,9 +227,9 @@
                 
                 
 
-<p>gitbook在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費制（免費帳號功能有限），現在好像較少看到。</p>
+<p>gitbook是一個使用markdown文件就可以編譯成網頁的工具，非常適合拿來編寫電子書，也有需多工程師喜歡用來編輯技術文件，在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費制（免費帳號功能有限）。</p>
 
-<p>雖然對一般人來說門檻變高了，但其實對工程師來說想要用來撰寫技術文件仍然是非常好用。因為gitbook雖然帳號收費，但仍然有開源的程式碼可用，對於有一些技術背景的工程師很容易就可以想辦法自己架設起來；基本上不需要寫任何的程式碼（除非要改source code），無一需要煩惱的事情就是該如何架設以及架設在什麼地方。</p>
+<p>雖然對一般人來說門檻變高了，但其實對工程師來說仍然是非常好用。因為gitbook雖然帳號收費，但仍然有開源的程式碼可用，對於有一些技術背景的工程師很容易就可以想辦法自己架設起來；基本上不需要寫任何的程式碼（除非要改source code），無一需要煩惱的事情就是<strong>該如何架設以</strong>及<strong>架設在什麼地方</strong>。</p>
 
 <p>研究了一段時間發現Gitlab Pages是非常完美的架設靜態網站的服務，而且Gitlab官方就有提供<a href="https://gitlab.com/pages/gitbook">範例</a>，頁面上面也有簡易的教學，基本上就照著做也可以簡單的架設起來囉。</p>
 
@@ -239,7 +243,7 @@
 
 <h2 id="在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</h2>
 
-<p>首先要有node.js的環境，然後使用npm安裝Gitbook套件到電腦本機當中。</p>
+<p>首先電腦中要有<a href="https://nodejs.org/en/">node.js</a>的環境，然後使用npm安裝Gitbook套件到電腦本機當中。</p>
 
 <p><code>npm install gitbook-cli –g</code></p>
 
@@ -249,9 +253,9 @@
 
 <p>到這一步就幾乎完成了。</p>
 
-<p>最後要做的一件事，就是建立Gitlab CI/CD的yml檔，這個yml檔可以讓我們把專案git push上去到gitlab server的時候透過yml檔的腳本、將gitbook打包成靜態網頁並步署到gitlab pages的空間。</p>
+<p>最後要做的一件事，就是建立Gitlab CI/CD的yml檔，這個yml檔可以讓我們把專案git push上去到gitlab server的時候透過yml檔的腳本、將gitbook打包成靜態網頁並部署到gitlab pages的空間。</p>
 
-<p>這個yml檔gitlab官網上的<a href="https://gitlab.com/pages/gitbook/-/blob/master/.gitlab-ci.yml">範例</a>就有了，所以只要把範例中的程式碼整個複製起來，然後在根目錄建一個<code>.gitlab-ci.yml</code>則上去，完成（如果有不清楚的話請參考官網範例）。</p>
+<p>簡而言之呢，就是要建立一個能夠幫我們部署網頁的檔案，而這個yml檔我們也不需煩惱該如何篩寫，gitlab官網上的<a href="https://gitlab.com/pages/gitbook/-/blob/master/.gitlab-ci.yml">範例</a>就有了，所以只要把範例中的程式碼整個複製起來，然後在根目錄建一個<code>.gitlab-ci.yml</code>則上去，完成（如果有不清楚的話請參考官網範例）。</p>
 
 <h2 id="開始撰寫">開始撰寫</h2>
 
@@ -272,6 +276,8 @@
 <p><code>gitbook serve</code></p>
 
 <p>因為我們要使用Gitlab CI/CD，在前一個步驟裡已經建立了.gitlab-ci.yml檔，所以我們只需要使用git指令將專案push上去之後，等個幾分鐘，就可以看到架設好的gitbook網站了（在gitlab project選單setting/pages裡可取得網址）。</p>
+
+<p>註：至於把檔案push上gitlab的git指令就不詳述了，不熟悉的朋友可參考在前述gitlab建立的project頁面，切至project首頁有相關的指令說明可參考喔！</p>
 
 
                 
@@ -331,15 +337,15 @@
                         
                         
                         
+                        
+                        
+                        
+                        
                         <a href="/tags/javascript" title="javascript">
                             javascript
                         </a>
                         
                         
-                        
-                        <a href="/tags/pdfmake" title="pdfmake">
-                            pdfmake
-                        </a>
                         
                         
                         

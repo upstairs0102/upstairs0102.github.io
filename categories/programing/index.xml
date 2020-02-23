@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>用Gitlab Pages架設Gitbook(v2)共筆文件</title>
+      <title>不需花錢將Gitbook(v2)架設在Gitlab Pages上</title>
       <link>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</link>
       <pubDate>Sun, 23 Feb 2020 01:00:00 +0000</pubDate>
       
       <guid>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</guid>
-      <description>gitbook在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費</description>
+      <description>gitbook是一個使用markdown文件就可以編譯成網頁的工具，非常適合拿來編寫電子書，也有需多工程師喜歡用來編輯技術文件，在一兩年前有</description>
     </item>
     
     <item>
