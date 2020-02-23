@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pdfmake on Thunder Boy</title>
+    <link>https://shangdeyou.github.io/tags/pdfmake/</link>
+    <description>Recent content in pdfmake on Thunder Boy</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://shangdeyou.github.io/tags/pdfmake/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）</title>
+      <link>https://shangdeyou.github.io/2020/02/13/pdfmake-chinese-font/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2020/02/13/pdfmake-chinese-font/</guid>
+      <description>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC） 工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdf</description>
+    </item>
+    
+  </channel>
+</rss>
