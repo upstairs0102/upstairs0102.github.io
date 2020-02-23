@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
-    <meta property="og:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
-    <meta property="twitter:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
+    <meta name="title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
+    <meta property="og:title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
+    <meta property="twitter:title" content="用Gitlab Pages架設Gitbook(v2)共筆文件" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)-Thunder Boy</title>
+    <title>用Gitlab Pages架設Gitbook(v2)共筆文件-Thunder Boy</title>
 
-    <link rel="canonical" href="/2019/12/24/vue-optimization2/">
+    <link rel="canonical" href="/2020/02/23/gitlab_pages_gitbook/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,16 +169,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/vue" title="vue">
-                            vue
-                        </a>
-                        
-                        <a class="tag" href="/tags/javascript" title="javascript">
-                            javascript
+                        <a class="tag" href="/tags/pdfmake" title="pdfmake">
+                            pdfmake
                         </a>
                         
                     </div>
-                    <h1>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)</h1>
+                    <h1>用Gitlab Pages架設Gitbook(v2)共筆文件</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +182,7 @@
                             Thunder Boy
                          
                         on 
-                        Tuesday, December 24, 2019
+                        Sunday, February 23, 2020
                         
                         
                         
@@ -218,133 +214,64 @@
 <ul>
 <li>
 <ul>
-<li><a href="#結語">結語</a></li>
+<li><a href="#使用gitlab-pages服務">使用Gitlab Pages服務</a></li>
+<li><a href="#在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</a></li>
+<li><a href="#開始撰寫">開始撰寫</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<p>在前一篇文章當中我們學到了什麼是切割程式碼、它是如何運作的以及在Vue.js應用程式中如何和lazy loading一起使用。現在我們將稍微深入一點的來看程式碼，並學習在Vue.js應用程式中最實用的程式碼切割的模式。</p>
+<p>gitbook在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費制（免費帳號功能有限），現在好像較少看到。</p>
 
-<p>這個系列是基於從<a href="https://github.com/DivanteLtd/vue-storefront">Vue Storefront</a>的效能優化處理中所學到的。透過以下的技術我們可以砍掉我們最初的打包的70%，使他載入在一眨間就完成。</p>
+<p>雖然對一般人來說門檻變高了，但其實對工程師來說想要用來撰寫技術文件仍然是非常好用。因為gitbook雖然帳號收費，但仍然有開源的程式碼可用，對於有一些技術背景的工程師很容易就可以想辦法自己架設起來；基本上不需要寫任何的程式碼（除非要改source code），無一需要煩惱的事情就是該如何架設以及架設在什麼地方。</p>
 
-<ul>
-<li>Part 1 – 介紹效能優化及lazy loading</li>
-<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
-<li>Part 3 – Lazy loading Vuex模組</li>
-<li>Part 4 – Lazy loading單一Component</li>
-<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
-<li>Part 6 – 使用Service Worker cache</li>
-<li>Part 7 – 預讀取</li>
-</ul>
+<p>研究了一段時間發現Gitlab Pages是非常完美的架設靜態網站的服務，而且Gitlab官方就有提供<a href="https://gitlab.com/pages/gitbook">範例</a>，頁面上面也有簡易的教學，基本上就照著做也可以簡單的架設起來囉。</p>
 
-<p>##成長中的應用程式的問題</p>
+<h2 id="使用gitlab-pages服務">使用Gitlab Pages服務</h2>
 
-<p>Vue-router是一個可以切割我們的網頁應用程式成為各別頁面。各自的頁面對應到特定的URL路徑。</p>
+<p>首先，當然就是要先有Gitlab帳號，Gitlab服務都是免費的，所以就是直接註冊使用就對了，這邊就不詳述。</p>
 
-<p>有了這個想像之後我們有以下一個簡單的作品集程式架構：</p>
+<p>建立一個Project之後至Setting把Pages服務開啟。在頁面中間可以取得網站的網址。</p>
 
-<p><img src="/article/20191224/20191224_5.png" alt="" /></p>
+<p><img src="/article/20200223/gitlab_pages_gitbook_1.png" alt="" /></p>
 
-<p><img src="/article/20191224/20191224_6.png" alt="" /></p>
+<h2 id="在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</h2>
 
-<p>你可能會注意到我們還不需要app.js打包中依賴的Home.vue和About.vue(以及其依賴的lodash)、並且無論使用者訪問哪個路由都會把他們下載下來。這很浪費下載流量而且浪費時間！</p>
+<p>首先要有node.js的環境，然後使用npm安裝Gitbook套件到電腦本機當中。</p>
 
-<p>如果只是多下載一個程式這沒什麼大不了的，但你可以想如果這個程式成長得愈來愈大，每一個額外增長代表在初次訪問時需下載更大的打包。</p>
+<p><code>npm install gitbook-cli –g</code></p>
 
-<p>就算只有1秒的時間是足以讓使用者分心並有可能離開我們的網站，這是不能夠被接受的！</p>
+<p>在專案的資料夾中，下gitbook的指令初始化。</p>
 
-<p><img src="/article/20191224/20191224_7.png" alt="關於性能及人類感知的演講投影片 (Ilya Grigorik)" /></p>
+<p><code>gitbook init</code></p>
 
-<p>圖：關於性能及人類感知的演講投影片 (Ilya Grigorik)
-<a href="https://www.youtube.com/watch?v=7ubJzEi3HuA">https://www.youtube.com/watch?v=7ubJzEi3HuA</a></p>
+<p>到這一步就幾乎完成了。</p>
 
-<p>##使用vue-router以路由為基準的程式碼切割</p>
+<p>最後要做的一件事，就是建立Gitlab CI/CD的yml檔，這個yml檔可以讓我們把專案git push上去到gitlab server的時候透過yml檔的腳本、將gitbook打包成靜態網頁並步署到gitlab pages的空間。</p>
 
-<p>為解決決這個情況 ，我們只需要使用前一篇文章學到的import語法、根據每個路由來切割打包。</p>
+<p>這個yml檔gitlab官網上的<a href="https://gitlab.com/pages/gitbook/-/blob/master/.gitlab-ci.yml">範例</a>就有了，所以只要把範例中的程式碼整個複製起來，然後在根目錄建一個<code>.gitlab-ci.yml</code>則上去，完成（如果有不清楚的話請參考官網範例）。</p>
 
-<p>就像Vue.js裡其他的任何東西 – 超級簡單。要取代掉直接地import component到路由物件裡，我們只需要貼上動態import的function就可以了。Component只有在路由要對應過去時才會被下載下來。</p>
+<h2 id="開始撰寫">開始撰寫</h2>
 
-<p>所以取代像這樣子直接載入路由component：</p>
+<p>gitbook使用一個SUMMARY.md檔來定義整個網站的目錄結構。</p>
 
-<pre><code>import RouteComponent form './RouteComponent.vue'
-const routes = [
-  { path: /foo', component: RouteComponent }
-]
-</code></pre>
+<p>每一行就是一個頁面的設定，格式如<code>* [標題](markdown檔案路徑)</code>。而檔案路徑也就是對應你所撰寫的md檔。縮排4個空白即為子目錄。</p>
 
-<p>我們需要在這個路由上的入口處加入能產生新的打包的動態import。</p>
+<p>以下範例：</p>
 
-<pre><code>const routes = [ 
-  { path: /foo', component: () =&gt; import('./RouteComponent.vue') } 
-]
-</code></pre>
+<p><img src="/article/20200223/gitlab_pages_gitbook_2.png" alt="" /></p>
 
-<p>來看這個動態import的打包和路由長什麼樣子：</p>
+<p>架設好的網站會長成這樣：</p>
 
-<ul>
-<li>app.js – 在每個路由中都需要的主要的app入口處打包(main.js)及函式庫/component。</li>
-<li>home.js – 首頁的打包，只有在路由進入時才會下載下來。</li>
-<li>about.js – 「關於」頁面（及他的依賴lodash），只有在路由進入時才會下載下來。</li>
-</ul>
+<p><img src="/article/20200223/gitlab_pages_gitbook_3.png" alt="" /></p>
 
-<p>*打包名稱並不是戴正由webpack產生出來的而是為了方便理解而已。Webpack實際產生出來的名稱會像是0js 1.js，要依據你的webpack config設定而定。</p>
+<p>要在本機端測試網站打包出來的結果的話可以下指令：</p>
 
-<p>這個技巧對幾乎所有的應用程式都是足以應付、都能有非常好的效果。</p>
+<p><code>gitbook serve</code></p>
 
-<p>基於路由的程式碼切割在許多場合都能夠解決所有你的效能問題，幾乎所有的應用程式都能使用而且只花不到幾分鐘的時間就能實作！</p>
-
-<p>##Vue生態體系中的程式碼切割</p>
-
-<p>你可能會使用Nuxt或vue-cli來建置你的應用程式。這種情況就需要知道這兩者關於程式碼切割的自訂行為。</p>
-
-<ul>
-<li><strong>在vue-cli 3</strong> 所有的lazy loading模塊都預設是預加載(prefetch)的。我們稍後會學習預加載的使用。如果你希望知道更多關於vue-cli的預加載可以參考這邊。</li>
-<li><strong>在Nuxt</strong> 如果使用Nuxt的路由系統，則所有的頁面路由都是程式切割的開箱即用。</li>
-</ul>
-
-<p>現在來看看非常給力且常見的反向模式(anti-pattern)可以帶給你的路由為基準的程式碼切割更厲害一些。</p>
-
-<p>##函式庫打包反向模式</p>
-
-<p>函式庫打包(vendor bundle)非常常見使用node_modules把全部各自獨立的js檔案全部納入。</p>
-
-<p>僅管這個方法把全部的依賴放進同一個地方很吸引人，但這依然有綁住所有路由在一起的問題。</p>
-
-<p><img src="/article/20191224/20191224_8.png" alt="" /></p>
-
-<p>你看到問題了嗎？僅管我們只有在其中一個路由當中需要lodash（是當中的依賴），vendor.js綁定了全部的依賴所以無論如果他一定會被下載。</p>
-
-<p>在同一個檔案綁定全部的依賴聽起來很誘人但也會導致你的應用程式會一次讀取全部的檔案。我們有更好的方法！</p>
-
-<p>維持我們剛剛使用基於路由的程式碼切割足以確保只有需要時才下載，但這會導致一些程式碼的重覆。</p>
-
-<p>我們假設Home.vue也需要lodash。</p>
-
-<p><img src="/article/20191224/20191224_9.png" alt="" /></p>
-
-<p>這個情況下從 /aboug (About.vue) 導向到 / (Home.vue) 會導致lodash下載了兩次。</p>
-
-<p>這仍然比下載了一堆多餘的程式碼還要來的好，但如果我們已經有了這些依賴而不重覆利用是很沒意義的沒錯吧？</p>
-
-<p>這也就是webpack <a href="https://webpack.js.org/plugins/split-chunks-plugin/">splitChunksPlugin</a>也以幫助我們的地方。只要在webpack config當中增加幾行，我們就可以把分散的打包中常用的依賴給聚起來，使他們可以被分享。</p>
-
-<pre><code>// webpack.config.js
-optimization: {
-  splitChunks: {
-    chunks: 'all'
-  }
-}
-</code></pre>
-
-<p>在模塊的屬性中我們只要告訴webpack哪個模塊程式應該被優化。設定這個屬性為all表示他應該優化所有的模塊。</p>
-
-<p>你可以閱讀更多相關的處理 <a href="https://webpack.js.org/guides/code-splitting/#prevent-duplication">webpack docs</a></p>
-
-<h2 id="結語">結語</h2>
-
-<p>透過路由切割你的程式是其中之一最棒（也最簡單）的方法來維持初始下載打包小的容量。下一個部份我們會學習關於其他較細的部份（Vuex stores以及獨立的component），從主要的打包中砍掉並延遲載入。</p>
+<p>因為我們要使用Gitlab CI/CD，在前一個步驟裡已經建立了.gitlab-ci.yml檔，所以我們只需要使用git指令將專案push上去之後，等個幾分鐘，就可以看到架設好的gitbook網站了（在gitlab project選單setting/pages裡可取得網址）。</p>
 
 
                 
@@ -353,15 +280,10 @@ optimization: {
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/12/24/vue-optimization1/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading">&larr;
+                        <a href="/2020/02/23/pdfmake-chinese-font/" data-toggle="tooltip" data-placement="top" title="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/12/24/vue-optimization3/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 

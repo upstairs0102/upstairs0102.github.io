@@ -6,17 +6,26 @@
     <description>Recent content in Posts on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 01:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>用Gitlab Pages架設Gitbook(v2)共筆文件</title>
+      <link>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</link>
+      <pubDate>Sun, 23 Feb 2020 01:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</guid>
+      <description>gitbook在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費</description>
+    </item>
+    
+    <item>
       <title>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）</title>
-      <link>https://shangdeyou.github.io/2020/02/13/pdfmake-chinese-font/</link>
+      <link>https://shangdeyou.github.io/2020/02/23/pdfmake-chinese-font/</link>
       <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/02/13/pdfmake-chinese-font/</guid>
+      <guid>https://shangdeyou.github.io/2020/02/23/pdfmake-chinese-font/</guid>
       <description>工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdfmake這個套件。 不過這個套件有個問題，他的預設字型是英文字型，而且似</description>
     </item>
     

@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
-    <meta property="og:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
-    <meta property="twitter:title" content="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)" />
+    <meta name="title" content="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）" />
+    <meta property="og:title" content="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）" />
+    <meta property="twitter:title" content="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)-Thunder Boy</title>
+    <title>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）-Thunder Boy</title>
 
-    <link rel="canonical" href="/2019/12/24/vue-optimization2/">
+    <link rel="canonical" href="/2020/02/23/pdfmake-chinese-font/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,16 +169,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/vue" title="vue">
-                            vue
-                        </a>
-                        
-                        <a class="tag" href="/tags/javascript" title="javascript">
-                            javascript
+                        <a class="tag" href="/tags/pdfmake" title="pdfmake">
+                            pdfmake
                         </a>
                         
                     </div>
-                    <h1>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)</h1>
+                    <h1>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +182,7 @@
                             Thunder Boy
                          
                         on 
-                        Tuesday, December 24, 2019
+                        Sunday, February 23, 2020
                         
                         
                         
@@ -218,133 +214,199 @@
 <ul>
 <li>
 <ul>
-<li><a href="#結語">結語</a></li>
+<li><a href="#凖備字型檔">凖備字型檔</a></li>
+<li><a href="#打包字型檔">打包字型檔</a>
+<ul>
+<li><a href="#方法1-npm安裝pdfmake">方法1 - npm安裝pdfmake：</a></li>
+<li><a href="#方法2-下載整包source-code">方法2 - 下載整包source code：</a></li>
+</ul></li>
+<li><a href="#使用方式">使用方式</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<p>在前一篇文章當中我們學到了什麼是切割程式碼、它是如何運作的以及在Vue.js應用程式中如何和lazy loading一起使用。現在我們將稍微深入一點的來看程式碼，並學習在Vue.js應用程式中最實用的程式碼切割的模式。</p>
+<p>工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdfmake這個套件。</p>
 
-<p>這個系列是基於從<a href="https://github.com/DivanteLtd/vue-storefront">Vue Storefront</a>的效能優化處理中所學到的。透過以下的技術我們可以砍掉我們最初的打包的70%，使他載入在一眨間就完成。</p>
+<p>不過這個套件有個問題，他的預設字型是英文字型，而且似乎也沒有提供api能夠直接替換成自己的字型檔。如果需要更換字型需要在source code做一些修改，然後重新打包出編譯過的字型檔；雖然網路上也有很多教學，但在我研究過程中還是踩到一些坑，所以就把我自己的實作步驟、以及使用方式整理了一下跟大家分享。</p>
 
-<ul>
-<li>Part 1 – 介紹效能優化及lazy loading</li>
-<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
-<li>Part 3 – Lazy loading Vuex模組</li>
-<li>Part 4 – Lazy loading單一Component</li>
-<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
-<li>Part 6 – 使用Service Worker cache</li>
-<li>Part 7 – 預讀取</li>
-</ul>
+<h2 id="凖備字型檔">凖備字型檔</h2>
 
-<p>##成長中的應用程式的問題</p>
+<p>在解說步驟之前呢，我先把我所遇到的坑說明一下。</p>
 
-<p>Vue-router是一個可以切割我們的網頁應用程式成為各別頁面。各自的頁面對應到特定的URL路徑。</p>
+<p>因為擔心會有版權的問題，我是使用Google提供的開源字體「<a href="https://fonts.google.com/specimen/Noto+Sans+TC">思源黑體</a>」(NotoSansTc)。而我套用上去之後（在我文章後面所有步驟做完之後）PDF下載的結果如下：</p>
 
-<p>有了這個想像之後我們有以下一個簡單的作品集程式架構：</p>
+<p><img src="/article/20200223/pdfmake_3.png" alt="" /></p>
 
-<p><img src="/article/20191224/20191224_5.png" alt="" /></p>
+<p>結果是慘不忍睹（因部份內容不方便展示所以有馬賽克，看起來也不太像是缺字。爬文之後懷疑是字體格式的問題。</p>
 
-<p><img src="/article/20191224/20191224_6.png" alt="" /></p>
+<p>Google提供的字體檔副檔名是.otf。於是我又上網找了副檔名是woff2（至於為何是用woff2而不是woff，是因為前者的size小一些）檔之後果然就正常了！</p>
 
-<p>你可能會注意到我們還不需要app.js打包中依賴的Home.vue和About.vue(以及其依賴的lodash)、並且無論使用者訪問哪個路由都會把他們下載下來。這很浪費下載流量而且浪費時間！</p>
-
-<p>如果只是多下載一個程式這沒什麼大不了的，但你可以想如果這個程式成長得愈來愈大，每一個額外增長代表在初次訪問時需下載更大的打包。</p>
-
-<p>就算只有1秒的時間是足以讓使用者分心並有可能離開我們的網站，這是不能夠被接受的！</p>
-
-<p><img src="/article/20191224/20191224_7.png" alt="關於性能及人類感知的演講投影片 (Ilya Grigorik)" /></p>
-
-<p>圖：關於性能及人類感知的演講投影片 (Ilya Grigorik)
-<a href="https://www.youtube.com/watch?v=7ubJzEi3HuA">https://www.youtube.com/watch?v=7ubJzEi3HuA</a></p>
-
-<p>##使用vue-router以路由為基準的程式碼切割</p>
-
-<p>為解決決這個情況 ，我們只需要使用前一篇文章學到的import語法、根據每個路由來切割打包。</p>
-
-<p>就像Vue.js裡其他的任何東西 – 超級簡單。要取代掉直接地import component到路由物件裡，我們只需要貼上動態import的function就可以了。Component只有在路由要對應過去時才會被下載下來。</p>
-
-<p>所以取代像這樣子直接載入路由component：</p>
-
-<pre><code>import RouteComponent form './RouteComponent.vue'
-const routes = [
-  { path: /foo', component: RouteComponent }
-]
-</code></pre>
-
-<p>我們需要在這個路由上的入口處加入能產生新的打包的動態import。</p>
-
-<pre><code>const routes = [ 
-  { path: /foo', component: () =&gt; import('./RouteComponent.vue') } 
-]
-</code></pre>
-
-<p>來看這個動態import的打包和路由長什麼樣子：</p>
+<p>以下是我所找到的CDN檔案連結，請依所需下載，或者自行使用自己所需的字體檔案。</p>
 
 <ul>
-<li>app.js – 在每個路由中都需要的主要的app入口處打包(main.js)及函式庫/component。</li>
-<li>home.js – 首頁的打包，只有在路由進入時才會下載下來。</li>
-<li>about.js – 「關於」頁面（及他的依賴lodash），只有在路由進入時才會下載下來。</li>
-</ul>
-
-<p>*打包名稱並不是戴正由webpack產生出來的而是為了方便理解而已。Webpack實際產生出來的名稱會像是0js 1.js，要依據你的webpack config設定而定。</p>
-
-<p>這個技巧對幾乎所有的應用程式都是足以應付、都能有非常好的效果。</p>
-
-<p>基於路由的程式碼切割在許多場合都能夠解決所有你的效能問題，幾乎所有的應用程式都能使用而且只花不到幾分鐘的時間就能實作！</p>
-
-<p>##Vue生態體系中的程式碼切割</p>
-
-<p>你可能會使用Nuxt或vue-cli來建置你的應用程式。這種情況就需要知道這兩者關於程式碼切割的自訂行為。</p>
+<li><p><strong>NotoSansTC-Thin</strong></p>
 
 <ul>
-<li><strong>在vue-cli 3</strong> 所有的lazy loading模塊都預設是預加載(prefetch)的。我們稍後會學習預加載的使用。如果你希望知道更多關於vue-cli的預加載可以參考這邊。</li>
-<li><strong>在Nuxt</strong> 如果使用Nuxt的路由系統，則所有的頁面路由都是程式切割的開箱即用。</li>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff2</a></p></li>
+</ul></li>
+
+<li><p><strong>NotoSansTC-Light</strong></p>
+
+<ul>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff2</a></p></li>
+</ul></li>
+
+<li><p><strong>NotoSansTC-Regular</strong></p>
+
+<ul>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2</a></p></li>
+</ul></li>
+
+<li><p><strong>NotoSansTC-Medium</strong></p>
+
+<ul>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff2</a></p></li>
+</ul></li>
+
+<li><p><strong>NotoSansTC-Bold</strong></p>
+
+<ul>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff2</a></p></li>
+</ul></li>
+
+<li><p><strong>NotoSansTC-Black</strong></p>
+
+<ul>
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff</a></p></li>
+
+<li><p><a href="http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2">http://fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2</a></p></li>
+</ul></li>
 </ul>
 
-<p>現在來看看非常給力且常見的反向模式(anti-pattern)可以帶給你的路由為基準的程式碼切割更厲害一些。</p>
+<h2 id="打包字型檔">打包字型檔</h2>
 
-<p>##函式庫打包反向模式</p>
+<p>由於pdfmake不能直接載入字型檔，還需透過source code裡用gulp寫好的腳本來編譯成js檔。依照你是用npm安裝或者是直接到官網下載整包source code，做法會有些微差異。</p>
 
-<p>函式庫打包(vendor bundle)非常常見使用node_modules把全部各自獨立的js檔案全部納入。</p>
+<p>至於要用哪種方式好呢？我是覺得其實都沒差，前者（方法1）的話是可以直接在開發專案裡就可以直接處理（到node_modules裡可找到source code），後者（方法2）的話是可以在獨立的環境中處理，建好字型檔後就可以把source code刪掉了。</p>
 
-<p>僅管這個方法把全部的依賴放進同一個地方很吸引人，但這依然有綁住所有路由在一起的問題。</p>
+<p>所以下分開說明：</p>
 
-<p><img src="/article/20191224/20191224_8.png" alt="" /></p>
+<h3 id="方法1-npm安裝pdfmake">方法1 - npm安裝pdfmake：</h3>
 
-<p>你看到問題了嗎？僅管我們只有在其中一個路由當中需要lodash（是當中的依賴），vendor.js綁定了全部的依賴所以無論如果他一定會被下載。</p>
+<p>開發專案使用npm安裝pdfmake之後，到node_modules裡找到pdfmake資料夾，開啟gulpfile.js。</p>
 
-<p>在同一個檔案綁定全部的依賴聽起來很誘人但也會導致你的應用程式會一次讀取全部的檔案。我們有更好的方法！</p>
+<p><img src="/article/20200223/pdfmake_1.png" alt="" /></p>
 
-<p>維持我們剛剛使用基於路由的程式碼切割足以確保只有需要時才下載，但這會導致一些程式碼的重覆。</p>
+<p>然後找到如下圖的這一行。這個路徑是要放置字型檔的資料夾，但是npm安裝到node_modules裡面的檔案並沒有包含原始的字型檔、以及這個資料夾路徑，所以需要手動建立一個資料夾並放入要使用的字型（可放多個字型檔）到該資料夾裡，然後再把這個路徑改寫成自己建立的資料夾。</p>
 
-<p>我們假設Home.vue也需要lodash。</p>
+<p><img src="/article/20200223/pdfmake_2.png" alt="" /></p>
 
-<p><img src="/article/20191224/20191224_9.png" alt="" /></p>
+<p>接著在terminal中將路徑移動到pdfmake的根目錄（也就是和gulpfile.js所在的資料夾中）</p>
 
-<p>這個情況下從 /aboug (About.vue) 導向到 / (Home.vue) 會導致lodash下載了兩次。</p>
+<p><code>cd node_modules/pdfmake</code></p>
 
-<p>這仍然比下載了一堆多餘的程式碼還要來的好，但如果我們已經有了這些依賴而不重覆利用是很沒意義的沒錯吧？</p>
+<p>source code裡面包含package.json檔，所以直接下指令將所需套件安裝即可。</p>
 
-<p>這也就是webpack <a href="https://webpack.js.org/plugins/split-chunks-plugin/">splitChunksPlugin</a>也以幫助我們的地方。只要在webpack config當中增加幾行，我們就可以把分散的打包中常用的依賴給聚起來，使他們可以被分享。</p>
+<p><code>npm install</code></p>
 
-<pre><code>// webpack.config.js
-optimization: {
-  splitChunks: {
-    chunks: 'all'
+<p>最後一步，用gulp打包字型檔。</p>
+
+<p><code>gulp buildFonts</code></p>
+
+<p>完成之後就會在「build」資料夾裡面打包出vfs_fonts.js，這個檔案就是pdfmake所要用的字型檔了。</p>
+
+<p>最後一件要注意的事情，為方便維護、以及避免在node_modules更新的過程當中被覆蓋掉，我不建議僅將該檔案取代掉原始的程式，我會建議把vfs_fonts.js複製出來放到我們開發的專案資料夾當中，以我自己為例我是使用vue-cli開發的專案，我放在src/assets/fonts/資料夾當中。</p>
+
+<h3 id="方法2-下載整包source-code">方法2 - 下載整包source code：</h3>
+
+<p>方法2和方法1幾乎是一樣了。我自己就是這樣做的，因為我不想在我目前開發中的專案去修改source code（雖然其實也不會有什麼影響），所以就到 <a href="https://github.com/bpampuch/pdfmake">Github</a>上將整包source code下載下來，然後在獨立的環境裡操作。</p>
+
+<p>這包檔案比起方法1中用npm安裝，還會多了一個叫「examples」的資料夾。這個資料夾裡還有一個叫「fonts」的資料夾，裡面包含了pdfmake預設使用的字型檔，你應該會看到這些：</p>
+
+<ul>
+<li><p>Roboto-Italic.ttf</p></li>
+
+<li><p>Roboto-Medium.ttf</p></li>
+
+<li><p>Roboto-MediumItalic.ttf</p></li>
+
+<li><p>Roboto-Regular.ttf</p></li>
+</ul>
+
+<p>由於打包時會把這個資料夾的字型檔全部一起打包。字型檔愈多、檔案就愈大，檔案愈大、前端網頁所要下載js chunk就愈大，如果用不到，全部刪掉即可！刪刪刪</p>
+
+<p>然後把自己要用的字型檔放進去（可放多個字型檔）。</p>
+
+<p>接下來步驟就和方法1當中所說的都一樣了：</p>
+
+<p>將所需套件安裝。</p>
+
+<p><code>npm install</code></p>
+
+<p>最後一步，用gulp打包字型檔。</p>
+
+<p><code>gulp buildFonts</code></p>
+
+<p>完成之後就會在「build」資料夾裡面打包出vfs_fonts.js，這個檔案就是pdfmake所要用的字型檔了。</p>
+
+<p>為方便維護、以及避免在node_modules更新的過程當中被覆蓋掉，我不建議僅將該檔案取代掉原始的程式，我會建議把vfs_fonts.js複製出來放到我們開發的專案資料夾當中，以我自己為例我是使用vue-cli開發的專案，我放在src/assets/fonts/資料夾當中。</p>
+
+<h2 id="使用方式">使用方式</h2>
+
+<p>以下是我覺得比較需要注意的地方：</p>
+
+<p><strong>1. 設定預設字體</strong></p>
+
+<p>除非你修改source code（這就不太建議了，這樣用npm維護套件版本會有些問題），否則的話需要在參數上設定你所建立的預設字體。</p>
+
+<p><strong>2. 獨立載入字體檔</strong></p>
+
+<p>在前述的步驟中已經有提到了，我建議將所打包的字體檔vfs_fonts.js放到在開發專案的資料夾當中。一來是為方便維護、也避免在node_modules更新的過程當中被覆蓋掉。</p>
+
+<p><strong>3. 字體檔(vfs_fonts.js)可使用動態載入</strong></p>
+
+<p>如果是在js module當中直接import的話，webpack會把vfs_fonts.js和你的頁面程式打包成同一個js chunk，檔案size會非常驚人，會影響到載入頁面的效能。所以我會設計成在要開始下載pdf的時候才去下載vfs_fonts.js</p>
+
+<p>根據上述三點，以下是程式範例：</p>
+
+<pre><code>import pdfMake from 'pdfmake/build/pdfmake'
+
+let data = {
+  content: [
+    // pdf內容及格式
+  ],
+  styles: {
+    // 樣式設定
+  },
+  defaultStyle: {
+    font: 'NotoSansTC' // 預設的字體格式
   }
 }
+
+// 動態載入字體檔
+pdfMake.vfs = await import('@/assets/fonts/vfs_fonts.js')
+
+pdfMake.fonts = {
+  NotoSansTC: {
+    normal: 'NotoSansTC-Regular.woff2',
+    bold: 'NotoSansTC-Bold.woff2',
+  }
+}
+
+pdfMake.createPdf(data).download('檔案名稱')
 </code></pre>
-
-<p>在模塊的屬性中我們只要告訴webpack哪個模塊程式應該被優化。設定這個屬性為all表示他應該優化所有的模塊。</p>
-
-<p>你可以閱讀更多相關的處理 <a href="https://webpack.js.org/guides/code-splitting/#prevent-duplication">webpack docs</a></p>
-
-<h2 id="結語">結語</h2>
-
-<p>透過路由切割你的程式是其中之一最棒（也最簡單）的方法來維持初始下載打包小的容量。下一個部份我們會學習關於其他較細的部份（Vuex stores以及獨立的component），從主要的打包中砍掉並延遲載入。</p>
 
 
                 
@@ -353,13 +415,13 @@ optimization: {
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/12/24/vue-optimization1/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading">&larr;
+                        <a href="/2020/02/16/ts-interface-import/" data-toggle="tooltip" data-placement="top" title="Typescript | 我的Interface檔案命名和管理方式">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/12/24/vue-optimization3/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules">Next
+                        <a href="/2020/02/23/gitlab_pages_gitbook/" data-toggle="tooltip" data-placement="top" title="用Gitlab Pages架設Gitbook(v2)共筆文件">Next
                             Post &rarr;</a>
                     </li>
                     
