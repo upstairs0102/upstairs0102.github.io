@@ -335,13 +335,15 @@
 
 <p>這包檔案比起方法1中用npm安裝，還會多了一個叫「examples」的資料夾。這個資料夾裡還有一個叫「fonts」的資料夾，裡面包含了pdfmake預設使用的字型檔，你應該會看到這些：</p>
 
-<p>Roboto-Italic.ttf</p>
+<ul>
+<li><p>Roboto-Italic.ttf</p></li>
 
-<p>Roboto-Medium.ttf</p>
+<li><p>Roboto-Medium.ttf</p></li>
 
-<p>Roboto-MediumItalic.ttf</p>
+<li><p>Roboto-MediumItalic.ttf</p></li>
 
-<p>Roboto-Regular.ttf</p>
+<li><p>Roboto-Regular.ttf</p></li>
+</ul>
 
 <p>由於打包時會把這個資料夾的字型檔全部一起打包。字型檔愈多、檔案就愈大，檔案愈大、前端網頁所要下載js chunk就愈大，如果用不到，全部刪掉即可！刪刪刪</p>
 
@@ -365,21 +367,15 @@
 
 <p>以下是我覺得比較需要注意的地方：</p>
 
-<ol>
-<li>設定預設字體</li>
-</ol>
+<p><strong>1. 設定預設字體</strong></p>
 
 <p>除非你修改source code（這就不太建議了，這樣用npm維護套件版本會有些問題），否則的話需要在參數上設定你所建立的預設字體。</p>
 
-<ol>
-<li>獨立載入字體檔</li>
-</ol>
+<p><strong>2. 獨立載入字體檔</strong></p>
 
 <p>在前述的步驟中已經有提到了，我建議將所打包的字體檔vfs_fonts.js放到在開發專案的資料夾當中。一來是為方便維護、也避免在node_modules更新的過程當中被覆蓋掉。</p>
 
-<ol>
-<li>字體檔(vfs_fonts.js)可使用動態載入</li>
-</ol>
+<p><strong>3. 字體檔(vfs_fonts.js)可使用動態載入</strong></p>
 
 <p>如果是在js module當中直接import的話，webpack會把vfs_fonts.js和你的頁面程式打包成同一個js chunk，檔案size會非常驚人，會影響到載入頁面的效能。所以我會設計成在要開始下載pdf的時候才去下載vfs_fonts.js</p>
 
