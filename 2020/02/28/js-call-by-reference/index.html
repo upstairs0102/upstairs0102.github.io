@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
-    <meta property="og:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
-    <meta property="twitter:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
+    <meta name="title" content="簡單看Javascript的傳值以及傳參考" />
+    <meta property="og:title" content="簡單看Javascript的傳值以及傳參考" />
+    <meta property="twitter:title" content="簡單看Javascript的傳值以及傳參考" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>不需花錢將Gitbook(v2)架設在Gitlab Pages上-Thunder Boy</title>
+    <title>簡單看Javascript的傳值以及傳參考-Thunder Boy</title>
 
-    <link rel="canonical" href="/2020/02/23/gitlab_pages_gitbook/">
+    <link rel="canonical" href="/2020/02/28/js-call-by-reference/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,16 +169,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/gitbook" title="gitbook">
-                            gitbook
-                        </a>
-                        
-                        <a class="tag" href="/tags/gitlab-pages" title="gitlab pages">
-                            gitlab pages
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
                         </a>
                         
                     </div>
-                    <h1>不需花錢將Gitbook(v2)架設在Gitlab Pages上</h1>
+                    <h1>簡單看Javascript的傳值以及傳參考</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +182,7 @@
                             Thunder Boy
                          
                         on 
-                        Sunday, February 23, 2020
+                        Friday, February 28, 2020
                         
                         
                         
@@ -218,66 +214,166 @@
 <ul>
 <li>
 <ul>
-<li><a href="#使用gitlab-pages服務">使用Gitlab Pages服務</a></li>
-<li><a href="#在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</a></li>
-<li><a href="#開始撰寫">開始撰寫</a></li>
+<li><a href="#特性1-拷貝純值">特性1：拷貝純值</a></li>
+<li><a href="#特性2-共用物件">特性2：共用物件</a></li>
+<li><a href="#特性3-拷貝物件">特性3：拷貝物件</a></li>
+<li><a href="#陣列也有同樣的傳參考特性">陣列也有同樣的傳參考特性</a></li>
+<li><a href="#需要非常小心call-by-reference造成的資料渲染bug">需要非常小心call by reference造成的資料渲染bug</a></li>
+<li><a href="#補充-深拷貝的常用方法">補充：深拷貝的常用方法</a></li>
+<li><a href="#結語">結語</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<p>gitbook是一個使用markdown文件就可以編譯成網頁的工具，非常適合拿來編寫電子書，也有需多工程師喜歡用來編輯技術文件，在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費制（免費帳號功能有限）。</p>
+<p>這是Javascript的一個經典的觀念題–「傳值」以及「傳參考」(call by value/call by reference，或者pass by value/pass by reference)，除此之外，也有人說Javascript是call by sharing（或者pass by sharing）。不過我自認我的程度還不到可以針對這些名詞做很深入的探討，但是可以用一個簡單的方式，將Javascript的這個語言特性做個整理。</p>
 
-<p>雖然對一般人來說門檻變高了，但其實對工程師來說仍然是非常好用。因為gitbook雖然帳號收費，但仍然有開源的程式碼可用，對於有一些技術背景的工程師很容易就可以想辦法自己架設起來；基本上不需要寫任何的程式碼（除非要改source code），無一需要煩惱的事情就是<strong>該如何架設以</strong>及<strong>架設在什麼地方</strong>。</p>
+<h2 id="特性1-拷貝純值">特性1：拷貝純值</h2>
 
-<p>研究了一段時間發現Gitlab Pages是非常完美的架設靜態網站的服務，而且Gitlab官方就有提供<a href="https://gitlab.com/pages/gitbook">範例</a>，頁面上面也有簡易的教學，基本上就照著做也可以簡單的架設起來囉。</p>
+<p>Javascript的型別有分為「物件型別」以及「基本型別」(Primitive Type)，其中型本型別是屬於純值，包含是<code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>，拷貝的時候是傳遞「值」(value)。</p>
 
-<h2 id="使用gitlab-pages服務">使用Gitlab Pages服務</h2>
+<p>如下範例當呼叫了<code>add</code>函數時，將<code>x</code>傳遞給<code>newX</code>，很明顯當<code>newNumber</code>的值改變了並不會影響到<code>number</code>。</p>
 
-<p>首先，當然就是要先有Gitlab帳號，Gitlab服務都是免費的，所以就是直接註冊使用就對了，這邊就不詳述。</p>
+<pre><code class="language-js">let x = 100
+function add(newX){
+  newNumber = newNumber + 1
+}
+add(x)
+console.log(x) // 印出100
+</code></pre>
 
-<p>建立一個Project之後至Setting把Pages服務開啟。在頁面中間可以取得網站的網址。</p>
+<h2 id="特性2-共用物件">特性2：共用物件</h2>
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_1.png" alt="" /></p>
+<p>將前一個範例稍做修改，變數<code>obj</code>是一個「物件型別」的變數，物件在傳值的時候傳遞「參考」(reference)。</p>
 
-<h2 id="在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</h2>
+<p>如下範例，同樣也是將變數傳入<code>add</code>函式內，但是函式內的變數+1之後函式外的變數也跟著+1了。</p>
 
-<p>首先電腦中要有<a href="https://nodejs.org/en/">node.js</a>的環境，然後使用npm安裝Gitbook套件到電腦本機當中。</p>
+<p>這一個為人所知的特性，也是造成一個沒有良好javascript撰寫習慣下（或者對javascript還不那麼熟悉的工程師）很容易產生程式bug的原因。</p>
 
-<p><code>npm install gitbook-cli –g</code></p>
+<pre><code class="language-js">let obj = { number: 100 }
+function add(newObj){
+  newObj.number = newObj.number + 1
+}
+add(obj)
+console.log(obj.number) // 印出101
+</code></pre>
 
-<p>在專案的資料夾中，下gitbook的指令初始化。</p>
+<h2 id="特性3-拷貝物件">特性3：拷貝物件</h2>
 
-<p><code>gitbook init</code></p>
+<p>在前述的例子當中，將變數傳入函式等同於做了這件事情：<code>newObj = obj</code>。由於<code>obj</code>是物件型別，所以傳遞參考的情況下當newObj + 1之後obj也跟著加1了，我們也可以說obj被渲染了。這時候做個測試來觀察：<code>newObj === obj</code>結果會為<strong>true</strong>。</p>
 
-<p>到這一步就幾乎完成了。</p>
+<p>但是如果我們換個寫法：<code>newObj === { number: 100 }</code>結果卻為<strong>false</strong>。這個是為什麼呢？這個問題要解釋可能很難，但是不會很難理解。當我們將物件重新賦值的時候，就產生了一個新的參考，因此<code>obj</code>和<code>newObj</code>就不再是共用同樣的物件了。</p>
 
-<p>最後要做的一件事，就是建立Gitlab CI/CD的yml檔，這個yml檔可以讓我們把專案git push上去到gitlab server的時候透過yml檔的腳本、將gitbook打包成靜態網頁並部署到gitlab pages的空間。</p>
+<p>這裡同樣將範例稍做修改：</p>
 
-<p>簡而言之呢，就是要建立一個能夠幫我們部署網頁的檔案，而這個yml檔我們也不需煩惱該如何篩寫，gitlab官網上的<a href="https://gitlab.com/pages/gitbook/-/blob/master/.gitlab-ci.yml">範例</a>就有了，所以只要把範例中的程式碼整個複製起來，然後在根目錄建一個<code>.gitlab-ci.yml</code>則上去，完成（如果有不清楚的話請參考官網範例）。</p>
+<pre><code class="language-js">let obj = { number: 100 }
+function add(newObj){
+  newObj = { number: 200 }
+}
+add(obj)
+console.log(obj.number) // 印出100
+</code></pre>
 
-<h2 id="開始撰寫">開始撰寫</h2>
+<p>這個範例中<code>newObj</code>如同上述所說是重新賦值，所以<code>obj</code>並不會被影響到。</p>
 
-<p>gitbook使用一個SUMMARY.md檔來定義整個網站的目錄結構。</p>
+<h2 id="陣列也有同樣的傳參考特性">陣列也有同樣的傳參考特性</h2>
 
-<p>每一行就是一個頁面的設定，格式如<code>* [標題](markdown檔案路徑)</code>。而檔案路徑也就是對應你所撰寫的md檔。縮排4個空白即為子目錄。</p>
+<p>要注意的是，在Javascript當中陣列也是物件的一種型式，所以也同樣的call by reference/call by sharing特性。</p>
 
-<p>以下範例：</p>
+<blockquote>
+<p>補充：typeof [1, 2, 3] 會印出&rdquo;object&rdquo;，javascript可沒有&rdquo;array&rdquo;這個型別，這也算是一個經典觀念題了。</p>
+</blockquote>
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_2.png" alt="" /></p>
+<p>無論是使用Array物件提供的方法（如push、pop、splice等），或者直接透過索引修改欄位值，都同樣有傳參考的特性：</p>
 
-<p>架設好的網站會長成這樣：</p>
+<pre><code class="language-js">let arr = [1, 2, 3]
+function add(newArr){
+  newArr.push(4)
+  newArr[newArr.length] = newArr.length + 1
+}
+add(arr)
+console.log(arr) // 印出[1, 2, 3, 4, 5]
+</code></pre>
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_3.png" alt="" /></p>
+<p>如果是直接賦值的話，就會產生新的參考，互不影響了：</p>
 
-<p>要在本機端測試網站打包出來的結果的話可以下指令：</p>
+<pre><code class="language-js">let arr = [1, 2, 3]
+function add(newArr){
+  newArr = [1, 2, 3, 4]
+}
+add(arr)
+console.log(arr) // 印出[1, 2, 3]
+</code></pre>
 
-<p><code>gitbook serve</code></p>
+<h2 id="需要非常小心call-by-reference造成的資料渲染bug">需要非常小心call by reference造成的資料渲染bug</h2>
 
-<p>因為我們要使用Gitlab CI/CD，在前一個步驟裡已經建立了.gitlab-ci.yml檔，所以我們只需要使用git指令將專案push上去之後，等個幾分鐘，就可以看到架設好的gitbook網站了（在gitlab project選單setting/pages裡可取得網址）。</p>
+<p>在我看別人的code的經驗，我覺得有不少人會喜歡刻意的利用call by reference的特性寫出一些花俏的程式碼，雖然這種寫法某些時候很好用或很有效率，但我個人是很討厭這樣的寫法，只要能想得出更好的方法就絕對避免。</p>
 
-<p>註：至於把檔案push上gitlab的git指令就不詳述了，不熟悉的朋友可參考在前述gitlab建立的project頁面，切至project首頁有相關的指令說明可參考喔！</p>
+<p>一來是我會質疑這樣的寫法在程式閱讀性上有很大的問題；另外一來是只要一不注意，就會很容易發生會造成資料渲染的bug。只要是寫過javascript一段時間就一定會遇過這樣的bug，也就是在沒有意識的情況下資料不知道被誰給渲染了… 而且這樣的bug又非常難抓。</p>
+
+<p>這裡舉一個簡單的例子：</p>
+
+<pre><code class="language-js">let obj = { a: 1 }
+let bigObj = { smallObj: obj }
+// 過了一兩百行…
+obj.a = 2
+console.log(bigObj) // 印出{ smallObj: { a: 2 }}
+</code></pre>
+
+<p>這裡將一個物件<code>{ small: obj }</code>賦值給變數<code>bigObj</code>，乍看下和前述的「特性3：拷貝物件」非常像，如果寫code時不是處於一個很專心的狀況下，有可能就認為這是一個傳值(value)的動作，不會有額外的side effect就直接帶過了。</p>
+
+<p>但事實上這個物件<code>{ small: obj }</code>裡面的<code>obj</code>仍然有call by refence的關係，結果在一兩百行程式碼之外寫了一行<code>obj.a = 2</code>，這時候就是又要努力debug的時候了…</p>
+
+<h2 id="補充-深拷貝的常用方法">補充：深拷貝的常用方法</h2>
+
+<p>這時候就會延伸出來一個相關的問題，就像文章前面小節所說的，有時我們希望將某個物件傳值給另一個物件，可是又不希望是用「傳參考」的方式來傳值，而是用「傳值」的方式複製出一個一模一樣的物件，這就是所謂的「深拷貝」(Deep Clone)。</p>
+
+<p>要來認真談論的話，這又是一個說來話長的主題了，而且有許多種方法都可以達到目的。以下我用最簡短的方式來介紹幾個實務上我覺得最常使用的幾種方式：</p>
+
+<p><strong>1.產生新的物件並拷貝所有的「基本型別」欄位</strong></p>
+
+<p>基本概念就是建立一個新的物件，然後再把裡面所有的「基本型別」欄位一個一個搬進去。同樣的概念有用多種做法，可以自己手動一個一個搬：</p>
+
+<pre><code class="language-js">let obj = { a: 1, b: 2 }
+let newObj = { a: obj.a, b: obj.b }
+</code></pre>
+
+<p>或者是陣列方法：</p>
+
+<pre><code class="language-js">let arr [1, 2, 3]
+let newArr = arr.map(d =&gt; d)
+</code></pre>
+
+<p>也可以用ES6提供的新語法Object.assign：</p>
+
+<pre><code class="language-js">let obj = { a: 1, b: 2 }
+let newObj = Object.assing({}, obj)
+</code></pre>
+
+<p>但Object.assign只能複製一層的欄位，如果裡面某個欄位也是一個物件的話，仍然會有call by reference的問題。</p>
+
+<p><strong>2.JSON stringify&amp;parse</strong></p>
+
+<p>第二個方法是我認為最常使用且幾乎適用所有情況的方法（但不適用於function或者prototype–例如Date物件）。語法：<code>JSON.parse(JSON.stringify(物件))</code>。</p>
+
+<p>例：</p>
+
+<pre><code class="language-js">let obj1 = { body: { a: 10 } }
+let obj2 = JSON.parse(JSON.stringify(obj1))
+</code></pre>
+
+<h2 id="結語">結語</h2>
+
+<p>其實網路上相關的文章多的去了，相較起來我寫的這篇的深度並不深，背後的一些原理並沒有著墨的太多。不過我是有將一些相關的問題和解決方法，依照我自己的經驗做一些簡單的整理，希望對大家有幫助。</p>
+
+<p>如果有想更深入的延伸閱多，以下有幾篇相關的好文推薦：</p>
+
+<ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191057">重新認識 JavaScript: Day 05 JavaScript 是「傳值」或「傳址」？</a></li>
+<li><a href="https://blog.techbridge.cc/2018/06/23/javascript-call-by-value-or-reference/">深入探討 JavaScript 中的參數傳遞：call by value 還是 reference？</a></li>
+<li><a href="https://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/">[Javascript] 關於 JS 中的淺拷貝和深拷貝</a></li>
+</ul>
 
 
                 
@@ -286,15 +382,10 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/02/23/pdfmake-chinese-font/" data-toggle="tooltip" data-placement="top" title="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）">&larr;
+                        <a href="/2020/02/23/gitlab_pages_gitbook/" data-toggle="tooltip" data-placement="top" title="不需花錢將Gitbook(v2)架設在Gitlab Pages上">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2020/02/28/js-call-by-reference/" data-toggle="tooltip" data-placement="top" title="簡單看Javascript的傳值以及傳參考">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 

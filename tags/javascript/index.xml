@@ -6,10 +6,19 @@
     <description>Recent content in javascript on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 24 Dec 2019 16:04:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>簡單看Javascript的傳值以及傳參考</title>
+      <link>https://shangdeyou.github.io/2020/02/28/js-call-by-reference/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2020/02/28/js-call-by-reference/</guid>
+      <description>這是Javascript的一個經典的觀念題–「傳值」以及「傳參考」(call by value/call by reference，或者pass by value/pass by reference)</description>
+    </item>
     
     <item>
       <title>(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules</title>
