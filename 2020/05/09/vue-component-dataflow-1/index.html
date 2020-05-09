@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="Vue父子組件資料流設計 (1) 單向傳遞" />
+    <meta property="og:title" content="Vue父子組件資料流設計 (1) 單向傳遞" />
+    <meta property="twitter:title" content="Vue父子組件資料流設計 (1) 單向傳遞" />
+    
+
+    
+    <meta name="description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集">
+    <meta property="og:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    <meta property="twitter:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Vue父子組件資料流設計 (1) 單向傳遞-Thunder Boy</title>
+
+    <link rel="canonical" href="/2020/05/09/vue-component-dataflow-1/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/programing">programing</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>Vue父子組件資料流設計 (1) 單向傳遞</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        Saturday, May 9, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#落落長的前言">落落長的前言</a></li>
+<li><a href="#一-props-down-events-up">一、Props down, Events up</a></li>
+<li><a href="#二-基本原則-勿直接修改prop">二、基本原則–勿直接修改prop</a></li>
+<li><a href="#三-子組件在created-mounted複製prop">三、子組件在created/mounted複製prop</a></li>
+<li><a href="#四-子組件在watch中複製prop">四、子組件在watch中複製prop</a></li>
+<li><a href="#五-注意傳值及傳參考">五、注意傳值及傳參考</a></li>
+<li><a href="#六-小結">六、小結</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="落落長的前言">落落長的前言</h2>
+
+<p>雖然說Vue上手容易，就以我來說我剛開始學習的時候幾乎是網路上看了幾篇文章就開始寫了，但是後來就吃了很多悶虧，慢慢在各專案中累積實戰經驗之後才知道有更好的做法，並且每種做法的差異以及適用的情境…</p>
+
+<p>關於組件(Component)的設計當中，資料傳遞的設計幾乎是整個Vue的程式開發中最重要的一件事情…（個人見解 XD），尤其是當團隊（或者專案中）開始考量組件的複用性、開始重視組件的開發，這件事情尤其重要。</p>
+
+<p>以下就不廢話了。</p>
+
+<p>如同標題，這一系列文章會聚焦在Vue父子組件(Component)傳遞資料的設計，而之所以會選用「資料流」這個詞的原因是在於，關於傳遞資料除了「父傳子」和「子傳父」之外，實作層面上牽扯到很多面向及細節，我想要一併來做討論。</p>
+
+<p>舉例來說，當我們要製做一個Vue Component時，除了要思考prop參數該如何設計、該用單向綁定還是雙向綁定？子組件是否應該複製prop資料紀錄在子組件中？…等等。不同的Component和他的使用目的就會有不同的合適的寫法。</p>
+
+<p>而本系列文章的撰寫方式會先將各種的寫法分類之後，各別舉例說明並討論什麼樣的情況適合用這個方式來寫。</p>
+
+<p>本系列文章如下：</p>
+
+<ul>
+<li><p>Vue父子組件資料流設計 (1) 單向傳遞</p></li>
+
+<li><p>Vue父子組件資料流設計 (2) 雙向綁定–通用組件</p></li>
+
+<li><p>Vue父子組件資料流設計 (3) 雙向綁定–大組件</p></li>
+</ul>
+
+<p>Taiwan No.1 !!</p>
+
+<h2 id="一-props-down-events-up">一、Props down, Events up</h2>
+
+<p>當兩個組件(Component)為父子關係(parent-child relationship)的時候，兩個組件就是透過<strong>Props down, Events up</strong>的方式在進行溝通。下圖就是Vue官方用來解釋這個溝通模式的圖，父層透過<code>Props</code>將數值傳遞給子層，而子層透過事件的方式將數值傳遞給父層。</p>
+
+<p>要注意的是，這個資料傳遞是有方向性的，在這個規則底下子層並不能主動跟父層拿取新的資料（props的變更只能由父層決定），而父層也不能主動跟子層拿取資料、或者呼叫子層的函式（父層只能監聽子層事件的觸發）。</p>
+
+<p><img src="/article/20200509/20107673f0zb0ZxRz9.png" alt="" /></p>
+
+<p>以下用一個範例來說明這個資料傳遞的流程（避免浪費太多讀者的時間，本文後續所有範例都將用此程式碼稍作修改）。</p>
+
+<p>此範例如下，首先網頁上呈現一筆字串資料<code>Text</code>，並有一個「編輯」按鈕：</p>
+
+<p><img src="/article/20200509/image-20200426205112559.png" alt="image-20200426205112559" /></p>
+
+<p>點了「編輯」按鈕後會出現一個彈出視窗，此時進入了資料的編輯模式，有一個輸入框可以修改這筆資料的文字。而下方有兩個按鈕，點擊後的行為說明如下：</p>
+
+<ul>
+<li>點擊「取消」按鈕會關閉彈出視窗，無論剛才輸入框修改為什麼文字，此時網頁上的字串仍然為原本的<code>text</code>；再次開始彈出視窗字串則輸入框也是原本的<code>text</code>。</li>
+<li>點擊「完成」，則會將剛才修改的文字會紀錄起來並呈現在網頁上。</li>
+</ul>
+
+<p><img src="/article/20200509/image-20200426205139781.png" alt="image-20200426205139781" /></p>
+
+<p>html結構如下，彈出視窗包裝成Component名為<code>lightbox</code>：</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;div&gt;
+    父組件資料: {{value}}
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button @click=&quot;openLightbox&quot;&gt;編輯&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;lightbox
+    :active.sync=&quot;isLightboxActive&quot;
+    :value=&quot;value&quot;
+    @submit=&quot;updateValue&quot;&gt;
+  &lt;/lightbox&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Vue的主程式中宣告父層的行為：</p>
+
+<pre><code class="language-js">new Vue({
+  el: '#app',
+  components: ['lightbox'],
+  data: {
+    value: 'Text',
+    isLightboxActive: false
+  },
+  methods: {
+    openLightbox () {
+      this.isLightboxActive = true
+    },
+    updateValue (d) {
+      this.value = d
+    }
+  }
+})
+</code></pre>
+
+<p>宣告子組件（彈出視窗）的行為：</p>
+
+<pre><code class="language-js">Vue.component('lightbox', {
+  template: `
+  &lt;transition name=&quot;fade&quot;&gt;
+    &lt;div class=&quot;lightbox&quot; v-if=&quot;active&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;
+        &lt;div&gt;
+          子組件資料 &lt;input type=&quot;label&quot; v-model=&quot;value&quot;&gt;&lt;/input&gt;
+        &lt;/div&gt;
+        &lt;div&gt;  
+          &lt;button @click=&quot;close&quot;&gt;取消&lt;/button&gt;
+          &lt;button @click=&quot;submit&quot;&gt;完成&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bg&quot; @click=&quot;close&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/transition&gt;
+  `,
+  props: ['active', 'value'],
+  methods: {
+    close () {
+      this.$emit('update:active', !this.active)
+    },
+    submit () {
+      this.$emit('submit', this.value)
+      this.close()
+    }
+  }
+})
+</code></pre>
+
+<p>以上為全部的程式碼了。</p>
+
+<p>觀察這個範例的資料流，即是依照「Props down, Events up」來進行單向資料流的傳遞的：</p>
+
+<ul>
+<li>Props down：父層將資料v-bind單向綁定<code>lightbox</code>組件的prop <code>value</code>。</li>
+<li>Events up：當點擊「確認」按鈕時，會透過emit再將<code>value</code>值傳遞給父層。</li>
+</ul>
+
+<p>即使我們不看Component內程式，只要觀察組件<code>lightbox</code>的屬性就大概可以知道其資料流了：</p>
+
+<pre><code class="language-html">  &lt;lightbox
+    :active.sync=&quot;isLightboxActive&quot;
+    :value=&quot;value&quot;
+    @submit=&quot;updateValue&quot;&gt;
+  &lt;/lightbox&gt;
+</code></pre>
+
+<p>這個範例在操作上沒有什麼問題，但是就程式碼方面其實是有一些瑕疵的…（但不影響本章節要說明的內容），所以接下來會繼續說明有哪些地方應該要修正的。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/yLYbJqw">Codepen範例完整程式在此</a></p>
+
+<p>Taiwan No.1 !!</p>
+
+<h2 id="二-基本原則-勿直接修改prop">二、基本原則–勿直接修改prop</h2>
+
+<p>前一個範例可以當作是一個錯誤的示範，在本章節要很慎重的來探討這件事情：<strong>「勿直接修改prop！」</strong></p>
+
+<p>在說明這個規則之前先回頭來看一下前面的範例，這把前例的操作說明、父組件值、子組件值整理成下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] value</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step2.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step4.點擊「取消」按鈕，關閉視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step5.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step6.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step7.點擊「確定」按鈕（emit傳值），關閉視窗</td>
+<td>&lsquo;NewText&rsquo;</td>
+<td>&lsquo;NewText&rsquo;</td>
+</tr>
+</tbody>
+</table>
+
+<p>透過上表，我們可以觀察到幾個重要的地方：</p>
+
+<ol>
+<li>Step3：修改子組件的<code>value</code>時並不會影響到父層的<code>value</code>。</li>
+<li>Step4：這個地方乍看下有些詭異且不受控制，關閉彈出視窗後，子組件的<code>value</code>由原本的&rsquo;New Text&rsquo;回復到原來的&rsquo;Text&rsquo;。原因是因為子組件的<code>value</code>實際上還是會受到父子組使用<code>v-bind</code>單向綁定的影響，而子組件的<code>value</code>又使用了<code>v-model</code>雙向綁定在input輸入框上面；關鍵就在於子組件關閉視窗是使用<code>v-if</code>將包含了input輸入框在內的整個區塊給移除掉，所以控制權又移交給了父組件的手上。</li>
+<li>Step6：修改子組件的<code>value</code>時並不會影響到父層的<code>value</code>。</li>
+<li>Step7：component中使用<code>emit</code>將資料傳遞給父層，父層的資料才同步過來。</li>
+</ol>
+
+<p>當中<code>step3</code>和<code>step6</code>修改prop不會影響到父層的關鍵在於，此資料是使用<code>v-bind</code> 綁定資料的，而<strong>v-bind是單向綁定所以只有當父層變更資料時才會傳遞給子層，子層變更資料時是不會回傳回去的</strong>。</p>
+
+<p>這個範例我放在Codepen上，透過console看不到Vue傳遞出來的error log（我是使用Chrome瀏覽器）。如果是在自己的開發環境下測試，可以看到類似下圖的error log：</p>
+
+<p><img src="/article/20200509/70.png" alt="" /></p>
+
+<p>那… 講那麼多，既然不會影響到外層，那「直接修改prop」的原因是什麼呢…</p>
+
+<p>我認為原因有：</p>
+
+<ol>
+<li>不影響外層的規則有個「例外」，就是<strong>當資料型別是「傳參考(call by reference/pass by reference)」時還是會影響到的</strong>（這邊在本文第五章、以及系列文章第三篇「雙向綁定-由父組件來紀錄資料」中都會再詳細說明。</li>
+<li>雖然說修改prop還是有效的，但實際上prop還是有可能在某些時候受到父組件使用v-bind單向綁定的影響（如本例的<code>step4</code>），很明顯的有可能會在某些很難預期的情況下出現bug（而且很難除錯）。</li>
+<li>程式可讀性上的考量，某些情形下使用相同的名稱會造成混淆，使用不同的命名以區別不同的操作流程中紀錄在不同的變數裡。</li>
+</ol>
+
+<h2 id="三-子組件在created-mounted複製prop">三、子組件在created/mounted複製prop</h2>
+
+<p>在前面章節提到一個重要的規則「勿直接修改prop」，要滿足這個規則，子組件中需要再宣告一個新的變數來複製prop的值。</p>
+
+<p>這裡我們在Component <code>lightbox</code>的<code>data</code>中加入新的變數<code>childValue</code>。然後，在<code>created</code>中將<code>value</code>複製給<code>childValue</code>。程式碼如下：</p>
+
+<pre><code class="language-js">data () {
+  return {
+    childValue: ''
+  }
+},
+created () {
+  this.childValue = this.value
+}
+</code></pre>
+
+<p>接著，把原本Component <code>lightbox</code>中的輸入框用v-model綁定的變數也改成<code>childValue</code>：</p>
+
+<pre><code class="language-html">&lt;input type=&quot;label&quot; v-model=&quot;childValue&quot;&gt;&lt;/input&gt;
+</code></pre>
+
+<p>這樣就大致完成了。</p>
+
+<p>接下來我們再仔細來看一下這個範例的一些細節… 我們用和前例同樣的「操作說明、父組件值、子組件值」對應表看一下這有沒有什麼差異：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] value</th>
+<th>[子組件] childValue</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step2.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step4.點擊「取消」按鈕，關閉視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step5.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step6.修改文字為「New New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step7.點擊「確定」按鈕（emit傳值），關閉視窗</td>
+<td>&lsquo;New New Text&rsquo;</td>
+<td>&lsquo;New New Text&rsquo;</td>
+<td>&lsquo;New New Text&rsquo;</td>
+</tr>
+</tbody>
+</table>
+
+<p>這時候會發現一個很明顯的差異：</p>
+
+<p>從<code>step1</code>到<code>step6</code>無論是父組件的<code>value</code>和子組件的<code>value</code>都不在受到子組件修改資料的影響，只有到最後<code>step7</code>最終點下「確定」按紐時才會將父層的<code>value</code>更新為使用者確認修改完成的資料。</p>
+
+<p>But！</p>
+
+<p>又出現了一個But！</p>
+
+<p><code>step4</code>按點「取消」按鈕時，子組件的<code>childValue</code>卻還是停留在第一次改過的值&rsquo;New Text&rsquo;。也是說當<code>step5</code>再次點開彈出視窗時，輸入框中的值會是&rsquo;New Text&rsquo;而不是原來的&rsquo;Text&rsquo;，為什麼會和前一個章節的結果不同呢？</p>
+
+<p>原因很簡單，雖然彈出視窗關閉了，但這個子組件從最後開始到結束都在那裡，只是畫面上看不到而已，所以裡面的值還保留再正常不過了。</p>
+
+<p>那如果想要修改為我們原來設計的流程，每次點開彈出視窗輸入框的值都是父層傳入的<code>value</code>要怎麼做呢？在不修改資料流的傳遞方式下，我們可以簡單修改一個東西…</p>
+
+<pre><code class="language-html">&lt;lightbox
+  v-if=&quot;isLightboxActive&quot;
+  :active.sync=&quot;isLightboxActive&quot;
+  :value=&quot;value&quot;
+  @submit=&quot;updateValue&quot;&gt;
+</code></pre>
+
+<p>答案就是在Component標籤上加上一個<code>v-if</code>就可以了！</p>
+
+<p>雖然我們沒有更改任何Component內的程式碼，但是Component在整個頁面上的生命週期就被改變了–當彈出視窗關閉時，父組件的值<code>isLightboxActive</code>變成<code>false</code>，這時<code>v-if</code>為<code>false</code>，就將這個Component整個移除掉。下一次再點開彈出視窗（如本例的<code>step5</code> ）他就會整個重頭來過了！</p>
+
+<p>同樣的表這時候就會長這樣了：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] value</th>
+<th>[子組件] childValue</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>無</td>
+<td>無</td>
+</tr>
+
+<tr>
+<td>Step2.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step4.點擊「取消」按鈕，關閉視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>無</td>
+<td>無</td>
+</tr>
+
+<tr>
+<td>Step5.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step6.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step7.點擊「確定」按鈕（emit傳值），關閉視窗</td>
+<td>&lsquo;New Text&rsquo;</td>
+<td>無</td>
+<td>無</td>
+</tr>
+</tbody>
+</table>
+
+<p>當中<code>step1</code>、<code>step4</code>、<code>step7</code>子組件由於<code>v-if</code>為false的關閉所以根本就不存在，所以就被標示為「無」，我也們不需要擔心資料殘留的問題了。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/NWGjpeW">Codepen範例完整程式在此</a></p>
+
+<p>Taiwan No.1 !!</p>
+
+<h2 id="四-子組件在watch中複製prop">四、子組件在watch中複製prop</h2>
+
+<p>本章節中同樣的會在子組件中將prop的值複製一份存在子組件當中，不過和前例不同的地方，要改成在Vue的Option <code>watch</code>中來複製。</p>
+
+<p>程式碼和前例只有一個地方不同，將原來子組件中的<code>created</code>移除掉換成如下程式碼：</p>
+
+<pre><code class="language-js">watch: {
+  active: {
+    handler (d) {
+      if (d === true) {
+        this.childValue = this.value
+      }
+    },
+    immediate: true // 創建組件時也會進來
+  }
+}
+</code></pre>
+
+<p>在<code>watch</code>當中我們監聽的對象是<code>active</code>，當<code>active</code>為<code>true</code>時彈出視窗就會開啟，為<code>false</code>時彈出視窗就會關閉。也就是說，每一次當我們把視窗開啟後就會重新將父組件傳入進來的<code>value</code>複製給子組件的<code>childValue</code>。</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] value</th>
+<th>[子組件] childValue</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step2.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step4.點擊「取消」按鈕，關閉視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step5.點擊「編輯」按鈕，彈出視窗</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step6.修改文字為「New Text」</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step7.點擊「確定」按鈕（emit傳值），關閉視窗</td>
+<td>&lsquo;New Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+<td>&lsquo;New Text&rsquo;</td>
+</tr>
+</tbody>
+</table>
+
+<p>由<code>created</code>和<code>watch</code>這兩個地方複製prop的這兩個範例來看，雖然都可以達同樣的目的，但有個小小的差別。</p>
+
+<p>使用<code>watch</code>來監聽<code>active</code>變成將複製prop的主控權交給了子組件，也就是說即使父組件不加上<code>v-if</code>（如前一個章節範例），也可以確保每次打開彈出視窗都會執行複製prop這個動作。</p>
+
+<p>此外小小補充個小細節。</p>
+
+<p>範例中我們有在<code>watch</code>的option當中加上<code>immediate: true</code>，這代表了第一次將Component創建起來的時候也會進入函式，如果沒有加入的話要將程式碼修改如下：</p>
+
+<pre><code class="language-js">watch: {
+  active: {
+    handler (d) {
+      if (d === true) {
+        this.childValue = this.value
+      }
+    }
+  }
+},
+created () {
+  if (this.active === true) {
+    this.childValue = this.value
+  }
+}
+</code></pre>
+
+<p>這時就要改成<code>watch</code>和<code>created</code>都必須複製prop。</p>
+
+<p>有時候我們希望在<code>watch</code>和<code>created</code>當中要做不同的事情，就會將他們分開來寫，這也是一個很常用的技巧。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/JjYNWpr">Codepen範例完整程式在此</a></p>
+
+<p>Taiwan No.1 !!</p>
+
+<h2 id="五-注意傳值及傳參考">五、注意傳值及傳參考</h2>
+
+<p>Javascript的「傳值」和「傳參考」(call by value/call by reference，或者pass by value/pass by reference) ，我先前有寫了一篇文章有稍稍微的詳細討論過可參考：</p>
+
+<p><a href="https://shangdeyou.github.io/2020/02/28/js-call-by-reference/">簡單看Javascript的傳值以及傳參考</a></p>
+
+<p>關於傳參考長話短說可以參考如下程式碼範例：</p>
+
+<pre><code class="language-js">let obj = { number: 100 }
+function add(newObj){
+  newObj.number = newObj.number + 1
+}
+add(obj)
+console.log(obj.number) // 印出101
+</code></pre>
+
+<p>在這個例子中修改資料的是<code>newObj.number</code>，可是在最後印出<code>obj.number</code>的時候發現他也跟著變了，這個就是傳說中的傳參考…</p>
+
+<p>在Javascript中，<code>string</code>、<code>number</code>、<code>boolean</code>、<code>null</code>、<code>undefined</code>都是「傳值」，而「物件」型別的都是「傳參考」（包含陣列也是物件的一種所以也是傳參考…）。若在物件複製的時候沒有留意使用的複製方式（是單純的傳參考還是深拷貝），有時候一不小心會因為資料渲染的問題而造成bug，這種bug非常難抓還需要一些經驗…；尤其是我在寫Vue的時候非常常會遇到。</p>
+
+<p>以剛才的程式碼中，function替換成Vue的Component（請用想象的），就是在Vue的開發中最常遇到的問題了。</p>
+
+<p>也就是說如果prop的值是物件（包含陣列），即使我們在子組件中把他複製一份並存在子組件的變數當中，如果我們複製的方式是使用「傳參考」，父層的值是會有可能被渲染的。</p>
+
+<p>這裡以本文中一直使用的彈出視窗包裝成的Component <code>lightbox</code>做為範例。</p>
+
+<p>當prop的格式為如下：</p>
+
+<pre><code class="language-js">value: {
+  name: '阿貓',
+  id: 'T001' 
+}
+</code></pre>
+
+<p>Component <code>lightbox</code>中儲存的變數如下：</p>
+
+<pre><code class="language-js">childValue: {
+  name: '',
+  id: '' 
+}
+</code></pre>
+
+<p>並且在Component<code>lightbox</code>中的<code>watch</code>複製prop如下：</p>
+
+<pre><code class="language-js">watch: {
+  active: {
+    handler (d) {
+      if (d === true) {
+        this.childValue = this.value
+      }
+    },
+    immediate: true
+  }
+}
+</code></pre>
+
+<p>直接來看如果是這樣將<code>value</code>複製給<code>childValue</code>，操作上會發生什麼事呢？</p>
+
+<p><img src="/article/20200509/image-20200501113622148.png" alt="image-20200501113622148" /></p>
+
+<p>我們可以看到在彈出視窗中修改文字的「同時」，背景中的文字也就馬上跟著改變了。</p>
+
+<p>要解決這個問題，就是要改成用「深拷貝」的方式，我們可以用以下幾種方式來修改程式碼。</p>
+
+<p>方法一：</p>
+
+<pre><code class="language-js">watch: {
+  active: {
+    handler (d) {
+      if (d === true) {
+        this.childValue = {
+          name: d.name,
+          id: d.id
+        }
+      }
+    },
+    immediate: true
+  }
+}
+</code></pre>
+
+<p>方法二：</p>
+
+<pre><code class="language-js">watch: {
+  active: {
+    handler (d) {
+      if (d === true) {
+        this.childValue = JSON.parse(JSON.stringify(d))
+      }
+    },
+    immediate: true
+  }
+}
+</code></pre>
+
+<p>不同的資料格式有不同的深拷貝寫法，就我自己的習慣常用方法二 <code>JSON.parse(JSON.stringify(value))</code>，幾乎是適用所有格式的資料（除了一些特殊的物件不適用–比如說function或Date等）。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/jObmmPr">Codepen範例完整程式在此</a></p>
+
+<h2 id="六-小結">六、小結</h2>
+
+<p>本文中所使用的關於Vue的知識其實都是相當基礎的，大部份的程式都是初學Vue不用太久都知道的基本的用法；或許就是太簡單，我自己本身也沒看過網路上有相關討論的文章（也可能是我沒看到而已），但是其實作上其實有非常多的細節，不同的情境上其實都各有巧妙之處。就我自己自學的歷程來說，也是寫了一堆爛code後，才整理慢慢出一些我自己的經驗法則；這也是我會想寫這個系列文很大的一個動機。</p>
+
+<p>以本文的「單向傳遞」這個主題來說，將父層傳入子組件內的資料，在內部進行管理和父層區隔開來就是單相向資料流的一個關鍵，這個也延伸出子組件不能直接修改prop這個規則，並且這個規則是有理由的，本文中也對於此主題用範例做了一些討論和說明。</p>
+
+<p>第二個重點是子組件內複製父層傳入值的時機點，不同的設計也是會有不同的理由以及影響，本文中用created/mounted以及watch兩種範例來做說明。</p>
+
+<p>本文較著重於範例的解說，不曉得我的文字夠不夠清晰，希望對大家有幫助。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/02/28/js-call-by-reference/" data-toggle="tooltip" data-placement="top" title="簡單看Javascript的傳值以及傳參考">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/05/09/vue-component-dataflow-2/" data-toggle="tooltip" data-placement="top" title="Vue父子組件資料流設計 (2) 雙向綁定–通用組件">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thunderboy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

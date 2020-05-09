@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="Vue父子組件資料流設計 (2) 雙向綁定–通用組件" />
+    <meta property="og:title" content="Vue父子組件資料流設計 (2) 雙向綁定–通用組件" />
+    <meta property="twitter:title" content="Vue父子組件資料流設計 (2) 雙向綁定–通用組件" />
+    
+
+    
+    <meta name="description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集">
+    <meta property="og:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    <meta property="twitter:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Vue父子組件資料流設計 (2) 雙向綁定–通用組件-Thunder Boy</title>
+
+    <link rel="canonical" href="/2020/05/09/vue-component-dataflow-2/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/programing">programing</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>Vue父子組件資料流設計 (2) 雙向綁定–通用組件</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        Saturday, May 9, 2020
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#落落長的前言">落落長的前言</a></li>
+<li><a href="#一-單向-雙向資料流之差異及適用場景">一、單向/雙向資料流之差異及適用場景</a>
+<ul>
+<li><a href="#case1-通用組件">Case1. 通用組件</a></li>
+<li><a href="#case2-大組件">Case2. 大組件</a></li>
+</ul></li>
+<li><a href="#二-在子組件中同步prop及父組件的綁定value">二、在子組件中同步prop及父組件的綁定value</a></li>
+<li><a href="#三-雙向綁定加單向資料流">三、雙向綁定加單向資料流</a></li>
+<li><a href="#四-小結">四、小結</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="落落長的前言">落落長的前言</h2>
+
+<p>雖然說Vue上手容易，就以我來說我剛開始學習的時候幾乎是網路上看了幾篇文章就開始寫了，但是後來就吃了很多悶虧，慢慢在各專案中累積實戰經驗之後才知道有更好的做法，並且每種做法的差異以及適用的情境…</p>
+
+<p>關於組件(Component)的設計當中，資料傳遞的設計幾乎是整個Vue的程式開發中最重要的一件事情…（個人見解 XD），尤其是當團隊（或者專案中）開始考量組件的複用性、開始重視組件的開發，這件事情尤其重要。</p>
+
+<p>以下就不廢話了。</p>
+
+<p>如同標題，這一系列文章會聚焦在Vue父子組件(Component)傳遞資料的設計，而之所以會選用「資料流」這個詞的原因是在於，關於傳遞資料除了「父傳子」和「子傳父」之外，實作層面上牽扯到很多面向及細節，我想要一併來做討論。</p>
+
+<p>舉例來說，當我們要製做一個Vue Component時，除了要思考prop參數該如何設計、該用單向綁定還是雙向綁定？子組件是否應該複製prop資料紀錄在子組件中？…等等。不同的Component和他的使用目的就會有不同的合適的寫法。</p>
+
+<p>而本系列文章的撰寫方式會先將各種的寫法分類之後，各別舉例說明並討論什麼樣的情況適合用這個方式來寫。</p>
+
+<p>本系列文章如下：</p>
+
+<ul>
+<li><p>Vue父子組件資料流設計 (1) 單向傳遞</p></li>
+
+<li><p>Vue父子組件資料流設計 (2) 雙向綁定–通用組件</p></li>
+
+<li><p>Vue父子組件資料流設計 (3) 雙向綁定–大組件</p></li>
+</ul>
+
+<p>Taiwan No.1 !!</p>
+
+<h2 id="一-單向-雙向資料流之差異及適用場景">一、單向/雙向資料流之差異及適用場景</h2>
+
+<p>前一篇文章「單向傳遞」中我有提到過，我自己「體感」自製的Component大約只有百分之20是使用單向資料流傳遞的。不過在Vue中的「雙向綁定」是一大特色（雖然當初也是 <del>抄襲</del> 參考Angular的），當中的變化以及學問可多了。</p>
+
+<p>就我自己個人的經驗，剛開始學Vue時開發自製Component大多都是使用單向綁定，對於自製的雙向綁定的用法有些困惑，隨著經驗的累積才開始慢慢掌握技巧以及合適的用法。依照我自己個人的經驗，我會把這百分之20中所適用的情境分為兩種：</p>
+
+<ol>
+<li>包裝resuse（可複用）的基本元素</li>
+<li>因程式管理需求需抽離出來的大區塊</li>
+</ol>
+
+<p>為方便說明我就簡單將這兩種組件分別估且命名為「通用組件」–對應第一種（將在本文中討論），以及「大組件」–對應第二種（將在下一篇系列文中討論）。</p>
+
+<p>分別說明如下：</p>
+
+<h3 id="case1-通用組件">Case1. 通用組件</h3>
+
+<p>會看本系列文章的人應該都是有一些Vue開發經驗的人，大家應該都知道html原生元素可以直接使用<code>v-model</code>來做雙向綁定，包括：</p>
+
+<ul>
+<li><p>Input</p></li>
+
+<li><p>Textarea</p></li>
+
+<li><p>Radiobutton</p></li>
+
+<li><p>Checkbox</p></li>
+
+<li><p>Select/Option</p></li>
+</ul>
+
+<p>這類元素都有一個共通性，就是都是屬於「通用性質」的元素，原則上他內部怎麼運作的對用的人也不需要了解，沒有依賴其他的程式可以適用在每一個地方的。</p>
+
+<p>和這類元素同樣性質的Component我估且把他稱之為「通用組件」，可以是我們自製的表單元素、或者是一樣小型的組件。</p>
+
+<p>這類型的「通用組件」如果還是使用「單向資料流」，就顯得有點脫褲子放屁、太過麻煩了。</p>
+
+<h3 id="case2-大組件">Case2. 大組件</h3>
+
+<p>另一種情況是，我們製作Component最主要的原因不是為了reuse（可複用）的理由，單純是程式太長了。</p>
+
+<p>假設有一個非常巨大的表單，並且有五個分頁，有500個欄位好了，在Vue實例的<code>data</code> 可能是長這樣：</p>
+
+<pre><code class="language-js">data () {
+  return {
+    tableBody: {
+      value1: '',
+      value2: '',
+      value3: '',
+      // ...以此類推共兩百個
+    }
+  }
+}
+</code></pre>
+
+<p>wireframe來看大概是長這樣：</p>
+
+<p><img src="/article/20200509/component_data_stream_1.png" alt="" /></p>
+
+<p>可想而知這支程式鐵定是非常肥大，三五千行都是有可能的，為了可維護性大多工程師都會想把程式能抽出來就抽出來。</p>
+
+<p>在這個我胡亂掰的例子當中，這五個頁籤基本上裡面的內容都是各自獨立不互相影響的，所以以我來說可能就會再把這五個頁籤再拆成五個Component，如下圖：</p>
+
+<p><img src="/article/20200509/component_data_stream_2.png" alt="" /></p>
+
+<p>雖然說五個頁籤各自獨立，但是當使用者點下「儲存按鈕」時還是需要將全部200個欄位的資料一起送出給後端，因此這兩百筆變數還是需要紀錄在父層當中才會比較好處理。</p>
+
+<p>換句話說，<code>methods</code>、<code>computed</code>、<code>watch</code>等等的程式碼可以抽出來放到這各自五個Component，但是<code>data</code>的變數主控權必須放在父層，並使用雙向綁定來同步底下的五個子組件資料。</p>
+
+<p>我舉的這個例子就是適用雙向綁定的第二種情境。</p>
+
+<p>當然，比這更複雜的情境還是有的，比如說父子階層不止兩層、或者是不但組件大又同時有reuse的需求，這時候就有可能再尋求其他的方式，這些會在下一篇文章再做進一步的討論。</p>
+
+<h2 id="二-在子組件中同步prop及父組件的綁定value">二、在子組件中同步prop及父組件的綁定value</h2>
+
+<p>如同本文第一個章節所說的，原生的Html表單元素預設就可以使用<code>v-model</code>，但除了原生的Html表單元素之外，開發者也是可以在自己開發的Component上自訂義<code>v-model</code>。</p>
+
+<p>其原理相當簡單，<code>v-model</code>預設會對應「一組」名稱為<code>value</code>的「prop」以及<code>input</code>「事件」（或者說<code>emit</code>）。</p>
+
+<p>舉例來說，原生的Html表單元素<code>input</code>可以這樣寫：</p>
+
+<pre><code class="language-html">&lt;input :value=&quot;inputValue&quot; @input=&quot;onInput&quot;/&gt;
+</code></pre>
+
+<p>也可以改成<code>v-model</code>的寫法：</p>
+
+<pre><code class="language-html">&lt;input v-model=&quot;inputValue&quot;/&gt;
+</code></pre>
+
+<p>差別在於前者是「單向綁定」，而後者是「雙向綁定」。通常會採用前者是因為希望自訂定監聽事件，並且需要掌控在監聽事件當中再要做一些加工處理（可參考本系列文前一篇的單向傳遞資料流）。</p>
+
+<p>以下將會用一個範例實作來討論相關應用的細節。</p>
+
+<p>這裡實作了一個帶有文字提示的文字輸入框組件，Component命名為<code>autocomplete-input</code>，為方便解說所以其實並沒有將功能實作的非常完整。</p>
+
+<p>成果如下圖：</p>
+
+<p><img src="/article/20200509/image-20200509145612340.png" alt="image-20200509145612340" /></p>
+
+<p>html如下：</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  請輸入英文字母：
+  &lt;autocomplete-input
+    v-model=&quot;inputText&quot;
+    :data=&quot;recoData&quot;&gt;
+  &lt;/autocomplete-input&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Vue的主程式中宣告父層的行為：</p>
+
+<pre><code class="language-js">const vm = new Vue({
+  el: '#app',
+  component: 'autocomplete-input',
+  data: {
+    recoData: ['candy','car','card','can','bakery','boring','band','country','drink','eye','fork','game','hospital','orange','restroom','sleep','talk','tree','yesterday','weather','zoo'],
+    inputText: ''
+  }
+})
+</code></pre>
+
+<p>以上的程式我們可以看到組件有一個<code>v-model</code>及一個<code>v-bind</code>的綁定資料。<code>v-model</code>雙向綁定的<code>inputText</code>是輸入框的輸入文字，而<code>v-bind</code>單向綁定的<code>recoData</code>是提示文字的所有英文單字組合，當輸入框輸入文字的時候組件就會使用<code>inputText</code>在<code>recoData</code>陣列中進行篩選符合的英文單子。</p>
+
+<p>對於要使用這個Component的人來說，只需要把這幾行程式看懂即可使用，不過由於本文說明需要我們還是要把Component內部的程式碼攤出來看看（沒有耐心的人以下可以先跳過，有需要的話再回頭過來對照著看即可）。</p>
+
+<p><code>autocomplete-input</code>組件程式：</p>
+
+<pre><code class="language-js">Vue.component('autocomplete-input',  {
+  template: `
+  &lt;div class=&quot;autocomplete-input&quot;&gt;
+    &lt;input
+      type=&quot;text&quot;
+      v-model=&quot;syncValue&quot;&gt;
+    &lt;div
+      class=&quot;list&quot;
+      v-show=&quot;isShowRecoList&quot;&gt;
+      &lt;div
+        class=&quot;item&quot;
+        v-for=&quot;item in recoList&quot;
+        @click=&quot;selectRecoText(item)&quot;&gt;
+        {{item}}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  `,
+  props: ['data', 'value'],
+  computed: {
+    // 子組件中同步value的值
+    syncValue: {
+      get () {
+        return this.value
+      },
+      set (v) {
+        this.$emit('input', v)
+      }
+    },
+    // 是否顯示提示選項
+    isShowRecoList () {
+      if (this.syncValue &amp;&amp; this.recoList.length &gt; 0) {
+        return true
+      } else {
+        return false
+      }
+    },
+    // 提示選項
+    recoList () {
+      return this.data.filter(d =&gt; {
+        return d.indexOf(this.syncValue) &gt;= 0
+      })
+    }
+  },
+  methods: {
+    // 選擇提示選項更新輸入文字
+    selectRecoText (text) {
+      this.syncValue = text
+    }
+  }
+})
+</code></pre>
+
+<p>以上為全部的程式碼了。</p>
+
+<p>觀察這個範例的資料流，子組件<code>computed</code>中的<code>syncValue</code>是用來「同步」<code>props</code>中的<code>value</code>。</p>
+
+<p>這裡我所說的「同步」詳細一點的解釋：子組件<code>syncValue</code>的值和父組件的<code>value</code>是雙向綁定的關係的，當父組件的<code>value</code>變動時，會透過<code>prop</code>傳入子組件，而子組件的<code>syncValue</code>變動時就會將值使用<code>emit</code>傳遞事件給父組件。</p>
+
+<p>實作的方式就是用<code>computed</code>的<code>getter</code>、<code>setter</code>：</p>
+
+<pre><code class="language-js">computed: {
+  // 子組件中同步value的值
+  syncValue: {
+    get () {
+      return this.value
+    },
+    set (v) {
+      this.$emit('input', v)
+    }
+  },
+  // ..略..
+}
+</code></pre>
+
+<p>操作說明、父組件值、子組件值整理成下表：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] syncValue</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&ldquo;</td>
+<td>&ldquo;</td>
+</tr>
+
+<tr>
+<td>Step2.輸入文字&rsquo;a&rsquo;</td>
+<td>&lsquo;a&rsquo;</td>
+<td>&lsquo;a&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.點選提示框&rsquo;car&rsquo;</td>
+<td>&lsquo;car&rsquo;</td>
+<td>&lsquo;car&rsquo;</td>
+</tr>
+</tbody>
+</table>
+
+<p>顯而易見的，父子組件的值是完全同步的，也就是我們期待雙向綁定的結果。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/wvKPgEG">Codepen範例完整程式在此</a></p>
+
+<p><strong>&mdash;- 相關補充分隔線 &mdash;-</strong></p>
+
+<ol>
+<li>自訂義v-model</li>
+</ol>
+
+<p>有個跟本文主題關係不大但是也是蠻重要的一件事，就是如果不想使用名稱為<code>value</code>的prop搭配<code>input</code>事件的話，Vue有提供一個叫做<code>model</code>的option可以使用，更多訊息請參考官網文件：</p>
+
+<p><a href="[https://cn.vuejs.org/v2/guide/components-custom-events.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E7%9A%84-v-model](https://cn.vuejs.org/v2/guide/components-custom-events.html#自定义组件的-v-model)">Vue官網文件-自定義組件的v-model</a></p>
+
+<ol>
+<li><code>.sync</code></li>
+</ol>
+
+<p>截至我寫這篇文章（2020/5/9），Vue3.0還是處於beta版本，預計年中之後才會推出正式版。就目前所知Vue3.0將會把<code>.sync</code>給移除掉，會用<code>v-model</code>來做取代。由於我也還沒研究到這部份（不過我猜實作的邏輯應該還是一樣的只是語法有調整而已），所以可能到時候再回頭過來修改本文。</p>
+
+<h2 id="三-雙向綁定加單向資料流">三、雙向綁定加單向資料流</h2>
+
+<p>這個標題下的看似有些矛盾，不過這個情境在實作上是非常常見的。雖然說父層使用<code>v-model</code>雙向綁定，但是組件中實際上是單向資料流；也就是說和本系列文前一篇文章中介紹的單向資料流類似，組件內自己本身也管理了內部的狀態，只有在特定的事件將中才會將值傳遞給父層。</p>
+
+<p>直接使用範例來做說明。</p>
+
+<p>前一個章節的範例來做一點小小的修改；有一種和這種文字輸入提示框非常相近的一種UI，他同樣有文字篩選的功能，但他篩選的目的不是做為文字輸入的提示，而是這種UI本身就是下拉選單，文字篩選的目的只是用來「查詢選單中既有的選項」。換句話說，這個組件所綁定的值只有在「點選選項」之後才會把選項中的值帶入，如果沒有「點選選項」這個動作的話，輸入文字的值是會被捨棄掉的。</p>
+
+<p>操作畫面如下，初始化面可看到這個UI類似於一般的文字輸入框，但也有下拉選單的箭頭icon：</p>
+
+<p><img src="/article/20200509/image-20200509161722966.png" alt="image-20200509161722966" /></p>
+
+<p>使用者可以點選箭頭將選單展開、也可以點擊輸入框輸入文字以篩選選單。</p>
+
+<p><img src="/article/20200509/image-20200509161759261.png" alt="image-20200509161759261" /></p>
+
+<p>點選選項之後，選項的值就會被帶入，如果沒有點選選項則操作是無法完成、並且文字也不會帶入上方的文字提示（您選擇的是「xx」）。</p>
+
+<p><img src="/article/20200509/image-20200509162014784.png" alt="image-20200509162014784" /></p>
+
+<p>我們將這個組件命名為<code>selector</code>，程式和前一個例子大同小異，不過這邊為方便說明還是將全部程式碼都貼上，如沒耐心可以先跳過這部份後面再對照著看即可。</p>
+
+<p>html：</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;div v-if=&quot;inputText&quot;&gt;
+    您選擇的是「{{inputText}}」
+  &lt;/div&gt;
+  &lt;div v-else&gt;
+    請選擇：
+  &lt;/div&gt;
+  &lt;selector
+    v-model=&quot;inputText&quot;
+    :data=&quot;recoData&quot;&gt;
+  &lt;/selector&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>父層的程式是一模一樣的：</p>
+
+<pre><code class="language-js">const vm = new Vue({
+  el: '#app',
+  component: 'selector',
+  data: {
+    recoData: ['candy','car','card','can','bakery','boring','band','country','drink','eye','fork','game','hospital','orange','restroom','sleep','talk','tree','yesterday','weather','zoo'],
+    inputText: ''
+  }
+})
+</code></pre>
+
+<p>組件<code>selector</code>的程式就比較長一點了，同樣的沒耐心的話可以先跳過後面再回頭來對照著看：</p>
+
+<pre><code class="language-js">Vue.component('selector',  {
+  template: `
+  &lt;div class=&quot;autocomplete-input&quot;&gt;
+    &lt;input
+      type=&quot;text&quot;
+      placeholder=&quot;可輸入英文字母查詢&quot;
+      v-model=&quot;childValue&quot;
+      @click=&quot;active&quot;&gt;
+    &lt;div
+      class=&quot;list&quot;
+      v-show=&quot;isShowRecoList&quot;&gt;
+      &lt;div
+        class=&quot;item&quot;
+        v-for=&quot;item in recoList&quot;
+        @click=&quot;selectRecoText(item)&quot;&gt;
+        {{item}}
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div
+      class=&quot;triangle&quot;
+      @click=&quot;active&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  `,
+  props: ['data', 'value'],
+  data () {
+    return {
+      childValue: '', // 子組件中的輸入文字
+      isActive: false // 是否啟用提示文字
+    }
+  },
+  computed: {
+    // 子組件中同步value的值
+    syncValue: {
+      get () {
+        return this.value
+      },
+      set (v) {
+        this.$emit('input', v)
+      }
+    },
+    // 是否顯示提示選項
+    isShowRecoList () {
+      if (this.isActive &amp;&amp; this.recoList.length &gt; 0) {
+        return true
+      } else {
+        return false
+      }
+    },
+    // 提示選項
+    recoList () {
+      return this.data.filter(d =&gt; {
+        return d.indexOf(this.childValue) &gt;= 0
+      })
+    }
+  },
+  methods: {
+    // 選擇選項
+    selectRecoText (text) {
+      this.childValue = text
+      // 選定後才將值更新回父層
+      this.syncValue = this.childValue
+      // 關閉提示選項
+      this.isActive = false
+    },
+    // 啟用提示選單
+    active () {
+      if (this.isActive === false) {
+        this.isActive = true
+        this.childValue = ''
+      }
+    }
+  }
+})
+</code></pre>
+
+<p>以上為全部的程式碼了。</p>
+
+<p>這邊是重點了，觀察這個範例的資料流，我們要關注的是組件內中的兩個值：</p>
+
+<ol>
+<li><code>computed</code>中的<code>syncValue</code></li>
+<li><code>data</code>中的<code>childValue</code>。</li>
+</ol>
+
+<p>首先是<code>syncValue</code>，這個值和前一個章節中的寫法是一模一樣的，他的功用就是用來同步父組件所綁定的<code>value</code>：</p>
+
+<pre><code class="language-js">computed: {
+  // 子組件中同步value的值
+  syncValue: {
+    get () {
+      return this.value
+    },
+    set (v) {
+      this.$emit('input', v)
+    }
+  },
+  // ..略..
+}
+</code></pre>
+
+<p>但是這裡有個關鍵的差異，在前一個範例當中<code>syncValue</code>是直接綁定在<code>input</code>輸入框上，所以當輸入框輸入文字的同時就會把輸入框的值回傳給父層。</p>
+
+<p>但這個範例綁定<code>input</code>的值是接下來要介紹的<code>childValue</code>：</p>
+
+<pre><code class="language-html">&lt;input
+  type=&quot;text&quot;
+  placeholder=&quot;可輸入英文字母查詢&quot;
+  v-model=&quot;childValue&quot;
+  @click=&quot;active&quot;&gt;
+</code></pre>
+
+<p>會做這樣設計的原因，就是因為這個UI的設計是在使用者「點選選單」的時候才會把值回傳給父層，在「點選選單」之前輸入框裡面的值都不算數，他只會存在組件當中（也就是這個範例中的<code>childValue</code>），而父組件是不會知道使用者倒底在輸入框中輸入了什麼文字。</p>
+
+<p>以程式上面來說明，首先，<code>childValue</code>預設必定為空值，所以直接將他放在<code>data</code>之中即可：</p>
+
+<pre><code class="language-js">data () {
+  return {
+    childValue: '', // 子組件中的輸入文字
+    // ... 略 ...
+  }
+},
+</code></pre>
+
+<p>接著，根據這個UI的設計，當點選選單中的選項時，要把輸入框的文字回傳給父層。在這個組件中我們已經實作了同步父層的<code>syncValue</code>，所以就直接將<code>childValue</code>的值複製給<code>syncValue</code>就完成了：</p>
+
+<pre><code class="language-js">methods: {
+  // 選擇選項
+  selectRecoText (text) {
+    this.childValue = text
+    // 選定後才將值更新回父層
+    this.syncValue = this.childValue
+    // 關閉提示選項
+    this.isActive = false
+  },
+  // ... 略 ...
+}
+</code></pre>
+
+<p>如果上述的說明還看的不太清楚的話，這裡同樣用本系列文當中不斷出現的表格說明，相信這邊看了就一目了然了：</p>
+
+<table>
+<thead>
+<tr>
+<th>操作說明</th>
+<th>[父層] value</th>
+<th>[子組件] syncValue</th>
+<th>[子組件] childValue</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Step1.初始化</td>
+<td>&ldquo;</td>
+<td>&ldquo;</td>
+<td>&ldquo;</td>
+</tr>
+
+<tr>
+<td>Step2.輸入文字&rsquo;a&rsquo;</td>
+<td>&ldquo;</td>
+<td>&ldquo;</td>
+<td>&lsquo;a&rsquo;</td>
+</tr>
+
+<tr>
+<td>Step3.點選選項&rsquo;car&rsquo;</td>
+<td>&lsquo;car&rsquo;</td>
+<td>&lsquo;car&rsquo;</td>
+<td>&lsquo;car&rsquo;</td>
+</tr>
+</tbody>
+</table>
+
+<p>本範例的資料流設計和前一篇文章「Vue父子組件資料流設計 (1) 單向傳遞」的範例非常相像，本質上都是「單向資料流」。差異只在於為了實作雙向綁定，在子組件中多了一個使用computed getter/setter實作的<code>syncValue</code>，用來同步父組件的值。</p>
+
+<p><a href="https://codepen.io/cdpqdnvr/pen/OJyOmGq">Codepen範例完整程式在此</a></p>
+
+<h2 id="四-小結">四、小結</h2>
+
+<p>依照我自己的學習歷程，開發Component時是先學習單向綁定，接著又寫code了一段時間，因工作需求上除了使用現成套件之外，有更近一步的需求需要自己開發一些基礎的通用組件，開始試著學習使用<code>.sync</code>（v2.x語法）以及<code>v-model</code>，但是一開始是土法鍊鋼，所以寫出來一些很奇怪又很多bug的程式，然後才慢慢掌握了一些比較良好的程式寫法（比如說本文用使用的computed getter/setter就是一個很好的方式）。</p>
+
+<p>即使是熟悉了程式和相關技巧，但是也是累積了一些經驗才又把「單向資料流」以及「雙向資料流」這兩者的概念在腦中有清楚的分別。</p>
+
+<p>我自認為前一篇文章和本文準備的範例程式應該都還不錯（自我感覺良好），只是因為程式也沒辦法濃縮的很短，寫得有點落落長，希望不會讓大家太難閱讀。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/05/09/vue-component-dataflow-1/" data-toggle="tooltip" data-placement="top" title="Vue父子組件資料流設計 (1) 單向傳遞">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/05/09/vue-component-dataflow-3/" data-toggle="tooltip" data-placement="top" title="Vue父子組件資料流設計 (3) 雙向綁定–大組件">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thunderboy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2020
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
