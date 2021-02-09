@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Vue Option &amp; Composition Api 寫法對照範例" />
+    <meta property="og:title" content="Vue Option &amp; Composition Api 寫法對照範例" />
+    <meta property="twitter:title" content="Vue Option &amp; Composition Api 寫法對照範例" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Thunder Boy</title>
+    <title>Vue Option &amp; Composition Api 寫法對照範例-Thunder Boy</title>
 
-    <link rel="canonical" href="/top/about/">
+    <link rel="canonical" href="/2021/02/09/vue-option-and-composition-api-compare/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,14 +156,42 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/banner_48086798638_1cf5aa400c_o.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Thunder Boy </h1>
-                    
-		    <span class="subheading">這裡是一個部落格、程式語言的學習筆記、個人日常的照片集</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>Vue Option &amp; Composition Api 寫法對照範例</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        2021-02-09, Tuesday
+                        
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -183,7 +211,255 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	<p>啊… 還沒時間寫這個</p>
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                
+                
+                <p>使用Vue2.x開發了一段時間，最近在研究升級Vue3.0之後新的寫法。雖然說新的 Composition Api是一大特點，但官方好像也沒有將舊的Option寫法列為「不建議」的寫法。所以倒底是應該全部都改成 Composition Api方式來寫，還是說 Option和 Composition Api其實是適用於不同的情況？</p>
+
+<p>因為覺得很疑惑，所以想說做個小實驗，我把專案內一個Component分別寫成 Option和 Composition Api兩種寫法（都是在 Vue2.x + Composition Api套件的環境下執行的，極少部份地方和 Vue3.0寫法會有點差異），給大家參考看看兩種的感覺有何不同。</p>
+
+<p>單就這個簡單的 Component，我的感覺是原本的 Option的寫法還是比較好閱讀 ←個人看法 (?)</p>
+
+<p>當然我知道 Composition Api是有其他的功能以及優勢，但做完這個實驗後我目前還是會暫時以 Option寫法為主，當有需要時才使用 Composition Api。</p>
+
+<p>以這個例子來說是程式較短，但在一個更大的 Component中舊的 Option寫法就會很容易變得難以閱讀；所以我打算當程式開始變大之後我就會盡量把能抽出來的邏輯都寫成獨立的js（使用 Composition Api），所以Component本身的程式也會變得比較精簡。</p>
+
+<p>這個是目前的想法，但之後寫一段時間後會不會再改變想法就不知道了？</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div
+    class=&quot;dropdown-blk&quot;
+    v-click-outside=&quot;closeDropdown&quot;&gt;
+    &lt;div
+      class=&quot;dropdown&quot;
+      v-for=&quot;(list, index) in dropdowns&quot;
+      :key=&quot;index&quot;&gt;
+      &lt;div @click=&quot;openDropdown(index)&quot;&gt;
+        &lt;div
+          class=&quot;value&quot;
+          :data-val=&quot;activedOptionArr[index].value&quot;&gt;
+          &lt;span&gt;{{activedOptionArr[index].label}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div
+          class=&quot;icon icon-dropdown&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;transition name=&quot;fade&quot;&gt;
+        &lt;div
+          class=&quot;menu&quot;
+          style=&quot;display:block&quot;
+          v-if=&quot;isActivedArr[index]&quot;&gt;
+          &lt;div
+            class=&quot;ele&quot;
+            v-for=&quot;(item, i) in list.options&quot;
+            :key=&quot;i&quot;
+            :data-val=&quot;item.value&quot;
+            @click=&quot;selectDropdown(list.name,item)&quot;&gt;
+            &lt;span&gt;{{item.label}}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/transition&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { defineComponent, ref, reactive, toRefs, computed, watch, PropType, Data, SetupContext, ComputedRef } from '@vue/composition-api'
+import { ChooseDropdownListProps, Dropdown } from './types'
+import vClickOutside from 'v-click-outside'
+
+export default defineComponent({
+  props: {
+    dropdowns: {
+      type: Array as () =&gt; Array&lt;Dropdown&gt;,
+      required: true,
+    },
+    dropdownsDefault: {
+      type: Array as () =&gt; string[],
+      required: true,
+    }
+  },
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
+  data () {
+    const selectedValueArr: string[] = JSON.parse(JSON.stringify(this.dropdownsDefault))
+    return {
+      // 是否展開
+      isActivedArr: this.dropdowns.map(() =&gt; false),
+      // 目前value
+      selectedValueArr
+    }
+  },
+  computed: {
+    activedOptionArr (): Array&lt;{ label: string; value: string }&gt; {
+      return this.selectedValueArr.map((d: string, i: number) =&gt; {
+        return this.dropdowns[i].options.find((o: { label: string; value: string }) =&gt; {
+          return o.value === d
+        }) || { label: '', value: ''}
+      })
+    }
+  },
+  methods: {
+    openDropdown (index: number) {
+      this.isActivedArr = this.dropdowns.map((item, i) =&gt; {
+        if (i === index) {
+          return true
+        } else {
+          return false
+        }
+      })
+    },
+    closeDropdown () {
+      this.isActivedArr = this.isActivedArr.map((() =&gt; false))
+    },
+    selectDropdown (key: string, item: { label: string; value: string; }) {
+      this.$emit('handleDropdown', {
+        key,
+        ...item})
+      const index = this.dropdowns
+        .map(d =&gt; d.name)
+        .indexOf(key)
+      this.$set(this.selectedValueArr, index, item.value)
+
+      this.closeDropdown()
+    }
+  }
+})
+&lt;/script&gt;
+</code></pre>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;div
+    class=&quot;dropdown-blk&quot;
+    v-click-outside=&quot;closeDropdown&quot;&gt;
+    &lt;div
+      class=&quot;dropdown&quot;
+      v-for=&quot;(list, index) in dropdowns&quot;
+      :key=&quot;index&quot;&gt;
+      &lt;div @click=&quot;openDropdown(index)&quot;&gt;
+        &lt;div
+          class=&quot;value&quot;
+          :data-val=&quot;data.activedOptionArr[index].value&quot;&gt;
+          &lt;span&gt;{{data.activedOptionArr[index].label}}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div
+          class=&quot;icon icon-dropdown&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;transition name=&quot;fade&quot;&gt;
+        &lt;div
+          class=&quot;menu&quot;
+          style=&quot;display:block&quot;
+          v-if=&quot;data.isActivedArr[index]&quot;&gt;
+          &lt;div
+            class=&quot;ele&quot;
+            v-for=&quot;(item, i) in list.options&quot;
+            :key=&quot;i&quot;
+            :data-val=&quot;item.value&quot;
+            @click=&quot;selectDropdown(list.name,item)&quot;&gt;
+            &lt;span&gt;{{item.label}}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/transition&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot;&gt;
+import { set, defineComponent, ref, reactive, toRefs, computed, watch, PropType, Data, SetupContext, ComputedRef } from '@vue/composition-api'
+import { ChooseDropdownListProps, Dropdown } from './types'
+import vClickOutside from 'v-click-outside'
+
+export default defineComponent({
+  props: {
+    dropdowns: {
+      required: true,
+      type: Array as () =&gt; Array&lt;ChooseDropdownListProps&gt;
+    },
+    dropdownsDefault: {
+      required: true,
+      type: Array as () =&gt; string[]
+    }
+  },
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
+  setup (props: ChooseDropdownListProps, context: SetupContext) {
+    // const refProps = toRefs(props)
+    
+    const selectedValueArr: string[] = JSON.parse(JSON.stringify(props.dropdownsDefault))
+    const data: any = reactive({
+      // 是否展開
+      isActivedArr: props.dropdowns.map(() =&gt; false),
+      // 目前value
+      selectedValueArr,
+      activedOptionArr: computed((): Array&lt;{ label: string; value: string }&gt; =&gt; {
+        return data.selectedValueArr.map((d: string, i: number) =&gt; {
+          return props.dropdowns[i].options.find((o: { label: string; value: string; }, i: number) =&gt; {
+            return o.value === d
+          })
+        }) || { label: '', value: ''}
+      })
+    })
+
+    const openDropdown = (index: number) =&gt; {
+      data.isActivedArr = props.dropdowns.map((item, i) =&gt; {
+        if (i === index) {
+          return true
+        } else {
+          return false
+        }
+      })
+    }
+    const closeDropdown = () =&gt; {
+      data.isActivedArr = data.isActivedArr.map((() =&gt; false))
+    }
+    const selectDropdown = (key: string, item: { label: string; value: any; }) =&gt; {
+      context.emit('handleDropdown', {
+        key,
+        ...item})
+      const index = props.dropdowns
+        .map(d =&gt; d.name)
+        .indexOf(key)
+
+      set(data.selectedValueArr, index, item.value)
+
+      closeDropdown()
+    }
+
+    return {
+      data,
+      selectDropdown,
+      openDropdown,
+      closeDropdown
+    }
+  }
+})
+&lt;/script&gt;
+</code></pre>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2020/05/09/vue-component-dataflow-3/" data-toggle="tooltip" data-placement="top" title="Vue父子組件資料流設計 (3) 雙向綁定–大組件">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2021/02/09/vue-option-based-component-with-typescript/" data-toggle="tooltip" data-placement="top" title="Vue2的 Option-Based Component中使用Typescript的簡易方式">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
 
                 
 <div id="disqus-comment"></div>
@@ -234,7 +510,7 @@
                         
                         
                         <a href="/tags/javascript" title="javascript">
-                        javascript
+                            javascript
                         </a>
                         
                         
@@ -242,7 +518,7 @@
                         
                         
                         <a href="/tags/vue" title="vue">
-                        vue
+                            vue
                         </a>
                         
                         

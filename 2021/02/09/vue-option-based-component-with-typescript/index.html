@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
-    <meta property="og:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
-    <meta property="twitter:title" content="不需花錢將Gitbook(v2)架設在Gitlab Pages上" />
+    <meta name="title" content="Vue2的 Option-Based Component中使用Typescript的簡易方式" />
+    <meta property="og:title" content="Vue2的 Option-Based Component中使用Typescript的簡易方式" />
+    <meta property="twitter:title" content="Vue2的 Option-Based Component中使用Typescript的簡易方式" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>不需花錢將Gitbook(v2)架設在Gitlab Pages上-Thunder Boy</title>
+    <title>Vue2的 Option-Based Component中使用Typescript的簡易方式-Thunder Boy</title>
 
-    <link rel="canonical" href="/2020/02/23/gitlab_pages_gitbook/">
+    <link rel="canonical" href="/2021/02/09/vue-option-based-component-with-typescript/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,16 +169,16 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/gitbook" title="gitbook">
-                            gitbook
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
                         </a>
                         
-                        <a class="tag" href="/tags/gitlab-pages" title="gitlab pages">
-                            gitlab pages
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
                         </a>
                         
                     </div>
-                    <h1>不需花錢將Gitbook(v2)架設在Gitlab Pages上</h1>
+                    <h1>Vue2的 Option-Based Component中使用Typescript的簡易方式</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +186,7 @@
                             Thunder Boy
                          
                         on 
-                        2020-02-23, Sunday
+                        2021-02-09, Tuesday
                         
                         
                         
@@ -219,66 +219,229 @@
 <ul>
 <li>
 <ul>
-<li><a href="#使用gitlab-pages服務">使用Gitlab Pages服務</a></li>
-<li><a href="#在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</a></li>
-<li><a href="#開始撰寫">開始撰寫</a></li>
+<li><a href="#前言">前言</a></li>
+<li><a href="#使用-composition-api">使用 Composition Api</a></li>
+<li><a href="#props的型別">Props的型別</a>
+<ul>
+<li><a href="#方法1-使用-proptype">方法1 - 使用 <code>PropType</code></a></li>
+<li><a href="#方法2-使用-function-return-type-interface">方法2 - 使用 function return Type/Interface：</a></li>
+</ul></li>
+<li><a href="#option上-data-欄位的型別">Option上「data」欄位的型別</a>
+<ul>
+<li><a href="#方法1-使用註記-annotation-的方式">方法1 - 使用註記 (Annotation)的方式</a></li>
+<li><a href="#方法1-使用推論-inference-的方式">方法1 - 使用推論 (Inference)的方式</a></li>
+</ul></li>
+<li><a href="#vue2-x-composition-api和-vue3-0的部份差異">Vue2.x Composition Api和 Vue3.0的部份差異</a>
+<ul>
+<li><a href="#1-使用-set新增物件欄位">1. 使用 set新增物件欄位</a></li>
+<li><a href="#2-某些能-import進來的東西-可能-不一樣">2. 某些能 import進來的東西「可能」不一樣</a></li>
+</ul></li>
+<li><a href="#結論">結論</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<p>gitbook是一個使用markdown文件就可以編譯成網頁的工具，非常適合拿來編寫電子書，也有需多工程師喜歡用來編輯技術文件，在一兩年前有一段時間好像非常流行，但是在gitbook的version 2.x版本之後有了重大的改版，gitbook帳號改為收費制（免費帳號功能有限）。</p>
+<h2 id="前言">前言</h2>
 
-<p>雖然對一般人來說門檻變高了，但其實對工程師來說仍然是非常好用。因為gitbook雖然帳號收費，但仍然有開源的程式碼可用，對於有一些技術背景的工程師很容易就可以想辦法自己架設起來；基本上不需要寫任何的程式碼（除非要改source code），無一需要煩惱的事情就是<strong>該如何架設以</strong>及<strong>架設在什麼地方</strong>。</p>
+<p>之前使用 Vue2.x開發時又想使用 Typescript，當時遇到的困擾是… Component使用 Typescript時根本就吃不到 this的型別，所以基本上是無法直接使用的，唯一的方式也只能採用官方推薦的 Class Component寫法，會寫到覺得很生氣（？）， Class Component的寫法實在是頗不直觀。</p>
 
-<p>研究了一段時間發現Gitlab Pages是非常完美的架設靜態網站的服務，而且Gitlab官方就有提供<a href="https://gitlab.com/pages/gitbook">範例</a>，頁面上面也有簡易的教學，基本上就照著做也可以簡單的架設起來囉。</p>
+<p>一直到 Vue3.0推出之後，才終於徹底改善了對 Typescript的支援；但我的工作上基於某些理由，短時間內無法轉為使用 Vue3.0，所以我就來簡單研究了一下，在 Vue2.x環境下是否有使用 Typescript合適方式？</p>
 
-<h2 id="使用gitlab-pages服務">使用Gitlab Pages服務</h2>
+<h2 id="使用-composition-api">使用 Composition Api</h2>
 
-<p>首先，當然就是要先有Gitlab帳號，Gitlab服務都是免費的，所以就是直接註冊使用就對了，這邊就不詳述。</p>
+<p>都說要使用 Vue2.x的 Option-Based Component了，何來 Composition Api？但本篇文章要提出來的解決方式正是 Composition Api。</p>
 
-<p>建立一個Project之後至Setting把Pages服務開啟。在頁面中間可以取得網站的網址。</p>
+<p>雖然 Composition Api是 Vue3.0的產物，但官方也提供了 <a href="https://github.com/vuejs/composition-api">Composition Api for Vue2.x的套件</a>，在 Vue2.x的環境中安裝之後就可以使用 Composition Api。</p>
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_1.png" alt="" /></p>
+<p>然後重點來了，使用 Composition Api仍然是相容 Option的寫法了，所以你可以不改變原本寫法的情況下，得到差不多於 Vue3.x對於 Typescript的支援度（應該是吧）。最簡的使用範例如下：</p>
 
-<h2 id="在本機建立gitbook撰寫環境">在本機建立Gitbook撰寫環境</h2>
+<pre><code class="language-js">import { defineComponent } from '@vue/composition-api'
 
-<p>首先電腦中要有<a href="https://nodejs.org/en/">node.js</a>的環境，然後使用npm安裝Gitbook套件到電腦本機當中。</p>
+export default defineComponent({
+  // 可維持原本 Option的寫法
+  props: {
+  },
+  data () {
+    return {}
+  },
+  // 略…
+})
+</code></pre>
 
-<p><code>npm install gitbook-cli –g</code></p>
+<p>然而在我的實測中發現會有些小細節是和 Vue3.0環境中會有些差異，這個在後面會再做說明。</p>
 
-<p>在專案的資料夾中，下gitbook的指令初始化。</p>
+<h2 id="props的型別">Props的型別</h2>
 
-<p><code>gitbook init</code></p>
+<p>Vue 原生就有定義 Props型別的功能（<code>type</code>欄位），但是 <code>type</code>欄位只限於 javascript的原生型別，如果想要宣告為 Typescript的型別的話有以下兩種方式：</p>
 
-<p>到這一步就幾乎完成了。</p>
+<h3 id="方法1-使用-proptype">方法1 - 使用 <code>PropType</code></h3>
 
-<p>最後要做的一件事，就是建立Gitlab CI/CD的yml檔，這個yml檔可以讓我們把專案git push上去到gitlab server的時候透過yml檔的腳本、將gitbook打包成靜態網頁並部署到gitlab pages的空間。</p>
+<pre><code class="language-typescript">import { defineComponent, PropType } from '@vue/composition-api'
 
-<p>簡而言之呢，就是要建立一個能夠幫我們部署網頁的檔案，而這個yml檔我們也不需煩惱該如何篩寫，gitlab官網上的<a href="https://gitlab.com/pages/gitbook/-/blob/master/.gitlab-ci.yml">範例</a>就有了，所以只要把範例中的程式碼整個複製起來，然後在根目錄建一個<code>.gitlab-ci.yml</code>則上去，完成（如果有不清楚的話請參考官網範例）。</p>
+type Value {
+  label: string;
+  value: string;
+}
 
-<h2 id="開始撰寫">開始撰寫</h2>
+export default defineComponent({
+  props: {
+    value: {
+      type: Object as PropType&lt;Value&gt;
+    }
+  }
+})
+</code></pre>
 
-<p>gitbook使用一個SUMMARY.md檔來定義整個網站的目錄結構。</p>
+<h3 id="方法2-使用-function-return-type-interface">方法2 - 使用 function return Type/Interface：</h3>
 
-<p>每一行就是一個頁面的設定，格式如<code>* [標題](markdown檔案路徑)</code>。而檔案路徑也就是對應你所撰寫的md檔。縮排4個空白即為子目錄。</p>
+<pre><code class="language-typescript">import { defineComponent, PropType } from '@vue/composition-api'
 
-<p>以下範例：</p>
+type MyValue = {
+  label: string;
+  value: string;
+}
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_2.png" alt="" /></p>
+export default defineComponent({
+  props: {
+    value: {
+      type: Object as () =&gt; MyValue
+      // 注意！以下寫法是錯的喔！
+      // type: Object as Value
+    }
+  }
+})
+</code></pre>
 
-<p>架設好的網站會長成這樣：</p>
+<h2 id="option上-data-欄位的型別">Option上「data」欄位的型別</h2>
 
-<p><img src="/article/20200223/gitlab_pages_gitbook_3.png" alt="" /></p>
+<p>Component的 <code>data</code>欄位本身就是一個 function，所以在宣告型別上也是很簡單的，有以下兩種方式：</p>
 
-<p>要在本機端測試網站打包出來的結果的話可以下指令：</p>
+<h3 id="方法1-使用註記-annotation-的方式">方法1 - 使用註記 (Annotation)的方式</h3>
 
-<p><code>gitbook serve</code></p>
+<pre><code class="language-typescript">import { defineComponent } from '@vue/composition-api'
 
-<p>因為我們要使用Gitlab CI/CD，在前一個步驟裡已經建立了.gitlab-ci.yml檔，所以我們只需要使用git指令將專案push上去之後，等個幾分鐘，就可以看到架設好的gitbook網站了（在gitlab project選單setting/pages裡可取得網址）。</p>
+type MyValue = {
+  label: string;
+  value: string;
+}
 
-<p>註：至於把檔案push上gitlab的git指令就不詳述了，不熟悉的朋友可參考在前述gitlab建立的project頁面，切至project首頁有相關的指令說明可參考喔！</p>
+export default defineComponent({
+  data () {
+    const value: MyValue = {
+      label: 'default',
+      value: 'default'
+    }
+    return {
+      value
+    }
+  }
+})
+</code></pre>
+
+<h3 id="方法1-使用推論-inference-的方式">方法1 - 使用推論 (Inference)的方式</h3>
+
+<pre><code class="language-typescript">import { defineComponent } from '@vue/composition-api'
+
+type MyValue = {
+  label: string;
+  value: string;
+}
+
+export default defineComponent({
+  data () {
+    return {
+      value: {
+        label: 'default',
+        value: 'default'
+      } as MyValue
+    }
+  }
+})
+</code></pre>
+
+<h2 id="vue2-x-composition-api和-vue3-0的部份差異">Vue2.x Composition Api和 Vue3.0的部份差異</h2>
+
+<p>既然都使用 Composition Api了，自然也不會想死守著舊的 Option的寫法，想嘗試看看 Composition Api的威力。</p>
+
+<p>不過我實際在使用的時候，還是踩了一些坑，發現由於 Vue2.x和 Vue3.0在底層上有一些基本的差異，所以寫法並不會 100%一模一樣的；以下是我目前為止遇到的問題：</p>
+
+<h3 id="1-使用-set新增物件欄位">1. 使用 set新增物件欄位</h3>
+
+<p>從 Vue2.x開始學起的開發者應該都知道 <code>$set</code>的寫法以及原理，這個是一個蠻大的主題所以在這裡就不深入去探討了（要解釋清楚需要一整篇文章來解釋，網路上也有相當多的文章了）。</p>
+
+<p>簡單講呢… Vue3.0 的底層改使用 proxy取代 Vue2.x的 definedObject來實做資料的雙向綁定，所以 Vue3.0的 Component中 <code>data</code>中宣告物件時，物件要新增欄位不需要使用 <code>$set</code>也能監聽到資料的異動。</p>
+
+<p>但 Vue2.x即使是裝了 Composition Api，仍然受到底層的限制，寫法上自然和 Vue3.0有些差異。</p>
+
+<p>在 Composition Api的 <code>setup</code>當中由於不能用 <code>this</code>來使用 Vue實例上的 <code>$set</code>，所以必須額外 import Composition Api提供的 <code>set</code>。範例如下：</p>
+
+<pre><code class="language-typescript">import { defineComponent, reactive, set, SetupContext, Data } from '@vue/composition-api'
+
+export default defineComponent({
+  setup (props: Data, context: SetupContext) {
+    
+    const data: any = reactive({
+      selectedValueArr: []
+    })
+    
+    const selectDropdown = (key: string, item: { label: string; value: any; }) =&gt; {
+      const index = props.dropdowns
+        .map(d =&gt; d.name)
+        .indexOf(key)
+			// 使用set加入新的欄位資料
+      set(data.selectedValueArr, index, item.value)
+      // 以下寫法無法雙向綁定資料
+      // data.selectedValueArr[index] = item.value
+    }
+
+    return {
+      selectDropdown
+    }
+  }
+})
+</code></pre>
+
+<h3 id="2-某些能-import進來的東西-可能-不一樣">2. 某些能 import進來的東西「可能」不一樣</h3>
+
+<p>以我有限的使用經驗，還不曉得所有可能的差異，就我目前所遇到的是 Vue2.x Composition Api有一個叫做<code>Data</code>的 type，在 Vue3.0中是沒有的，依照我找到的資料說明<code>Data</code>是用在<code>setup</code>中注入<code>props</code>所使用預設型別。</p>
+
+<p>範例如下：</p>
+
+<pre><code class="language-typescript">// vue2.x composition-api
+import { defineComponent, SetupContext, Data } from '@vue/composition-api'
+// vue3.0 以下寫法會找不到 Data 所以會出錯
+// import { defineComponent, SetupContext, Data } from 'vue'
+
+export default defineComponent({
+  props: ['value'],
+  setup (props: Data, context: SetupContext) {
+
+  }
+})
+</code></pre>
+
+<p>不過呢…</p>
+
+<p><code>Data</code>這個東西我感覺他沒有什麼實用性，檢視他的型別其實是這樣子。</p>
+
+<pre><code class="language-ts">type Data = {
+  [key: string]: unknown;
+}
+</code></pre>
+
+<p>再來，如果你有按照前一個章節所介紹的方式去註記<code>props</code>的型別，在<code>setup</code>中所注入的<code>props</code>是完全不需要再註記的，Typescript他自己就可以推論出來。</p>
+
+<p>所以這裡我唯一要解釋的，只是說<code>@vue/composition-api</code>和 Vue3.0能 import可能會有所不同，這裡僅是作為範例來說明。</p>
+
+<p>至於是否有其他實際影響使用的差異，因為的經驗有限所以還不曉得了（我很抱歉 XD）。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>既然 Class Component在 Vue3.0之後已經被官方所棄用，所以我也覺得沒有任何理由要再採用 Class Component。</p>
+
+<p>本篇文章我依照我自己在工作上的經驗所整理出來的，能夠在 Vue2.x的環境下也能方便的結合 Typescript，希望對大家有幫助。</p>
 
 
                 
@@ -287,13 +450,13 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/02/23/pdfmake-chinese-font/" data-toggle="tooltip" data-placement="top" title="前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）">&larr;
+                        <a href="/2021/02/09/vue-option-and-composition-api-compare/" data-toggle="tooltip" data-placement="top" title="Vue Option &amp; Composition Api 寫法對照範例">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/02/28/js-call-by-reference/" data-toggle="tooltip" data-placement="top" title="簡單看Javascript的傳值以及傳參考">Next
+                        <a href="/2021/02/09/compatible-vue2-and-vue3/" data-toggle="tooltip" data-placement="top" title="相容 Vue2及 Vue3環境的 Component寫法">Next
                             Post &rarr;</a>
                     </li>
                     

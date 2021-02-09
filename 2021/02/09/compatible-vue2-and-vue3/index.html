@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="相容 Vue2及 Vue3環境的 Component寫法" />
+    <meta property="og:title" content="相容 Vue2及 Vue3環境的 Component寫法" />
+    <meta property="twitter:title" content="相容 Vue2及 Vue3環境的 Component寫法" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Thunder Boy</title>
+    <title>相容 Vue2及 Vue3環境的 Component寫法-Thunder Boy</title>
 
-    <link rel="canonical" href="/top/about/">
+    <link rel="canonical" href="/2021/02/09/compatible-vue2-and-vue3/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,14 +156,42 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/banner_48086798638_1cf5aa400c_o.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Thunder Boy </h1>
-                    
-		    <span class="subheading">這裡是一個部落格、程式語言的學習筆記、個人日常的照片集</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                    </div>
+                    <h1>相容 Vue2及 Vue3環境的 Component寫法</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        2021-02-09, Tuesday
+                        
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -183,7 +211,158 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	<p>啊… 還沒時間寫這個</p>
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#v-model">v-model</a></li>
+<li><a href="#偵測環境">偵測環境</a></li>
+<li><a href="#functional-component">Functional Component</a></li>
+<li><a href="#結論">結論</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="前言">前言</h2>
+
+<p>理論上 Vue3.x大多數的寫法是有向下相容 Vue2.x的寫法，所以理論上<code>.vue</code>檔Component的寫法只要同時符合 Vue3.x和 Vue2.x的寫法，是能夠將同一個檔案共用於兩者不同環境當中。</p>
+
+<p>以下會針對幾種我遇過在這兩個環境中較大差異的部份以及解決方式做個說明。</p>
+
+<h2 id="v-model">v-model</h2>
+
+<p>Vue2.x和 Vue3.x Component雙向綁定主要有兩個差異：</p>
+
+<ol>
+<li>Vue3.x移除了 <code>.sync</code>寫法，並且單一 Component中可有多個 <code>v-model</code>。</li>
+<li><code>v-model</code>對應的 <code>prop</code>和 <code>event</code>預設名稱不同。</li>
+</ol>
+
+<p>在 Vue2.x的環境當中，<code>v-model</code>預設對應 <code>v-bind:value</code>和 <code>@input</code>，例如：</p>
+
+<pre><code class="language-vue">&lt;input :value=&quot;syncValue&quot; @input=&quot;handleInput&quot;/&gt;
+&lt;!-- 等同於 --&gt;
+&lt;input v-model=&quot;syncValue&quot;/&gt;
+</code></pre>
+
+<p>在 Vue3.x的環境當中，<code>v-model</code>預設對應 <code>v-bind:modelValue</code>和 <code>@update:modelValue</code></p>
+
+<pre><code class="language-vue">&lt;input :modelValue=&quot;syncValue&quot; @update:modelValue=&quot;handleInput&quot;/&gt;
+&lt;!-- 等同於 --&gt;
+&lt;input v-model=&quot;syncValue&quot;/&gt;
+</code></pre>
+
+<p>綜合以上即可得出一個結論，只要使用 <code>model</code>欄位設定預設的<code>prop</code>和<code>event</code>為和 Vue3.x預設值相同，那麼就可以讓這個 Component的<code>v-model</code>同時相容於 Vue2.x和 Vue3.x。</p>
+
+<p>也就是只要在 option當中加入這個即可：</p>
+
+<pre><code class="language-js">model: {
+  prop: 'modelValue',
+  event: 'update:modelValue'
+}
+</code></pre>
+
+<p>範例如下：</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;input v-model=&quot;syncValue&quot;/&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  // 使用 model設定預設的 prop及 event名稱
+  model: {
+    prop: 'modelValue',
+    event: 'update:modelValue'
+  },
+  props: ['modelValue'],
+  computed: {
+    syncValue: {
+      get () {
+        return this.modelValue
+      },
+      set (v) {
+        this.$emit('update:modelValue', v)
+      }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+
+<h2 id="偵測環境">偵測環境</h2>
+
+<p>在某一些更複雜的情況，已經沒有辦法在同一支程式入同時相容於 Vue2.x和 Vue3.x兩個環境，必需要分成兩支程式才行，這時候我們可能就會需要用程式來判斷目前的環境是 Vue2.x還是 Vue3.x，再<strong>「動態import」</strong>進來所對應的程式<strong>（需注意，如果是採用一般的 import方式可能會在 webpack打包時就依賴所有程式造成出錯）</strong>。</p>
+
+<p>Vue實例在這兩者環境底下會有不同東西，我自己採用的判斷依據是判斷 Vue實例底下是否有<code>_isVue</code>，如果有的話就是 Vue2.x、沒有的話就是 Vue3.x，例：</p>
+
+<pre><code class="language-js">if (this._isVue) {
+  // vue2.x  
+} else {
+  // vue3.x
+}
+</code></pre>
+
+<p>完整範例：</p>
+
+<pre><code class="language-vue">&lt;template&gt;
+  &lt;component
+    :is=&quot;dynamicComponent&quot;&gt;
+  &lt;/component&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data () {
+    return {
+      dynamicComponent: undefined
+    }
+  },
+  created () {
+    if (this._isVue) {
+      // dynamic component (vue2.x)
+      this.dynamicComponent = () =&gt; import('./ComponentV2.vue')
+      return
+    }
+    // dynamic component (vue3.x)
+    import('./ComponentV3.vue')
+      .then(d =&gt; this.dynamicComponent = d.default)
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<h2 id="functional-component">Functional Component</h2>
+
+<p>Function Component在 Vue2.x和 Vue3.x當中有非常大幅度的 breaking change，所以基本上如果要相容的話肯定是要分別寫成不同的程式的。</p>
+
+<p>就我的經驗當中這個部份是最花時間，而且挫折感最重的地方，建議先將官網文件完整看過一遍，再開始從簡單的 Component實作中練習起：</p>
+
+<p><a href="https://v3.vuejs.org/guide/migration/functional-components.html#overview">https://v3.vuejs.org/guide/migration/functional-components.html#overview</a></p>
+
+<h2 id="結論">結論</h2>
+
+<p>應該還會有很多我沒有實作過的不同情況，以上就以我自己的經驗所遇過的情況跟大家分享囉。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/02/09/vue-option-based-component-with-typescript/" data-toggle="tooltip" data-placement="top" title="Vue2的 Option-Based Component中使用Typescript的簡易方式">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
 
                 
 <div id="disqus-comment"></div>
@@ -234,7 +413,7 @@
                         
                         
                         <a href="/tags/javascript" title="javascript">
-                        javascript
+                            javascript
                         </a>
                         
                         
@@ -242,7 +421,7 @@
                         
                         
                         <a href="/tags/vue" title="vue">
-                        vue
+                            vue
                         </a>
                         
                         

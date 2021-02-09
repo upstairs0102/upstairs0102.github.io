@@ -6,10 +6,37 @@
     <description>Recent content on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 May 2020 00:00:02 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Feb 2021 03:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>相容 Vue2及 Vue3環境的 Component寫法</title>
+      <link>https://shangdeyou.github.io/2021/02/09/compatible-vue2-and-vue3/</link>
+      <pubDate>Tue, 09 Feb 2021 03:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/02/09/compatible-vue2-and-vue3/</guid>
+      <description>前言 理論上 Vue3.x大多數的寫法是有向下相容 Vue2.x的寫法，所以理論上.vue檔Component的寫法只要同時符合 Vue3.x和 Vu</description>
+    </item>
+    
+    <item>
+      <title>Vue2的 Option-Based Component中使用Typescript的簡易方式</title>
+      <link>https://shangdeyou.github.io/2021/02/09/vue-option-based-component-with-typescript/</link>
+      <pubDate>Tue, 09 Feb 2021 02:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/02/09/vue-option-based-component-with-typescript/</guid>
+      <description>前言 之前使用 Vue2.x開發時又想使用 Typescript，當時遇到的困擾是… Component使用 Typescript時根本就吃不到 thi</description>
+    </item>
+    
+    <item>
+      <title>Vue Option &amp; Composition Api 寫法對照範例</title>
+      <link>https://shangdeyou.github.io/2021/02/09/vue-option-and-composition-api-compare/</link>
+      <pubDate>Tue, 09 Feb 2021 01:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/02/09/vue-option-and-composition-api-compare/</guid>
+      <description>使用Vue2.x開發了一段時間，最近在研究升級Vue3.0之後新的寫法。雖然說新的 Composition Api是一大特點，但官方好像也沒有將舊的Option寫法</description>
+    </item>
     
     <item>
       <title>Vue父子組件資料流設計 (3) 雙向綁定–大組件</title>
