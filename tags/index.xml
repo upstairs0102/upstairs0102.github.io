@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Feb 2021 03:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 May 2021 02:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,36 @@
     <item>
       <title>javascript</title>
       <link>https://shangdeyou.github.io/tags/javascript/</link>
-      <pubDate>Tue, 09 Feb 2021 03:00:00 +0000</pubDate>
+      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
       
       <guid>https://shangdeyou.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>next.js</title>
+      <link>https://shangdeyou.github.io/tags/next.js/</link>
+      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/tags/next.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>react</title>
+      <link>https://shangdeyou.github.io/tags/react/</link>
+      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>redux</title>
+      <link>https://shangdeyou.github.io/tags/redux/</link>
+      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/tags/redux/</guid>
       <description></description>
     </item>
     

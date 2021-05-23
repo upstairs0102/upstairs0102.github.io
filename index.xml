@@ -6,10 +6,19 @@
     <description>Recent content on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Feb 2021 03:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 May 2021 02:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Next.js上使用 Redux四兄弟</title>
+      <link>https://shangdeyou.github.io/2021/05/23/lib-of-redux-on-next/</link>
+      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/05/23/lib-of-redux-on-next/</guid>
+      <description>前言 身為使用 Vue.js的開發者，最近在研究 React.js以及 Next.js，原本以為有了使用 Vuex（和 Redux 一樣取自 Flux的概念發展出來</description>
+    </item>
     
     <item>
       <title>相容 Vue2及 Vue3環境的 Component寫法</title>
