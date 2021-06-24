@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
-    <meta property="og:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
-    <meta property="twitter:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
+    <meta name="title" content="Vue2 的 Vuex使用 Typescript寫法" />
+    <meta property="og:title" content="Vue2 的 Vuex使用 Typescript寫法" />
+    <meta property="twitter:title" content="Vue2 的 Vuex使用 Typescript寫法" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading-Thunder Boy</title>
+    <title>Vue2 的 Vuex使用 Typescript寫法-Thunder Boy</title>
 
-    <link rel="canonical" href="/2019/12/24/vue-optimization1/">
+    <link rel="canonical" href="/2021/06/24/vuex-with-typescript-in-vue2/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -173,12 +173,16 @@
                             vue
                         </a>
                         
-                        <a class="tag" href="/tags/javascript" title="javascript">
-                            javascript
+                        <a class="tag" href="/tags/vuex" title="vuex">
+                            vuex
+                        </a>
+                        
+                        <a class="tag" href="/tags/typescript" title="typescript">
+                            typescript
                         </a>
                         
                     </div>
-                    <h1>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading</h1>
+                    <h1>Vue2 的 Vuex使用 Typescript寫法</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +190,7 @@
                             Thunder Boy
                          
                         on 
-                        2019-12-24, Tuesday
+                        2021-06-24, Thursday
                         
                         
                         
@@ -219,179 +223,201 @@
 <ul>
 <li>
 <ul>
-<li><a href="#譯者說明">譯者說明</a></li>
-<li><a href="#lazy-loading-vue-components">Lazy loading Vue components</a></li>
-<li><a href="#結語">結語</a></li>
+<li><a href="#前言">前言</a></li>
+<li><a href="#vuex-使用-typescript寫法">Vuex 使用 Typescript寫法</a>
+<ul>
+<li><a href="#state">State</a></li>
+<li><a href="#action">Action</a></li>
+<li><a href="#mutation">Mutation</a></li>
+<li><a href="#getters">Getters</a></li>
+</ul></li>
+<li><a href="#component中使用-vuex">Component中使用 Vuex</a>
+<ul>
+<li><a href="#1-mapstate-mapgetters-mapactions-mapmutations">1.mapState/mapGetters/mapActions/mapMutations</a></li>
+<li><a href="#2-this-store">2.this.$store</a></li>
+<li><a href="#3-import-store">3.import store</a></li>
+</ul></li>
+<li><a href="#參考來源">參考來源</a></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<h2 id="譯者說明">譯者說明</h2>
+<h2 id="前言">前言</h2>
 
-<p>最近使用Vue.js投入公司產品開發花了不少心血，關於前端的效能是一件很重要的事情，這個系列文有做了一些有趣的探討，原文作者似乎也還沒寫完，我先從第一篇開始翻起，原文在此：</p>
+<p>Vuex v4.0版本以上大幅改善了對 Typescript的支援、以及對 composition-api的整合，但是 <a href="https://github.com/vuejs/vuex/blob/4.0/package.json#L55">Vuex v4.x版只支援 Vue3以上版本</a>。</p>
 
-<p><a href="https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019">https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019</a></p>
+<p>也就是說如果開發環境是 Vue v2.x版本的話，Vuex也就只能使用 v3.x版本。雖然說 Vuex v3.x版對於 Typescript的支援上也些限制和不順手，但只要做好註記 (annotation)的工作，基本上我覺得型別推導上還算蠻完整的，維獨 Component中要引入 Vuex的時候就會有些限制，只有 <code>state</code>可以型別推導，其餘 <code>mutation</code>/<code>action</code>等都會是 <code>any</code>型別。不過對我個人來說有 <code>state</code>型別推導就已經是相當實用，其他的就還是我可以忍受的範圍了。</p>
 
-<hr />
+<h2 id="vuex-使用-typescript寫法">Vuex 使用 Typescript寫法</h2>
 
-<p>當行動優先導向成為標準、並且不確定性的網路環境也成為我們必須考慮的因素時，讓應用程式保持高速成為越來越困難的事情。在這個系列當中我會挖掘更深的Vue優化技術 – 我們在Vue Storefront當中所使用的技術，而你也可以用在你的Vue.js應用程式當中來讓他們瞬間讀取並且表現得平滑。我的目的是在這系列中對於Vue.js應用程式效能給出一個完整的指南。</p>
+<h3 id="state">State</h3>
 
-<ul>
-<li>Part 1 – 介紹效能優化及lazy loading</li>
-<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
-<li>Part 3 – Lazy loading Vuex模組</li>
-<li>Part 4 – Lazy loading單一Component</li>
-<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
-<li>Part 6 – 使用Service Worker cache</li>
-<li>Part 7 – 預讀取</li>
-</ul>
+<p>要將整個 <code>state</code>註記成一個 Type或 Interface。如果 Vuex有使用 module功能，則每個子模組的 <code>state</code>各自維護自己的 Interface/Type。</p>
 
-<p>##Webpack打包如何運作？</p>
+<p>如下例子是名稱為 <code>cart</code>的模組的 <code>state</code>：</p>
 
-<p>本系列中大部份的提示都是聚焦在使我們的js bundle更小。為了了解這是至關重要的，我們需要了解Webpack是如何把全部檔案打包來起的。</p>
-
-<p>當Webpack打包所有資源時會產生依賴樹，這是一個連結所有我們使用import引入檔案的圖型。假設我們在Webpack config中使用main.js作為特定入口，他就會是整個依賴樹的根節點。那每一個import到該檔案底下的js module都會成為圖型當中的葉節點，並且每一個import進該葉節點的module也成為他的葉節點。</p>
-
-<p>Wabpack使用這個依賴樹圖型偵測該納入打包輸出當中。打包出來會是一個包含所有依賴樹中的module的單一javascript檔案（或者多個，後面章節會寫）</p>
-
-<p>我們可以把這個進程繪製成以下如圖：</p>
-
-<p><img src="/article/20191224/20191224_1.png" alt="" /></p>
-
-<p>現在我們知道打包是如何運作的，很明顯的他會成長到專案內最大化的初始javascript打包檔案。檔案愈大代表使用者需花更多時間下載，也代表使用使用者更可能離開我們的網站。</p>
-
-<p>簡而言之，大部份的情況下愈大的打包=愈少的用戶。</p>
-
-<p>##Lazy loading</p>
-
-<p>所以為了改進我們的應用程式，當我們需要增加功能時該如何減少打包檔案的大小？當案很簡單-lazy loading和程式碼切割。</p>
-
-<p>從字面上來看lazy loading就是懶惰得只載入應用程式的一部份。另外一種說法就是-只載入我們真的需要的部份。程式碼切割只切割出這個載入的部份。</p>
-
-<p><img src="/article/20191224/20191224_2.png" alt="" /></p>
-
-<p>大部份的情況下當使用者進入網站時不需要javascript打包中的所有程式，就算我們有3個不同的路由位置而使用者無論如何都需要下載、解析、並執行打包程式-不論他們是否會需要用到。這是多麼浪費時間和力氣！</p>
-
-<p>Lazy loading允許我們切割打包並提供所需要的部份，使用者不需要浪費時間下載及解析他們不需要的程式。要看網站實際上使用到的javascript程式我們可以到開發者工具-&gt;cmd+shift+p -&gt;輸入”coverage”-&gt;點擊”錄製”，接著我們應該可以看到下載了多少實際上使用到的程式。</p>
-
-<p><img src="/article/20191224/20191224_3.png" alt="" /></p>
-
-<p>每一個被標成紅色的就是目前路由裡不需要並可以被延遲載入的程式，如果你有用到source map那你可以點選清單裡任何沒有被引用到的檔案。從以上觀察可知甚至vuejs.org也有很大的進步空間^_^。</p>
-
-<p>透過lazy loading特性的component和程式庫，我們砍掉了60%d Vue Storefront的打包檔案容量。</p>
-
-<p>OK，我們現在知道lazy loading是什麼而且有多實用了^_^，現在我們來看他可以如何用在我們的Vue.js應用程式。</p>
-
-<p>##Dynamic imports</p>
-
-<p>透過webpack的dynamic imports可以很輕易的延遲載入部份程式，我們來看他是如何運作並且和一般的import有什麼不同。</p>
-
-<p>如果我們使用一般的方式import JS module會像如下：</p>
-
-<pre><code>// main.js
- 
-import ModuleA from './module_a.js'
- 
-ModuleA.doStuff()
-</code></pre>
-
-<p>他會被加入到main.js的依賴樹中的葉節點並被打包進去。</p>
-
-<p>但如果我們只有在特定情況下才會用到ModuleA呢（比如說使用者互動的事件）？在最一開始的時候就打包進去不是一個好主題。我們需要一個方式告訴我們的應用程式何時該下載這個部份的程式。</p>
-
-<p>這也就是動態載入所能解決的問題！現在來看看以下例子：</p>
-
-<pre><code>//main.js
- 
-const getModuleA = () =&gt; import('./module_a.js')
- 
-// invoked as a response to some user interaction
- 
-getModuleA()
- 
-.then({ doStuff } =&gt; doStuff())
-</code></pre>
-
-<p>來快速看一下會發生什麼事：</p>
-
-<p>我們寫一個function回傳import()函式以取代直接引入module_a.js。現在webpack動態import進來的部份程式，除非函式被呼叫否則程式不會被import並下載。之後這段程式將只會在特定的操作中被下載下來。</p>
-
-<p>透過動態載入我們基本上隔離了特定的葉節點（在此例中為module_a），他會在我們決定載入的時候才加入依賴樹並下載（這暗示了我們同時也切割了module_a.js當中依賴的module）</p>
-
-<p>我們來看另一個更好的例子來說明這個機制。假設我們有4個檔案：main.js、module_a.js、module_b.js、module_c.js，來了解動態載入是如何運作的，我們只需要main和module_a的原始碼：</p>
-
-<pre><code>//main.js
- 
-import ModuleB from './mobile_b.js'
- 
-const getModuleA = () =&gt; import('./module_a.js')
- 
-getModuleA()
- 
-.then({ doStuff } =&gt; doStuff()
- 
-)
- 
-//module_a.js
- 
-import ModuleC from './module_c.js'
-</code></pre>
-
-<p>把module_a作為一個動態載入用的module可以切割掉依賴樹中的module_a和他的子節點。當module_a動態載入時會連同裡面import的檔案一起載入。換句話說，我們可以建置了一個新的依賴圖的進入點。</p>
-
-<p><img src="/article/20191224/20191224_4.png" alt="" /></p>
-
-<p>這就是這個依賴圖和打包會長的樣子。</p>
-
-<h2 id="lazy-loading-vue-components">Lazy loading Vue components</h2>
-
-<p>我們現在知道lazy loading是什麼並且為何需要了，現在是時候來看我們可以如何在Vue應用程式當中使用。</p>
-
-<p>好消息是，透過以上語法可以超級簡單的載入整個SFC（單文件Component-也就是.vue檔）、包含css和html。</p>
-
-<pre><code>const lazyComponent = () =&gt; import('Component.vue')
-</code></pre>
-
-<p>…只要這樣就搞定了！現在component只有在你呼叫他時才會載入。以下是最常使用動態載入Vue component的方法：</p>
-
-<ul>
-<li><p>把import寫成可呼叫的函式</p>
-
-<pre><code>const lazyComponent = () =&gt; import('Component.vue')
- 
-lazyComponent()
-</code></pre></li>
-
-<li><p>component被呼叫後渲染</p></li>
-</ul>
-
-<p>請注意lazyComponent函式只有在呼叫他時才會渲染進template。</p>
-
-<pre><code>&lt;template&gt;
-&lt;div&gt;
-&lt;lazy-component /&gt;
-&lt;/div&gt;
-&lt;/template&gt;
-&lt;script&gt;
-const lazyComponent = () =&gt; import('Component.vue')
-export default {
-components: { lazyComponent }
+<pre><code class="language-typescript">// @/store/modules/cart/state.ts
+export type CartState = {
+  added: {
+    id: number
+    quantity: number
+  };
+  checkoutStatus: 'successful' | 'failed' | null
 }
-&lt;/script&gt;
+
+const state: CartState = {
+  added: [],
+  checkoutStatus: null
+}
+
+export default state
 </code></pre>
 
-<p>例如：</p>
+<p>在 Vuex的 <code>state</code>是一個 tree結構，根節點的 <code>state</code>稱之為 <code>rootState</code>，而modules的 <code>state</code>會是<code>rootState</code>底下的一個子節點，所以在模組化Vuex的<code>rootState</code>在註記型別的時候需要把 modules的 <code>state</code>型別放入。</p>
 
-<pre><code>&lt;lazy-component v-if=&quot;false&quot;&gt;
+<p>如下範例：</p>
+
+<pre><code class="language-typescript">// @/store/index.ts
+import Vue from 'vue'
+import Vuex from 'vuex'
+// 子模組的 state
+import cart, { CartState } from './modules/cart/state'
+// 最外層的 state
+import appState, { AppState } from './state'
+
+Vue.use(Vuex)
+
+// 根節點的 state-tree
+export type RootState = AppState &amp; {
+  cart: CartState;
+}
+
+export default new Vuex.Store({
+  modules: {
+    cart
+  },
+  state: appState as RootState,
+  // 略
+})
 </code></pre>
 
-<p>這樣寫的話他是不會加入到dom當中的（但當v-if參數變為true時就會載入，這也是個不錯的方法）</p>
+<h3 id="action">Action</h3>
 
-<h2 id="結語">結語</h2>
+<p>vuex提供 <code>ActionContext&lt;State, RootState&gt;</code>提供給<code>context</code>做註記，泛型中有兩個參數分別是該模組的 <code>state</code>的型別以及 <code>rootState</code>的型別，如下：</p>
 
-<p>Lazy loading是一個使你的網站更有效減少容量的好方法，我們學到如何在Vue component當中使用lazy loading。下一個篇文章我會告訴你如何使用vue-router和動態路由減少你的Vue應用程式容量。</p>
+<pre><code class="language-typescript">import { ActionContext } from 'vuex'
+import { State } from './state.ts'
+import { RootState } from '../state.ts'
+
+const actions = {
+  checkout (context: ActionContext&lt;State, RootState&gt;, products: CartProduct[]) {
+    context.commit(types.CHECKOUT_REQUEST)
+    // ...
+  }
+}
+</code></pre>
+
+<p>解構的寫法</p>
+
+<pre><code class="language-typescript">import { Commit } from 'vuex'
+import { State } from './state.ts'
+
+const actions = {
+  checkout ({ commit: Commit, state: State }, products: CartProduct[]) {
+    context.commit(types.CHECKOUT_REQUEST)
+    // ...
+  }
+}
+</code></pre>
+
+<h3 id="mutation">Mutation</h3>
+
+<p>註記 payload的型別以及在  state.ts中註記的 state型別</p>
+
+<pre><code class="language-typescript">import { AddToCartPayload } from '../index.ts'
+import { State } from './state.ts'
+
+const mutations = {
+  addToCart (state: State, payload: AddToCartPayload) {
+    const product = state.all.find(p =&gt; p.id === payload.id)
+    // ...
+  }
+}
+</code></pre>
+
+<h3 id="getters">Getters</h3>
+
+<p>各別的 getters函式可使用 <code>Getter&lt;State, RootState&gt;</code>， getters模組物件需使用<code>GetterTree&lt;State, RootState&gt;</code></p>
+
+<pre><code class="language-typescript">// ./src/
+import { GetterTree, Getter } from 'vuex'
+import { State } from './index'
+import { RootState } from '@/store/index'
+
+const cartProducts: Getter&lt;State, RootState&gt; = (state: State) =&gt; {
+  return state.cart.added.map(shape =&gt; {
+    // ...
+  })
+}
+
+const getterTree: GetterTree&lt;State, RootState&gt; = {
+  cartProducts
+}
+
+export default getterTree
+</code></pre>
+
+<p>簡潔寫法：直接使用 getterTree把所有 getter函式寫在一起，就不用各別註記 getter函式的型別，這樣會更方便一些</p>
+
+<pre><code class="language-typescript">// ./src/
+import { GetterTree } from 'vuex'
+import { State } from './index'
+
+const getterTree: GetterTree&lt;State, any&gt; = {
+  cartProducts (state) =&gt; {
+    // state的型別 typescript會自行推斷出來
+    return state.cart.added.map(shape =&gt; {
+      // ...
+    })
+  }
+}
+
+export default getterTree
+</code></pre>
+
+<h2 id="component中使用-vuex">Component中使用 Vuex</h2>
+
+<p>首先，關於在 Vue2中 Component寫 Typescript雖然不是本文重點，不過既然提到了還是稍微說一下，這裡是極度強烈建議安裝 <a href="https://github.com/vuejs/composition-api">composition-api</a>，關於使用方式可參考我之前寫的「<a href="https://shangdeyou.github.io/2021/02/09/vue-option-based-component-with-typescript/">Vue2的 Option-Based Component中使用Typescript的簡易方式</a>」。你可以不需改變原本的 Option-Api寫法，就可以完完全全的解決原本在 Vue2中 Typescript中支援不良的問題；當然後既然都安裝 composition-api了，也可以直接使用新的 composition-api來開發。</p>
+
+<p>以下針對幾種常用的引入 Vuex方式來做說明：</p>
+
+<h3 id="1-mapstate-mapgetters-mapactions-mapmutations">1.mapState/mapGetters/mapActions/mapMutations</h3>
+
+<p>這個寫法是 Option-Api的寫法。很顯然他推導出來都會是 <code>any</code>型別，所以這種寫法可以直接放棄了。</p>
+
+<h3 id="2-this-store">2.this.$store</h3>
+
+<p>這個寫法是 Option-Api的寫法。完成文章上述所有的型別註記之後，他雖然推導的出一些基本的 Vuex型別，但推導不出 <code>state</code>的型別，在編輯器中滑鼠移過 <code>this.$store</code>上會發現，他推導出的型別是 <code>Store&lt;any&gt;</code>。看來這個可能還需要額外的一些工作才能把型別宣告到全域的 <code>$store</code>物件上。不過我覺得有點麻煩，就放棄嘗試了。</p>
+
+<h3 id="3-import-store">3.import store</h3>
+
+<p>這個是我覺得最合理的使用方式，雖然他也只推導的出 <code>state</code>，但我覺得這已經是一個很大的幫助了，寫法如下：</p>
+
+<pre><code class="language-typescript">import store from '@/store/index'
+
+store.state // 可推斷出型別
+store.dispatch('checkout', true) // function參數無法推斷型別
+</code></pre>
+
+<p>總結來說，使用 import store來引入 Vuex是最合理也簡單的方式，至於 <code>actions</code>和 <code>mutations</code>無法推導出型別這個問題，如果要解決的話應該可以嘗試寫 helper function來解決，不過這樣對我來說實在有點太過囉唆，所以我是選擇忽略這個小問題了。</p>
+
+<h2 id="參考來源">參考來源</h2>
+
+<p>Vue2.5+ Typescript 引入全面指南 - Vuex篇</p>
+
+<p><a href="https://segmentfault.com/a/1190000011864013">https://segmentfault.com/a/1190000011864013</a></p>
 
 
                 
@@ -400,13 +426,13 @@ components: { lazyComponent }
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/12/22/d3js-select-this/" data-toggle="tooltip" data-placement="top" title="從D3.js的select(this)探討的函式中的this指向">&larr;
+                        <a href="/2021/05/23/lib-of-redux-on-next/" data-toggle="tooltip" data-placement="top" title="Next.js上使用 Redux四兄弟">&larr;
                             Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2019/12/24/vue-optimization2/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)">Next
+                        <a href="/2021/06/24/vue-recursive-component/" data-toggle="tooltip" data-placement="top" title="Vue Recursive Component">Next
                             Post &rarr;</a>
                     </li>
                     

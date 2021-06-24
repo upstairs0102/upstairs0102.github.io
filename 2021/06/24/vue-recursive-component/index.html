@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
-    <meta property="og:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
-    <meta property="twitter:title" content="(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading" />
+    <meta name="title" content="Vue Recursive Component" />
+    <meta property="og:title" content="Vue Recursive Component" />
+    <meta property="twitter:title" content="Vue Recursive Component" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading-Thunder Boy</title>
+    <title>Vue Recursive Component-Thunder Boy</title>
 
-    <link rel="canonical" href="/2019/12/24/vue-optimization1/">
+    <link rel="canonical" href="/2021/06/24/vue-recursive-component/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -173,12 +173,8 @@
                             vue
                         </a>
                         
-                        <a class="tag" href="/tags/javascript" title="javascript">
-                            javascript
-                        </a>
-                        
                     </div>
-                    <h1>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading</h1>
+                    <h1>Vue Recursive Component</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -186,7 +182,7 @@
                             Thunder Boy
                          
                         on 
-                        2019-12-24, Tuesday
+                        2021-06-24, Thursday
                         
                         
                         
@@ -219,179 +215,97 @@
 <ul>
 <li>
 <ul>
-<li><a href="#譯者說明">譯者說明</a></li>
-<li><a href="#lazy-loading-vue-components">Lazy loading Vue components</a></li>
-<li><a href="#結語">結語</a></li>
+<li><a href="#case1-父子component是同樣的component">Case1 父子Component是同樣的Component</a></li>
+<li><a href="#case2-某component的父子component相同">Case2 某Component的父子Component相同</a>
+<ul>
+<li><a href="#1-globally-register-mycomponent">1.Globally register <code>MyComponent</code></a></li>
+<li><a href="#2-using-beforecreate">2.Using <code>beforeCreate</code></a></li>
+<li><a href="#3-move-the-import-into-a-lambda-function-within-the-components-object">3.Move the <code>import</code> into a lambda function within the <code>components</code> object</a></li>
+<li><a href="#4-dynamic-component">4.Dynamic Component</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
                 
                 
 
-<h2 id="譯者說明">譯者說明</h2>
+<p>當 Component遞迴呼叫自己時 - 也就是使用 <code>slot</code>並將同樣的 Component放進去的時候，如果沒有針對這種情形調整寫法就會報錯：</p>
 
-<p>最近使用Vue.js投入公司產品開發花了不少心血，關於前端的效能是一件很重要的事情，這個系列文有做了一些有趣的探討，原文作者似乎也還沒寫完，我先從第一篇開始翻起，原文在此：</p>
+<p><code>did you register the component correctly? For recursive components, make sure to provide the “name” option</code></p>
 
-<p><a href="https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019">https://itnext.io/vue-js-app-performance-optimization-part-1-introduction-to-performance-optimization-and-lazy-29e4ff101019</a></p>
+<p>這樣寫法稱之為 Recursive Component，在我研究之後分為以下兩種形態：</p>
 
-<hr />
+<ol>
+<li>父子Component是同樣的Component</li>
+<li>某Component的父子Component相同</li>
+</ol>
 
-<p>當行動優先導向成為標準、並且不確定性的網路環境也成為我們必須考慮的因素時，讓應用程式保持高速成為越來越困難的事情。在這個系列當中我會挖掘更深的Vue優化技術 – 我們在Vue Storefront當中所使用的技術，而你也可以用在你的Vue.js應用程式當中來讓他們瞬間讀取並且表現得平滑。我的目的是在這系列中對於Vue.js應用程式效能給出一個完整的指南。</p>
+<h2 id="case1-父子component是同樣的component">Case1 父子Component是同樣的Component</h2>
 
-<ul>
-<li>Part 1 – 介紹效能優化及lazy loading</li>
-<li>Part 2 – Lazy loading路由及第三方庫的反向模式(anti-pattern)</li>
-<li>Part 3 – Lazy loading Vuex模組</li>
-<li>Part 4 – Lazy loading單一Component</li>
-<li>Part 5 – Lazy loading函式庫和尋找最小集合</li>
-<li>Part 6 – 使用Service Worker cache</li>
-<li>Part 7 – 預讀取</li>
-</ul>
-
-<p>##Webpack打包如何運作？</p>
-
-<p>本系列中大部份的提示都是聚焦在使我們的js bundle更小。為了了解這是至關重要的，我們需要了解Webpack是如何把全部檔案打包來起的。</p>
-
-<p>當Webpack打包所有資源時會產生依賴樹，這是一個連結所有我們使用import引入檔案的圖型。假設我們在Webpack config中使用main.js作為特定入口，他就會是整個依賴樹的根節點。那每一個import到該檔案底下的js module都會成為圖型當中的葉節點，並且每一個import進該葉節點的module也成為他的葉節點。</p>
-
-<p>Wabpack使用這個依賴樹圖型偵測該納入打包輸出當中。打包出來會是一個包含所有依賴樹中的module的單一javascript檔案（或者多個，後面章節會寫）</p>
-
-<p>我們可以把這個進程繪製成以下如圖：</p>
-
-<p><img src="/article/20191224/20191224_1.png" alt="" /></p>
-
-<p>現在我們知道打包是如何運作的，很明顯的他會成長到專案內最大化的初始javascript打包檔案。檔案愈大代表使用者需花更多時間下載，也代表使用使用者更可能離開我們的網站。</p>
-
-<p>簡而言之，大部份的情況下愈大的打包=愈少的用戶。</p>
-
-<p>##Lazy loading</p>
-
-<p>所以為了改進我們的應用程式，當我們需要增加功能時該如何減少打包檔案的大小？當案很簡單-lazy loading和程式碼切割。</p>
-
-<p>從字面上來看lazy loading就是懶惰得只載入應用程式的一部份。另外一種說法就是-只載入我們真的需要的部份。程式碼切割只切割出這個載入的部份。</p>
-
-<p><img src="/article/20191224/20191224_2.png" alt="" /></p>
-
-<p>大部份的情況下當使用者進入網站時不需要javascript打包中的所有程式，就算我們有3個不同的路由位置而使用者無論如何都需要下載、解析、並執行打包程式-不論他們是否會需要用到。這是多麼浪費時間和力氣！</p>
-
-<p>Lazy loading允許我們切割打包並提供所需要的部份，使用者不需要浪費時間下載及解析他們不需要的程式。要看網站實際上使用到的javascript程式我們可以到開發者工具-&gt;cmd+shift+p -&gt;輸入”coverage”-&gt;點擊”錄製”，接著我們應該可以看到下載了多少實際上使用到的程式。</p>
-
-<p><img src="/article/20191224/20191224_3.png" alt="" /></p>
-
-<p>每一個被標成紅色的就是目前路由裡不需要並可以被延遲載入的程式，如果你有用到source map那你可以點選清單裡任何沒有被引用到的檔案。從以上觀察可知甚至vuejs.org也有很大的進步空間^_^。</p>
-
-<p>透過lazy loading特性的component和程式庫，我們砍掉了60%d Vue Storefront的打包檔案容量。</p>
-
-<p>OK，我們現在知道lazy loading是什麼而且有多實用了^_^，現在我們來看他可以如何用在我們的Vue.js應用程式。</p>
-
-<p>##Dynamic imports</p>
-
-<p>透過webpack的dynamic imports可以很輕易的延遲載入部份程式，我們來看他是如何運作並且和一般的import有什麼不同。</p>
-
-<p>如果我們使用一般的方式import JS module會像如下：</p>
-
-<pre><code>// main.js
- 
-import ModuleA from './module_a.js'
- 
-ModuleA.doStuff()
+<pre><code class="language-js">App
+  MyComponent
+    MyComponent
 </code></pre>
 
-<p>他會被加入到main.js的依賴樹中的葉節點並被打包進去。</p>
+<p>父層的<code>MyComponent</code>需要有<code>name</code>欄位，<code>name</code>的 value和 Component名稱一樣即可，不需要再額外 import Component進來。</p>
 
-<p>但如果我們只有在特定情況下才會用到ModuleA呢（比如說使用者互動的事件）？在最一開始的時候就打包進去不是一個好主題。我們需要一個方式告訴我們的應用程式何時該下載這個部份的程式。</p>
+<h2 id="case2-某component的父子component相同">Case2 某Component的父子Component相同</h2>
 
-<p>這也就是動態載入所能解決的問題！現在來看看以下例子：</p>
-
-<pre><code>//main.js
- 
-const getModuleA = () =&gt; import('./module_a.js')
- 
-// invoked as a response to some user interaction
- 
-getModuleA()
- 
-.then({ doStuff } =&gt; doStuff())
+<pre><code class="language-js">App
+  MyComponent
+    ADifferentComponent
+      MyComponent
 </code></pre>
 
-<p>來快速看一下會發生什麼事：</p>
+<p>參考這篇文章</p>
 
-<p>我們寫一個function回傳import()函式以取代直接引入module_a.js。現在webpack動態import進來的部份程式，除非函式被呼叫否則程式不會被import並下載。之後這段程式將只會在特定的操作中被下載下來。</p>
+<p><a href="https://stackoverflow.com/questions/49154490/did-you-register-the-component-correctly-for-recursive-components-make-sure-to">https://stackoverflow.com/questions/49154490/did-you-register-the-component-correctly-for-recursive-components-make-sure-to</a></p>
 
-<p>透過動態載入我們基本上隔離了特定的葉節點（在此例中為module_a），他會在我們決定載入的時候才加入依賴樹並下載（這暗示了我們同時也切割了module_a.js當中依賴的module）</p>
+<p>有三個方法</p>
 
-<p>我們來看另一個更好的例子來說明這個機制。假設我們有4個檔案：main.js、module_a.js、module_b.js、module_c.js，來了解動態載入是如何運作的，我們只需要main和module_a的原始碼：</p>
+<h3 id="1-globally-register-mycomponent">1.Globally register <code>MyComponent</code></h3>
 
-<pre><code>//main.js
- 
-import ModuleB from './mobile_b.js'
- 
-const getModuleA = () =&gt; import('./module_a.js')
- 
-getModuleA()
- 
-.then({ doStuff } =&gt; doStuff()
- 
-)
- 
-//module_a.js
- 
-import ModuleC from './module_c.js'
+<pre><code>vue.component(&quot;MyComponent&quot;, MyComponent)
 </code></pre>
 
-<p>把module_a作為一個動態載入用的module可以切割掉依賴樹中的module_a和他的子節點。當module_a動態載入時會連同裡面import的檔案一起載入。換句話說，我們可以建置了一個新的依賴圖的進入點。</p>
+<h3 id="2-using-beforecreate">2.Using <code>beforeCreate</code></h3>
 
-<p><img src="/article/20191224/20191224_4.png" alt="" /></p>
-
-<p>這就是這個依賴圖和打包會長的樣子。</p>
-
-<h2 id="lazy-loading-vue-components">Lazy loading Vue components</h2>
-
-<p>我們現在知道lazy loading是什麼並且為何需要了，現在是時候來看我們可以如何在Vue應用程式當中使用。</p>
-
-<p>好消息是，透過以上語法可以超級簡單的載入整個SFC（單文件Component-也就是.vue檔）、包含css和html。</p>
-
-<pre><code>const lazyComponent = () =&gt; import('Component.vue')
+<pre><code>beforeCreate: function () {
+  this.$options.components.MyComponent = require('./MyComponent.vue').default
+}
 </code></pre>
 
-<p>…只要這樣就搞定了！現在component只有在你呼叫他時才會載入。以下是最常使用動態載入Vue component的方法：</p>
+<h3 id="3-move-the-import-into-a-lambda-function-within-the-components-object">3.Move the <code>import</code> into a lambda function within the <code>components</code> object</h3>
 
-<ul>
-<li><p>把import寫成可呼叫的函式</p>
+<pre><code>components: {
+  MyComponent: () =&gt; import('./MyComponent.vue')
+}
+</code></pre>
 
-<pre><code>const lazyComponent = () =&gt; import('Component.vue')
- 
-lazyComponent()
-</code></pre></li>
+<p>其中(3)我測試過會有速度變慢的效能問題（當Component數量特別多且複雜的情況），(2)沒有試過所以不確定，不過理論上他也是 run-time動態載入的寫法，猜測應該會有一樣的問題</p>
 
-<li><p>component被呼叫後渲染</p></li>
-</ul>
+<p>後來我研究還有第四種方法：</p>
 
-<p>請注意lazyComponent函式只有在呼叫他時才會渲染進template。</p>
+<h3 id="4-dynamic-component">4.Dynamic Component</h3>
 
-<pre><code>&lt;template&gt;
-&lt;div&gt;
-&lt;lazy-component /&gt;
-&lt;/div&gt;
+<p>用<code>:is</code> (v2.x) / <code>v-is</code> (v3.x) 方法來動態載入 Component，並且避開使用 option - <code>components</code>來註冊 component。由於 import的寫法是在 build-time中引入程式，所以相較 (2) (3)的 dynamic import的寫法來說不會有效能問題。</p>
+
+<pre><code class="language-js">&lt;template&gt;
+	&lt;div :is=&quot;component&quot;&gt;&lt;/div&gt;
 &lt;/template&gt;
+
 &lt;script&gt;
-const lazyComponent = () =&gt; import('Component.vue')
+import MyComponent from './MyComponent.vue'
+
 export default {
-components: { lazyComponent }
+  data () {
+    return {
+      component: MyComponent
+    }
+  }
 }
 &lt;/script&gt;
 </code></pre>
-
-<p>例如：</p>
-
-<pre><code>&lt;lazy-component v-if=&quot;false&quot;&gt;
-</code></pre>
-
-<p>這樣寫的話他是不會加入到dom當中的（但當v-if參數變為true時就會載入，這也是個不錯的方法）</p>
-
-<h2 id="結語">結語</h2>
-
-<p>Lazy loading是一個使你的網站更有效減少容量的好方法，我們學到如何在Vue component當中使用lazy loading。下一個篇文章我會告訴你如何使用vue-router和動態路由減少你的Vue應用程式容量。</p>
 
 
                 
@@ -400,15 +314,10 @@ components: { lazyComponent }
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2019/12/22/d3js-select-this/" data-toggle="tooltip" data-placement="top" title="從D3.js的select(this)探討的函式中的this指向">&larr;
+                        <a href="/2021/06/24/vuex-with-typescript-in-vue2/" data-toggle="tooltip" data-placement="top" title="Vue2 的 Vuex使用 Typescript寫法">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2019/12/24/vue-optimization2/" data-toggle="tooltip" data-placement="top" title="(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
