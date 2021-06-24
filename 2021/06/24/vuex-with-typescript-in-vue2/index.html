@@ -248,7 +248,7 @@
 
 <p>Vuex v4.0版本以上大幅改善了對 Typescript的支援、以及對 composition-api的整合，但是 <a href="https://github.com/vuejs/vuex/blob/4.0/package.json#L55">Vuex v4.x版只支援 Vue3以上版本</a>。</p>
 
-<p>也就是說如果開發環境是 Vue v2.x版本的話，Vuex也就只能使用 v3.x版本。雖然說 Vuex v3.x版對於 Typescript的支援上也些限制和不順手，但只要做好註記 (annotation)的工作，基本上我覺得型別推導上還算蠻完整的，維獨 Component中要引入 Vuex的時候就會有些限制，只有 <code>state</code>可以型別推導，其餘 <code>mutation</code>/<code>action</code>等都會是 <code>any</code>型別。不過對我個人來說有 <code>state</code>型別推導就已經是相當實用，其他的就還是我可以忍受的範圍了。</p>
+<p>也就是說如果開發環境是 Vue v2.x版本的話，Vuex也就只能使用 v3.x版本。雖然說 Vuex v3.x版對於 Typescript的支援上也些限制和不順手，但只要做好註記 (annotation)的工作，基本上我覺得型別推導上還算蠻完整的，唯獨 Component中要引入 Vuex的時候就會有些限制，只有 <code>state</code>可以型別推導，其餘 <code>mutation</code>/<code>action</code>等都會是 <code>any</code>型別。不過對我個人來說有 <code>state</code>型別推導就已經是相當實用，其他的就還是我可以忍受的範圍了。</p>
 
 <h2 id="vuex-使用-typescript寫法">Vuex 使用 Typescript寫法</h2>
 
@@ -258,7 +258,7 @@
 
 <p>如下例子是名稱為 <code>cart</code>的模組的 <code>state</code>：</p>
 
-<pre><code class="language-typescript">// @/store/modules/cart/state.ts
+<pre><code class="language-js">// @/store/modules/cart/state.ts
 export type CartState = {
   added: {
     id: number
@@ -279,7 +279,7 @@ export default state
 
 <p>如下範例：</p>
 
-<pre><code class="language-typescript">// @/store/index.ts
+<pre><code class="language-js">// @/store/index.ts
 import Vue from 'vue'
 import Vuex from 'vuex'
 // 子模組的 state
@@ -307,7 +307,7 @@ export default new Vuex.Store({
 
 <p>vuex提供 <code>ActionContext&lt;State, RootState&gt;</code>提供給<code>context</code>做註記，泛型中有兩個參數分別是該模組的 <code>state</code>的型別以及 <code>rootState</code>的型別，如下：</p>
 
-<pre><code class="language-typescript">import { ActionContext } from 'vuex'
+<pre><code class="language-js">import { ActionContext } from 'vuex'
 import { State } from './state.ts'
 import { RootState } from '../state.ts'
 
@@ -321,7 +321,7 @@ const actions = {
 
 <p>解構的寫法</p>
 
-<pre><code class="language-typescript">import { Commit } from 'vuex'
+<pre><code class="language-js">import { Commit } from 'vuex'
 import { State } from './state.ts'
 
 const actions = {
@@ -336,7 +336,7 @@ const actions = {
 
 <p>註記 payload的型別以及在  state.ts中註記的 state型別</p>
 
-<pre><code class="language-typescript">import { AddToCartPayload } from '../index.ts'
+<pre><code class="language-js">import { AddToCartPayload } from '../index.ts'
 import { State } from './state.ts'
 
 const mutations = {
@@ -351,7 +351,7 @@ const mutations = {
 
 <p>各別的 getters函式可使用 <code>Getter&lt;State, RootState&gt;</code>， getters模組物件需使用<code>GetterTree&lt;State, RootState&gt;</code></p>
 
-<pre><code class="language-typescript">// ./src/
+<pre><code class="language-js">// ./src/
 import { GetterTree, Getter } from 'vuex'
 import { State } from './index'
 import { RootState } from '@/store/index'
@@ -371,7 +371,7 @@ export default getterTree
 
 <p>簡潔寫法：直接使用 getterTree把所有 getter函式寫在一起，就不用各別註記 getter函式的型別，這樣會更方便一些</p>
 
-<pre><code class="language-typescript">// ./src/
+<pre><code class="language-js">// ./src/
 import { GetterTree } from 'vuex'
 import { State } from './index'
 
@@ -405,7 +405,7 @@ export default getterTree
 
 <p>這個是我覺得最合理的使用方式，雖然他也只推導的出 <code>state</code>，但我覺得這已經是一個很大的幫助了，寫法如下：</p>
 
-<pre><code class="language-typescript">import store from '@/store/index'
+<pre><code class="language-js">import store from '@/store/index'
 
 store.state // 可推斷出型別
 store.dispatch('checkout', true) // function參數無法推斷型別
