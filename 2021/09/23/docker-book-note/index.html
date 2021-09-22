@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="「Docker這樣學才有趣」" />
+    <meta property="og:title" content="「Docker這樣學才有趣」" />
+    <meta property="twitter:title" content="「Docker這樣學才有趣」" />
+    
+
+    
+    <meta name="description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集">
+    <meta property="og:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    <meta property="twitter:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記、個人日常的照片集" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>「Docker這樣學才有趣」-Thunder Boy</title>
+
+    <link rel="canonical" href="/2021/09/23/docker-book-note/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/programing">programing</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/docker" title="docker">
+                            docker
+                        </a>
+                        
+                        <a class="tag" href="/tags/gitlab-ci/cd" title="gitlab-ci/cd">
+                            gitlab-ci/cd
+                        </a>
+                        
+                    </div>
+                    <h1>「Docker這樣學才有趣」</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        2021-06-24, Thursday
+                        
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#ch1-docker的能與不能">CH1 Docker的能與不能</a></li>
+<li><a href="#ch2-必學的-docker功能與指令">CH2 必學的 Docker功能與指令</a>
+<ul>
+<li><a href="#下載及啟用-image-映象檔">下載及啟用 Image（映象檔）</a></li>
+<li><a href="#查看啟動過的-container">查看啟動過的 Container</a></li>
+<li><a href="#停用和啟用-container">停用和啟用 Container</a></li>
+<li><a href="#詳細-container資訊">詳細 Container資訊</a></li>
+<li><a href="#一次作多個-container">一次作多個 Container</a></li>
+<li><a href="#搬移檔案">搬移檔案</a></li>
+<li><a href="#查看-container使用資源-cpu-記憶體">查看 Container使用資源（CPU、記憶體）</a></li>
+<li><a href="#查看-container的即時-log">查看 Container的即時 Log</a></li>
+</ul></li>
+<li><a href="#ch3-docker-container的進階操作">CH3 Docker Container的進階操作</a>
+<ul>
+<li><a href="#container-命名">Container 命名</a></li>
+<li><a href="#環境變數">環境變數</a></li>
+<li><a href="#docker-run-與-docker-create">docker run 與 docker create</a></li>
+<li><a href="#docker-kill-與-docker-stop">docker kill 與 docker stop</a></li>
+<li><a href="#執行-container內的程式或指令">執行 Container內的程式或指令</a></li>
+<li><a href="#自動移除-自動重新啟動">自動移除、自動重新啟動</a></li>
+<li><a href="#進入-container操作命令列">進入 Container操作命令列</a></li>
+<li><a href="#container綁定-ip">Container綁定 IP</a></li>
+<li><a href="#docker-network">docker network</a></li>
+<li><a href="#data-volume-docker-run直接指定本機路徑">Data Volume - docker run直接指定本機路徑</a></li>
+<li><a href="#data-volume-data-volumn-create">Data Volume - data volumn create</a></li>
+</ul></li>
+<li><a href="#ch4-各種自製-docker-image的方法">CH4 各種自製 Docker Image的方法</a>
+<ul>
+<li><a href="#從運行中的-container產生映像檔">從運行中的 Container產生映像檔</a></li>
+<li><a href="#dockerfile的-build指令">Dockerfile的 Build指令</a>
+<ul>
+<li><a href="#from">FROM</a></li>
+<li><a href="#env">ENV</a></li>
+<li><a href="#run">RUN</a></li>
+<li><a href="#expose">EXPOSE</a></li>
+<li><a href="#cmd">CMD</a></li>
+<li><a href="#entrypoint">ENTRYPOINT</a></li>
+<li><a href="#workdir">WORKDIR</a></li>
+<li><a href="#copy">COPY</a></li>
+<li><a href="#label">LABEL</a></li>
+<li><a href="#user">USER</a></li>
+<li><a href="#volume">VOLUME</a></li>
+<li><a href="#arg">ARG</a></li>
+</ul></li>
+<li><a href="#匯入-匯出-image檔">匯入/匯出 Image檔</a></li>
+<li><a href="#用-container匯出-image">用 Container匯出 Image</a></li>
+</ul></li>
+<li><a href="#ch5-利用-docker-compose管理多個-container">CH5 利用 Docker Compose管理多個 Container</a>
+<ul>
+<li><a href="#docker-compose-yml文件指令">docker-compose.yml文件指令</a></li>
+<li><a href="#常用指令">常用指令</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="前言">前言</h2>
+
+<p>這是我讀了「Docker這樣學才有趣」這本書其中第1章~第5章的筆記，這幾章包含了 Docker基本知識與指令、Dockerfiler以及 Docker Compose指令等，已經足以建置一般的 Docker Container以及自動化管理。不過docker-compose.yml文件指令的部份實在是太多了… 一時間筆記做不完，所以尚未寫好…</p>
+
+<p>後面的章節內容還有架設 Docker Registry，以及多個範例實作（也就是標題上說有趣的部份），就被我跳過了…</p>
+
+<h2 id="ch1-docker的能與不能">CH1 Docker的能與不能</h2>
+
+<p>Container（容器）的完整名稱應該是「Linux Containers」，指的是一組利用 Linux核心提供的技術來達到把程式或軟體「包裏」在一個可隔離且獨立運行的環境工具。</p>
+
+<p>Docker就是用來管理這些 Containers的工具</p>
+
+<p>Docker是一個完全免費（採用 Apache 2.0授權）的開發原始碼專案</p>
+
+<p><a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
+
+<p>↑ moby是容器框架，原本 github上的 docker專案已改名為 moby，而 Docker是使用 moby架構實作出來的產品</p>
+
+<p><a href="https://kknews.cc/zh-tw/tech/gv63368.html">https://kknews.cc/zh-tw/tech/gv63368.html</a></p>
+
+<p>版本及差異：</p>
+
+<ul>
+<li><p>Docker EE（Docker Enterprise Edition，企業版）：付費版</p></li>
+
+<li><p>Docker CE（Docker Community Edition，社群版）：免費版</p></li>
+
+<li><p>Docker Desktop：由於 Docker是基於 Linux的 Container工具，所以 Linux以外的作業系統 - Mac和 Windows必須安裝 Docker Desktop。其原理是在透過 Linux虛擬機器來運行 Container的。目前 Docker Desktop僅提供250以下小型公司免費版本，大型公司必須使用付費方案。</p></li>
+</ul>
+
+<h2 id="ch2-必學的-docker功能與指令">CH2 必學的 Docker功能與指令</h2>
+
+<h3 id="下載及啟用-image-映象檔">下載及啟用 Image（映象檔）</h3>
+
+<p>映像檔相關名詞：</p>
+
+<ul>
+<li>Docker Image：透過 Docker把要使用的軟體打包起來，打包的檔案稱為 Docker Image</li>
+<li>Docker Registry：用來存放 Docker Image供 Docker下載使用，可以是公開的也可以是內部私用的</li>
+<li>Docker Hub：Docker 官方提供的 Docker Registry</li>
+</ul>
+
+<p>常用指令：</p>
+
+<p><code>docker search &lt;Docker Image&gt;</code> 搜尋 Docker Image</p>
+
+<p><code>docker pull &lt;Docker Image&gt;</code> 下載 Docker Image</p>
+
+<p><code>docker images</code> 查看已下載過的 Docker Image</p>
+
+<p>啟動指令：</p>
+
+<p><code>docker run -p &lt;對外port&gt;:&lt;預設port&gt; -d</code></p>
+
+<p>例</p>
+
+<p><code>docker run -p 8080:80 -d nginx</code></p>
+
+<p>用 nginx的 docker image以 <code>Detach</code>的方式在主機 8080 port上提供服務</p>
+
+<p><strong>有 <code>-d</code>指令執行後會回傳 Container ID，會將程式執行在「背景」，如果沒有加 <code>-d</code>會將程式執行在「前景」</strong></p>
+
+<p>*** 解決 Container啟動後就結束的問題：**</p>
+
+<p>Container被啟動後，會和一般的程式一樣，在作業系統中被視為一支執行中的程序 (Process)，所以這個 Container就會像跑一支程式一樣跑完之後就會被結束掉。如果要順利可以使用的話，就需要在 Container裡啟用一個伺服器的程式（持續執行中的程式）讓 Container保持運行</p>
+
+<p><code>docker rmi &lt;Image名稱或 ID&gt;</code> 刪除 Docker Image</p>
+
+<p>Docker Image是一層一層疊出來的，不同的 Docker Image可能有共用到同一層的部份，所以移除掉某個 Docker Image後所拿回來的硬碟空間不一定會和看到或所想的一樣</p>
+
+<h3 id="查看啟動過的-container">查看啟動過的 Container</h3>
+
+<p><code>docker ps</code>指令查看狀態</p>
+
+<p>例：</p>
+
+<p><code>docker run -p 8080:80 -d nginx</code></p>
+
+<p><code>docker run -p 8080:80 nginx</code></p>
+
+<p>分別啟動一個前景執行和一個背景執行的 nginx，前景執行的 nginx會在 terminal中顯示 nginx的訊息。這時候另開 terminal使用 <code>docker ps</code>指令會看到兩個已啟動的 Container資訊</p>
+
+<p>按下 <code>Ctrl + C</code>會把前景執行的 nginx給中斷，這時候使用 <code>docker ps</code>指令查看會只看到一個已啟動的 Container資訊</p>
+
+<p><code>docker ps -a</code>中的 <code>-a</code>選項會把所有已經啟動過的 Container都列出來（不論是不是在運行）。所以以上面的例子即會看兩筆 Container資訊，其中一個是正在運行另一個是中斷運行（看 <code>status</code>欄位）</p>
+
+<p><code>docker ps -l</code>中的 <code>-l</code>選項會顯示最後一組建立的 Container資訊</p>
+
+<h3 id="停用和啟用-container">停用和啟用 Container</h3>
+
+<p><code>docker start &lt;Container ID&gt;</code></p>
+
+<p><code>docker stop &lt;Container ID&gt;</code></p>
+
+<p><code>docker restart &lt;Container ID&gt;</code> restart會先停止再啟動</p>
+
+<p><code>docker rm</code>移除 Container。如果確定狀態是 <code>Exited</code>的 Container已經沒有再使用的話，要使用 <code>docker rm</code>指令來移除（如 Container不是在停止狀態下移除會出現錯誤訊息）</p>
+
+<p>Container不會在被停用之後就移除掉，所以使用 <code>docker run</code>來新增 Container幾次後，用 <code>docker ps -a</code>指令就可以看到有許多已經沒有在運行的 Container。</p>
+
+<p><code>docker ps -s</code>查詢 Container佔用多少硬碟空間</p>
+
+<h3 id="詳細-container資訊">詳細 Container資訊</h3>
+
+<p><code>docker inspect &lt;Container ID&gt;</code> 詳細配置資訊</p>
+
+<p>可以進設定輸出格式及範圍，例 <code>docker inspect --format='{{json .State.Status}}' node-red-couchdb</code></p>
+
+<h3 id="一次作多個-container">一次作多個 Container</h3>
+
+<p>只要是可以用 Container ID進行操作的指令，都可以一次輸入多個 Container，包含 <code>docker start</code>, <code>docker stop</code>, <code>docker rm</code>…等</p>
+
+<p>例 <code>docker start &lt;Container ID&gt; &lt;Container ID&gt; &lt;Container ID&gt;</code></p>
+
+<h3 id="搬移檔案">搬移檔案</h3>
+
+<p>把檔案複製到 Container裡</p>
+
+<p><code>docker cp &lt;檔案來源路徑&gt; &lt;目的Container ID&gt;:&lt;目的路徑&gt;</code></p>
+
+<p>把檔案從 Container複製出來</p>
+
+<p><code>docker cp &lt;來源Container ID&gt;:&lt;檔案來源路徑&gt; &lt;目的路徑&gt;</code></p>
+
+<p>無論是運行中或停止中的 Container都可以進行操作</p>
+
+<h3 id="查看-container使用資源-cpu-記憶體">查看 Container使用資源（CPU、記憶體）</h3>
+
+<p><code>docker stats</code> 查看全部 Container</p>
+
+<p><code>docker stats &lt;Container ID&gt;</code> 查看指定 Container</p>
+
+<p>會以「即時」的方式呈現目前狀況資訊</p>
+
+<h3 id="查看-container的即時-log">查看 Container的即時 Log</h3>
+
+<p>當 Container是以 Detach模式（背景）執行時，沒有辦法在命令列上直接看到 Log資訊，這時就需要使用 <code>docker logs</code>指令才能看到 Log資訊</p>
+
+<p><code>docker logs &lt;Container ID&gt;</code> 可以看到指定的 Container Log資訊</p>
+
+<p>選項 <code>--tail</code>可以只顯示數幾行的資訊，例：</p>
+
+<p><code>docker logs &lt;Container ID&gt; --tail 2 76d1</code></p>
+
+<p>選項 <code>--since</code>可以只顯示倒數分鐘以前的資訊，例：</p>
+
+<p><code>docker logs &lt;Container ID&gt; --since 2m 76d1</code></p>
+
+<h2 id="ch3-docker-container的進階操作">CH3 Docker Container的進階操作</h2>
+
+<h3 id="container-命名">Container 命名</h3>
+
+<p><code>--name</code> 用來指定 Container名稱（沒有指定名稱時 Docker會自動隨機取名）</p>
+
+<p>搭配 docker run  <code>docker run --name &lt;Container名稱&gt;</code></p>
+
+<p>例</p>
+
+<pre><code>docker run --name nginx-hello -p 8080:80 -d nginx
+
+docker start nginx-hello
+</code></pre>
+
+<p>因為 Container的名稱必須是唯一的，因此每次用 docker run 指令啟動 Container都必須指定不同的名稱</p>
+
+<h3 id="環境變數">環境變數</h3>
+
+<p><code>-e</code> 用來設定變數值</p>
+
+<p>例 <code>dockr run -e &lt;變數名稱&gt;=&lt;變數值&gt; -p &lt;對外port&gt;:&lt;預設port&gt; -d &lt;Docker Image名稱&gt;</code></p>
+
+<p>mysql範例</p>
+
+<pre><code>$docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456789 -d mysql
+
+$docker exec -it mysql mysql -p
+Enter password:
+略
+</code></pre>
+
+<h3 id="docker-run-與-docker-create">docker run 與 docker create</h3>
+
+<p><code>docker create</code>需搭配 <code>docker start</code>指令才會啟動</p>
+
+<p><code>docker run</code>執行之後就會立即的運行</p>
+
+<h3 id="docker-kill-與-docker-stop">docker kill 與 docker stop</h3>
+
+<p><code>docker stop</code>：讓 Docker進入標準的關機程序；所有的程式會進入到各自的關機處理程序，等所有程式完成關機程序之後 Docker也進入自己的關機程序</p>
+
+<p><code>docker kill</code>：強迫進行 Docker的關機動作</p>
+
+<h3 id="執行-container內的程式或指令">執行 Container內的程式或指令</h3>
+
+<p>適用情況：有一種 Container的用途是被拿來當作軟體的工具包</p>
+
+<p>指令寫法：直接在 <code>docker run</code>的指令最後面加上想要執行的指令</p>
+
+<p>例，把本機資料夾 C:\downloads檔案清單列出來</p>
+
+<p><code>dockr run -v C:\downloads:/home ubuntu /bin/ls -l /home</code></p>
+
+<p>（先使用 <code>-v</code>指令在本機外掛資料夾，並使用 ls工具用 <code>-l</code>指令檢視）</p>
+
+<h3 id="自動移除-自動重新啟動">自動移除、自動重新啟動</h3>
+
+<p><code>--rm</code>：Container停止後就會自動移除</p>
+
+<p>例 <code>docker run --rm -v C:\downloads:/home ubuntu /bin/ls -l /home</code></p>
+
+<p><code>--restart</code>：讓 Container在不預期情況被停止時，依照 <code>--restart</code>的設定方式決定要不要自動重新啟動 Container（預設是 <code>no</code>）</p>
+
+<p>設定值：</p>
+
+<ul>
+<li><code>no</code></li>
+<li><code>always</code></li>
+<li><code>unless-stopped</code>：和 <code>always</code>一樣有服務中斷自動重啟的功能，但是重開機後就不重啟</li>
+<li><code>on-failure</code>：只在 Container的退出狀態代碼 (Exit Code)不是零 (Non-Zero)</li>
+</ul>
+
+<h3 id="進入-container操作命令列">進入 Container操作命令列</h3>
+
+<p>想要透過指令來操作 Container的話，只要能啟動 Container裡的 Shell程式就可以了，一般 Linux作業系統常用的 Shell程式是 bash這一支程式</p>
+
+<p>錯誤指令：</p>
+
+<p><code>docker run --rm --name nginx-cmd nginx /bin/bash</code></p>
+
+<p>要使用 <code>-it</code>（<code>-i</code>和<code>-t</code>的合併寫法）指令來進入能夠輸入指令（及能把執行結果送出來）的狀態</p>
+
+<p>正確指令：</p>
+
+<p><code>docker run -it --rm --name nginx-cmd nginx /bin/bash</code></p>
+
+<p><code>docker exec</code>：可以對已經在運行中的 Container要求執行指令</p>
+
+<p>範例</p>
+
+<pre><code>docker run --name nginx-cmd -d nginx
+
+docker exec -it nginx-cmd /bin/bash
+</code></pre>
+
+<h3 id="container綁定-ip">Container綁定 IP</h3>
+
+<p><code>-p</code>指定 Container所要綁定的 IP位址</p>
+
+<p>Docker預設會把 Container綁定到主機的 0.0.0.0</p>
+
+<p>對外服務的建議指令：</p>
+
+<p><code>docker run -p &lt;主機IP&gt;:&lt;主機port&gt;:&lt;Container port&gt; -d &lt;Docker Image&gt;</code></p>
+
+<p>例</p>
+
+<p><code>docker run -p 192.168.1.1:80:80 -d nginx</code></p>
+
+<h3 id="docker-network">docker network</h3>
+
+<p>傳統上會把伺服器和資料庫裝在同一個虛擬機器裡，在 Container上建議的做法是用 <code>docker network</code>建立一個 Docker網路，再把這兩套軟體分別啟動各自獨立的 Container到同一個 Docker網路之中</p>
+
+<p>例</p>
+
+<pre><code>docker network create &lt;網路名稱&gt;
+
+docker run --name --net=&lt;網路名稱&gt;
+</code></pre>
+
+<p>除了使用<code>--net</code>方式來連接多個 Container，也可以利用 Docker Compose工具來達到</p>
+
+<h3 id="data-volume-docker-run直接指定本機路徑">Data Volume - docker run直接指定本機路徑</h3>
+
+<p>Container運行產生的資料是會隨著 Container的消滅而消失，並且 Docker Container是採用一種層疊的方式來新增資料，所以每次有新增資料時就會產生一層新資料層疊加上去，而頻繁的寫入資料會產生大量的資料層而快速的吃掉硬碟空間。</p>
+
+<p><code>-v</code>：掛上外部的硬碟空間</p>
+
+<p>指令如下：</p>
+
+<p><code>docker run -v &lt;外部資料夾或檔案路徑&gt;:&lt;Container內部資料夾或檔案路徑&gt; -p &lt;對外port&gt;:&lt;預設port&gt; -d &lt;Docker Image&gt;</code></p>
+
+<p>例 - 資料夾</p>
+
+<p><code>docker run -v /var/www:/usr/share/nginx/html --name nginx-store -p 8080:80 -d nginx</code></p>
+
+<p>例 - 設定檔</p>
+
+<p><code>docker run -v /home/ayubiz/nginx.conf:/etc/nginx/nginx.conf -v /var/www:/usr/share/ginx/html --name nginx-store -p 8080:80 -d nginx</code></p>
+
+<h3 id="data-volume-data-volumn-create">Data Volume - data volumn create</h3>
+
+<p>使用 <code>dota volumn create</code>建立 Data Volumn可以更方便的操作和管理 Data Volumn</p>
+
+<p>例</p>
+
+<pre><code>$docker volumn create nginx-html
+$docker volumn ls
+略
+$docker run -v nginx-html:/usr/share/nginx/html --name nginx-vol -p 8080:80 -d nginx
+</code></pre>
+
+<p>如果要讓另一個 Container也使用相同的 Data Volumn的話，只要使用相同的 Data Volumn名稱掛載即可</p>
+
+<pre><code>$docker run -v nginx-html:/usr/share/nginx/html --name nginx-vol3 -p 8081:80 -d nginx
+</code></pre>
+
+<p>不過多個 Container共用同一個 Data Volumn時要注意避免共同更新同一個檔案，以免造成資料的混亂或錯誤。</p>
+
+<h2 id="ch4-各種自製-docker-image的方法">CH4 各種自製 Docker Image的方法</h2>
+
+<h3 id="從運行中的-container產生映像檔">從運行中的 Container產生映像檔</h3>
+
+<p><code>docker commit &lt;Container ID&gt; &lt;產出的 Docker Image名稱&gt;</code></p>
+
+<p>例</p>
+
+<pre><code>docker pull nginx
+docker run --name nginx-hello -p 8080:80 -d nginx
+docker cp index.html nginx-hello:/usr/share/nginx/html
+docker commit nginx-hello nginx-commit
+</code></pre>
+
+<p>在此例中即使先執行了 <code>docker stop</code>中止後仍然是可以執行 <code>docker commit</code>指令的，不過掛載在 Container上的儲空間是不會被存進到新產生的 Image</p>
+
+<h3 id="dockerfile的-build指令">Dockerfile的 Build指令</h3>
+
+<p>Dockerfile可以把他看成是一個腳本檔來看，他被用來明確的告訴 docker build指令在產生新 Image的時候所需要用到的資訊和步驟</p>
+
+<h4 id="from">FROM</h4>
+
+<p>指定要下載的 Image檔名稱</p>
+
+<p>例：</p>
+
+<pre><code>FROM node:14-alpine
+</code></pre>
+
+<h4 id="env">ENV</h4>
+
+<p>設定環境變數</p>
+
+<p>例：</p>
+
+<pre><code>ENV NODE_ENV=$deploy_env
+</code></pre>
+
+<h4 id="run">RUN</h4>
+
+<p>執行指令</p>
+
+<h4 id="expose">EXPOSE</h4>
+
+<p>指定 Container啟用的 port</p>
+
+<p>例：</p>
+
+<pre><code>EXPOSE 80 443
+</code></pre>
+
+<h4 id="cmd">CMD</h4>
+
+<p>Container啟動完成後要執行的指令。當同一個 Dockerfile裡有多個 <code>CMD</code>指令時，只有最後一個 <code>CMD</code>指令會有作用</p>
+
+<p>例：</p>
+
+<pre><code>CMD [&quot;nginx&quot;, &quot;-g&quot;, &quot;damon off;&quot;]
+</code></pre>
+
+<h4 id="entrypoint">ENTRYPOINT</h4>
+
+<p>Container啟動完成後要執行的指令，功能和 <code>CMD</code>類似，差異在於其不能在 <code>docker run</code>後面加入的指令來蓋掉 <code>ENTRYPOINT</code>指令所要求的啟動方式。也就是說他一定會被執行，且可以在 <code>docker run</code>後攜帶參數使用。</p>
+
+<p>當同一個 Dockerfile裡有多個 <code>ENTRYPOINT</code>指令時，只有最後一個 <code>ENTRYPOINT</code>指令會有作用。他可以和 <code>CMD</code>搭配使用</p>
+
+<h4 id="workdir">WORKDIR</h4>
+
+<p>指定執行指令的資料夾位置</p>
+
+<h4 id="copy">COPY</h4>
+
+<p>複製檔案到 Container當中。指令：<code>COPY &lt;來源檔路徑和檔名&gt; &lt;Container裡的完整路徑和檔名&gt;</code></p>
+
+<p>另外還有一個指令 <code>ADD</code>與 <code>COPY</code>相似，不過 <code>ADD</code>是將檔案放到 Image裡，主要的差異是在 <code>ADD</code>多了可以用網址指定來源檔和可以自動解開 tar壓縮檔的功能；官方比較建議使用 <code>COPY</code>指令。</p>
+
+<h4 id="label">LABEL</h4>
+
+<p>將 Image檔的作者、版本、描述及其他自訂資料儲存到新產生的 Image檔，而存入的資訊可透過 <code>docker image inspect</code>指令查看 <code>Labels</code>欄位</p>
+
+<p>指令：<code>LABEL &lt;欄位名稱&gt;:&quot;&lt;欄位值&gt;&quot; &lt;欄位名稱&gt;:&quot;&lt;欄位值&gt;&quot; &lt;欄位名稱&gt;:&quot;&lt;欄位值&gt;&quot; ...</code></p>
+
+<h4 id="user">USER</h4>
+
+<p>大部份的 Image檔都會使用最高權限的 root做為預設的使用者帳號，如果不想用 root作預設的使用者的話，可以用 <code>USER</code>指令指定帳號</p>
+
+<h4 id="volume">VOLUME</h4>
+
+<p>提供 Data Volume的掛載</p>
+
+<p>指令 <code>VOLUME [&quot;&lt;掛載點的資料夾路徑&gt;&quot;, &quot;&lt;掛載點的資料夾路徑&gt;&quot; ...]</code> 或 <code>VOLUME &lt;掛載點的資料夾路徑&gt; &lt;掛載點的資料夾路徑&gt; ...</code></p>
+
+<h4 id="arg">ARG</h4>
+
+<p>可以讓 <code>docker build</code>指令利用 <code>--build-arg</code>選項傳入參數到 Dockerfile裡</p>
+
+<p>指令 <code>ARG &lt;參數名稱&gt;</code> 或  <code>ARG &lt;參數名稱&gt;=&lt;預設值&gt;</code></p>
+
+<h3 id="匯入-匯出-image檔">匯入/匯出 Image檔</h3>
+
+<p>匯出指令： <code>docker save -o &lt;匯出的檔案名稱.tar&gt; &lt;要匯出的 Image名稱&gt;:&lt;版本&gt;</code></p>
+
+<p><code>docker save</code>匯出的檔案格式為 tar壓縮檔，名稱可加上 <code>.tar</code>也可不加</p>
+
+<p>匯入指令：<code>docker load -i &lt;之前匯出的Image.tar&gt;</code> 或<code>docker load &lt; &lt;之前匯出的Image.tar&gt;</code></p>
+
+<h3 id="用-container匯出-image">用 Container匯出 Image</h3>
+
+<p>這種方式不是將運行中的 Container整個匯出，只是將 Container內部使用中的檔案系統匯出</p>
+
+<p>匯出指令 <code>docker export -o &lt;匯出的檔案名稱.tar&gt; &lt;Container ID&gt;</code>或 <code>docker export &lt;Container ID&gt; &gt; &lt;匯出的檔案名稱.tar&gt;</code></p>
+
+<p>匯入指令 <code>docker import &lt;匯入的檔案名稱與路徑&gt; &lt;映像檔名稱:版本標籤&gt;</code></p>
+
+<h2 id="ch5-利用-docker-compose管理多個-container">CH5 利用 Docker Compose管理多個 Container</h2>
+
+<p>Docker和 Docker Compose是兩個各自獨立的程式，Docker Compose需要額外安裝</p>
+
+<p>主要功能和使用情境：</p>
+
+<ul>
+<li>管理多個 Container</li>
+<li>自動化（透過將 docker run的設定放進 docker-compose.yml的方式達到更彈性與自動化的部署）</li>
+</ul>
+
+<h3 id="docker-compose-yml文件指令">docker-compose.yml文件指令</h3>
+
+<p>（指令太多了一時間筆記不完，沒實際操作也吸收不了，所以就先跳過）</p>
+
+<p>頂層指令：</p>
+
+<p>version</p>
+
+<p>services</p>
+
+<p>volumes</p>
+
+<p>networks</p>
+
+<p>configs</p>
+
+<p>scerets</p>
+
+<h3 id="常用指令">常用指令</h3>
+
+<p><code>docker-compose</code>的指令幾乎是和 <code>docker</code>的指令相同，不過 <code>docker-compose</code>指令的操作都是基於 <code>docker-compose.yml</code>的內容，所以也就可以更容易的進行批次操作。另外，<code>docker-compose</code>指令多是以  <code>docker-compose.yml</code>檔案裡的 service名稱來做為參數使用，不直接給 Container的名稱</p>
+
+<p><code>-f</code> 選項指定 docker-compose.yml檔案路徑和名稱，例：</p>
+
+<pre><code>docker-compose -f ~/node-red/docker-compose.yml config -q
+</code></pre>
+
+<p><code>docker-compose config</code>：檢視檔案內容</p>
+
+<p><code>docker-compose build</code>：使用 Dockerfile產生 Docker Image</p>
+
+<p><code>docker-compose pull &lt;Image&gt;</code> 或 <code>docker-compose pull</code>：指定取得一個或多個 Image（ 如未指定則下載所有 docker-compose.yml檔所有指定的 Image檔），例：</p>
+
+<pre><code>docker-compose pull node-red db
+</code></pre>
+
+<p><code>start</code>, <code>stop</code>, <code>restart</code>, <code>pause</code>, <code>unpause</code>, <code>kill</code>：對指定或者全部 Container進行操作</p>
+
+<p>例：</p>
+
+<pre><code># 停止指定 Container
+docker-compose stop node-red db
+# 停止全部 Container
+docker-compose stop
+</code></pre>
+
+<p><code>docker-compose rm</code>：和 <code>docker rm</code>指令相同，可以用來移除已經停止運行的 Container</p>
+
+<p><code>docker-compose run</code>：和 <code>docker run</code>指令相同，可以用來啟動 Container</p>
+
+<p><code>docker-compose up</code>：最常使用的指令，用來啟動所有的服務</p>
+
+<p><code>docker-compose up</code>的常用選項：</p>
+
+<ul>
+<li><code>-d</code>： 在背景模式下執行</li>
+<li><code>--no-recreate</code>： 不需要重建每個服務所使用的 Container</li>
+<li><code>--force-recreate</code>：無論 docker-compose.yml或 Image檔案有無調整或改變，都強迫執行重新建立服務所使用的 Container的動作</li>
+</ul>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/05/23/lib-of-redux-on-next/" data-toggle="tooltip" data-placement="top" title="Next.js上使用 Redux四兄弟">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2021/06/24/vuex-with-typescript-in-vue2/" data-toggle="tooltip" data-placement="top" title="Vue2 的 Vuex使用 Typescript寫法">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thunderboy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy 2021
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>
