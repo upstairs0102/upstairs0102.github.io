@@ -6,10 +6,28 @@
     <description>Recent content in Programing on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Sep 2021 16:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/categories/programing/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue &amp; React差異觀察</title>
+      <link>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</link>
+      <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</guid>
+      <description>以前幫公司協助面試過新人，早期我們在職缺條件上沒有特別列出需要有什麼前端框架的經驗，所以曾經有遇過背景是 react的受試者問說，為什麼我們是</description>
+    </item>
+    
+    <item>
+      <title>瀑布或敏捷開發的選擇？三眼怪Podcast筆記</title>
+      <link>https://shangdeyou.github.io/2021/12/14/scrum-and-waterfall/</link>
+      <pubDate>Tue, 14 Dec 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/12/14/scrum-and-waterfall/</guid>
+      <description>最近聽了「產品三眼怪」的一集 Podcast： 【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？，覺得還不錯，我雖然是工程師但</description>
+    </item>
     
     <item>
       <title>「Docker這樣學才有趣」讀書筆記</title>

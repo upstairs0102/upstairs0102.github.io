@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="" />
-    <meta property="og:title" content="" />
-    <meta property="twitter:title" content="" />
+    <meta name="title" content="Vue &amp; React差異觀察" />
+    <meta property="og:title" content="Vue &amp; React差異觀察" />
+    <meta property="twitter:title" content="Vue &amp; React差異觀察" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Posts-Thunder Boy</title>
+    <title>Vue &amp; React差異觀察-Thunder Boy</title>
 
-    <link rel="canonical" href="/post/">
+    <link rel="canonical" href="/2021/12/14/difference-between-vue-and-react/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -156,14 +156,42 @@
 
 
 
-<header class="intro-header" style="background-image: url('/img/banner_48086798638_1cf5aa400c_o.jpg')">
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Thunder Boy </h1>
-                    
-		    <span class="subheading">這裡是一個部落格、程式語言的學習筆記、個人日常的照片集</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        <a class="tag" href="/tags/react" title="react">
+                            react
+                        </a>
+                        
+                    </div>
+                    <h1>Vue &amp; React差異觀察</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        2021-12-14, Tuesday
+                        
+                        
+                        
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -176,13 +204,49 @@
 <article>
     <div class="container">
         <div class="row">
+
             
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-         	
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                
+                
+                <p>以前幫公司協助面試過新人，早期我們在職缺條件上沒有特別列出需要有什麼前端框架的經驗，所以曾經有遇過背景是 react的受試者問說，為什麼我們是選擇框架的時候是 vue而不是 react，當時我就已經能夠很清楚得回答這個問題了，不過最近我對 react的了解有更加深入了之後，我對這有了一些新的想法…</p>
+
+<ol>
+<li><p>最大的差異就是思考邏輯和 design pattern的不同，簡單區分 react比較多 functional programing，vue 比較多 observer pattern。很多人說 react更自由、vue更簡單，但就我的感覺自從 vue3推出以後以及 react增加 hooks功能以後，兩者其實愈來愈像了，實務上我幾乎還沒遇過什麼 react做的到但 vue做不到的事（只是做法會不一樣）（最近 react18的 streaming HTML，vue確實沒有）、react也不像以前那麼麻煩以及那麼多不同門派。</p></li>
+
+<li><p>我還是覺得react的開發成本更高（缺點先講但後面我會補上優點啦 XD），要說明這件事可能需要寫成一整篇文章才講的完，不過我可以列幾個我感受最強烈的差異：(1) React的 controlled component是將狀態交給父層來管理，不像 vue可以簡單的讓 component自己在內部管理，而父層直接透過雙向綁定來同步（響應）資料即可，React的單向資料流特性對於大量表單元件的系統裡造成很大的麻煩，光這件事就足以讓我慶幸當初在公司內選擇框架的時候還好沒有選擇 react（我們公司很多系統類的外包專案） (2) vue因為原本就是 observer pattern為主要的設計模式，所以監聽狀態變更更加的容易且簡潔，而 react需要針對每一個狀態去處理 side effect會更加麻煩許多 (3) react 的設計風格會展現在每一個地方，所以相關的套件、框架，每一件事情就是會比 vue麻煩一點點，但很多的一點點累加起來就是麻煩許多，而且程式碼裡會在每一個角落裡充斥著跟業務邏輯無關的程式碼…</p></li>
+
+<li><p>react的 functional programing風格也表現在樣式的編寫上，所以主流是以 css in js 的方式在編寫樣式，也就是說將 css寫成 js，包進各別的 component內。簡單來說，vue是 MVVM的設計模式，所以會很明確的將樣板和程式邏輯分開，而 react是將樣板和程式邏輯寫在一起。這件事會跟隨著團隊的分工以及流程上有所影響 - 在分工上「切版」是交由設計師來做的團隊裡，vue來開發會更適合，而 react更適合交由工程師來進行「切版」。如果要深入探究的話其實還有很多可以討論的地方，之前也有看過國外有文章在討論有人認為 css preprocessor會比 css in js來得更優，因為css in js能做到的 css preprocessor全部都做得到，沒有理由寫成 javascript；但我個人的觀點是，工程師普遍對於 scss/less這樣的工具很少能玩得神乎其技的，直接寫成 js反而更友善一些。</p></li>
+
+<li><p>基於以上第2點及3點的理由，如果是以專案型式或者後台系統來說我覺得選擇 react會是個錯誤的選擇… vue或 angular會更加合適（另外，vue對於無腦暴力開發模式有種說不出的好用，也適合junior或全端工程師快速上手開發）。</p></li>
+
+<li><p>前面我吐槽 react的點，如果是放在產品類型的系統上，其實多增加的成本其實也不太算真正的成本，以一個要長期維護/產品迭代的系統來說真正顯注的成本可能是在維護/測試/重構等等的… 另外，由於 react的 functional programing特性下，react更傾向把所有的東西視為 function，所以react幾乎都是在寫 js而用到較少量的 api，也就比 vue更有機會寫出符合自己需求的特殊功能或架構；而反過來說 vue更傾向把不同的功能提供不同的 Vue instance的 api，雖然開發前期簡單好用，但在製作一些進階功能的時候也必須花費更多時間在了解 vue的 api的一些原理和特性（不見得是能直接透過文件了解，有點吃開發經驗）</p></li>
+
+<li><p>關於前一點所提到的 react的優點，其實一個好的 vue專案實踐我覺得也可以做到同樣的水準。但我覺得更多的是因為 react天生的「彈性」、以及早期開發者大神多，所以會有很多非常有開創性又很潮的新 idea，而 vue就得等到一兩年之後才會「致敬」（也不能說抄啦 XD）過去做出類似的功能，像是最近 react18的 streaming HTML不知道什麼時候 vue才會有… 但反過來說，react常常會有主流的寫法變來變去（以前流行 higher order component，現在寫 hooks）、主流的套件也常異主（以前用 redux，最近 facebook出的 recoil似乎也蠻強的），而 vue官方提供的解決方案就非常好用了，所以也不太會有其他潮流上的變動，比較不會有選擇障礙、或者擔心會不會現在選用的作法等到明年就退流行了…</p></li>
+</ol>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2021/12/14/scrum-and-waterfall/" data-toggle="tooltip" data-placement="top" title="瀑布或敏捷開發的選擇？三眼怪Podcast筆記">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
                 
 <div id="disqus-comment"></div>
 
@@ -236,7 +300,7 @@
                         
                         
                         <a href="/tags/javascript" title="javascript">
-                        javascript
+                            javascript
                         </a>
                         
                         
@@ -246,7 +310,7 @@
                         
                         
                         <a href="/tags/react" title="react">
-                        react
+                            react
                         </a>
                         
                         
@@ -258,7 +322,7 @@
                         
                         
                         <a href="/tags/vue" title="vue">
-                        vue
+                            vue
                         </a>
                         
                         
@@ -293,7 +357,7 @@
                 <ul class="list-inline text-center">
                    
                    <li>
-                       <a href='/post/index.xml' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy" >
                            <span class="fa-stack fa-lg">
                                <i class="fa fa-circle fa-stack-2x"></i>
                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>

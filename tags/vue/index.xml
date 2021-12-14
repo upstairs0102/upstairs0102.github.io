@@ -6,10 +6,19 @@
     <description>Recent content in vue on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Jun 2021 03:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://shangdeyou.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vue &amp; React差異觀察</title>
+      <link>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</link>
+      <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
+      
+      <guid>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</guid>
+      <description>以前幫公司協助面試過新人，早期我們在職缺條件上沒有特別列出需要有什麼前端框架的經驗，所以曾經有遇過背景是 react的受試者問說，為什麼我們是</description>
+    </item>
     
     <item>
       <title>Vue Recursive Component</title>

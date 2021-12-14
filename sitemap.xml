@@ -4,7 +4,52 @@
   
   <url>
     <loc>https://shangdeyou.github.io/categories/</loc>
-    <lastmod>2021-09-22T16:30:00+00:00</lastmod>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/post/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/categories/programing/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/tags/react/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/tags/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/tags/vue/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</loc>
+    <lastmod>2021-12-14T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/tags/scrum/</loc>
+    <lastmod>2021-12-14T12:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://shangdeyou.github.io/2021/12/14/scrum-and-waterfall/</loc>
+    <lastmod>2021-12-14T12:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -18,33 +63,8 @@
   </url>
   
   <url>
-    <loc>https://shangdeyou.github.io/post/</loc>
-    <lastmod>2021-09-22T16:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shangdeyou.github.io/categories/programing/</loc>
-    <lastmod>2021-09-22T16:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shangdeyou.github.io/tags/</loc>
-    <lastmod>2021-09-22T16:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shangdeyou.github.io/</loc>
-    <lastmod>2021-09-22T16:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://shangdeyou.github.io/2021/09/23/docker-book-note/</loc>
     <lastmod>2021-09-22T16:30:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shangdeyou.github.io/tags/vue/</loc>
-    <lastmod>2021-06-24T03:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -79,11 +99,6 @@
   
   <url>
     <loc>https://shangdeyou.github.io/2021/05/23/lib-of-redux-on-next/</loc>
-    <lastmod>2021-05-23T02:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://shangdeyou.github.io/tags/react/</loc>
     <lastmod>2021-05-23T02:00:00+00:00</lastmod>
   </url>
   
