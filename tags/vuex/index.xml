@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vuex on Thunder Boy</title>
-    <link>https://shangdeyou.github.io/tags/vuex/</link>
+    <link>https://upstairs0102.github.io/tags/vuex/</link>
     <description>Recent content in vuex on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 24 Jun 2021 02:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://shangdeyou.github.io/tags/vuex/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://upstairs0102.github.io/tags/vuex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vue2 的 Vuex使用 Typescript寫法</title>
-      <link>https://shangdeyou.github.io/2021/06/24/vuex-with-typescript-in-vue2/</link>
+      <link>https://upstairs0102.github.io/2021/06/24/vuex-with-typescript-in-vue2/</link>
       <pubDate>Thu, 24 Jun 2021 02:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/06/24/vuex-with-typescript-in-vue2/</guid>
+      <guid>https://upstairs0102.github.io/2021/06/24/vuex-with-typescript-in-vue2/</guid>
       <description>前言 Vuex v4.0版本以上大幅改善了對 Typescript的支援、以及對 composition-api的整合，但是 Vuex v4.x版只支援 Vue3以上</description>
     </item>
     

@@ -2,183 +2,183 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Thunder Boy</title>
-    <link>https://shangdeyou.github.io/post/</link>
+    <link>https://upstairs0102.github.io/post/</link>
     <description>Recent content in Posts on Thunder Boy</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://shangdeyou.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://upstairs0102.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vue &amp; React差異觀察</title>
-      <link>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</link>
+      <link>https://upstairs0102.github.io/2021/12/14/difference-between-vue-and-react/</link>
       <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/12/14/difference-between-vue-and-react/</guid>
+      <guid>https://upstairs0102.github.io/2021/12/14/difference-between-vue-and-react/</guid>
       <description>以前幫公司協助面試過新人，早期我們在職缺條件上沒有特別列出需要有什麼前端框架的經驗，所以曾經有遇過背景是 react的受試者問說，為什麼我們是</description>
     </item>
     
     <item>
       <title>瀑布或敏捷開發的選擇？三眼怪Podcast筆記</title>
-      <link>https://shangdeyou.github.io/2021/12/14/scrum-and-waterfall/</link>
+      <link>https://upstairs0102.github.io/2021/12/14/scrum-and-waterfall/</link>
       <pubDate>Tue, 14 Dec 2021 12:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/12/14/scrum-and-waterfall/</guid>
+      <guid>https://upstairs0102.github.io/2021/12/14/scrum-and-waterfall/</guid>
       <description>最近聽了「產品三眼怪」的一集 Podcast： 【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？，覺得還不錯，我雖然是工程師但</description>
     </item>
     
     <item>
       <title>「Docker這樣學才有趣」讀書筆記</title>
-      <link>https://shangdeyou.github.io/2021/09/23/docker-book-note/</link>
+      <link>https://upstairs0102.github.io/2021/09/23/docker-book-note/</link>
       <pubDate>Wed, 22 Sep 2021 16:30:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/09/23/docker-book-note/</guid>
+      <guid>https://upstairs0102.github.io/2021/09/23/docker-book-note/</guid>
       <description>前言 這是我讀了「Docker這樣學才有趣」這本書其中第1章~第5章的筆記，這幾章包含了 Docker基本知識與指令、Dockerfiler以及</description>
     </item>
     
     <item>
       <title>Vue Recursive Component</title>
-      <link>https://shangdeyou.github.io/2021/06/24/vue-recursive-component/</link>
+      <link>https://upstairs0102.github.io/2021/06/24/vue-recursive-component/</link>
       <pubDate>Thu, 24 Jun 2021 03:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/06/24/vue-recursive-component/</guid>
+      <guid>https://upstairs0102.github.io/2021/06/24/vue-recursive-component/</guid>
       <description>當 Component遞迴呼叫自己時 - 也就是使用 slot並將同樣的 Component放進去的時候，如果沒有針對這種情形調整寫法就會報錯： did you register</description>
     </item>
     
     <item>
       <title>Vue2 的 Vuex使用 Typescript寫法</title>
-      <link>https://shangdeyou.github.io/2021/06/24/vuex-with-typescript-in-vue2/</link>
+      <link>https://upstairs0102.github.io/2021/06/24/vuex-with-typescript-in-vue2/</link>
       <pubDate>Thu, 24 Jun 2021 02:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/06/24/vuex-with-typescript-in-vue2/</guid>
+      <guid>https://upstairs0102.github.io/2021/06/24/vuex-with-typescript-in-vue2/</guid>
       <description>前言 Vuex v4.0版本以上大幅改善了對 Typescript的支援、以及對 composition-api的整合，但是 Vuex v4.x版只支援 Vue3以上</description>
     </item>
     
     <item>
       <title>Next.js上使用 Redux四兄弟</title>
-      <link>https://shangdeyou.github.io/2021/05/23/lib-of-redux-on-next/</link>
+      <link>https://upstairs0102.github.io/2021/05/23/lib-of-redux-on-next/</link>
       <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/05/23/lib-of-redux-on-next/</guid>
+      <guid>https://upstairs0102.github.io/2021/05/23/lib-of-redux-on-next/</guid>
       <description>前言 身為使用 Vue.js的開發者，最近在研究 React.js以及 Next.js，原本以為有了使用 Vuex（和 Redux 一樣取自 Flux的概念發展出來</description>
     </item>
     
     <item>
       <title>相容 Vue2及 Vue3環境的 Component寫法</title>
-      <link>https://shangdeyou.github.io/2021/02/09/compatible-vue2-and-vue3/</link>
+      <link>https://upstairs0102.github.io/2021/02/09/compatible-vue2-and-vue3/</link>
       <pubDate>Tue, 09 Feb 2021 03:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/02/09/compatible-vue2-and-vue3/</guid>
+      <guid>https://upstairs0102.github.io/2021/02/09/compatible-vue2-and-vue3/</guid>
       <description>前言 理論上 Vue3.x大多數的寫法是有向下相容 Vue2.x的寫法，所以理論上.vue檔Component的寫法只要同時符合 Vue3.x和 Vu</description>
     </item>
     
     <item>
       <title>Vue2的 Option-Based Component中使用Typescript的簡易方式</title>
-      <link>https://shangdeyou.github.io/2021/02/09/vue-option-based-component-with-typescript/</link>
+      <link>https://upstairs0102.github.io/2021/02/09/vue-option-based-component-with-typescript/</link>
       <pubDate>Tue, 09 Feb 2021 02:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/02/09/vue-option-based-component-with-typescript/</guid>
+      <guid>https://upstairs0102.github.io/2021/02/09/vue-option-based-component-with-typescript/</guid>
       <description>前言 之前使用 Vue2.x開發時又想使用 Typescript，當時遇到的困擾是… Component使用 Typescript時根本就吃不到 thi</description>
     </item>
     
     <item>
       <title>Vue Option &amp; Composition Api 寫法對照範例</title>
-      <link>https://shangdeyou.github.io/2021/02/09/vue-option-and-composition-api-compare/</link>
+      <link>https://upstairs0102.github.io/2021/02/09/vue-option-and-composition-api-compare/</link>
       <pubDate>Tue, 09 Feb 2021 01:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2021/02/09/vue-option-and-composition-api-compare/</guid>
+      <guid>https://upstairs0102.github.io/2021/02/09/vue-option-and-composition-api-compare/</guid>
       <description>使用Vue2.x開發了一段時間，最近在研究升級Vue3.0之後新的寫法。雖然說新的 Composition Api是一大特點，但官方好像也沒有將舊的Option寫法</description>
     </item>
     
     <item>
       <title>Vue父子組件資料流設計 (3) 雙向綁定–大組件</title>
-      <link>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-3/</link>
+      <link>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-3/</link>
       <pubDate>Sat, 09 May 2020 00:00:02 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-3/</guid>
+      <guid>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-3/</guid>
       <description>落落長的前言 雖然說Vue上手容易，就以我來說我剛開始學習的時候幾乎是網路上看了幾篇文章就開始寫了，但是後來就吃了很多悶虧，慢慢在各專案中累積</description>
     </item>
     
     <item>
       <title>Vue父子組件資料流設計 (2) 雙向綁定–通用組件</title>
-      <link>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-2/</link>
+      <link>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-2/</link>
       <pubDate>Sat, 09 May 2020 00:00:01 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-2/</guid>
+      <guid>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-2/</guid>
       <description>落落長的前言 雖然說Vue上手容易，就以我來說我剛開始學習的時候幾乎是網路上看了幾篇文章就開始寫了，但是後來就吃了很多悶虧，慢慢在各專案中累積</description>
     </item>
     
     <item>
       <title>Vue父子組件資料流設計 (1) 單向傳遞</title>
-      <link>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-1/</link>
+      <link>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-1/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/05/09/vue-component-dataflow-1/</guid>
+      <guid>https://upstairs0102.github.io/2020/05/09/vue-component-dataflow-1/</guid>
       <description>落落長的前言 雖然說Vue上手容易，就以我來說我剛開始學習的時候幾乎是網路上看了幾篇文章就開始寫了，但是後來就吃了很多悶虧，慢慢在各專案中累積</description>
     </item>
     
     <item>
       <title>簡單看Javascript的傳值以及傳參考</title>
-      <link>https://shangdeyou.github.io/2020/02/28/js-call-by-reference/</link>
+      <link>https://upstairs0102.github.io/2020/02/28/js-call-by-reference/</link>
       <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/02/28/js-call-by-reference/</guid>
+      <guid>https://upstairs0102.github.io/2020/02/28/js-call-by-reference/</guid>
       <description>這是Javascript的一個經典的觀念題–「傳值」以及「傳參考」(call by value/call by reference，或者pass by value/pass by reference)</description>
     </item>
     
     <item>
       <title>不需花錢將Gitbook(v2)架設在Gitlab Pages上</title>
-      <link>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</link>
+      <link>https://upstairs0102.github.io/2020/02/23/gitlab_pages_gitbook/</link>
       <pubDate>Sun, 23 Feb 2020 01:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/02/23/gitlab_pages_gitbook/</guid>
+      <guid>https://upstairs0102.github.io/2020/02/23/gitlab_pages_gitbook/</guid>
       <description>gitbook是一個使用markdown文件就可以編譯成網頁的工具，非常適合拿來編寫電子書，也有需多工程師喜歡用來編輯技術文件，在一兩年前有</description>
     </item>
     
     <item>
       <title>前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）</title>
-      <link>https://shangdeyou.github.io/2020/02/23/pdfmake-chinese-font/</link>
+      <link>https://upstairs0102.github.io/2020/02/23/pdfmake-chinese-font/</link>
       <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2020/02/23/pdfmake-chinese-font/</guid>
+      <guid>https://upstairs0102.github.io/2020/02/23/pdfmake-chinese-font/</guid>
       <description>工作上有需要在前端將內容生成PDF下載的功能，在同事的推薦下使用pdfmake這個套件。 不過這個套件有個問題，他的預設字型是英文字型，而且似</description>
     </item>
     
     <item>
       <title>(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules</title>
-      <link>https://shangdeyou.github.io/2019/12/24/vue-optimization3/</link>
+      <link>https://upstairs0102.github.io/2019/12/24/vue-optimization3/</link>
       <pubDate>Tue, 24 Dec 2019 16:04:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2019/12/24/vue-optimization3/</guid>
+      <guid>https://upstairs0102.github.io/2019/12/24/vue-optimization3/</guid>
       <description>在前一個部份我們學到可以大幅度改善你的應用程式效能的模式 – 透過路由來切割程式碼。僅管透過路由切割程式碼是非常有幫助的但仍然有很多程式是使用者</description>
     </item>
     
     <item>
       <title>(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)</title>
-      <link>https://shangdeyou.github.io/2019/12/24/vue-optimization2/</link>
+      <link>https://upstairs0102.github.io/2019/12/24/vue-optimization2/</link>
       <pubDate>Tue, 24 Dec 2019 16:02:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2019/12/24/vue-optimization2/</guid>
+      <guid>https://upstairs0102.github.io/2019/12/24/vue-optimization2/</guid>
       <description>在前一篇文章當中我們學到了什麼是切割程式碼、它是如何運作的以及在Vue.js應用程式中如何和lazy loading一起使用。現在我們將稍微深</description>
     </item>
     
     <item>
       <title>(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading</title>
-      <link>https://shangdeyou.github.io/2019/12/24/vue-optimization1/</link>
+      <link>https://upstairs0102.github.io/2019/12/24/vue-optimization1/</link>
       <pubDate>Tue, 24 Dec 2019 16:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2019/12/24/vue-optimization1/</guid>
+      <guid>https://upstairs0102.github.io/2019/12/24/vue-optimization1/</guid>
       <description>譯者說明 最近使用Vue.js投入公司產品開發花了不少心血，關於前端的效能是一件很重要的事情，這個系列文有做了一些有趣的探討，原文作者似乎也還</description>
     </item>
     
     <item>
       <title>從D3.js的select(this)探討的函式中的this指向</title>
-      <link>https://shangdeyou.github.io/2019/12/22/d3js-select-this/</link>
+      <link>https://upstairs0102.github.io/2019/12/22/d3js-select-this/</link>
       <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://shangdeyou.github.io/2019/12/22/d3js-select-this/</guid>
+      <guid>https://upstairs0102.github.io/2019/12/22/d3js-select-this/</guid>
       <description>其實這個標題下的有點不太精確，但我想從我自己本身遇到的問題的角度來切入，然後再進一步深入說明… 事情是這樣的，在函式中使用d3.select(</description>
     </item>
     
