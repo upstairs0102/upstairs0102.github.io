@@ -10,8 +10,8 @@
     <meta property="og:type" content="article">
 
     
-    <meta property="og:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
-    <meta property="twitter:image" content="https://shangdeyou.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    <meta property="og:image" content="https://upstairs0102.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://upstairs0102.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
     
 
     
@@ -220,7 +220,11 @@
 <li>
 <ul>
 <li><a href="#譯者說明">譯者說明</a></li>
-<li><a href="#lazy-loading-vue-components">Lazy loading Vue components</a></li>
+<li><a href="#lazy-loading-vue-components">Lazy loading Vue components</a>
+<ul>
+<li><a href="#把import寫成可呼叫的函式">把import寫成可呼叫的函式</a></li>
+<li><a href="#component被呼叫後渲染">component被呼叫後渲染</a></li>
+</ul></li>
 <li><a href="#結語">結語</a></li>
 </ul></li>
 </ul>
@@ -356,18 +360,14 @@ import ModuleC from './module_c.js'
 
 <p>…只要這樣就搞定了！現在component只有在你呼叫他時才會載入。以下是最常使用動態載入Vue component的方法：</p>
 
-<ul>
-<li><p>把import寫成可呼叫的函式</p>
+<h3 id="把import寫成可呼叫的函式">把import寫成可呼叫的函式</h3>
 
 <pre><code>const lazyComponent = () =&gt; import('Component.vue')
  
 lazyComponent()
-</code></pre></li>
+</code></pre>
 
-<li><p>component被呼叫後渲染</p></li>
-</ul>
-
-<p>請注意lazyComponent函式只有在呼叫他時才會渲染進template。</p>
+<h3 id="component被呼叫後渲染">component被呼叫後渲染</h3>
 
 <pre><code>&lt;template&gt;
 &lt;div&gt;
@@ -381,6 +381,8 @@ components: { lazyComponent }
 }
 &lt;/script&gt;
 </code></pre>
+
+<p>請注意lazyComponent函式只有在呼叫他時才會渲染進template。</p>
 
 <p>例如：</p>
 
@@ -551,7 +553,7 @@ components: { lazyComponent }
                     
                     
                     <li>
-                        <a target="_blank" href="https://github.com/shangdeyou/">
+                        <a target="_blank" href="https://github.com/upstairs0102/">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -578,7 +580,7 @@ components: { lazyComponent }
                     
                 </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; Thunder Boy 2021
+                    Copyright &copy; Thunder Boy 2022
                     <br>
                     <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
                     <iframe
