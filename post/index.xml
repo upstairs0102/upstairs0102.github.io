@@ -12,7 +12,11 @@
     
     
     <item>
+<<<<<<< HEAD
       <title>Vue &amp; React差異觀察（閒聊）</title>
+=======
+      <title>Vue &amp; React差異觀察</title>
+>>>>>>> ba71414a844eb3a453ec2497fefcab0a6556b209
       <link>https://upstairs0102.github.io/2021/12/14/difference-between-vue-and-react/</link>
       <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
       
