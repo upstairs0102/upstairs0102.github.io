@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
-    <meta property="og:title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
-    <meta property="twitter:title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
+    <meta name="title" content="xlsx-js-style 前端匯出自訂樣式Excel檔" />
+    <meta property="og:title" content="xlsx-js-style 前端匯出自訂樣式Excel檔" />
+    <meta property="twitter:title" content="xlsx-js-style 前端匯出自訂樣式Excel檔" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>瀑布或敏捷開發的選擇？三眼怪Podcast筆記-Thunder Boy Dev Blog</title>
+    <title>xlsx-js-style 前端匯出自訂樣式Excel檔-Thunder Boy Dev Blog</title>
 
-    <link rel="canonical" href="/2021/12/14/scrum-and-waterfall/">
+    <link rel="canonical" href="/2022/12/07/xlsx-js-style/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,12 +169,12 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/scrum" title="scrum">
-                            scrum
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
                         </a>
                         
                     </div>
-                    <h1>瀑布或敏捷開發的選擇？三眼怪Podcast筆記</h1>
+                    <h1>xlsx-js-style 前端匯出自訂樣式Excel檔</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -182,7 +182,7 @@
                             Thunder Boy
                          
                         on 
-                        2021-12-14, Tuesday
+                        2022-12-07, Wednesday
                         
                         
                         
@@ -211,27 +211,164 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#快速上手xlsx-js-style">快速上手xlsx-js-style</a>
+<ul>
+<li><a href="#開始使用">開始使用</a></li>
+<li><a href="#欄位樣式">欄位樣式</a></li>
+</ul></li>
+<li><a href="#其它的常用功能">其它的常用功能</a>
+<ul>
+<li><a href="#sheetjs文件">SheetJS文件</a></li>
+<li><a href="#欄位寬度">欄位寬度</a></li>
+<li><a href="#合併儲存格">合併儲存格</a></li>
+<li><a href="#換行">換行</a></li>
+</ul></li>
+<li><a href="#小結">小結</a></li>
+</ul></li>
+</ul>
+</nav>
                 
                 
-                <p>最近聽了「產品三眼怪」的一集 Podcast： <a href="https://medium.com/3pm-lab/pm-podcast-ep03-waterfall-vs-agile-82b214853112">【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？</a>，覺得還不錯，我雖然是工程師但對於這樣的題目也是會想了解，就邊聽的時候隨手寫了一些筆記：</p>
+
+<h2 id="前言">前言</h2>
+
+<p>基於某些原因最近有在前端匯出excel檔、並且有自訂欄位樣式的需求。雖然以前就有開發過前端匯出Excel的功能，而且套件選擇也還算多實作也不難（當時是使用Export2Excel），但要自訂樣式的話我就沒做過了。</p>
+
+<p>花了一段時間google發現事情似乎並沒那麼簡單。雖然說肯定是找一個套件並依api文件來實作就結束了，不會難到哪裡去；但麻煩的是網路上的資訊有些混亂，有一些教學文章又太過複雜，似乎沒看到哪個套件是比較被多數人使用並且有清晰的文件的。</p>
+
+<p>花了一些時間研究，剛好找到了一個合適的套件叫 <code>xlsx-js-style</code>，它是使用另一個套件 <a href="https://sheetjs.com/">SheetJS</a>相同的API並且擴充了額外可自訂樣式的 API（SheetJS似乎沒提供樣式設定的API）。</p>
+
+<p>主要功能的API <code>xlsx-js-style</code>文件裡並沒有寫，必須要到<code>SheetJS</code>的<a href="https://docs.sheetjs.com/docs/">官方文件</a>裡面查閱，而樣式相關的文件則在 <a href="https://github.com/gitbrent/xlsx-js-style">xlsx-js-style的官方文件</a>裡面查閱。</p>
+
+<p>這個套件的 API非常多，有需要可自行到上述連結查閱，本篇文章只會介紹到以下幾個剛好我這次有用到的功能：</p>
 
 <ul>
-<li><p>敏捷也不一定是全部都敏捷，在之前也還是可能會有一個瀑布，會是混合的</p></li>
-
-<li><p>敏捷和瀑布對看待資源的角度會不太一樣，敏捷比較會是在已經固定好資源的情況下，依照進度調整「內容」，而瀑布比較是依照進度調整「資源」</p></li>
-
-<li><p>某些情況瀑布看起來風險比較小，比如說需求明確的產品、功能需要一起上（新功能上線）、或者時程比較固定的情形下</p></li>
-
-<li><p>當功能會有一些外部的互相依性（比如說更需要用戶的回饋、或要做某個實驗之後會改變方向，決策上會有一些叉路）的時候，敏捷比較彈性</p></li>
-
-<li><p>敏捷的本意是要搜集市場回饋、比如產品優化（需要A/B testing之類）</p></li>
-
-<li><p>用哪一個方法風險會比較小來區分要選擇使用哪一個方法</p></li>
-
-<li><p>選擇RD或成員喜歡的方式更為重要</p></li>
-
-<li><p>當PM更有經驗、資深了以後，因為手上有的工具更多了，所以也不見得會需要拘泥於要一定要遵照某種工具的使用方法</p></li>
+<li>欄位底色</li>
+<li>欄位寬度</li>
+<li>字體顏色<br /></li>
+<li>合併欄位</li>
 </ul>
+
+<h2 id="快速上手xlsx-js-style">快速上手xlsx-js-style</h2>
+
+<h3 id="開始使用">開始使用</h3>
+
+<p>撰寫這篇文章的時候 <code>xlsx-js-style</code>的版本為 v1.2.0，目前為止文件並不是寫得非常清楚，文件裡只有寫到如何使用 <code>script</code>標籤載入：</p>
+
+<pre><code class="language-js">&lt;script src=&quot;dist/xlsx.bundle.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>至於如何在 js module中 import進來就沒提到了。不過我就是依照經驗試試看… 果然可以：</p>
+
+<pre><code class="language-js">import * as XLSX from 'xlsx-js-style'
+</code></pre>
+
+<p>接著，使用套件的起手試，就是先試著使用最簡範例；以下為文件上的範例，直接貼上就是一個可執行的程式：</p>
+
+<pre><code class="language-js">// STEP 1: Create a new workbook
+const wb = XLSX.utils.book_new();
+
+// STEP 2: Create data rows and styles
+let row = [
+	{ v: &quot;Courier: 24&quot;, t: &quot;s&quot;, s: { font: { name: &quot;Courier&quot;, sz: 24 } } },
+	{ v: &quot;bold &amp; color&quot;, t: &quot;s&quot;, s: { font: { bold: true, color: { rgb: &quot;FF0000&quot; } } } },
+	{ v: &quot;fill: color&quot;, t: &quot;s&quot;, s: { fill: { fgColor: { rgb: &quot;E9E9E9&quot; } } } },
+	{ v: &quot;line\nbreak&quot;, t: &quot;s&quot;, s: { alignment: { wrapText: true } } },
+];
+
+// STEP 3: Create worksheet with rows; Add worksheet to workbook
+const ws = XLSX.utils.aoa_to_sheet([row]);
+XLSX.utils.book_append_sheet(wb, ws, &quot;readme demo&quot;);
+
+// STEP 4: Write Excel file to browser
+XLSX.writeFile(wb, &quot;xlsx-js-style-demo.xlsx&quot;);
+</code></pre>
+
+<h3 id="欄位樣式">欄位樣式</h3>
+
+<p><code>xlsx-js-style</code> 提供 <a href="https://github.com/gitbrent/xlsx-js-style#cell-style-properties">Style API</a>，在文件上有 api可查詢。如同前面的範例，使用方式是放在 data row當中的 <code>s</code>屬性當中。</p>
+
+<p>比如：</p>
+
+<pre><code class="language-js">{s: { font: { bold: true, color: { rgb: 'ffffff' } }, fill: { fgColor: { rgb: 'c00000' }}}}
+</code></pre>
+
+<p>其中 <code>font</code>, <code>fill</code>可以對應到 api文件上的 <code>Style Prop</code>欄位，其屬性值可以進一步的從文件中的表格查閱到。</p>
+
+<h2 id="其它的常用功能">其它的常用功能</h2>
+
+<h3 id="sheetjs文件">SheetJS文件</h3>
+
+<p><code>xlsx-js-style</code>主要是擴展了 <code>SheetJS</code>原有的 API，所以除了 Style API以外的 Core API就沒有放到文件當中了，必須要到 <code>SheetJS</code>的<a href="https://docs.sheetjs.com/docs/csf/">文件</a>來查閱。</p>
+
+<p>後面我會說明我自己常用到的 API。</p>
+
+<h3 id="欄位寬度">欄位寬度</h3>
+
+<p>欄位寬度的設定要放在 WorkSheet底下的 <code>!cols</code>物件當中。範例如下：</p>
+
+<pre><code class="language-js">var wscols = [
+  {wch: 6}, // &quot;characters&quot;
+  {wpx: 50}, // &quot;pixels&quot;
+  ,
+  {hidden: true} // hide column
+];
+ws['!cols'] = wscols
+
+XLSX.utils.book_append_sheet(wb, ws, &quot;readme demo&quot;)
+</code></pre>
+
+<p>陣列當中的物件順序即對應欄位順序，其中屬性如下：</p>
+
+<ul>
+<li>wch: 字元數量</li>
+<li>wpx: pixels</li>
+<li>hidden: 隱藏</li>
+</ul>
+
+<h3 id="合併儲存格">合併儲存格</h3>
+
+<p>合併儲存格的設定要放在 WorkSheet底下的 <code>!merge</code>物件中當。範例如下：</p>
+
+<pre><code class="language-js">const merge = [
+  { s: { r: 0, c: 0 }, e: { r: 0, c: 7 } },{ s: { r: 3, c: 0 }, e: { r: 3, c: 7 } },
+];
+ws[&quot;!merges&quot;] = merge
+</code></pre>
+
+<p>屬性說明：</p>
+
+<ul>
+<li><code>s</code>: 合併起始欄位位置 (start)</li>
+<li><code>e</code>: 合併結束欄位位置 (end)</li>
+<li><code>r</code>: 列 index (row)</li>
+<li><code>c</code>: 欄 index (column)</li>
+</ul>
+
+<p>以上面例子來說明，即為從【列0、欄0】合併至【列0、欄7】，以及從【列3、欄0】合併至【列3、欄7】。</p>
+
+<h3 id="換行">換行</h3>
+
+<p>換行需使用 Style API中設定換行樣式：</p>
+
+<pre><code class="language-js">{alignment:{ wrapText: true }}
+</code></pre>
+
+<p>接著欄位值當中就可以加入換行符號 <code>\n</code>。</p>
+
+<p>以下為Cell加入換行文字的範例：</p>
+
+<pre><code class="language-js">{ v: '第一行\n第二行', s: { alignment:{ wrapText: true } } }
+</code></pre>
+
+<h2 id="小結">小結</h2>
+
+<p>在研究匯出 excel功能當中，找尋合適的套件反而是花最多時間的部份。這個 <code>xlsx-js-style</code>是我找到都有符合我的需求的一個套件，再來就是 <code>SheetJS</code>的文件也有點多不太好查找，所以就把我自己常用到的功能整理起來給大家參考。</p>
 
 
                 
@@ -240,15 +377,10 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2021/09/23/docker-book-note/" data-toggle="tooltip" data-placement="top" title="「Docker這樣學才有趣」讀書筆記">&larr;
+                        <a href="/2021/12/14/difference-between-vue-and-react/" data-toggle="tooltip" data-placement="top" title="Vue &amp; React差異觀察（閒聊）">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2021/12/14/difference-between-vue-and-react/" data-toggle="tooltip" data-placement="top" title="Vue &amp; React差異觀察（閒聊）">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 

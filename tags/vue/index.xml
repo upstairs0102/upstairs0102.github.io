@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>vue on Thunder Boy</title>
+    <title>vue on Thunder Boy Dev Blog</title>
     <link>https://upstairs0102.github.io/tags/vue/</link>
-    <description>Recent content in vue on Thunder Boy</description>
+    <description>Recent content in vue on Thunder Boy Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
@@ -12,11 +12,7 @@
     
     
     <item>
-<<<<<<< HEAD
       <title>Vue &amp; React差異觀察（閒聊）</title>
-=======
-      <title>Vue &amp; React差異觀察</title>
->>>>>>> ba71414a844eb3a453ec2497fefcab0a6556b209
       <link>https://upstairs0102.github.io/2021/12/14/difference-between-vue-and-react/</link>
       <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
       

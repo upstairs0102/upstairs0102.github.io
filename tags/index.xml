@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Thunder Boy</title>
+    <title>Tags on Thunder Boy Dev Blog</title>
     <link>https://upstairs0102.github.io/tags/</link>
-    <description>Recent content in Tags on Thunder Boy</description>
+    <description>Recent content in Tags on Thunder Boy Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Dec 2022 08:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://upstairs0102.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>javascript</title>
+      <link>https://upstairs0102.github.io/tags/javascript/</link>
+      <pubDate>Wed, 07 Dec 2022 08:00:00 +0000</pubDate>
+      
+      <guid>https://upstairs0102.github.io/tags/javascript/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>react</title>
@@ -71,15 +80,6 @@
       <pubDate>Thu, 24 Jun 2021 02:00:00 +0000</pubDate>
       
       <guid>https://upstairs0102.github.io/tags/vuex/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>javascript</title>
-      <link>https://upstairs0102.github.io/tags/javascript/</link>
-      <pubDate>Sun, 23 May 2021 02:00:00 +0000</pubDate>
-      
-      <guid>https://upstairs0102.github.io/tags/javascript/</guid>
       <description></description>
     </item>
     

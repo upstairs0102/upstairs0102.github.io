@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Thunder Boy</title>
+    <title>Posts on Thunder Boy Dev Blog</title>
     <link>https://upstairs0102.github.io/post/</link>
-    <description>Recent content in Posts on Thunder Boy</description>
+    <description>Recent content in Posts on Thunder Boy Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Dec 2021 13:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Dec 2022 08:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://upstairs0102.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-<<<<<<< HEAD
+      <title>xlsx-js-style 前端匯出自訂樣式Excel檔</title>
+      <link>https://upstairs0102.github.io/2022/12/07/xlsx-js-style/</link>
+      <pubDate>Wed, 07 Dec 2022 08:00:00 +0000</pubDate>
+      
+      <guid>https://upstairs0102.github.io/2022/12/07/xlsx-js-style/</guid>
+      <description>前言 基於某些原因最近有在前端匯出excel檔、並且有自訂欄位樣式的需求。雖然以前就有開發過前端匯出Excel的功能，而且套件選擇也還算多實作</description>
+    </item>
+    
+    <item>
       <title>Vue &amp; React差異觀察（閒聊）</title>
-=======
-      <title>Vue &amp; React差異觀察</title>
->>>>>>> ba71414a844eb3a453ec2497fefcab0a6556b209
       <link>https://upstairs0102.github.io/2021/12/14/difference-between-vue-and-react/</link>
       <pubDate>Tue, 14 Dec 2021 13:00:00 +0000</pubDate>
       
