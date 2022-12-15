@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Thunder Boy Dev Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://upstairs0102.github.io/img/banner_48086798638_1cf5aa400c_o.jpg">
+    <meta property="twitter:image" content="https://upstairs0102.github.io/img/banner_48086798638_1cf5aa400c_o.jpg" />
+    
+
+    
+    <meta name="title" content="第一次發布 npm前端套件就上手" />
+    <meta property="og:title" content="第一次發布 npm前端套件就上手" />
+    <meta property="twitter:title" content="第一次發布 npm前端套件就上手" />
+    
+
+    
+    <meta name="description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記">
+    <meta property="og:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記" />
+    <meta property="twitter:description" content="我是Thunder Boy | 這裡是一個部落格、程式語言的學習筆記" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>第一次發布 npm前端套件就上手-Thunder Boy Dev Blog</title>
+
+    <link rel="canonical" href="/2022/12/15/publish-js-library-to-npm/">
+
+    <link rel="stylesheet" href="/css/iDisqus.min.css"/>
+	
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+    
+    
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    
+    
+
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    
+    
+    <script src="/js/bootstrap.min.js"></script>
+    
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/docco.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+</head>
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Thunder Boy Dev Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/categories/programing">programing</a>
+                    </li>
+                    
+                    
+		    
+                        <li><a href="/top/about/">ABOUT</a></li>
+                    
+
+                    
+		    <li>
+                        <a href="/search">SEARCH <img src="/img/search.png" height="15" style="cursor: pointer;" alt="Search"></a>
+		    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/banner_47719886652_ff4f3afdbf_o.jpg')
+    }
+</style>
+<header class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        <a class="tag" href="/tags/npm" title="npm">
+                            npm
+                        </a>
+                        
+                        <a class="tag" href="/tags/github" title="github">
+                            github
+                        </a>
+                        
+                    </div>
+                    <h1>第一次發布 npm前端套件就上手</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by 
+                        
+                            Thunder Boy
+                         
+                        on 
+                        2022-12-15, Thursday
+                        
+                        
+                        
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <header>
+                    <h2>TOC</h2>
+                </header>
+                <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#一-前情提要">一、前情提要</a></li>
+<li><a href="#二-檔案及資料夾結構">二、檔案及資料夾結構</a></li>
+<li><a href="#三-發布至npm的相關設定及方式">三、發布至npm的相關設定及方式</a>
+<ul>
+<li><a href="#必填的-package-json欄位設定">必填的 package.json欄位設定</a></li>
+<li><a href="#設定發布至npm的檔案">設定發布至npm的檔案</a></li>
+<li><a href="#在main主檔export-js-module">在main主檔export js module</a></li>
+<li><a href="#dependency-和-devdependency的差異">dependency 和 devDependency的差異</a></li>
+<li><a href="#publish">Publish!</a></li>
+</ul></li>
+<li><a href="#四-推上github及布署範例網頁">四、推上Github及布署範例網頁</a>
+<ul>
+<li><a href="#readme-md">README.md</a></li>
+<li><a href="#製作範例網頁">製作範例網頁</a></li>
+<li><a href="#github-pages啟用設定">Github Pages啟用設定</a></li>
+<li><a href="#vue相關設定">Vue相關設定</a></li>
+</ul></li>
+<li><a href="#五-結語">五、結語</a></li>
+</ul></li>
+</ul>
+</nav>
+                
+                
+
+<h2 id="一-前情提要">一、前情提要</h2>
+
+<p>本篇文章以我自己開發的一個 library - <a href="https://github.com/upstairs0102/vue-component-sandbox">vue-component-sandbox</a>作為範例，說明發佈 javascript程式到 npm上面所需的相關步驟及設定。</p>
+
+<p>以這個範例來說，vue-component-sandbox的主程式是一個 Vue.js 的 Component，我希望除了將主程式發布到 npm上以外，還希望能建立一個簡單的展示頁面，所以我選擇用vue-cli建立專案，把主程式和展示網頁放在相同專案裡。整個專案我推上Github並使用Github Pages布署靜態的展示頁面，並將Component檔案所在的資料夾發布至npm。</p>
+
+<p>依照上述需求，本文重點有二：</p>
+
+<ol>
+<li>發布至npm的相關設定及方式</li>
+<li>推上Github及布署範例網頁（Github Pages）</li>
+</ol>
+
+<p>註：本文的範例雖然是出自 vue-cli建置的專案，但要發布上 npm主要要做的是 package.json的設定，只有在布署範例網頁時需要做的路由及相關設定跟 Vue.js的框架有關外，其餘內容跟 Vue.js都沒什麼直接關係。所以基本上無論你使用何種前端框架、或沒有使用框架（而且概念是相同的），都不會影響到本文的閱讀。</p>
+
+<h2 id="二-檔案及資料夾結構">二、檔案及資料夾結構</h2>
+
+<p>資料夾結構及檔案命名沒有標準的寫法，建議可參考 github上跟自己所要開發最相近的專案是怎麼設計。</p>
+
+<p>以本文中雖然並不是重點但會跟後續內容息息相關，將會以 vue-component-sandbox作為範例，將本文相關的檔案及資料夾結構列出來，方便往後的章節可以對照著看：</p>
+
+<pre><code class="language-md">/
+├──demo
+|   ├──css
+|   ├──js
+|   └──index.html
+├──lib
+|   ├──main.js
+|   └──styles.css
+├──src
+|   ├──components
+|   ├──router
+|   ...
+|   └──main.html
+├──package.json
+├──README.md
+...
+</code></pre>
+
+<p>其中幾個較重要的部份列出來說明：</p>
+
+<ul>
+<li><code>/demo</code> 展示頁面的資料夾。換句話說就是用 webpack打包出來的資料夾，vue-cli預設為 <code>dist</code>這裡只是修改了名稱而已。</li>
+<li><code>/lib</code> 要發布至 npm的主檔的資料夾位置。</li>
+<li><code>/src</code> 展示頁面原始檔案的資料夾（vue-cli 預設的檔案位置）。</li>
+<li><code>package.json</code> node package 設定檔。</li>
+</ul>
+
+<h2 id="三-發布至npm的相關設定及方式">三、發布至npm的相關設定及方式</h2>
+
+<h3 id="必填的-package-json欄位設定">必填的 package.json欄位設定</h3>
+
+<p>首先 webpack主要需要設定的是 package.json檔必填欄位：</p>
+
+<ul>
+<li><code>name</code>：node package 的名稱（發布至 npm上所使用的名稱）。</li>
+<li><code>version</code>：版本號。每次發布都要大於過去的版本，否則就會發布失敗。</li>
+<li><code>main</code>：node package 的主檔。</li>
+</ul>
+
+<p>其它輔助資訊欄位（非必填）有 <code>license</code>、<code>author</code>、<code>homepage</code>、<code>repository</code>等，相關的詳細說明可參考官方文件 <a href="https://docs.npmjs.com/creating-a-package-json-file">npm docs</a>。</p>
+
+<p>以我 vue-component-sandbox作為範例如下。</p>
+
+<pre><code class="language-json">// package.json
+{
+  &quot;name&quot;: &quot;vue-component-sandbox&quot;,
+  &quot;version&quot;: &quot;0.3.0&quot;,
+  &quot;description&quot;: &quot;A vue component sandbox that is quick and easy to use.&quot;,
+  &quot;author&quot;: &quot;Adam You &lt;upstairs0102@gmail.com&gt;&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;keywords&quot;: [
+    &quot;vue&quot;,
+    &quot;component&quot;,
+    &quot;sandbox&quot;,
+    &quot;vue-component&quot;
+  ],
+  &quot;main&quot;: &quot;lib/main.js&quot;,
+  &quot;files&quot;: [
+    &quot;lib/*&quot;,
+    &quot;src/components/ComponentSandbox/*&quot;
+  ]
+}
+</code></pre>
+
+<h3 id="設定發布至npm的檔案">設定發布至npm的檔案</h3>
+
+<p>package.json中跟打包檔案相關的欄位有<code>main</code>和<code>files</code>。說明如下：</p>
+
+<ul>
+<li><p><code>main</code>：node package 的主檔。</p></li>
+
+<li><p><code>files</code>：欄位是設定 node package的檔案範圍，同時也是會發布至 npm的檔案；如果此欄位沒有設定預設會發布所有的檔案。</p></li>
+</ul>
+
+<p>以上述的範例來作說明：</p>
+
+<pre><code class="language-js">&quot;main&quot;: &quot;lib/main.js&quot;,
+&quot;files&quot;: [
+  &quot;lib/*&quot;,
+  &quot;src/components/ComponentSandbox/*&quot;
+]
+</code></pre>
+
+<p>以此例來說，假設某人已將此套件透過 npm安裝 （指令<code>npm install vue-component-sandbox --save</code>） 至他的專案當中。在他的<code>node_modules</code>資料夾中可以找到 <code>vue-component-sandbox</code>資料夾，該資料夾內除了會有 package.json等基本的檔案外還會有 <code>lib</code>, <code>src</code>資料夾及檔案。</p>
+
+<h3 id="在main主檔export-js-module">在main主檔export js module</h3>
+
+<p>由於我不需要將專案中所有的檔案發布到 npm上（比如展示頁面），所以我只將需要的資料夾寫入前一章節所說的 <code>files</code>欄位中，然後在主檔（<code>main</code>欄位中設定的）中把需要的檔案給 <code>export</code>出來。</p>
+
+<p>此例的主檔（<code>main</code>欄位的設定）是<code>lib/main.js</code>，此檔案內容是這樣寫的：</p>
+
+<pre><code class="language-js">// lib/main.js
+export { default } from '../src/components/ComponentSandbox/ComponentSandbox.vue'
+</code></pre>
+
+<p>由於此例中 export的寫法是 <code>export default</code>，假設某人使用 npm安裝了此套件（安裝至 node_modules），在他的程式當中要 import此套件的語法為：</p>
+
+<pre><code class="language-js">import ComponentSandbox from 'vue-component-sandbox'
+</code></pre>
+
+<p>其中 <code>vue-component-sandbox</code>對應的是 <code>name</code>欄位所設定的名稱，import進來的程式也就是主檔所 export 的 <code>default</code>。</p>
+
+<p>安裝此套件的人如果需要 import除了主檔所提供的以外的程式，也可以使用相對路徑的方式，比如：</p>
+
+<pre><code class="language-js">import 'vue-component-sandbox/lib/styles.css'
+</code></pre>
+
+<p>以此例的寫法，<code>vue-component-sandbox</code>就不是代表主檔，而是套件專案根目錄的路徑（也等同於被安裝的專案中<code>node_modules</code>為起始的相對路徑）。</p>
+
+<h3 id="dependency-和-devdependency的差異">dependency 和 devDependency的差異</h3>
+
+<p>每個前端的開發者應該都會知道 <code>dependency</code>是生產環境的依賴、<code>devDependency</code>是開發環境的依賴，但真正知道差異的人可能就沒那麼多了。因為我們通常都會按照文件上所提供的指令來安裝，而且無論放哪邊通常也不會出錯，所以大多數人也不太清楚差異。</p>
+
+<p>但是要發布到 npm上就會有一些要注意的事。</p>
+
+<p>最直觀的差異就在於其他專案依賴了你的 node package之後（透過 npm安裝），你的 package.json 中 <code>dependency</code>的依賴會被「鏈式」的安裝到 node_modules資料夾中。</p>
+
+<p>了解了這個差異，我們就可以進一步理解所謂<strong>「 <code>dependency</code>是生產環境的依賴」更具體的意思是說，當這個 node package被布署到 npm之後（生產環境）的依賴，而「<code>devDependency</code>是開發環境的依賴」指的是未發布到 npm時的依賴（即使這個 node專案被打包並布署成為一個 web service）</strong>。</p>
+
+<p>…講起來有些饒口，這裡用 vue-component-sandbox 作為例子。其 package.json 中的依賴的設定：</p>
+
+<pre><code class="language-js">&quot;dependencies&quot;: {},
+&quot;devDependencies&quot;: {
+  &quot;@vue/cli-plugin-babel&quot;: &quot;~4.5.0&quot;,
+  &quot;@vue/cli-plugin-router&quot;: &quot;~4.5.0&quot;,
+  &quot;@vue/cli-service&quot;: &quot;~4.5.0&quot;,
+  &quot;@vue/compiler-sfc&quot;: &quot;^3.0.0&quot;,
+  &quot;core-js&quot;: &quot;^3.6.5&quot;,
+  &quot;github-fork-ribbon-css&quot;: &quot;^0.2.3&quot;,
+  &quot;vue&quot;: &quot;^3.0.0&quot;,
+  &quot;vue-json-pretty&quot;: &quot;^2.0.0-rc.3&quot;,
+  &quot;vue-router&quot;: &quot;^4.0.0-0&quot;
+}
+</code></pre>
+
+<p>vue-component-sandbox是一個通時支援 Vue v2.x 及 v3.x版本的套件，開發者可以依照他本身的開發環境來安裝對應的依賴。README文件中的安裝指引有這樣的說明：</p>
+
+<pre><code>支援Vue v2.x及v3.x。依賴vue-json-pretty套件，並且必須安裝對應版本：
+
+Vue v2.x =&gt; vue-json-pretty v1.7.1 以上，指令 npm install vue-json-pretty@1.7.1 --save
+Vue v3.x，=&gt; vue-json-pretty v2.0.0-rc3 以上，指令 npm install vue-json-pretty@2.0.0-rc.3 --save
+</code></pre>
+
+<p>再回頭來看上面的 package.json中我們可以看到所有的依賴都被安裝到 <code>devDependencies</code>了，所以開發者透過 npm安裝了這個 node package (vue-component-sandbox)之後，必須自己手動安裝他的 Vue版本所對應的 <code>vue-json-pretty</code>版本。</p>
+
+<p>反之，如果 package.json將所有的依賴都放到了 <code>dependencies</code>而不是本例中的 <code>devDependencies</code>，開發者安裝這個 node package (vue-component-sandbox)後就不需要再自己手動安裝 <code>vue-json-pretty</code>，但就沒有辦法讓開發者選擇自己所需要的版本來安裝了。</p>
+
+<h3 id="publish">Publish!</h3>
+
+<p>完成上述所有事情之後，剩下的工作就非常簡單了：</p>
+
+<p>1.至 npm官網上註冊 npm帳號</p>
+
+<p>2.在專案中下指令 <code>npm publish</code>即成功發布！（鍵入指令後 console會指引你相關事項，比如此台電腦未登入npm帳號的話需要先輸入指令登入帳號）</p>
+
+<h2 id="四-推上github及布署範例網頁">四、推上Github及布署範例網頁</h2>
+
+<h3 id="readme-md">README.md</h3>
+
+<p>github頁面上預設會把 repo中根目錄中的 README.md檔案內容呈現出來，因此學習 <a href="https://markdown.tw/">markdown</a>文件撰寫是非常必要的（也很簡單），務必將 README.md文件盡可能的撰寫完整。</p>
+
+<p>以 vue-component-sandbox為例，由以下章節內容組成：</p>
+
+<ul>
+<li>Features: 用簡單的幾句話清楚的介紹此 repo的特色及用途。</li>
+<li>Links: 相關連結，包含 npm頁面及展示頁連結。</li>
+<li>Environment: 安裝此套件的環境需求。</li>
+<li>Install: 安裝方式。</li>
+<li>Usage: 使用方式說明；建議可以的話要提供一個 Quick Start（最簡易讓程式可以執行的方式），另外API文件也是必要的。</li>
+</ul>
+
+<p>同樣的，文件沒有標準的寫法，建議可參考 github上跟自己所要開發最相近的專案是怎麼撰寫的。</p>
+
+<h3 id="製作範例網頁">製作範例網頁</h3>
+
+<p>製作範例頁的好處，除了開發者在瀏覽網頁時就可以快速看到成果，並且在 pull程式碼到本機後就有了可以執行的範例程式。</p>
+
+<p>我們要把範例頁透過 Github Pages來布署，因此範例頁必須是 static的網頁，每一個頁面必須要有一個實體的 html檔案。如果我們想透過前端路由開發 SPA網頁，一個可行的方式是透過 URL上 <code>#</code>符號來跟前端路由溝通。這種模式在 Vue框架中稱為 <strong>Hash Mode</strong>，在其它的前端框架比如 React, Angular也都有相同的路由設定。</p>
+
+<h3 id="github-pages啟用設定">Github Pages啟用設定</h3>
+
+<p>透過 Github Pages架設的網址依據 repo的名稱會有所不同，規則有兩種：</p>
+
+<ul>
+<li>repo名稱為 <code>{account-name}.github.io</code>：網址為 <code>https://{account-name}.github.io</code></li>
+<li>其它任何的 repo名稱：網址為 <code>https://{account-name}.github.io/{repo-name}</code></li>
+</ul>
+
+<p>由於本文主題是要發布到 npm上的套件，我們不太可能把一個 open source libaray的名稱命名為 <code>upstairs0102.github.io</code>，這樣的話也太奇怪了！因此在這裡我們只會使用後者的規則。</p>
+
+<p>Github Pages的設定預設是關閉的，我們必須在設定頁將之開啟，如下：</p>
+
+<p><img src="![](/article/20221215/image-20221214211444854.png)" alt="image-20221214211444854" /></p>
+
+<p>你可以選擇設定特定 Branch，不過以本文範例來說並不是以 Branch區分檔案用途，而是直接將範例頁的檔案以及 source code放在一起並用資料夾區分，因為直接用預設的 <code>main</code> branch即可。</p>
+
+<h3 id="vue相關設定">Vue相關設定</h3>
+
+<p>本文範例使用 Vue框架（使用 vue-cli建置的），不過如果你使用其它框架、或無使用框架其實原理和設定都是差不多的，不會影響到本章節的閱讀。</p>
+
+<p>有以下幾個相關設定：</p>
+
+<ol>
+<li>前端路由設定</li>
+<li>打包資料夾路徑</li>
+</ol>
+
+<p>前端路由的部份，在前面我們有提過本範例為了要做 SPA型式的展示頁，前端路由要設置為 Hash Mode。以 Vue框架來說我們只要到 Vue-Router 中將 <code>history mode</code>屬性設為 <code>false</code>即可。</p>
+
+<p>再來要注意的是 Vue-Cli（其它框架亦同）預設會把 domain name當作根路徑，所以我們也要做一些相應的調整；具體的來說我們要把前端路由的基本 URL設定為 <code>/{repo-name}/{file-path}</code>。這裡我們直接用範例來說明會更清楚，<code>vue.config.js</code>會有以下的設定：</p>
+
+<pre><code class="language-js">module.exports = {
+  publicPath: '/vue-component-sandbox/demo/',
+  outputDir: 'demo' // 本例中我們把打包過的檔案放到 demo資料夾中，如無設定 vue-cli預設會放到 dist資料夾
+}
+</code></pre>
+
+<p>關於 publicPath詳細說明可參考<a href="https://cli.vuejs.org/zh/config/#publicpath">官方文件</a>。</p>
+
+<h2 id="五-結語">五、結語</h2>
+
+<p>本文以 vue-component-sandbox做為範例來做說明，除了發布 npm、還包含了 Github Pages布署範例網頁的說明，應該是包含了大多數發布 open source的 javascript library所需要的事項，大家可以依照自己的需求選讀自己有幫助的章節。</p>
+
+
+                
+
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2022/12/07/xlsx-js-style/" data-toggle="tooltip" data-placement="top" title="xlsx-js-style 前端匯出自訂樣式Excel檔">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                
+<div id="disqus-comment"></div>
+
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "thunderboy" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+            </div>
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/react" title="react">
+                            react
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/vue" title="vue">
+                            vue
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+                <section>
+                    <hr>
+                    <h5>FRIENDS</h5>
+                    <ul class="list-inline">
+                        
+                    </ul>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                   
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Thunder Boy Dev Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fa fa-circle fa-stack-2x"></i>
+                               <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+                   
+                    
+                    <li>
+                        <a href="mailto:upstairs0102@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+
+                    
+
+		    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/upstairs0102/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/shangdeyou/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		    
+                    
+                    
+                    
+                    
+                    
+                </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Thunder Boy Dev Blog 2022
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    async("https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+</body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Thunder Boy Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 07 Dec 2022 08:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Dec 2022 06:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://upstairs0102.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>第一次發布 npm前端套件就上手</title>
+      <link>https://upstairs0102.github.io/2022/12/15/publish-js-library-to-npm/</link>
+      <pubDate>Thu, 15 Dec 2022 06:00:00 +0000</pubDate>
+      
+      <guid>https://upstairs0102.github.io/2022/12/15/publish-js-library-to-npm/</guid>
+      <description>一、前情提要 本篇文章以我自己開發的一個 library - vue-component-sandbox作為範例，說明發佈 javascript程式到 npm上面所</description>
+    </item>
     
     <item>
       <title>xlsx-js-style 前端匯出自訂樣式Excel檔</title>
