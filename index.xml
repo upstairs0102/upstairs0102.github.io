@@ -6,10 +6,19 @@
     <description>Recent content on Thunder Boy Dev Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Dec 2022 06:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Dec 2022 06:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://upstairs0102.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>前端專案各種node環境神秘問題解決</title>
+      <link>https://upstairs0102.github.io/2022/12/21/node-env-problems-of-frontend-project-solved/</link>
+      <pubDate>Wed, 21 Dec 2022 06:00:00 +0000</pubDate>
+      
+      <guid>https://upstairs0102.github.io/2022/12/21/node-env-problems-of-frontend-project-solved/</guid>
+      <description>前言 開發 Vue專案過程當中遇過各種node環境的神秘問題。最奇怪的是本機端的 node版本和 server端完全相同，但是本機端的 npm instal</description>
+    </item>
     
     <item>
       <title>第一次發布 npm前端套件就上手</title>

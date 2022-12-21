@@ -15,9 +15,9 @@
     
 
     
-    <meta name="title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
-    <meta property="og:title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
-    <meta property="twitter:title" content="瀑布或敏捷開發的選擇？三眼怪Podcast筆記" />
+    <meta name="title" content="前端專案各種node環境神秘問題解決" />
+    <meta property="og:title" content="前端專案各種node環境神秘問題解決" />
+    <meta property="twitter:title" content="前端專案各種node環境神秘問題解決" />
     
 
     
@@ -34,9 +34,9 @@
     <meta name="keyword"  content="blog,programing language,tech,javascript,frontend,vue,d3js,photographic,camera">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>瀑布或敏捷開發的選擇？三眼怪Podcast筆記-Thunder Boy Dev Blog</title>
+    <title>前端專案各種node環境神秘問題解決-Thunder Boy Dev Blog</title>
 
-    <link rel="canonical" href="/2021/12/14/scrum-and-waterfall/">
+    <link rel="canonical" href="/2022/12/21/node-env-problems-of-frontend-project-solved/">
 
     <link rel="stylesheet" href="/css/iDisqus.min.css"/>
 	
@@ -169,12 +169,24 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/scrum" title="scrum">
-                            scrum
+                        <a class="tag" href="/tags/javascript" title="javascript">
+                            javascript
+                        </a>
+                        
+                        <a class="tag" href="/tags/npm" title="npm">
+                            npm
+                        </a>
+                        
+                        <a class="tag" href="/tags/node" title="node">
+                            node
+                        </a>
+                        
+                        <a class="tag" href="/tags/webpack" title="webpack">
+                            webpack
                         </a>
                         
                     </div>
-                    <h1>瀑布或敏捷開發的選擇？三眼怪Podcast筆記</h1>
+                    <h1>前端專案各種node環境神秘問題解決</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by 
@@ -182,7 +194,7 @@
                             Thunder Boy
                          
                         on 
-                        2021-12-14, Tuesday
+                        2022-12-21, Wednesday
                         
                         
                         
@@ -211,27 +223,78 @@
                 <header>
                     <h2>TOC</h2>
                 </header>
-                
-                
-                <p>最近聽了「產品三眼怪」的一集 Podcast： <a href="https://medium.com/3pm-lab/pm-podcast-ep03-waterfall-vs-agile-82b214853112">【Podcast EP03】敏捷或瀑布開發哪個好？流程用哪種重要嗎？</a>，覺得還不錯，我雖然是工程師但對於這樣的題目也是會想了解，就邊聽的時候隨手寫了一些筆記：</p>
-
+                <nav id="TableOfContents">
 <ul>
-<li><p>敏捷也不一定是全部都敏捷，在之前也還是可能會有一個瀑布，會是混合的</p></li>
-
-<li><p>敏捷和瀑布對看待資源的角度會不太一樣，敏捷比較會是在已經固定好資源的情況下，依照進度調整「內容」，而瀑布比較是依照進度調整「資源」</p></li>
-
-<li><p>某些情況瀑布看起來風險比較小，比如說需求明確的產品、功能需要一起上（新功能上線）、或者時程比較固定的情形下</p></li>
-
-<li><p>當功能會有一些外部的互相依性（比如說更需要用戶的回饋、或要做某個實驗之後會改變方向，決策上會有一些叉路）的時候，敏捷比較彈性</p></li>
-
-<li><p>敏捷的本意是要搜集市場回饋、比如產品優化（需要A/B testing之類）</p></li>
-
-<li><p>用哪一個方法風險會比較小來區分要選擇使用哪一個方法</p></li>
-
-<li><p>選擇RD或成員喜歡的方式更為重要</p></li>
-
-<li><p>當PM更有經驗、資深了以後，因為手上有的工具更多了，所以也不見得會需要拘泥於要一定要遵照某種工具的使用方法</p></li>
+<li>
+<ul>
+<li><a href="#前言">前言</a></li>
+<li><a href="#1-切換node版本造成sass打包噴錯">1. 切換node版本造成sass打包噴錯</a></li>
+<li><a href="#2-npm神秘的-cache問題">2. npm神秘的 cache問題</a>
+<ul>
+<li><a href="#解決方式">解決方式</a></li>
+</ul></li>
+<li><a href="#3-root權限問題">3. root權限問題</a></li>
+<li><a href="#結語">結語</a></li>
+<li><a href="#參考資料">參考資料</a></li>
+</ul></li>
 </ul>
+</nav>
+                
+                
+
+<h2 id="前言">前言</h2>
+
+<p>開發 Vue專案過程當中遇過各種node環境的神秘問題。最奇怪的是本機端的 node版本和 server端完全相同，但是本機端的 npm install和 npm build是正常時，確不能保證 server端也同樣沒有問題。</p>
+
+<p>我自己將常遇到的問題整理成筆記順便分享給大家。但每個人的開發環境及可能遇到的問題皆不相同，所以就僅供參考了。</p>
+
+<h2 id="1-切換node版本造成sass打包噴錯">1. 切換node版本造成sass打包噴錯</h2>
+
+<p>首先確認 node跟 node-scss <a href="https://www.npmjs.com/package/node-sass">版本對照表</a>，初步排除裝錯版本的問題。</p>
+
+<h2 id="2-npm神秘的-cache問題">2. npm神秘的 cache問題</h2>
+
+<p>排除 cache的問題</p>
+
+<pre><code>rm -r node_modules
+npm cache clean --force
+</code></pre>
+
+<p>再來重新 <code>npm install</code>、重新打包試試</p>
+
+<h3 id="解決方式">解決方式</h3>
+
+<p>如果上述問題都已排除，並且同樣的 package.json在不同環境下有的可以 build成功有的不成功（比如本機可以但server上失敗），這種情形通常是發生在有更換環境node版本的情形下。</p>
+
+<p>解決方式：</p>
+
+<pre><code>npm rebuild sass
+</code></pre>
+
+<p>然後再重新 <code>npm install</code>就可以了</p>
+
+<p>我的理解是某些 package的依賴是存放在 npm的環境當中，而不是專案的 node_mobules當中，所以更換版本後要再重新編譯 (rebuild)。</p>
+
+<h2 id="3-root權限問題">3. root權限問題</h2>
+
+<p>錯誤訊息 <code>gyp ERR! stack Error: EACCES: permission denied</code></p>
+
+<p>造成錯誤的原因是<code>npm</code>不適用 <code>root</code>帳戶權限，加上參數<code>--unsafe-perm=true --allow-root</code>可解決問題</p>
+
+<pre><code>sudo npm i --unsafe-perm=true --allow-root
+</code></pre>
+
+<h2 id="結語">結語</h2>
+
+<p>如前言所說的，即使兩個node環境完全相同（至少看起來相同…），也會因為一些 side effect而無法保證其中一個環境可以正確布署而另一個就會沒問題。我自己在工作過程中浪費了太多時間解決這些問題，所以後來改採用 Docker來隔離環境上的不可測因素，不過這個就是另一個故事了…。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<p><a href="https://stackoverflow.com/questions/48473984/what-is-difference-between-npm-install-and-npm-rebuild">What is difference between &lsquo;npm install&rsquo; and &lsquo;npm rebuild&rsquo;?</a></p>
+
+<p><a href="https://segmentfault.com/q/1010000022868067">npm rebuild node-sass 是什么意思，为什么要使用</a></p>
+
+<p><a href="https://blog.csdn.net/biao0309/article/details/90977752">npm install 报错，提示<code>gyp ERR! stack Error: EACCES: permission denied</code> 解决方法</a></p>
 
 
                 
@@ -240,15 +303,10 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2021/09/23/docker-book-note/" data-toggle="tooltip" data-placement="top" title="「Docker這樣學才有趣」讀書筆記">&larr;
+                        <a href="/2022/12/15/publish-js-library-to-npm/" data-toggle="tooltip" data-placement="top" title="第一次發布 npm前端套件就上手">&larr;
                             Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2021/12/14/difference-between-vue-and-react/" data-toggle="tooltip" data-placement="top" title="Vue &amp; React差異觀察（閒聊）">Next
-                            Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
