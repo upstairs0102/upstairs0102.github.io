@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[9504],{4282:s=>{s.exports=JSON.parse('{"label":"scrum","permalink":"/blog/tags/scrum","allTagsPath":"/blog/tags","count":1}')}}]);

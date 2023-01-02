@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[4871],{8954:a=>{a.exports=JSON.parse('{"label":"gitlab-ci","permalink":"/blog/tags/gitlab-ci","allTagsPath":"/blog/tags","count":1}')}}]);
