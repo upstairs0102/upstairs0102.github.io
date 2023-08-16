@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[9800],{7659:a=>{a.exports=JSON.parse('{"label":"gitlab pages","permalink":"/blog/tags/gitlab-pages","allTagsPath":"/blog/tags","count":1}')}}]);

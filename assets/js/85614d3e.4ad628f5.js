@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[5384],{5880:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/vue/page/2","page":2,"postsPerPage":10,"totalPages":2,"totalCount":11,"previousPage":"/blog/tags/vue","blogDescription":"Blog","blogTitle":"Blog"}')}}]);

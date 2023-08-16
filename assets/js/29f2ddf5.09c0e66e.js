@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[789],{71200:s=>{s.exports=JSON.parse('{"label":"vuex","permalink":"/blog/tags/vuex","allTagsPath":"/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[7007],{89064:s=>{s.exports=JSON.parse('{"label":"docker","permalink":"/blog/tags/docker","allTagsPath":"/blog/tags","count":1}')}}]);
