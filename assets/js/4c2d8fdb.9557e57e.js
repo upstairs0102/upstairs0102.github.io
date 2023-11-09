@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[1148],{81467:s=>{s.exports=JSON.parse('{"permalink":"/blog/tags/npm","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
