@@ -9,7 +9,7 @@ kind: "article"
 order: 999
 source: "docs/static site/[Gitbook] Gitbook(v2)架設在Gitlab Pages上.md"
 draft: false
-publishedAt:
+publishedAt: "2020-02-23"
 updatedAt:
 ---
 

@@ -9,7 +9,7 @@ kind: "article"
 order: 999
 source: "docs/Vue/[譯] Vue.js App 效能優化.md"
 draft: false
-publishedAt:
+publishedAt: "2019-12-24"
 updatedAt:
 ---
 

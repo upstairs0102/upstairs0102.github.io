@@ -12,14 +12,20 @@ import {
 const sha = (value: string | Buffer) =>
   createHash("sha256").update(value).digest("hex");
 
-test("all 76 migrated originals retain content and image bytes; dates remain empty", () => {
+test("all 76 migrated originals retain content and image bytes; only verified Blog matches receive dates", () => {
+  const dateSources = JSON.parse(
+    readFileSync("docs/notebook-date-sources.json", "utf8"),
+  );
   const records = JSON.parse(
     readFileSync("docs/notebook-migration.json", "utf8"),
   );
   assert.equal(records.length, 76);
   for (const record of records) {
     const { data, content } = matter(readFileSync(record.target, "utf8"));
-    assert.equal(data.publishedAt, null, record.source);
+    const matched = dateSources.matches.find(
+      (entry: { target: string }) => entry.target === record.target,
+    );
+    assert.equal(data.publishedAt, matched?.publishedAt ?? null, record.source);
     assert.equal(data.updatedAt, null, record.source);
     let original = content;
     for (const edit of [...record.edits].reverse())
@@ -107,7 +113,11 @@ test("latest notes use publication date only, exclude undated/draft/index/exampl
     ),
     ["note-7", "note-6", "note-5", "note-4", "note-3", "note-2"],
   );
-  assert.deepEqual(getLatestNotes(getNotes(), 6, "2026-09-13"), []);
+  assert.equal(getLatestNotes(getNotes(), 6, "2026-09-13").length, 6);
+  assert.deepEqual(
+    getLatestNotes(getNotes(), 3, "2026-09-13"),
+    getLatestNotes(getNotes(), 6, "2026-09-13").slice(0, 3),
+  );
   const dated = parseNote(
     '---\nslug: valid\ntitle: Example\npublishedAt: 2026-09-01\nupdatedAt: "2026-09-02"\n---\nBody',
     "valid.md",
@@ -129,5 +139,43 @@ test("latest notes use publication date only, exclude undated/draft/index/exampl
         "bad.md",
       ),
     /precedes/,
+  );
+});
+
+test("Blog date provenance covers 15 notes and 17 source posts without inventing update times", () => {
+  const ledger = JSON.parse(
+    readFileSync("docs/notebook-date-sources.json", "utf8"),
+  );
+  assert.equal(ledger.matches.length, 15);
+  assert.equal(
+    new Set(ledger.matches.map((entry: { target: string }) => entry.target))
+      .size,
+    15,
+  );
+  let sourceCount = 0;
+  for (const entry of ledger.matches) {
+    const { data, content } = matter(readFileSync(entry.target, "utf8"));
+    assert.equal(sha(content), entry.noteBodySha256, entry.target);
+    assert.equal(data.publishedAt, entry.publishedAt);
+    assert.equal(data.updatedAt, null);
+    assert.equal(data.draft, false);
+    for (const source of entry.sources) {
+      assert.equal(
+        path.basename(source.source).slice(0, 10),
+        entry.publishedAt,
+      );
+      assert.equal(
+        source.slug.slice(0, 10).replaceAll("/", "-"),
+        entry.publishedAt,
+      );
+      assert.match(source.sha256, /^[a-f0-9]{64}$/);
+      sourceCount++;
+    }
+  }
+  assert.equal(sourceCount, 17);
+  assert.equal(ledger.unmatchedBlog.length, 9);
+  assert.equal(
+    getNotes().filter((note) => note.source && note.publishedAt).length,
+    15,
   );
 });

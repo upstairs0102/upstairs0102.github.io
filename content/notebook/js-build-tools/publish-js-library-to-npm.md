@@ -8,7 +8,7 @@ kind: "article"
 order: 999
 source: "docs/JS Modules & Build Tools/[主題] 第一次發布npm前端套件就上手.md"
 draft: false
-publishedAt:
+publishedAt: "2022-12-15"
 updatedAt:
 ---
 

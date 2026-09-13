@@ -1,6 +1,9 @@
 import { Hero } from "./Hero";
+import Link from "next/link";
+import { getNotes, getLatestNotes, noteHref } from "@/lib/notebook";
 
 export function HomeContent() {
+  const latestNotes = getLatestNotes(getNotes(), 3);
   return (
     <main className="home">
       <Hero />
@@ -101,33 +104,25 @@ export function HomeContent() {
             the screen.
           </h2>
           <div className="notes">
-            <article>
-              <span className="note-index">01</span>
-              <div>
-                <span className="note-category">ENGINEERING</span>
-                <h3>Making complex things feel simple.</h3>
-                <p>
-                  Notes on interfaces, systems, and the craft of building for
-                  the web.
-                </p>
-              </div>
-            </article>
-            <article>
-              <span className="note-index">02</span>
-              <div>
-                <span className="note-category">PHOTOGRAPHY</span>
-                <h3>A different way of seeing.</h3>
-                <p>Light, quiet moments, and the details worth stopping for.</p>
-              </div>
-            </article>
-            <article>
-              <span className="note-index">03</span>
-              <div>
-                <span className="note-category">LIFE OUTSIDE</span>
-                <h3>Taking the longer way home.</h3>
-                <p>Two wheels, fresh air, and a little room for curiosity.</p>
-              </div>
-            </article>
+            {latestNotes.map((note, index) => (
+              <article key={note.slug}>
+                <span className="note-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <Link className="home-note-link" href={noteHref(note)}>
+                  <span className="note-category">{note.category}</span>
+                  <h3>{note.title}</h3>
+                  <p>
+                    <time dateTime={note.publishedAt!}>{note.publishedAt}</time>{" "}
+                    · 約 {note.readingMinutes} 分鐘
+                  </p>
+                </Link>
+              </article>
+            ))}
+            {latestNotes.length === 0 && <p>新的筆記，慢慢寫。</p>}
+            <Link href="/notebook/" className="home-notebook-more quiet-link">
+              所有筆記 ↗
+            </Link>
           </div>
         </div>
       </section>

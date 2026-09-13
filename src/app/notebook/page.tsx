@@ -1,12 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getNotes, getLatestNotes, noteHref } from "@/lib/notebook";
-import { getNotebookNavigation } from "@/lib/notebook-navigation";
 export const metadata: Metadata = { title: "Notebook" };
 export default function NotebookPage() {
   const notes = getNotes();
   const latest = getLatestNotes(notes);
-  const categories = getNotebookNavigation(notes);
   return (
     <main className="page-shell notebook-page">
       <div className="page-intro">
@@ -50,48 +48,9 @@ export default function NotebookPage() {
         ) : (
           <div className="latest-notes-empty">
             <p>新的筆記，慢慢寫。</p>
-            <p>目前尚無標示發表日期的新文章，你可以先從分類瀏覽既有筆記。</p>
-            <a href="#browse-notes">瀏覽所有筆記 ↓</a>
+            <p>目前尚無標示發表日期的文章，可使用筆記目錄瀏覽所有內容。</p>
           </div>
         )}
-      </section>
-      <section
-        className="notebook-collections"
-        id="browse-notes"
-        aria-labelledby="browse-notes-title"
-      >
-        <p className="eyebrow">EXPLORE THE ARCHIVE</p>
-        <h2 id="browse-notes-title">依分類閱讀</h2>
-        {(["technical", "series"] as const).map((collection) => (
-          <div key={collection} className="notebook-collection">
-            <h3>{collection === "technical" ? "技術筆記" : "系列文章"}</h3>
-            <div className="notebook-category-list">
-              {categories
-                .filter((category) => category.collection === collection)
-                .map((category) => (
-                  <details key={category.id} id={category.id}>
-                    <summary>
-                      <span>{category.label}</span>
-                      <span className="category-summary-end">
-                        {category.articleCount} 篇{" "}
-                        <span aria-hidden="true">＋</span>
-                      </span>
-                    </summary>
-                    <ul>
-                      {category.notes.map((note) => (
-                        <li key={note.slug}>
-                          <Link href={noteHref(note)}>
-                            {note.label}
-                            <span aria-hidden="true">↗</span>
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ))}
-            </div>
-          </div>
-        ))}
       </section>
       <div className="format-example">
         <Link href="/notebook/rendering-guide/">文章格式預覽 ↗</Link>

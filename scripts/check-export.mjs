@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, existsSync, statSync } from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
+import matter from "gray-matter";
 const root = path.resolve("out");
 const htmlFiles = readdirSync(root, { recursive: true })
   .map(String)
@@ -58,6 +59,61 @@ const work = readFileSync(path.join(root, "work/index.html"), "utf8");
 assert.ok(!work.includes("內容整理中"));
 assert.ok(work.includes('href="/notebook/vuejs-ncut-course-2019/"'));
 assert.equal((work.split("</main>")[0].match(/<li(?:\s|>)/g) ?? []).length, 43);
+const today = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "Asia/Taipei",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
+const datedNotes = readdirSync("content/notebook", { recursive: true })
+  .map(String)
+  .filter((file) => /\.mdx?$/.test(file))
+  .map((file) => {
+    const { data } = matter(
+      readFileSync(path.join("content/notebook", file), "utf8"),
+    );
+    return {
+      slug: data.slug.replace(/^\/+|\/+$/g, ""),
+      date:
+        data.publishedAt instanceof Date
+          ? data.publishedAt.toISOString().slice(0, 10)
+          : data.publishedAt,
+      draft: data.draft,
+      kind: data.kind ?? "article",
+    };
+  })
+  .filter(
+    (note) =>
+      !note.draft && note.kind === "article" && note.date && note.date <= today,
+  )
+  .sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
+const notebookIndex = readFileSync(
+  path.join(root, "notebook/index.html"),
+  "utf8",
+);
+assert.ok(!notebookIndex.includes('id="browse-notes"'));
+const latestSection = notebookIndex.match(
+  /<section aria-labelledby="latest-notes-title">([\s\S]*?)<\/section>/,
+)?.[1];
+assert.ok(latestSection);
+assert.equal(
+  (latestSection.match(/class="notebook-row"/g) ?? []).length,
+  Math.min(6, datedNotes.length),
+);
+for (const note of datedNotes.slice(0, 6))
+  assert.ok(latestSection.includes(`href="/notebook/${note.slug}/"`));
+const home = readFileSync(path.join(root, "index.html"), "utf8");
+const homeNotes = home.match(
+  /<section id="notebook"[^>]*>([\s\S]*?)<\/section>/,
+)?.[1];
+assert.ok(homeNotes);
+assert.equal(
+  (homeNotes.match(/<article>/g) ?? []).length,
+  Math.min(3, datedNotes.length),
+);
+for (const note of datedNotes.slice(0, 3))
+  assert.ok(homeNotes.includes(`href="/notebook/${note.slug}/"`));
+assert.ok(!homeNotes.includes("Making complex things feel simple."));
 console.log(
   `Static export checked: ${htmlFiles.length} HTML files, ${checked} local links/assets/anchors.`,
 );

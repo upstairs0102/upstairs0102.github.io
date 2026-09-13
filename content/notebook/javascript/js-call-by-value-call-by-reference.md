@@ -8,7 +8,7 @@ kind: "article"
 order: 999
 source: "docs/JavaScript/[JS] 傳值&傳參考.md"
 draft: false
-publishedAt:
+publishedAt: "2020-02-28"
 updatedAt:
 ---
 

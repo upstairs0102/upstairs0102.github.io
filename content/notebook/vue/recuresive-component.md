@@ -9,7 +9,7 @@ kind: "article"
 order: 999
 source: "docs/Vue/[Vue] Recuresive Component.md"
 draft: false
-publishedAt:
+publishedAt: "2021-06-24"
 updatedAt:
 ---
 

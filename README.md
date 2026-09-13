@@ -74,15 +74,15 @@ slug 沿用舊站 slug，網址為 `/notebook/<slug>/`。draft 文章不產生�
 
 ## 日期與最新文章
 
-`publishedAt`、`updatedAt` 一律使用 `YYYY-MM-DD`，建議加引號。舊文不可考，兩欄留空（YAML null），不從檔名、Git commit、檔案時間或搬遷日期推測。
+`publishedAt`、`updatedAt` 一律使用 `YYYY-MM-DD`，建議加引號。已依使用者確認，從舊 Blog 比對出 17 篇來源，補回 15 篇筆記的發表日期。日期由 Blog 的日期式檔名與 slug 交叉確認；來源沒有獨立更新日期或時分秒，所以 `updatedAt` 維持空白。其餘無對應來源的舊筆記仍留空，不從 Git commit、檔案修改時間或搬遷日期推測。完整比對與來源雜湊見 `docs/notebook-date-sources.json`。
 
-Latest Notes 於每次建置選出發表日期最新的 6 篇。無日期、草稿、系列介紹、格式示例與未來日期不列入。未來日期以台北曆日判斷，需在日期到達後重新建置／發布。更新日期只顯示於文章資訊，不影響最新排序。新增文章預設 `kind: article`；系列簡介使用 `kind: index`，格式示例為 `kind: example`。日期留空時最新區塊顯示空狀態，完整分類仍可閱讀。
+Notebook 首頁的 Latest Notes 於每次建置選出發表日期最新的 6 篇；網站首頁 NOTEBOOK 區塊共用 `getLatestNotes`，選出前 3 篇並連到文章。無日期、草稿、系列介紹、格式示例與未來日期不列入。未來日期以台北曆日判斷，需在日期到達後重新建置／發布。更新日期只顯示於文章資訊，不影響最新排序。新增文章預設 `kind: article`；系列簡介使用 `kind: index`，格式示例為 `kind: example`。沒有符合條件的文章時顯示空狀態。Notebook 首頁已移除「依分類閱讀」，完整分類與搜尋仍透過側欄／手機抽屜使用。
 
 舊文的原始內容與圖片完整性由 `docs/notebook-migration.json` 及測試驗證，僅轉换資源網址和補充 frontmatter。Vue 講義原圖路徑大小寫錯誤已對應回實際檔案。重現搬遷可使用 `node scripts/migrate-notebook.mjs /path/to/extracted-docusaurus`；不要對已有後續內容修改的資料夾重新搬遷。
 
 ## 確認後再進行
 
-Home / Contact 正式文案與正式 SEO。26 篇 Blog 不在目前遷移範圍。預覽版本暫設 noindex。
+Home / Contact 正式文案與正式 SEO。26 篇 Blog 不另建文章頁；其中 17 篇僅作為既有筆記的日期來源，沒有對應筆記的 9 篇不新增內容。預覽版本暫設 noindex。
 
 每個完成的修改批次都 commit 並推上此分支。GitHub Pages 切換、GitHub Actions 與合併 main 留待最後另行確認。
 

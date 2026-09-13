@@ -9,7 +9,7 @@ kind: "article"
 order: 999
 source: "docs/Vue/[主題] Vue Component資料流設計 (1)單向傳遞.md"
 draft: false
-publishedAt:
+publishedAt: "2020-05-09"
 updatedAt:
 ---
 

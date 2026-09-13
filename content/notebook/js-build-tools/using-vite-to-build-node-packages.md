@@ -8,7 +8,7 @@ kind: "article"
 order: 999
 source: "docs/JS Modules & Build Tools/[主題] 用vite打包要發布npm的程式.md"
 draft: false
-publishedAt:
+publishedAt: "2023-11-10"
 updatedAt:
 ---
 
