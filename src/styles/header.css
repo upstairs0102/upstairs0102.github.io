@@ -1,0 +1,71 @@
+:root {
+  --site-header-height: 96px;
+}
+html {
+  scroll-padding-top: calc(var(--site-header-height) + 16px);
+}
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--site-header-height);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  background: var(--paper);
+  box-shadow: inset 0 -1px transparent;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    backdrop-filter 180ms ease;
+}
+.site-header[data-scrolled="true"] {
+  box-shadow: inset 0 -1px var(--line);
+}
+/* An opaque paper background remains the fallback where blur is unsupported. */
+@supports (
+  (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))
+) {
+  .site-header[data-scrolled="true"] {
+    background: rgb(244 244 242 / 94%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+}
+@media (min-width: 1700px) {
+  /* Extend the surface to the viewport edges without moving the existing content. */
+  .site-header {
+    padding-inline: calc((100% - 1600px) / 2 + 50px);
+  }
+}
+.notebook-sidebar {
+  top: calc(var(--site-header-height) + 25px);
+  height: calc(100svh - var(--site-header-height) - 50px);
+}
+.reading-aside {
+  top: calc(var(--site-header-height) + 35px);
+  max-height: calc(100svh - var(--site-header-height) - 70px);
+}
+/* Root scroll-padding reserves the header; target margins add only local spacing. */
+.work-section,
+.notebook-content .article-body :is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 16px;
+}
+@media (max-width: 1023px) {
+  .notebook-mobile-toolbar {
+    top: var(--site-header-height);
+  }
+  .notebook-content .article-body :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: 86px;
+  }
+}
+@media (max-width: 700px) {
+  :root {
+    --site-header-height: 78px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header {
+    transition: none;
+  }
+}

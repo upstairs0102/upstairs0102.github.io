@@ -7,6 +7,7 @@
 @import "./notebook-navigation.css";
 @import "./work.css";
 @import "./contact.css";
+@import "./header.css";
 @plugin "@tailwindcss/typography";
 
 /* Preflight is intentionally omitted: the baseline owns its element defaults. */

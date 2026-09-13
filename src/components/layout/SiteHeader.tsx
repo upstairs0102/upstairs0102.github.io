@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const links = [
   ["Work", "/work/"],
@@ -10,8 +11,33 @@ const links = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    let frame = 0;
+    let previous: boolean | undefined;
+    const update = () => {
+      frame = 0;
+      const next = window.scrollY > 24;
+      if (next !== previous) {
+        previous = next;
+        setScrolled(next);
+      }
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("pageshow", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("pageshow", schedule);
+    };
+  }, [pathname]);
   return (
-    <header className="site-header" id="page-top">
+    <header className="site-header" id="page-top" data-scrolled={scrolled}>
       <Link href="/" className="wordmark" aria-label="Adam You home">
         ADAM YOU<span className="logo-period">.</span>
       </Link>

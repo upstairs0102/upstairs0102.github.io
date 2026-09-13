@@ -7,5 +7,6 @@
 - Source in `src/`, content in `content/`, assets in `public/`. No build output, dependencies or credentials in Git.
 - Use actual Next.js App Router, TypeScript and Tailwind v4; do not substitute a compatible framework.
 - UI follows the prototype. Prefer native elements; use unstyled Base UI when complex interaction needs it.
+- Adam selected the sticky paper-like header: after 24px scroll, use a 94% pale background, subtle 8px blur and thin bottom rule. Preserve the header geometry and account for it in Notebook sticky panels and anchor offsets.
 - Adam approved publishing his supplied email, GitHub, LinkedIn, Facebook and Flickr links on both Home and Contact. Keep these details in a shared component.
 - Adam approved replacing Home Selected Work with OrbCharts (supplied logo and official introduction) and Nocturne-district (transparent hologram-light iframe and README-based introduction), with new-tab project links. Keep the embedded pointer interactions unobstructed.
