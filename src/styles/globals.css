@@ -144,3 +144,76 @@ summary:focus-visible {
   margin-top: 30px;
   font: 14px/1.8 var(--font-reading);
 }
+
+/* Featured work: preserve the prototype frame; keep the embedded canvas interactive. */
+.home .featured-project {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.home .orbcharts-art {
+  background: #e5e9e1;
+}
+.home .orbcharts-logo {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.home .hologram-art {
+  background: #e2e8e7;
+}
+.home .hologram-preview {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% - 92px);
+  border: 0;
+  background: transparent;
+  color-scheme: light;
+  pointer-events: auto;
+}
+.home .hologram-art .art-top,
+.home .hologram-hint {
+  pointer-events: none;
+}
+.home .hologram-hint {
+  font-family: var(--font-reading);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #49636a;
+}
+.home .featured-project .project-caption {
+  flex: 1;
+}
+.home .featured-project .project-caption > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.home .project-caption .project-description {
+  font: 15px/1.9 var(--font-reading);
+  color: var(--ink);
+  margin: 18px 0 22px;
+  overflow-wrap: anywhere;
+}
+.home .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: auto;
+  font: 14px/1.6 var(--font-reading);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--line);
+}
+.home .project-link:hover {
+  text-decoration-color: currentColor;
+}

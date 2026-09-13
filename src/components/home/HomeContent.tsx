@@ -25,67 +25,80 @@ export function HomeContent() {
           </p>
         </div>
         <div className="projects">
-          <article className="project">
-            <div
-              className="project-art chart-art"
-              aria-label="Illustrative line chart"
-            >
+          <article className="project featured-project">
+            <div className="project-art orbcharts-art">
               <div className="art-top">
                 <span>OrbCharts</span>
                 <span>DATA, IN MOTION</span>
               </div>
-              <svg
-                viewBox="0 0 560 230"
-                role="img"
-                aria-label="An illustrative rising line chart"
-              >
-                <g className="grid">
-                  <path d="M0 40h560M0 95h560M0 150h560M0 205h560" />
-                </g>
-                <path
-                  className="chart-fill"
-                  d="M0 195L45 180L90 187L135 140L180 153L225 96L270 123L315 69L360 93L405 42L450 58L495 15L560 29V230H0Z"
-                />
-                <path
-                  className="chart-line"
-                  d="M0 195L45 180L90 187L135 140L180 153L225 96L270 123L315 69L360 93L405 42L450 58L495 15L560 29"
-                />
-              </svg>
-              <span className="art-caption">A DIFFERENT VIEW OF DATA.</span>
+              <img
+                className="orbcharts-logo"
+                src="https://camo.githubusercontent.com/373cbfc68d0d19b21515de664f371f35f2a2650115ec87c820498bd3741f567f/68747470733a2f2f6270626173652e6769746875622e696f2f6f72626368617274732f66617669636f6e2f66617669636f6e2d3132382e706e67"
+                alt="OrbCharts 標誌"
+                width={128}
+                height={128}
+                loading="lazy"
+                decoding="async"
+              />
+              <span className="art-caption">
+                ONE DATA FORMAT. MANY WAYS TO SEE.
+              </span>
             </div>
             <div className="project-caption">
               <div>
                 <h3>OrbCharts</h3>
                 <p>Data visualization / Open source</p>
+                <p className="project-description">
+                  為儀表板打造的 JavaScript
+                  圖表函式庫。以統一的資料格式，將資料與呈現方式分離；搭配可組合的圖表圖層，讓同一份資料自由切換視角，靈活回應持續變動的需求。
+                </p>
+                <a
+                  className="project-link"
+                  href="https://bpbase.github.io/orbcharts/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="探索 OrbCharts（另開分頁）"
+                >
+                  探索 OrbCharts <span aria-hidden="true">↗</span>
+                </a>
               </div>
               <span className="project-number">01</span>
             </div>
           </article>
-          <article className="project">
-            <div className="project-art company-art">
+          <article className="project featured-project">
+            <div className="project-art hologram-art">
               <div className="art-top">
-                <span>幫你查</span>
-                <span>COMPANY EXPLORER</span>
+                <span>NOCTURNE</span>
+                <span>A CITY AFTER DARK</span>
               </div>
-              <div className="company-content">
-                <span className="company-small">CONNECTING THE DOTS</span>
-                <p>
-                  Every company.
-                  <br />A bigger picture.
-                </p>
-                <div className="search-illustration">
-                  <span>探索一間公司</span>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="10" cy="10" r="6" />
-                    <path d="m15 15 5 5" />
-                  </svg>
-                </div>
-              </div>
+              <iframe
+                className="hologram-preview"
+                src="https://upstairs0102.github.io/nocturne-district/hologram-light/"
+                title="Nocturne-district 互動全息機器人，可按住左鍵水平拖曳旋轉"
+                loading="lazy"
+                style={{ background: "transparent", colorScheme: "light" }}
+              />
+              <span className="art-caption hologram-hint">
+                按住左鍵／單指水平拖曳，轉動機器人
+              </span>
             </div>
             <div className="project-caption">
               <div>
-                <h3>幫你查 · Company Explorer</h3>
-                <p>Product engineering / Information design</p>
+                <h3>Nocturne-district</h3>
+                <p>Interactive 3D / Creative coding</p>
+                <p className="project-description">
+                  一座向《Stray》中城致敬的原創 3D
+                  城市。霓虹、老建築與全息機器人，構成七個相連的夜間街區；在瀏覽器裡拉近、轉動視角，慢慢探索科技與日常交錯的城市風景。
+                </p>
+                <a
+                  className="project-link"
+                  href="https://upstairs0102.github.io/nocturne-district/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="進入夜泊街區（另開分頁）"
+                >
+                  進入夜泊街區 <span aria-hidden="true">↗</span>
+                </a>
               </div>
               <span className="project-number">02</span>
             </div>
