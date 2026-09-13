@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkupstairs_0102_github_io=self.webpackChunkupstairs_0102_github_io||[]).push([[6179],{11677:s=>{s.exports=JSON.parse('{"label":"next.js","permalink":"/blog/tags/next-js","allTagsPath":"/blog/tags","count":1}')}}]);
