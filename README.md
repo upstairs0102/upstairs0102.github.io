@@ -25,7 +25,7 @@ pnpm serve
 ## 本階段包含
 
 - 首頁：沿用 prototype 原圖、字體、配色、字距、版面尺寸、斷點及前後景視差；支援 reduced motion。
-- 共用 Header、Footer；Work 已放入正式內容，Contact 仍為示意頁。
+- 共用 Header、Footer；Work 已放入正式內容。Home 與 Contact 透過 `src/components/ContactLinks.tsx` 共用 Email、GitHub、LinkedIn、Facebook、Flickr 聯絡資訊；Email 使用 mailto，社群連結另開分頁。
 - Notebook 完整分類目錄與 SSG 文章頁：75 份公開文件、1 份草稿保留但不發布。
 - 11 個分類、標題／分類／標籤搜尋、目前文章標示；共享 layout 保留展開狀態與選單捲動位置。
 - ≥1440px 左側選單／文章／章節目錄；1024–1439px 左側選單與文章、章節目錄移至文章開頭；<1024px 使用 Base UI Dialog 抽屜。
@@ -82,7 +82,7 @@ Notebook 首頁的 Latest Notes 於每次建置選出發表日期最新的 6 篇
 
 ## 確認後再進行
 
-Home / Contact 正式文案與正式 SEO。26 篇 Blog 不另建文章頁；其中 17 篇僅作為既有筆記的日期來源，沒有對應筆記的 9 篇不新增內容。預覽版本暫設 noindex。
+首頁其餘正式文案與正式 SEO。26 篇 Blog 不另建文章頁；其中 17 篇僅作為既有筆記的日期來源，沒有對應筆記的 9 篇不新增內容。預覽版本暫設 noindex。
 
 每個完成的修改批次都 commit 並推上此分支。GitHub Pages 切換、GitHub Actions 與合併 main 留待最後另行確認。
 

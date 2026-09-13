@@ -1,4 +1,5 @@
 import { Hero } from "./Hero";
+import { ContactLinks } from "@/components/ContactLinks";
 import Link from "next/link";
 import { getNotes, getLatestNotes, noteHref } from "@/lib/notebook";
 
@@ -150,6 +151,7 @@ export function HomeContent() {
         <h2>
           Let’s connect<span>.</span>
         </h2>
+        <ContactLinks />
         <p className="contact-note">
           Taipei, Taiwan · Somewhere between code and a camera.
         </p>
