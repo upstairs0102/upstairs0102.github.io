@@ -9,6 +9,7 @@ import type { Root as MdRoot, Heading } from "mdast";
 import type { Root as HtmlRoot } from "hast";
 import type { ComponentProps } from "react";
 import type { Note } from "./notebook";
+import { rewriteLegacyHref } from "./legacy-routes";
 export interface TocItem {
   id: string;
   text: string;
@@ -105,7 +106,16 @@ function ReadingImage(props: ComponentProps<"img">) {
     <img {...props} alt={props.alt ?? ""} loading="lazy" decoding="async" />
   );
 }
-export async function renderNote(note: Note) {
+function rehypeLegacyLinks() {
+  return (tree: HtmlRoot) => {
+    visit(tree, "element", (node) => {
+      if (node.tagName === "a" && typeof node.properties.href === "string") {
+        node.properties.href = rewriteLegacyHref(node.properties.href);
+      }
+    });
+  };
+}
+export async function renderNote(note: Pick<Note, "body" | "file" | "title">) {
   const toc: TocItem[] = [];
   const { content } = await compileMDX({
     source: note.body,
@@ -122,6 +132,7 @@ export async function renderNote(note: Note) {
           [remarkLegacy, { title: note.title }],
         ],
         rehypePlugins: [
+          rehypeLegacyLinks,
           rehypeSlug,
           [rehypeToc, { toc }],
           [rehypePrettyCode, { theme: "github-light", keepBackground: false }],

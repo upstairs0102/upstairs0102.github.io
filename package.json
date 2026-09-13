@@ -44,6 +44,7 @@
     "tailwindcss": "4.3.3",
     "tsx": "4.23.13",
     "typescript": "7.0.2",
+    "typescript-legacy": "npm:typescript@5.9.3",
     "unified": "11.0.5"
   },
   "packageManager": "pnpm@11.19.0"

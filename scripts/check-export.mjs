@@ -39,6 +39,25 @@ const fixture = readFileSync(
 assert.ok(fixture.includes("data-highlighted-line"));
 assert.ok(fixture.includes("callout-info"));
 assert.ok(fixture.includes("table-scroll"));
+const inventory = JSON.parse(
+  readFileSync("docs/migration-inventory.json", "utf8"),
+);
+for (const doc of inventory.documents) {
+  const aliasFile = path.join(root, doc.legacyPath, "index.html");
+  assert.equal(existsSync(aliasFile), !doc.draft, doc.legacyPath);
+  if (!doc.draft) {
+    const alias = readFileSync(aliasFile, "utf8");
+    assert.ok(
+      alias.includes(`href="${doc.plannedPath}/"`),
+      `Missing redirect fallback: ${doc.legacyPath}`,
+    );
+  }
+}
+assert.ok(existsSync(path.join(root, "docs/index.html")));
+const work = readFileSync(path.join(root, "work/index.html"), "utf8");
+assert.ok(!work.includes("內容整理中"));
+assert.ok(work.includes('href="/notebook/vuejs-ncut-course-2019/"'));
+assert.equal((work.split("</main>")[0].match(/<li(?:\s|>)/g) ?? []).length, 43);
 console.log(
   `Static export checked: ${htmlFiles.length} HTML files, ${checked} local links/assets/anchors.`,
 );

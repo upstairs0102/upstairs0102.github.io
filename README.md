@@ -1,6 +1,6 @@
 # ADAM YOU — Next.js Portfolio
 
-正式開發分支：`feat/nextjs-portfolio`。已完成階段 1–3，以及確認後的 Work 斷點、完整 Notebook 目錄與文章搬遷。
+正式開發分支：`feat/nextjs-portfolio`。已完成階段 1–4：完整 Notebook、Work 內容搬遷及舊網址相容。驗證紀錄見 `docs/stage-4-review.md`。
 
 ## 本機開發
 
@@ -25,11 +25,13 @@ pnpm serve
 ## 本階段包含
 
 - 首頁：沿用 prototype 原圖、字體、配色、字距、版面尺寸、斷點及前後景視差；支援 reduced motion。
-- 共用 Header、Footer，及 Work / Contact 示意頁。
+- 共用 Header、Footer；Work 已放入正式內容，Contact 仍為示意頁。
 - Notebook 完整分類目錄與 SSG 文章頁：75 份公開文件、1 份草稿保留但不發布。
 - 11 個分類、標題／分類／標籤搜尋、目前文章標示；共享 layout 保留展開狀態與選單捲動位置。
 - ≥1440px 左側選單／文章／章節目錄；1024–1439px 左側選單與文章、章節目錄移至文章開頭；<1024px 使用 Base UI Dialog 抽屜。
 - Work 在小於 900px 時改為單欄。
+- Work 六個分類、43 筆正式內容，以 Markdown 維護。長清單在寬螢幕依原順序由左到右排成兩欄；分類捷徑可直接跳到各區段。
+- 75 個舊文章網址及 `/docs/` 入口可轉接至 Notebook；文章與 Work 中的舊站內連結在編譯時轉為新路徑。
 - 文章目錄、手機目錄收合、GFM 表格、清單、提示區塊、Shiki 語法高亮與行標記。
 - 格式預覽文章獨立標示，並非舊站文章。
 
@@ -45,6 +47,7 @@ pnpm serve
 | `src/lib/notebook.ts` | frontmatter、路徑檢查、草稿過濾 |
 | `src/lib/markdown.tsx` | Markdown / MDX 編譯與舊格式相容 |
 | `content/notebook/` | 可維護的 Markdown 原始內容 |
+| `content/work/` | 六個 Work 分類，各自一份 Markdown |
 | `public/images/` | 原始人物照片與文章圖片 |
 | `reference/prototype/` | 原始 prototype，保持不變供比對 |
 | `docs/` | 設計基準、76 篇筆記盤點、遷移紀錄及驗證結果 |
@@ -79,6 +82,14 @@ Latest Notes 於每次建置選出發表日期最新的 6 篇。無日期、草�
 
 ## 確認後再進行
 
-Work 六個分類的正式內容、舊 `/docs/` URL 相容、Home / Contact 正式文案與正式 SEO。26 篇 Blog 不在目前遷移範圍。預覽版本暫設 noindex。
+Home / Contact 正式文案與正式 SEO。26 篇 Blog 不在目前遷移範圍。預覽版本暫設 noindex。
 
 每個完成的修改批次都 commit 並推上此分支。GitHub Pages 切換、GitHub Actions 與合併 main 留待最後另行確認。
+
+## Work 與舊網址
+
+`content/work/*.md` 使用 `id`、`title`、`order` frontmatter；內文使用標準 Markdown 清單與連結。直接編輯這些檔案即可更新 Work，不需改 TSX。舊站有效內容的文字、可見日期、連結及順序已保留，註解內容不發布；遷移紀錄在 `docs/work-migration.json`。
+
+重現初次搬遷：`node scripts/migrate-work.mjs /path/to/extracted-docusaurus`。這會覆寫 Work 檔案，請勿用於已編輯過的內容。工具僅在搬遷時使用 `typescript-legacy` 的 TSX parser，應用程式型別檢查仍使用 TypeScript 7。
+
+舊網址對照使用 `docs/migration-inventory.json`。SSG 為每個公開舊路徑輸出轉接頁，由瀏覽器 `location.replace` 跳至新路徑並保留 query/hash；停用 JavaScript 時提供一般連結。這不是 HTTP 301/308。草稿不產生轉接頁，未知路徑維持 404。舊錨點會原樣帶入，並未另建歷史標題 ID 的別名表。
