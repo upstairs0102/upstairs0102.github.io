@@ -21,7 +21,12 @@ export default async function NotePage({ params }: Props) {
   if (!note) notFound();
   const { content, toc } = await renderNote(note);
   const related = notes
-    .filter((item) => item.slug !== note.slug && item.source)
+    .filter((item) => item.slug !== note.slug && item.kind === "article")
+    .sort(
+      (a, b) =>
+        Number(b.category === note.category) -
+          Number(a.category === note.category) || a.order - b.order,
+    )
     .slice(0, 3);
   return (
     <main className="reading-page">
@@ -37,6 +42,17 @@ export default async function NotePage({ params }: Props) {
             <div className="article-meta">
               <span>ADAM YOU</span>
               <span>約 {note.readingMinutes} 分鐘</span>
+              {note.publishedAt && (
+                <span>
+                  發表{" "}
+                  <time dateTime={note.publishedAt}>{note.publishedAt}</time>
+                </span>
+              )}
+              {note.updatedAt && note.updatedAt !== note.publishedAt && (
+                <span>
+                  更新 <time dateTime={note.updatedAt}>{note.updatedAt}</time>
+                </span>
+              )}
               <span>{note.tags.join(" / ")}</span>
             </div>
           </header>

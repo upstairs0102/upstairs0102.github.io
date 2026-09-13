@@ -3,7 +3,7 @@ export const metadata: Metadata = { title: "Work" };
 const sections = ["開源", "專利", "講課", "競賽", "讀書會 / 分享", "工作"];
 export default function Work() {
   return (
-    <main className="page-shell">
+    <main className="page-shell work-page">
       <p className="overline">01 / WORK</p>
       <div className="page-intro">
         <h1>

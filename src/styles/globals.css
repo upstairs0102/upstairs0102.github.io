@@ -4,6 +4,7 @@
 @import "./tokens.css";
 @import "./prototype.css";
 @import "./notebook.css";
+@import "./notebook-navigation.css";
 @plugin "@tailwindcss/typography";
 
 /* Preflight is intentionally omitted: the baseline owns its element defaults. */
@@ -107,4 +108,17 @@ summary:focus-visible {
   .editorial-row {
     padding-bottom: 25px;
   }
+}
+
+@media (width < 900px) {
+  .work-page .editorial-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+.eyebrow {
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.09em;
+  color: var(--muted);
 }
