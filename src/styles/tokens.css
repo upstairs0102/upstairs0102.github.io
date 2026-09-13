@@ -1,0 +1,30 @@
+@theme {
+  --color-paper: #f4f4f2;
+  --color-ink: #171717;
+  --color-muted: #6b6b67;
+  --color-rule: #d9d9d4;
+  --color-accent: #425941;
+  --color-wash: #eaeae6;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-reading:
+    Arial, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --breakpoint-phone: 43.75rem;
+  --breakpoint-tablet: 68.75rem;
+}
+
+:root {
+  --paper: var(--color-paper);
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --line: var(--color-rule);
+  --reading-width: 48rem;
+  --page-gutter: 6.2%;
+  --focus-color: #24624f;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --page-gutter: 6%;
+  }
+}

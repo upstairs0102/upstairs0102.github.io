@@ -1,0 +1,109 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./tokens.css";
+@import "./prototype.css";
+@plugin "@tailwindcss/typography";
+
+/* Preflight is intentionally omitted: the baseline owns its element defaults. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+summary {
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+}
+.site-header nav a[aria-current="page"]:after {
+  transform: scaleX(1);
+}
+.page-shell {
+  padding: 50px var(--page-gutter) 100px;
+  min-height: 65vh;
+  border-top: 1px solid var(--line);
+}
+.page-intro {
+  margin: 50px 0 62px;
+  max-width: 950px;
+}
+.page-intro h1 {
+  font-size: clamp(52px, 7.3vw, 112px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+  margin: 0 0 25px;
+}
+.page-intro p {
+  font-family: var(--font-reading);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 620px;
+}
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 65px;
+}
+.editorial-row {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 45px;
+}
+.editorial-row h2 {
+  margin: 12px 0 18px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.editorial-row p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-family: var(--font-reading);
+}
+.quiet-link {
+  display: inline-block;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 5px;
+}
+.placeholder-note {
+  color: var(--muted);
+  font: 13px/1.8 var(--font-reading);
+  margin-top: 38px;
+}
+.contact-placeholder {
+  max-width: 750px;
+  margin: 75px 0;
+}
+.contact-placeholder h2 {
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+@media (max-width: 700px) {
+  .page-shell {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .page-intro {
+    margin: 35px 0 42px;
+  }
+  .page-intro p {
+    font-size: 15px;
+  }
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .editorial-row {
+    padding-bottom: 25px;
+  }
+}
