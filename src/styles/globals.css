@@ -145,14 +145,28 @@ summary:focus-visible {
   font: 14px/1.8 var(--font-reading);
 }
 
-/* Featured work: preserve the prototype frame; keep the embedded canvas interactive. */
+/* Each project is one shared surface with media and copy side by side. */
+.home .projects {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
 .home .featured-project {
   min-width: 0;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
 }
-.home .orbcharts-art {
+.home .orbcharts-card {
   background: #e5e9e1;
+}
+.home .nocturne-card {
+  background: #e2e8e7;
+}
+.home .featured-project .project-art {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 350px;
+  height: 100%;
+  background: transparent;
 }
 .home .orbcharts-logo {
   position: absolute;
@@ -162,9 +176,6 @@ summary:focus-visible {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-.home .hologram-art {
-  background: #e2e8e7;
 }
 .home .hologram-preview {
   position: absolute;
@@ -189,7 +200,15 @@ summary:focus-visible {
   color: #49636a;
 }
 .home .featured-project .project-caption {
-  flex: 1;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 42px clamp(24px, 3vw, 52px);
+  align-self: center;
+}
+.home .featured-project .project-caption h3 {
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 .home .featured-project .project-caption > div {
   display: flex;
@@ -216,4 +235,21 @@ summary:focus-visible {
 }
 .home .project-link:hover {
   text-decoration-color: currentColor;
+}
+
+@media (width < 760px) {
+  .home .featured-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home .featured-project .project-art {
+    height: 280px;
+    min-height: 280px;
+    padding: 24px;
+  }
+  .home .featured-project .project-caption {
+    padding: 12px 24px 28px;
+  }
+  .home .hologram-hint {
+    max-width: calc(100% - 48px);
+  }
 }

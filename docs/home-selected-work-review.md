@@ -1,6 +1,6 @@
 # Selected Work：OrbCharts / Nocturne-district
 
-首頁兩張卡片已換為正式專案內容，保留 prototype 的雙欄／手機單欄、色調與版面框架。
+首頁兩張卡片已換為正式專案內容，保留 prototype 的色調與版面語彙。依後續確認，兩張卡片改為各佔一列，圖片／iframe 與標題、介紹、連結包含於同一底色卡片內；≥760px 左預覽右文字，<760px 改為上預覽下文字。iframe 設定與可操作區域保留，文字區不覆蓋預覽。
 
 - OrbCharts 使用使用者提供的 GitHub Camo 圖片原址，已下載核對為 128 × 128 PNG。以原生尺寸置中顯示，不放大低解析度標誌。介紹依 [官網首頁](https://bpbase.github.io/orbcharts/en) 的統一資料格式、資料與呈現解耦、可組合圖層及儀表板用途撰寫。「探索 OrbCharts ↗」另開官方網站。
 - Nocturne-district 介紹依 [README](https://github.com/upstairs0102/nocturne-district) 撰寫。「進入夜泊街區 ↗」另開完整城市。展示區使用指定的 `https://upstairs0102.github.io/nocturne-district/hologram-light/`，未改動外部專案。

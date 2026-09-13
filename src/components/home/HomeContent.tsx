@@ -25,7 +25,7 @@ export function HomeContent() {
           </p>
         </div>
         <div className="projects">
-          <article className="project featured-project">
+          <article className="project featured-project orbcharts-card">
             <div className="project-art orbcharts-art">
               <div className="art-top">
                 <span>OrbCharts</span>
@@ -65,7 +65,7 @@ export function HomeContent() {
               <span className="project-number">01</span>
             </div>
           </article>
-          <article className="project featured-project">
+          <article className="project featured-project nocturne-card">
             <div className="project-art hologram-art">
               <div className="art-top">
                 <span>NOCTURNE</span>
