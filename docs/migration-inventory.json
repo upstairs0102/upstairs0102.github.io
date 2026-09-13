@@ -88,8 +88,9 @@
       "legacyPath": "/docs/react/nextjs-data-fetching",
       "plannedPath": "/notebook/react/nextjs-data-fetching",
       "draft": false,
-      "status": "pending",
-      "sha256": "3e53eefe645886198e0a88f99337b4436227159fa54a14dca92b5cf18e9ff557"
+      "status": "sample-migrated",
+      "sha256": "3e53eefe645886198e0a88f99337b4436227159fa54a14dca92b5cf18e9ff557",
+      "target": "content/notebook/next-data-fetching.md"
     },
     {
       "source": "docs/React/[Next.js] Getting Started.md",
@@ -205,8 +206,9 @@
       "legacyPath": "/docs/rxjs/combinelatest-duplicate-events",
       "plannedPath": "/notebook/rxjs/combinelatest-duplicate-events",
       "draft": false,
-      "status": "pending",
-      "sha256": "85417c0ccdb209bd75e7d2fdc04899c6e55dcfdc674d43c61ebc0b8b8dec59be"
+      "status": "sample-migrated",
+      "sha256": "85417c0ccdb209bd75e7d2fdc04899c6e55dcfdc674d43c61ebc0b8b8dec59be",
+      "target": "content/notebook/rxjs.md"
     },
     {
       "source": "docs/RxJS/_wip/[RxJS]Operators.md",
@@ -286,8 +288,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day1-3",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day1-3",
       "draft": false,
-      "status": "pending",
-      "sha256": "7e12ac7418ddb3b0b7e329b0d59726fcdaf0276b7e1325f958e72a039903de55"
+      "status": "sample-migrated",
+      "sha256": "7e12ac7418ddb3b0b7e329b0d59726fcdaf0276b7e1325f958e72a039903de55",
+      "target": "content/notebook/vue-events.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-4. 組件化設計.md",
@@ -511,8 +514,9 @@
       "legacyPath": "/docs/ithome2018/day15",
       "plannedPath": "/notebook/ithome2018/day15",
       "draft": false,
-      "status": "pending",
-      "sha256": "a1082b49ce7c45fb4183c54bd68cf2352e0d2ac770266877f2b60a4aa39a8354"
+      "status": "sample-migrated",
+      "sha256": "a1082b49ce7c45fb4183c54bd68cf2352e0d2ac770266877f2b60a4aa39a8354",
+      "target": "content/notebook/d3-scatter.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day16.md",

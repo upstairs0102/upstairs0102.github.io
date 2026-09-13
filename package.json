@@ -8,11 +8,12 @@
   },
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "build": "next build",
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/*.test.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
     "serve": "python3 -m http.server 3000 --directory out",
-    "check:export": "node scripts/check-export.mjs"
+    "check:export": "node scripts/check-export.mjs",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/*.mjs\""
   },
   "dependencies": {
     "github-slugger": "2.0.0",

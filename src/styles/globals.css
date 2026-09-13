@@ -3,6 +3,7 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "./tokens.css";
 @import "./prototype.css";
+@import "./notebook.css";
 @plugin "@tailwindcss/typography";
 
 /* Preflight is intentionally omitted: the baseline owns its element defaults. */
