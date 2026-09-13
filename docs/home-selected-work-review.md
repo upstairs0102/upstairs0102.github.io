@@ -9,3 +9,7 @@
 - 外部入口回傳 HTTP 200，回應未包含阻止嵌入的 X-Frame-Options 或 CSP frame-ancestors。圖示亦成功回傳。
 
 Next.js 靜態建置及 TypeScript 檢查通過。另檢查匯出 HTML 的 iframe URL、透明色系設定、指定圖示、兩個連結的 target/rel。沒有執行瀏覽器 GPU 或實機滑鼠測試；實際 WebGL 顯示及拖曳手感需於預覽確認。外部 iframe 與圖示仍依賴其來源網站可用性。
+
+## 版型切換備份
+
+目前恢復為兩張卡片並排、介紹與連結在圖片下方的版本（943de25）。文字放進卡片、卡片內左右排列的完整 CSS 保存在 `src/styles/globals.css` 最後，以 `BEGIN ALTERNATIVE PROJECT CARD LAYOUT` / `END ALTERNATIVE PROJECT CARD LAYOUT` 包成註解。刪除含 BEGIN 與 END 的兩個完整標記行即可啟用；重新註解即可切回。兩版共用現有 HomeContent.tsx，已保留兩張卡片的專用類別，不需複製或替換 JSX，圖片／iframe／文字／連結內容完全相同。
