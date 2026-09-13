@@ -1,10 +1,15 @@
 ---
-slug: /vuejs-ncut-course-2019/day1-3
+slug: "/vuejs-ncut-course-2019/day1-3"
 title: "1-3. 事件處理"
-tags: [vue.js]
-category: "Vue.js"
+tags: ["vue.js"]
+category: "Vue.js 前端開發課程"
+collection: "series"
+kind: "article"
+order: 13
 source: "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-3. 事件處理.md"
-sample: true
+draft: false
+publishedAt:
+updatedAt:
 ---
 
 

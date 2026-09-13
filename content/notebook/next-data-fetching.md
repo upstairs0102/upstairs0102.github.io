@@ -1,10 +1,15 @@
 ---
-slug: /react/nextjs-data-fetching
+slug: "/react/nextjs-data-fetching"
 title: "[Next.js] Data Fetching"
-tags: [react, next.js]
+tags: ["react","next.js"]
 category: "React / Next.js"
+collection: "technical"
+kind: "article"
+order: 999
 source: "docs/React/[Next.js] Data Fetching.md"
-sample: true
+draft: false
+publishedAt:
+updatedAt:
 ---
 
 ## Data Fetching - App Router `/app`

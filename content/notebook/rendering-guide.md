@@ -4,6 +4,9 @@ title: 文章格式預覽
 category: Format study
 tags: [Markdown]
 sample: true
+publishedAt:
+updatedAt:
+kind: example
 ---
 
 這是一篇用來檢視閱讀樣式的示範文章，並非舊站筆記。

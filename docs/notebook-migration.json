@@ -1,0 +1,1920 @@
+[
+  {
+    "source": "docs/CSS & Tailwind/[Tailwind] 官網文件 - Concept.md",
+    "target": "content/notebook/css/tailwind-concept.md",
+    "originalBodySha256": "1820a8d375bf66c98b7fbb964bee230947bd41d027a35318fbf834931d016503",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/D3.js/[主題] 從D3.js的select(this)探討的函式中的this指向.md",
+    "target": "content/notebook/d3/d3js-select-this.md",
+    "originalBodySha256": "972e04824b0206993307d58e1dba922fb43c7ec1f0e72801e77ef36d87c090ea",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/JS Modules & Build Tools/[主題] 用vite打包要發布npm的程式.md",
+    "target": "content/notebook/js-build-tools/using-vite-to-build-node-packages.md",
+    "originalBodySha256": "0169e988378240718790c20e413f56c97cdc862b38855f2175c5e695bf79239e",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/JS Modules & Build Tools/[主題] 第一次發布npm前端套件就上手.md",
+    "target": "content/notebook/js-build-tools/publish-js-library-to-npm.md",
+    "originalBodySha256": "7b0266cd151e7a3f32f6f6469ce6a45518b9aae9524fd9f4d208055f1b4937b3",
+    "edits": [
+      {
+        "from": "![image-20221214211444854](./_img/[主題]第一次發布npm前端套件就上手/image-20221214211444854.png)",
+        "to": "![image-20221214211444854](/images/notebook/legacy/ad8119452d4d9d67d990.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/ad8119452d4d9d67d990.png",
+        "sha256": "ad8119452d4d9d67d9900e16b19584f3629186ce605d93a64b5eb955260e269e"
+      }
+    ]
+  },
+  {
+    "source": "docs/JavaScript/[JS] 傳值&傳參考.md",
+    "target": "content/notebook/javascript/js-call-by-value-call-by-reference.md",
+    "originalBodySha256": "95cc652cf84788a18d4e989b44e0ed6d2fa81480b7e9ba84968010b37a59d888",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/JavaScript/[讀書] 008天重新認識Javascript - 讀書筆記.md",
+    "target": "content/notebook/javascript/book-008-javascript.md",
+    "originalBodySha256": "4ed2a030fd90ae4fa175f5d7d51724ed781542b530aeedadbdb8ba0d9bbdfb75",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/JavaScript/[讀書] 前端三十 - 讀書筆記.md",
+    "target": "content/notebook/javascript/book-frontend-30.md",
+    "originalBodySha256": "b326b51e37d0d2c561a2ca53570a0a5153d137bb53c2bf24e280bf34b46ba0c1",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/README.md",
+    "target": "content/notebook/about.md",
+    "originalBodySha256": "468dd145e41758ad76f2dce39ca495be6be8cb67abf9d918b570b617722d6429",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[Next.js] CSS.md",
+    "target": "content/notebook/react/nextjs-css.md",
+    "originalBodySha256": "9dfe6a6ce25b6047cf93157cb97300186e47548e8ded68c3fdd969783a2d8b59",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[Next.js] Data Fetching.md",
+    "target": "content/notebook/next-data-fetching.md",
+    "originalBodySha256": "52810c545bb0f54b9d688f4dbc1a5ccf8b6e741d83d0a6d8bb49006055d62fac",
+    "edits": [
+      {
+        "from": "(_img/Nextjs筆記/image-20250510175111801.png)",
+        "to": "(/images/notebook/next-data-fetching/1.png)"
+      },
+      {
+        "from": "(_img/Nextjs筆記/image-20250510175602102.png)",
+        "to": "(/images/notebook/next-data-fetching/2.png)"
+      },
+      {
+        "from": "(_img/Nextjs筆記/image-20250510175642587.png)",
+        "to": "(/images/notebook/next-data-fetching/3.png)"
+      },
+      {
+        "from": "(_img/Nextjs筆記/image-20250510175747470.png)",
+        "to": "(/images/notebook/next-data-fetching/4.png)"
+      },
+      {
+        "from": "(_img/Nextjs筆記/image-20250510175458934.png)",
+        "to": "(/images/notebook/next-data-fetching/5.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/next-data-fetching/1.png",
+        "sha256": "57f30c12616c906f92c557df3b2036055663e0c50b26c1403c1629ec01751051"
+      },
+      {
+        "path": "/images/notebook/next-data-fetching/2.png",
+        "sha256": "8025dc09e679aadd497b401844ffe24aaf7f383abd6240d144b96c239fb1def9"
+      },
+      {
+        "path": "/images/notebook/next-data-fetching/3.png",
+        "sha256": "87e1a7ac12e116b4544e9488f7c5bba51826628f5ea18c0b65dfe4e1b34a4822"
+      },
+      {
+        "path": "/images/notebook/next-data-fetching/4.png",
+        "sha256": "2eff7f4847fc87451c676240edf438a82659f88c0643ed722e41fd325d666e94"
+      },
+      {
+        "path": "/images/notebook/next-data-fetching/5.png",
+        "sha256": "7c9ecd06d8d3d1f30003adfde42ee92780bba59dbb8d5b063f729c836b573334"
+      }
+    ]
+  },
+  {
+    "source": "docs/React/[Next.js] Getting Started.md",
+    "target": "content/notebook/react/nextjs-getting-starged.md",
+    "originalBodySha256": "cb88fe8492ceea1d82813c0d842b8062868ac10fd3d1042e2ea5fb5da1fafa66",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[Next.js] Router.md",
+    "target": "content/notebook/react/nextjs-router.md",
+    "originalBodySha256": "33e58352b89026e5dd523922519455b52565643a809109fbf9e991ede6148765",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[Next.js] 環境設定.md",
+    "target": "content/notebook/react/nextjs-env-setting.md",
+    "originalBodySha256": "d26da10a97065b5961ad2738ef8141eecdfc3c19343f3225a2dd872104fd7fce",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[React] Getting Started.md",
+    "target": "content/notebook/react/react-getting-started.md",
+    "originalBodySha256": "2de5f0869d865fcbfdda73783c7040aaf5179bb59bc832357715ecc1b0938637",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[React] Hooks.md",
+    "target": "content/notebook/react/react-hooks.md",
+    "originalBodySha256": "caaf73d2817630273c47287b93f3afc1f98f74b930f649f8a1c5a73c87d58776",
+    "edits": [
+      {
+        "from": "![img](_img/React筆記/1*JerKVgFZAvi6ha_qAT1-JA.jpeg)",
+        "to": "![img](/images/notebook/legacy/b483e5e700cdaa04b1fd.jpeg)"
+      },
+      {
+        "from": "![image-20210501154533400](_img/React筆記/image-20210501154533400.png)",
+        "to": "![image-20210501154533400](/images/notebook/legacy/65d8e61737b7e3e148a8.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/65d8e61737b7e3e148a8.png",
+        "sha256": "65d8e61737b7e3e148a8c8604705f96e3c0f15f1bb5eced5e68f865d6f16dcbb"
+      },
+      {
+        "path": "/images/notebook/legacy/b483e5e700cdaa04b1fd.jpeg",
+        "sha256": "b483e5e700cdaa04b1fd4f4d4215e9dc41e9e3a8948ff2b37dd97886642598fc"
+      }
+    ]
+  },
+  {
+    "source": "docs/React/[React] State.md",
+    "target": "content/notebook/react/react-state.md",
+    "originalBodySha256": "6ff1982435d038bc1f007a47855d28fee9da7aae0a4f7ac05e79332136462e8a",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[React] 效能優化.md",
+    "target": "content/notebook/react/react-optimization.md",
+    "originalBodySha256": "ce4e33305aba15567b28e483e43ac9973b007b378d7ce03b02278323a6f48290",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/React/[上課] Modern React with Redux - 學習筆記.md",
+    "target": "content/notebook/react/udemy-react-note.md",
+    "originalBodySha256": "37acf897a4933882a80ec31394dcc26353a7a45935f3796d20421b1e4544a825",
+    "edits": [
+      {
+        "from": "![image-20210501214205781](_img/Udemy學習筆記/image-20210501214205781.png)",
+        "to": "![image-20210501214205781](/images/notebook/legacy/c673ba714d99ed03e62a.png)"
+      },
+      {
+        "from": "![image-20210501195328116](_img/Udemy學習筆記/image-20210501195328116.png)",
+        "to": "![image-20210501195328116](/images/notebook/legacy/eb776a412b94076fbfa1.png)"
+      },
+      {
+        "from": "![image-20210501154533400](_img/Udemy學習筆記/image-20210501154533400.png)",
+        "to": "![image-20210501154533400](/images/notebook/legacy/65d8e61737b7e3e148a8.png)"
+      },
+      {
+        "from": "![image-20210501145333956](_img/Udemy學習筆記/image-20210501145333956.png)",
+        "to": "![image-20210501145333956](/images/notebook/legacy/e291a94ff6dd8ac28136.png)"
+      },
+      {
+        "from": "![image-20210430163705085](_img/Udemy學習筆記/image-20210430163705085.png)",
+        "to": "![image-20210430163705085](/images/notebook/legacy/4b03fdd0cfda3d4031c5.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/4b03fdd0cfda3d4031c5.png",
+        "sha256": "4b03fdd0cfda3d4031c5bce56382e37e29701fcebc396e9aa9dc452f2fd6eee1"
+      },
+      {
+        "path": "/images/notebook/legacy/e291a94ff6dd8ac28136.png",
+        "sha256": "e291a94ff6dd8ac281364de8d675c688ac589492682a5000cd12942f96b4d938"
+      },
+      {
+        "path": "/images/notebook/legacy/65d8e61737b7e3e148a8.png",
+        "sha256": "65d8e61737b7e3e148a8c8604705f96e3c0f15f1bb5eced5e68f865d6f16dcbb"
+      },
+      {
+        "path": "/images/notebook/legacy/eb776a412b94076fbfa1.png",
+        "sha256": "eb776a412b94076fbfa17d1c48ded63ae05756067fc1a53fb4e3a53847440aaf"
+      },
+      {
+        "path": "/images/notebook/legacy/c673ba714d99ed03e62a.png",
+        "sha256": "c673ba714d99ed03e62ab9a872197a1bf5f2b572d15c44b0fa6f05a486c60f18"
+      }
+    ]
+  },
+  {
+    "source": "docs/React/[主題] Next.js上使用 Redux四兄弟.md",
+    "target": "content/notebook/react/redux-four-brothers.md",
+    "originalBodySha256": "c47eff927ee7b767432e05ea9a352ece5dfde55a7f5132185566ee9d51febcfa",
+    "edits": [
+      {
+        "from": "![image-20210520225845800](./_img/[主題]Next.js上使用Redux四兄弟/image-20210520225845800.png)",
+        "to": "![image-20210520225845800](/images/notebook/legacy/b6bcb375b0d619f63645.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/b6bcb375b0d619f63645.png",
+        "sha256": "b6bcb375b0d619f63645ca899d84984d66b8ca6bdfb24e0574d34b2a27fbf9e1"
+      }
+    ]
+  },
+  {
+    "source": "docs/RxJS/[RxJS]Observable & Observer.md",
+    "target": "content/notebook/rxjs/rxjs-observable-and-observer.md",
+    "originalBodySha256": "b18584a758f515075385b063d8719d445db095c4db684facd4273afd9cc75fb1",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/RxJS/[RxJS]基礎知識.md",
+    "target": "content/notebook/rxjs/rxjs-basic.md",
+    "originalBodySha256": "69921fff0aa311727cf3f5c5f0532608cd9ef5fca1bdef1b7cea13462e437245",
+    "edits": [
+      {
+        "from": "![Observer-pattern-class-diagram.png](_img/[RxJS]基礎知識/Observer-pattern-class-diagram.png)",
+        "to": "![Observer-pattern-class-diagram.png](/images/notebook/legacy/03366523a38f884b8c2b.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/03366523a38f884b8c2b.png",
+        "sha256": "03366523a38f884b8c2b3f53bc687f5f704447e4b2abeea27f7abe90823e6273"
+      }
+    ]
+  },
+  {
+    "source": "docs/RxJS/[主題]RxJS中一些容易混淆的名詞.md",
+    "target": "content/notebook/rxjs/confusing-terms-in-rxjs.md",
+    "originalBodySha256": "fb86b8da81730a4a2f544a67aa6b6d64c4037bd98dc4b7222674cd5a42e4969c",
+    "edits": [
+      {
+        "from": "![image-20230912102647192](_img/[主題]RxJS中一些容易混淆的名詞/image-20230912102647192.png)",
+        "to": "![image-20230912102647192](/images/notebook/legacy/bcdacb3641ea8477cfc6.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/bcdacb3641ea8477cfc6.png",
+        "sha256": "bcdacb3641ea8477cfc6d54bd4aa802658308e1385bddb4b0ac7d66491c3b425"
+      }
+    ]
+  },
+  {
+    "source": "docs/RxJS/[主題]去除掉combineLatest中同時間的重覆事件.md",
+    "target": "content/notebook/rxjs.md",
+    "originalBodySha256": "006a43408cb99845e676cc6c3c367f99cb1a800dd944decad0c541a09ad4db4f",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/RxJS/_wip/[RxJS]Operators.md",
+    "target": "content/notebook/rxjs/rxjs-operators.md",
+    "originalBodySha256": "88122f822534db1b23c695ff54c4877f353ee3a5d65f27eb55f785c946038a55",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/Vue/[Vue] Recuresive Component.md",
+    "target": "content/notebook/vue/recuresive-component.md",
+    "originalBodySha256": "cf25804cbba0e7ef4b91a892389b798a68de45cdff964e3d28368eb40ccd320e",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/Vue/[主題] Vue Component資料流設計 (1)單向傳遞.md",
+    "target": "content/notebook/vue/vue-component-data-flow-1.md",
+    "originalBodySha256": "830a4868d10adbdf8804f320c69bc4e05dab4bfecca57783009a3dbaa16dbb7f",
+    "edits": [
+      {
+        "from": "![image-20200501113622148](./_img/VueComponent資料流設計/image-20200501113622148.png)",
+        "to": "![image-20200501113622148](/images/notebook/legacy/061f0b0f354565da6473.png)"
+      },
+      {
+        "from": "![](./_img/VueComponent資料流設計/70.png)",
+        "to": "![](/images/notebook/legacy/ece1357a87dc8d42f203.png)"
+      },
+      {
+        "from": "![image-20200426205139781](./_img/VueComponent資料流設計/image-20200426205139781.png)",
+        "to": "![image-20200426205139781](/images/notebook/legacy/0ad221ef9c74d920de53.png)"
+      },
+      {
+        "from": "![image-20200426205112559](./_img/VueComponent資料流設計/image-20200426205112559.png)",
+        "to": "![image-20200426205112559](/images/notebook/legacy/b8163ad7b97cb4e021dd.png)"
+      },
+      {
+        "from": "![20107673f0zb0ZxRz9](./_img/VueComponent資料流設計/20107673f0zb0ZxRz9.png)",
+        "to": "![20107673f0zb0ZxRz9](/images/notebook/legacy/b46d48741491335993a9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/b46d48741491335993a9.png",
+        "sha256": "b46d48741491335993a90e6bf818188eeb0577586c67a7d5e445e22b43e73d88"
+      },
+      {
+        "path": "/images/notebook/legacy/b8163ad7b97cb4e021dd.png",
+        "sha256": "b8163ad7b97cb4e021dd70a588ce64e4a32220dca60f27050ea57960a92b8f8c"
+      },
+      {
+        "path": "/images/notebook/legacy/0ad221ef9c74d920de53.png",
+        "sha256": "0ad221ef9c74d920de53f4cbe8ef8a6b7c2fecd86d0fd512f5a09962ef96ce83"
+      },
+      {
+        "path": "/images/notebook/legacy/ece1357a87dc8d42f203.png",
+        "sha256": "ece1357a87dc8d42f203bf8214e3b3245666ccd993534801c694f7a64e422f16"
+      },
+      {
+        "path": "/images/notebook/legacy/061f0b0f354565da6473.png",
+        "sha256": "061f0b0f354565da6473e7d9cda3f7acae12d093b65caad9f7e9ef57da19aa38"
+      }
+    ]
+  },
+  {
+    "source": "docs/Vue/[主題] Vue Component資料流設計 (2)雙向綁定–通用組件.md",
+    "target": "content/notebook/vue/vue-component-data-flow-2.md",
+    "originalBodySha256": "9a1633462ea596615fdd6d67cd6dcd33a195559d5ccf3d273a15456fb427a4aa",
+    "edits": [
+      {
+        "from": "![image-20200509162014784](./_img/VueComponent資料流設計/image-20200509162014784.png)",
+        "to": "![image-20200509162014784](/images/notebook/legacy/2150825f99bf0eb1cec0.png)"
+      },
+      {
+        "from": "![image-20200509161759261](./_img/VueComponent資料流設計/image-20200509161759261.png)",
+        "to": "![image-20200509161759261](/images/notebook/legacy/ebffc2a2800eae4d7b85.png)"
+      },
+      {
+        "from": "![image-20200509161722966](./_img/VueComponent資料流設計/image-20200509161722966.png)",
+        "to": "![image-20200509161722966](/images/notebook/legacy/b155cd76bbca5b4c5e58.png)"
+      },
+      {
+        "from": "![image-20200509145612340](./_img/VueComponent資料流設計/image-20200509145612340.png)",
+        "to": "![image-20200509145612340](/images/notebook/legacy/acc1e7724837b9efa82c.png)"
+      },
+      {
+        "from": "![](./_img/VueComponent資料流設計/component_data_stream_2.png)",
+        "to": "![](/images/notebook/legacy/e19f0d644b37090934cb.png)"
+      },
+      {
+        "from": "![](./_img/VueComponent資料流設計/component_data_stream_1.png)",
+        "to": "![](/images/notebook/legacy/9bd482c031afdedd4e41.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/9bd482c031afdedd4e41.png",
+        "sha256": "9bd482c031afdedd4e414d1ab6d828768dbea3def0233f2adeba76b09935f7f6"
+      },
+      {
+        "path": "/images/notebook/legacy/e19f0d644b37090934cb.png",
+        "sha256": "e19f0d644b37090934cb4e3cdf2a95a325c17076d013e28c813d078e792663c2"
+      },
+      {
+        "path": "/images/notebook/legacy/acc1e7724837b9efa82c.png",
+        "sha256": "acc1e7724837b9efa82cf4db63766052f4e23516fba056af5a3a491988846acd"
+      },
+      {
+        "path": "/images/notebook/legacy/b155cd76bbca5b4c5e58.png",
+        "sha256": "b155cd76bbca5b4c5e58e09b233554e1762b8ae0a0dd176e2fc5e035244ca53d"
+      },
+      {
+        "path": "/images/notebook/legacy/ebffc2a2800eae4d7b85.png",
+        "sha256": "ebffc2a2800eae4d7b85e488ec8bc4d962f3ec9d07634c74f874845cb44948a4"
+      },
+      {
+        "path": "/images/notebook/legacy/2150825f99bf0eb1cec0.png",
+        "sha256": "2150825f99bf0eb1cec086da189a3af1b69fb001ddf756e389b7df67ce28fb31"
+      }
+    ]
+  },
+  {
+    "source": "docs/Vue/[主題] Vue Component資料流設計 (3)雙向綁定–大組件.md",
+    "target": "content/notebook/vue/vue-component-data-flow-3.md",
+    "originalBodySha256": "3fee5986b384f0dc54edfd304aabb3aebf6b929f27c7fe2d4cd8185f613b43b7",
+    "edits": [
+      {
+        "from": "![image-20200510001615508](./_img/VueComponent資料流設計/image-20200510001615508.png)",
+        "to": "![image-20200510001615508](/images/notebook/legacy/24c08cc5c82a6322a043.png)"
+      },
+      {
+        "from": "![image-20200510001327595](./_img/VueComponent資料流設計/image-20200510001327595.png)",
+        "to": "![image-20200510001327595](/images/notebook/legacy/c9ea557e28caa1aee267.png)"
+      },
+      {
+        "from": "![image-20200509233716473](./_img/VueComponent資料流設計/image-20200509233716473.png)",
+        "to": "![image-20200509233716473](/images/notebook/legacy/575ed1a7f2d39c1cab2f.png)"
+      },
+      {
+        "from": "![image-20200509223445726](./_img/VueComponent資料流設計/image-20200509223445726.png)",
+        "to": "![image-20200509223445726](/images/notebook/legacy/bcf31987e9faf5cc54c3.png)"
+      },
+      {
+        "from": "![VueJS 元件(Component) 之間資料溝通傳遞的方式| Kuro's Blog](./_img/VueComponent資料流設計/vue-instance.png)",
+        "to": "![VueJS 元件(Component) 之間資料溝通傳遞的方式| Kuro's Blog](/images/notebook/legacy/b3814c2cd5b489e80f2e.png)"
+      },
+      {
+        "from": "![image-20200509224422176](./_img/VueComponent資料流設計/image-20200509224422176.png)",
+        "to": "![image-20200509224422176](/images/notebook/legacy/b0346168c6c947d55c0d.png)"
+      },
+      {
+        "from": "![image-20200509192624575](./_img/VueComponent資料流設計/image-20200509192624575.png)",
+        "to": "![image-20200509192624575](/images/notebook/legacy/5ceeda7ea54f5121222b.png)"
+      },
+      {
+        "from": "![](./_img/VueComponent資料流設計/component_data_stream_2-9025306.png)",
+        "to": "![](/images/notebook/legacy/e19f0d644b37090934cb.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e19f0d644b37090934cb.png",
+        "sha256": "e19f0d644b37090934cb4e3cdf2a95a325c17076d013e28c813d078e792663c2"
+      },
+      {
+        "path": "/images/notebook/legacy/5ceeda7ea54f5121222b.png",
+        "sha256": "5ceeda7ea54f5121222b1d21bf1a98e34e542bb4e9da96cafac22f98bcc756f8"
+      },
+      {
+        "path": "/images/notebook/legacy/b0346168c6c947d55c0d.png",
+        "sha256": "b0346168c6c947d55c0d260fa520903cd0d05bdd6fc17c85b742ccfddc2440ac"
+      },
+      {
+        "path": "/images/notebook/legacy/b3814c2cd5b489e80f2e.png",
+        "sha256": "b3814c2cd5b489e80f2ed5eab5ce71e1b4a66e3938cf62919acdc068227fe76c"
+      },
+      {
+        "path": "/images/notebook/legacy/bcf31987e9faf5cc54c3.png",
+        "sha256": "bcf31987e9faf5cc54c36b49e1ea9e54cfc9908c27d94f94d7980f3ba69eea39"
+      },
+      {
+        "path": "/images/notebook/legacy/575ed1a7f2d39c1cab2f.png",
+        "sha256": "575ed1a7f2d39c1cab2f88e700dd75720455bd21f9fcdf93c8f61be2c9e1fd30"
+      },
+      {
+        "path": "/images/notebook/legacy/c9ea557e28caa1aee267.png",
+        "sha256": "c9ea557e28caa1aee267bbaf4b6c4581ca7d6401a206fbdf51b58123bd029900"
+      },
+      {
+        "path": "/images/notebook/legacy/24c08cc5c82a6322a043.png",
+        "sha256": "24c08cc5c82a6322a04319d7bbd156d043e9bfe7b698bfcf2bac7efcb0732f8d"
+      }
+    ]
+  },
+  {
+    "source": "docs/Vue/[譯] Vue.js App 效能優化.md",
+    "target": "content/notebook/vue/translation-vue-optimization.md",
+    "originalBodySha256": "c6d8fa520f8279bf85773a7c35a22fcc68d0985340b0e79105675f3f768fa6a9",
+    "edits": [
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_14.png)",
+        "to": "![](/images/notebook/legacy/6bb5e2f67b271d0757fc.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_13.png)",
+        "to": "![](/images/notebook/legacy/afface75901ffc7e01fa.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_15.png)",
+        "to": "![](/images/notebook/legacy/f08067bdab1e1db4195c.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_12.png)",
+        "to": "![](/images/notebook/legacy/6c37fd9e801496c8e9c0.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_11.png)",
+        "to": "![](/images/notebook/legacy/6a1778fd39c2d6cd8381.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_10.png)",
+        "to": "![](/images/notebook/legacy/47c94e68f1c2afc0dff6.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_9.png)",
+        "to": "![](/images/notebook/legacy/bd4aaf97e30832535f85.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_8.png)",
+        "to": "![](/images/notebook/legacy/9c23af73696fa941a86f.png)"
+      },
+      {
+        "from": "![關於性能及人類感知的演講投影片 (Ilya Grigorik)](./_img/[譯]Vue.jsApp效能優化/20191224_7.png)",
+        "to": "![關於性能及人類感知的演講投影片 (Ilya Grigorik)](/images/notebook/legacy/2ea5681df73c81d9a7c6.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_6.png)",
+        "to": "![](/images/notebook/legacy/2fd99e03099eac7cad04.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_5.png)",
+        "to": "![](/images/notebook/legacy/a576233dba77fbfca44e.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_4.png)",
+        "to": "![](/images/notebook/legacy/c2d27e34175fe93737cd.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_3.png)",
+        "to": "![](/images/notebook/legacy/9679fa5c5533068fbe58.png)"
+      },
+      {
+        "from": "![](./_img/[譯]Vue.jsApp效能優化/20191224_2.png)",
+        "to": "![](/images/notebook/legacy/1a08608b40a20082b066.png)"
+      },
+      {
+        "from": "![](_img/[譯]Vue.jsApp效能優化/20191224_1.png)",
+        "to": "![](/images/notebook/legacy/e297da97a66f22a0bee9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e297da97a66f22a0bee9.png",
+        "sha256": "e297da97a66f22a0bee9d6f1830470398ea6374970a9a96ace3e6f63bc3d429e"
+      },
+      {
+        "path": "/images/notebook/legacy/1a08608b40a20082b066.png",
+        "sha256": "1a08608b40a20082b066346c49bb8e10f44bf2a8b4c7b7cedbc3b5a5e2352ee9"
+      },
+      {
+        "path": "/images/notebook/legacy/9679fa5c5533068fbe58.png",
+        "sha256": "9679fa5c5533068fbe58ac6d1a6b0639be12ab875434c22c6f1532048824c36d"
+      },
+      {
+        "path": "/images/notebook/legacy/c2d27e34175fe93737cd.png",
+        "sha256": "c2d27e34175fe93737cd332bbd0e2c2210b7833c124e8edd206bda78d969b5d6"
+      },
+      {
+        "path": "/images/notebook/legacy/a576233dba77fbfca44e.png",
+        "sha256": "a576233dba77fbfca44e3390ca16b99ca9ad6cd495d2057a2e788b34a6a6554c"
+      },
+      {
+        "path": "/images/notebook/legacy/2fd99e03099eac7cad04.png",
+        "sha256": "2fd99e03099eac7cad0467003d60b299737ff3024550fa8a430ef35b7a5f8dee"
+      },
+      {
+        "path": "/images/notebook/legacy/2ea5681df73c81d9a7c6.png",
+        "sha256": "2ea5681df73c81d9a7c6eaf55437a6b2e13375fd2596b8a8d690b80c3224eeca"
+      },
+      {
+        "path": "/images/notebook/legacy/9c23af73696fa941a86f.png",
+        "sha256": "9c23af73696fa941a86f433b43f90defdd12f120c3d95a83a8d87671822cb7aa"
+      },
+      {
+        "path": "/images/notebook/legacy/bd4aaf97e30832535f85.png",
+        "sha256": "bd4aaf97e30832535f8528436dbe8e5bee9e6692197ad3746c05946b92ebec1e"
+      },
+      {
+        "path": "/images/notebook/legacy/47c94e68f1c2afc0dff6.png",
+        "sha256": "47c94e68f1c2afc0dff6391c62642e8d6831e78fd267ef8fc771c6c7e5b6308e"
+      },
+      {
+        "path": "/images/notebook/legacy/6a1778fd39c2d6cd8381.png",
+        "sha256": "6a1778fd39c2d6cd83813af02c9472ff8d576ebe747afb3b018e8c48eb902f46"
+      },
+      {
+        "path": "/images/notebook/legacy/6c37fd9e801496c8e9c0.png",
+        "sha256": "6c37fd9e801496c8e9c032c642d1c0c9434dc58a85f0451c8fb3afc0df4fe5ec"
+      },
+      {
+        "path": "/images/notebook/legacy/f08067bdab1e1db4195c.png",
+        "sha256": "f08067bdab1e1db4195ccefa7d2762985b4013ff78322babe4f79d2adeb7e4c0"
+      },
+      {
+        "path": "/images/notebook/legacy/afface75901ffc7e01fa.png",
+        "sha256": "afface75901ffc7e01faedc18483309388e9e67ba1a2730e71f05e911ff2de08"
+      },
+      {
+        "path": "/images/notebook/legacy/6bb5e2f67b271d0757fc.png",
+        "sha256": "6bb5e2f67b271d0757fc9de1ec5633c2eb51d4f8d64ab219386de2455c38ee47"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-1. Vue.js課程說明與準備.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day1-1.md",
+    "originalBodySha256": "ebb8634ad3dc49e2ea99c5e0938e3d8438a6585069aaf22584a9cb469227b7d2",
+    "edits": [
+      {
+        "from": "![image-20230106093943494](_img/day1-1/image-20230106093943494.png)",
+        "to": "![image-20230106093943494](/images/notebook/legacy/58a92c8bf608f38db65f.png)"
+      },
+      {
+        "from": "![image-20230109103032032](_img/day1-1/image-20230109103032032.png)",
+        "to": "![image-20230109103032032](/images/notebook/legacy/761edf83d2703988efc0.png)"
+      },
+      {
+        "from": "![image-20230109103305616](_img/day1-1/image-20230109103305616.png)",
+        "to": "![image-20230109103305616](/images/notebook/legacy/b73130ee90792d396226.png)"
+      },
+      {
+        "from": "![image-20230105233031231](_img/day1-1/image-20230105233031231.png)",
+        "to": "![image-20230105233031231](/images/notebook/legacy/f11fd2600ce3c9f048b9.png)"
+      },
+      {
+        "from": "![image-20230105232847858](_img/day1-1/image-20230105232847858.png)",
+        "to": "![image-20230105232847858](/images/notebook/legacy/597e28293f7e1b6204a9.png)"
+      },
+      {
+        "from": "![image-20230105232807220](_img/day1-1/image-20230105232807220.png)",
+        "to": "![image-20230105232807220](/images/notebook/legacy/a10b37b8f3e396ba616e.png)"
+      },
+      {
+        "from": "![image-20230105232551634](_img/day1-1/image-20230105232551634.png)",
+        "to": "![image-20230105232551634](/images/notebook/legacy/93d312e4ad74e2cb3f36.png)"
+      },
+      {
+        "from": "![image-20230105230712528](_img/day1-1/image-20230105230712528.png)",
+        "to": "![image-20230105230712528](/images/notebook/legacy/9e5f774042b71e038234.png)"
+      },
+      {
+        "from": "![image-20230105230554923](_img/day1-1/image-20230105230554923.png)",
+        "to": "![image-20230105230554923](/images/notebook/legacy/2e2b075af8cb73e7cc40.png)"
+      },
+      {
+        "from": "![image-20230105224918719](_img/day1-1/image-20230105224918719.png)",
+        "to": "![image-20230105224918719](/images/notebook/legacy/970117183eb3703e5cfc.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/970117183eb3703e5cfc.png",
+        "sha256": "970117183eb3703e5cfcdafc3e306a1eafa31b3f8d2d8d2fc7f6b972ad7febc8"
+      },
+      {
+        "path": "/images/notebook/legacy/2e2b075af8cb73e7cc40.png",
+        "sha256": "2e2b075af8cb73e7cc401f54df00c208bc3db88bcd7adc5b6a278b553b1aef3e"
+      },
+      {
+        "path": "/images/notebook/legacy/9e5f774042b71e038234.png",
+        "sha256": "9e5f774042b71e038234e34149c3eb5fe1e4df89de27a4075e270880be1c0e51"
+      },
+      {
+        "path": "/images/notebook/legacy/93d312e4ad74e2cb3f36.png",
+        "sha256": "93d312e4ad74e2cb3f369c8c503df84c59ac062dde9bc75cfd6b731b85cfd0a7"
+      },
+      {
+        "path": "/images/notebook/legacy/a10b37b8f3e396ba616e.png",
+        "sha256": "a10b37b8f3e396ba616e3a05109dacbb79af7f14457070967ca2cf89a4ed2006"
+      },
+      {
+        "path": "/images/notebook/legacy/597e28293f7e1b6204a9.png",
+        "sha256": "597e28293f7e1b6204a972289d7006bbc9610ca809b0eab159088e9f727f7ccd"
+      },
+      {
+        "path": "/images/notebook/legacy/f11fd2600ce3c9f048b9.png",
+        "sha256": "f11fd2600ce3c9f048b95fb87c7490d530876184ea2ee9783b5e90ebeea14962"
+      },
+      {
+        "path": "/images/notebook/legacy/b73130ee90792d396226.png",
+        "sha256": "b73130ee90792d396226230d82e76dec0065cacc669e844f9acff88235a4877d"
+      },
+      {
+        "path": "/images/notebook/legacy/761edf83d2703988efc0.png",
+        "sha256": "761edf83d2703988efc03ee28ffd997cc8cfbdc2442791470c99eafc5325ce7d"
+      },
+      {
+        "path": "/images/notebook/legacy/58a92c8bf608f38db65f.png",
+        "sha256": "58a92c8bf608f38db65f8b9cef0e709bccc516e011dbb865b55572a496ac0d0c"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-2.  Javascript與Vue.js模板語法.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day1-2.md",
+    "originalBodySha256": "c621ec76bd4031c988170d1f701dce183d261ee899e30f21fa683c2a2b7b313a",
+    "edits": [
+      {
+        "from": "![image-20230106124246454](_img/Day1-2/image-20230106124246454.png)",
+        "to": "![image-20230106124246454](/images/notebook/legacy/66000e7296ff3e9b15f9.png)"
+      },
+      {
+        "from": "![image-20230109211151990](_img/day1-2/image-20230109211151990.png)",
+        "to": "![image-20230109211151990](/images/notebook/legacy/b60455c2934630c63cbc.png)"
+      },
+      {
+        "from": "![image-20230109194539087](_img/day1-2/image-20230109194539087.png)",
+        "to": "![image-20230109194539087](/images/notebook/legacy/c29dff311523dd5c0849.png)"
+      },
+      {
+        "from": "![image-20230109203159602](_img/day1-2/image-20230109203159602.png)",
+        "to": "![image-20230109203159602](/images/notebook/legacy/d705ee94dfeed6eef5b2.png)"
+      },
+      {
+        "from": "![image-20230109194539087](_img/day1-2/image-20230109194539087.png)",
+        "to": "![image-20230109194539087](/images/notebook/legacy/c29dff311523dd5c0849.png)"
+      },
+      {
+        "from": "![image-20230106095924597](_img/Day1-2/image-20230106095924597.png)",
+        "to": "![image-20230106095924597](/images/notebook/legacy/c7d3df7791767ca18ea1.png)"
+      },
+      {
+        "from": "![image-20230106095849072](_img/Day1-2/image-20230106095849072.png)",
+        "to": "![image-20230106095849072](/images/notebook/legacy/d5ba018db2f9de438221.png)"
+      },
+      {
+        "from": "![image-20230106094426200](_img/Day1-2/image-20230106094426200.png)",
+        "to": "![image-20230106094426200](/images/notebook/legacy/72d60dbd6e7aacd70489.png)"
+      },
+      {
+        "from": "![image-20230106094328081](_img/Day1-2/image-20230106094328081.png)",
+        "to": "![image-20230106094328081](/images/notebook/legacy/51cd2bed88201f327711.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/51cd2bed88201f327711.png",
+        "sha256": "51cd2bed88201f32771168542178d56a9a5a7cb92f0db5bc3435d39dd185ba35"
+      },
+      {
+        "path": "/images/notebook/legacy/72d60dbd6e7aacd70489.png",
+        "sha256": "72d60dbd6e7aacd70489aac9631a732474d576ab7ac33d67f1e18c7a87b67da0"
+      },
+      {
+        "path": "/images/notebook/legacy/d5ba018db2f9de438221.png",
+        "sha256": "d5ba018db2f9de438221dd01fac0c041da743bb65a47bf0414970da2bf987b3c"
+      },
+      {
+        "path": "/images/notebook/legacy/c7d3df7791767ca18ea1.png",
+        "sha256": "c7d3df7791767ca18ea1bca5a098687f473efc1bc8d385f26a85c7532c75da55"
+      },
+      {
+        "path": "/images/notebook/legacy/c29dff311523dd5c0849.png",
+        "sha256": "c29dff311523dd5c084933b0a22c424165c34f6e9beedd07884ab55550d2e19e"
+      },
+      {
+        "path": "/images/notebook/legacy/d705ee94dfeed6eef5b2.png",
+        "sha256": "d705ee94dfeed6eef5b2cd8d2923ad718c66640632dd68c7733ab6f741c0f1b3"
+      },
+      {
+        "path": "/images/notebook/legacy/c29dff311523dd5c0849.png",
+        "sha256": "c29dff311523dd5c084933b0a22c424165c34f6e9beedd07884ab55550d2e19e"
+      },
+      {
+        "path": "/images/notebook/legacy/b60455c2934630c63cbc.png",
+        "sha256": "b60455c2934630c63cbcb162938ecbd413575a39d921bd6e851f361eee002a85"
+      },
+      {
+        "path": "/images/notebook/legacy/66000e7296ff3e9b15f9.png",
+        "sha256": "66000e7296ff3e9b15f9997b487a9d866cd6cdb683d440021286ff30a10296b3"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-3. 事件處理.md",
+    "target": "content/notebook/vue-events.md",
+    "originalBodySha256": "02743f7721beb91f6834888819f4b85ea98aa3f3dc3a1573e1d308a495dbce4a",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-4. 組件化設計.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day1-4.md",
+    "originalBodySha256": "d8e4063ecef0d8032e8c2edba638216100ad5669630feba76cf2db03a8a8912d",
+    "edits": [
+      {
+        "from": "![image-20230106144023071](_img/day1-4/image-20230106144023071.png)",
+        "to": "![image-20230106144023071](/images/notebook/legacy/0a2a3150284a067af3b0.png)"
+      },
+      {
+        "from": "![image-20230106143910729](_img/day1-4/image-20230106143910729.png)",
+        "to": "![image-20230106143910729](/images/notebook/legacy/99e0062773f81c53b340.png)"
+      },
+      {
+        "from": "![image-20230106142847765](_img/day1-4/image-20230106142847765.png)",
+        "to": "![image-20230106142847765](/images/notebook/legacy/597e28293f7e1b6204a9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/597e28293f7e1b6204a9.png",
+        "sha256": "597e28293f7e1b6204a972289d7006bbc9610ca809b0eab159088e9f727f7ccd"
+      },
+      {
+        "path": "/images/notebook/legacy/99e0062773f81c53b340.png",
+        "sha256": "99e0062773f81c53b34077061359914918fa57a2b4984e80e4a47be8de38fbcc"
+      },
+      {
+        "path": "/images/notebook/legacy/0a2a3150284a067af3b0.png",
+        "sha256": "0a2a3150284a067af3b084a05e534c36dbf0d24af37eed0d82c9bc329c437a18"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-1. Webpack、Vue-Cli.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day2-1.md",
+    "originalBodySha256": "886706ced11d1e461c649f49e0d49ffdbff3619a061e7d79895109d73fc5620b",
+    "edits": [
+      {
+        "from": "![image-20230106170815121](_img/day2-1/image-20230106170815121.png)",
+        "to": "![image-20230106170815121](/images/notebook/legacy/2d0b992b8db35f2a2b3b.png)"
+      },
+      {
+        "from": "![image-20230106165940107](_img/day2-1/image-20230106165940107.png)",
+        "to": "![image-20230106165940107](/images/notebook/legacy/a6cf40b55edb4aad0b23.png)"
+      },
+      {
+        "from": "![image-20230106165148348](_img/day2-1/image-20230106165148348.png)",
+        "to": "![image-20230106165148348](/images/notebook/legacy/e8bafd239bb01086e332.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e8bafd239bb01086e332.png",
+        "sha256": "e8bafd239bb01086e332ecbe565456a1229e7a46b12a4abf3e439f706db0f348"
+      },
+      {
+        "path": "/images/notebook/legacy/a6cf40b55edb4aad0b23.png",
+        "sha256": "a6cf40b55edb4aad0b2368ff2fbab9b318cf6d71d76895b4b1e34d265a6636ed"
+      },
+      {
+        "path": "/images/notebook/legacy/2d0b992b8db35f2a2b3b.png",
+        "sha256": "2d0b992b8db35f2a2b3b08b797c049daafd8a1b74f77b978793dfb0c7f08c832"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-2. 網站樣式管理.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day2-2.md",
+    "originalBodySha256": "56da595d593a2584bf9ff30dd18f69d0d5d36e43c6b55264759ee728b142bf2f",
+    "edits": [
+      {
+        "from": "![image-20230106221718832](_img/day2-2/image-20230106221718832.png)",
+        "to": "![image-20230106221718832](/images/notebook/legacy/ee7cb5b691a36366b35a.png)"
+      },
+      {
+        "from": "![image-20230106221003795](_img/day2-2/image-20230106221003795.png)",
+        "to": "![image-20230106221003795](/images/notebook/legacy/2eec338044bde76da07e.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/2eec338044bde76da07e.png",
+        "sha256": "2eec338044bde76da07ea50f7f62ca97c64da12a5a6390dfadacf59da2a1c556"
+      },
+      {
+        "path": "/images/notebook/legacy/ee7cb5b691a36366b35a.png",
+        "sha256": "ee7cb5b691a36366b35a63fe35e789d671f483a8760500864a083c605a7ca48d"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-3. Component Slot.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day2-3.md",
+    "originalBodySha256": "82f4e03f76b2600d9b672d0a567111a03b1b82548570bb525f73fffeed04308e",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-4. Element-UI與表單綜合練習.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day2-4.md",
+    "originalBodySha256": "2a87dfa1a375d9b70694f10334227605af51b0ac6912257f1261a7d824666339",
+    "edits": [
+      {
+        "from": "![image-20230107142147182](_img/day2-4/image-20230107142147182.png)",
+        "to": "![image-20230107142147182](/images/notebook/legacy/c6c01a660269ff4ecd08.png)"
+      },
+      {
+        "from": "![image-20230107140108168](_img/day2-4/image-20230107140108168.png)",
+        "to": "![image-20230107140108168](/images/notebook/legacy/41a6bbeede7950274505.png)"
+      },
+      {
+        "from": "![image-20230107120000253](_img/day2-4/image-20230107120000253.png)",
+        "to": "![image-20230107120000253](/images/notebook/legacy/a4d6ddf4bfb393437be8.png)"
+      },
+      {
+        "from": "![image-20230107115821562](_img/day2-4/image-20230107115821562.png)",
+        "to": "![image-20230107115821562](/images/notebook/legacy/a773580f6eb045285655.png)"
+      },
+      {
+        "from": "![image-20230109105407516](_img/day2-4/image-20230109105407516.png)",
+        "to": "![image-20230109105407516](/images/notebook/legacy/e0ab2a925b96f69b07fe.png)"
+      },
+      {
+        "from": "![image-20230109105211379](_img/day2-4/image-20230109105211379.png)",
+        "to": "![image-20230109105211379](/images/notebook/legacy/0353cb702a3b8407b0b5.png)"
+      },
+      {
+        "from": "![image-20230109104406857](_img/day2-4/image-20230109104406857.png)",
+        "to": "![image-20230109104406857](/images/notebook/legacy/cf76700cc21de33ca57f.png)"
+      },
+      {
+        "from": "![image-20230107112530279](_img/day2-4/image-20230107112530279.png)",
+        "to": "![image-20230107112530279](/images/notebook/legacy/92870959e4d78d7cd3cf.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/92870959e4d78d7cd3cf.png",
+        "sha256": "92870959e4d78d7cd3cfd88d4f3c171ac0c5f6e6606c013a876c3c47f6961267"
+      },
+      {
+        "path": "/images/notebook/legacy/cf76700cc21de33ca57f.png",
+        "sha256": "cf76700cc21de33ca57f4887c5305abd90bd4820f31a04005ed546c76fd7f0bc"
+      },
+      {
+        "path": "/images/notebook/legacy/0353cb702a3b8407b0b5.png",
+        "sha256": "0353cb702a3b8407b0b57a4e22267bb4aa136e858986e17f79e4c468dc7af12d"
+      },
+      {
+        "path": "/images/notebook/legacy/e0ab2a925b96f69b07fe.png",
+        "sha256": "e0ab2a925b96f69b07fe445f8b09651f57399152f4cf1ddc84abd7fd8343de09"
+      },
+      {
+        "path": "/images/notebook/legacy/a773580f6eb045285655.png",
+        "sha256": "a773580f6eb0452856550ec906e759b5b7fea930da1b0bdc77d29cbd28c23e74"
+      },
+      {
+        "path": "/images/notebook/legacy/a4d6ddf4bfb393437be8.png",
+        "sha256": "a4d6ddf4bfb393437be86f790abff818cbb05cf9f7ce52737da964485da79a70"
+      },
+      {
+        "path": "/images/notebook/legacy/41a6bbeede7950274505.png",
+        "sha256": "41a6bbeede79502745058e8010a653acfca716dee39098a2f5ff649b6a42d3d6"
+      },
+      {
+        "path": "/images/notebook/legacy/c6c01a660269ff4ecd08.png",
+        "sha256": "c6c01a660269ff4ecd08ac239ae98e1da43e7c5783d796a7f07e203f36916c33"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-1. ajax及網頁測試.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day3-1.md",
+    "originalBodySha256": "bb52e7b960c4782631c8d86f1e7b571c8125473b84537f95a846ab9a4b9d25fb",
+    "edits": [
+      {
+        "from": "![image-20230107153914480](_img/day3-1/image-20230107153914480.png)",
+        "to": "![image-20230107153914480](/images/notebook/legacy/3455ce0950c8146d5f53.png)"
+      },
+      {
+        "from": "![image-20230107153841276](_img/day3-1/image-20230107153841276.png)",
+        "to": "![image-20230107153841276](/images/notebook/legacy/384ce1e7638c901d2e02.png)"
+      },
+      {
+        "from": "![image-20230107151048109](_img/day3-1/image-20230107151048109.png)",
+        "to": "![image-20230107151048109](/images/notebook/legacy/4cdb17f74148bacefbd3.png)"
+      },
+      {
+        "from": "![image-20230107143632143](_img/day3-1/image-20230107143632143.png)",
+        "to": "![image-20230107143632143](/images/notebook/legacy/fb2ee443c887e05eeae5.png)"
+      },
+      {
+        "from": "![image-20230107143539550](_img/day3-1/image-20230107143539550.png)",
+        "to": "![image-20230107143539550](/images/notebook/legacy/66a3572ad4ebfcf527ba.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/66a3572ad4ebfcf527ba.png",
+        "sha256": "66a3572ad4ebfcf527ba108a3f1efe4a1c772d6b10ee94194258bb32d8595028"
+      },
+      {
+        "path": "/images/notebook/legacy/fb2ee443c887e05eeae5.png",
+        "sha256": "fb2ee443c887e05eeae5ceaebd3fd85a44e6833af446daa49892ce7e2d1add40"
+      },
+      {
+        "path": "/images/notebook/legacy/4cdb17f74148bacefbd3.png",
+        "sha256": "4cdb17f74148bacefbd3f4fa3c1403b170a0504b856dd8815832e02cafef5dbb"
+      },
+      {
+        "path": "/images/notebook/legacy/384ce1e7638c901d2e02.png",
+        "sha256": "384ce1e7638c901d2e0269547dddd05f78c06287911cb25b25cf452e7a25c559"
+      },
+      {
+        "path": "/images/notebook/legacy/3455ce0950c8146d5f53.png",
+        "sha256": "3455ce0950c8146d5f531b104a345f8fbe22f1845ee17de2f595e18d2c6781e4"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-2. 前端路由設計.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day3-2.md",
+    "originalBodySha256": "b645649315d152e6d7cc1c9df319ed4665f1f77c797c5a8bfca8f2b347772f27",
+    "edits": [
+      {
+        "from": "![image-20230107180450790](_img/day3-2/image-20230107180450790.png)",
+        "to": "![image-20230107180450790](/images/notebook/legacy/7ee65119fd5f249e0f9a.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/7ee65119fd5f249e0f9a.png",
+        "sha256": "7ee65119fd5f249e0f9ac16df4a8b57b523a55a1a840e6197d91078b66b894a7"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-3. 查詢頁面實作練習.md",
+    "target": "content/notebook/vuejs-ncut-course-2019/day3-3.md",
+    "originalBodySha256": "ce257731f3b588ea65e9d5dea8c076760be52cef62ee731398cb16ffbe881dbf",
+    "edits": [
+      {
+        "from": "![image-20230109092738477](_img/day3-3/image-20230109092738477.png)",
+        "to": "![image-20230109092738477](/images/notebook/legacy/96c5b80feb9e341b17e2.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/96c5b80feb9e341b17e2.png",
+        "sha256": "96c5b80feb9e341b17e2076d4d539bbb17284a4bb8b3655579123d7000797e93"
+      }
+    ]
+  },
+  {
+    "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/README.md",
+    "target": "content/notebook/vuejs-ncut-course-2019.md",
+    "originalBodySha256": "84d95c6b982a142210f04c75746a3fc2bcb9f78034d94a9933d389ead19d9360",
+    "edits": [
+      {
+        "from": "![R0001760](_img/README/R0001760.JPG)",
+        "to": "![R0001760](/images/notebook/legacy/5bb1dcceb6d017e8c5ff.jpg)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/5bb1dcceb6d017e8c5ff.jpg",
+        "sha256": "5bb1dcceb6d017e8c5ffbb5708a4de10542078654c037b4e4a41f1b1146f99d9"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/README.md",
+    "target": "content/notebook/ithome2018.md",
+    "originalBodySha256": "bffb9291405b019a20c3f1ffd2ae7606e02cd9e94b524887021545d490c9dde6",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day01.md",
+    "target": "content/notebook/ithome2018/day01.md",
+    "originalBodySha256": "ceccd4519bcefebfe54479f0a36de579bb75a730448e03cdb0170502896f12d7",
+    "edits": [
+      {
+        "from": "![Day01 D3.js學前準備_用D3.js完成網頁視覺化](_img/day01/2.jpeg)",
+        "to": "![Day01 D3.js學前準備_用D3.js完成網頁視覺化](/images/notebook/legacy/61dd3ce7416500621436.jpeg)"
+      },
+      {
+        "from": "![Day01 D3.js學前準備_哈佛教你做出好圖表](_img/day01/1.jpeg)",
+        "to": "![Day01 D3.js學前準備_哈佛教你做出好圖表](/images/notebook/legacy/1abd24d91cbd4acfaf40.jpeg)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/1abd24d91cbd4acfaf40.jpeg",
+        "sha256": "1abd24d91cbd4acfaf40d91b101aa8ea8425af4377e337cb20df9205450b7d8c"
+      },
+      {
+        "path": "/images/notebook/legacy/61dd3ce7416500621436.jpeg",
+        "sha256": "61dd3ce74165006214360595d823588ec48944bdc52531db56961ed40fc67f40"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day02.md",
+    "target": "content/notebook/ithome2018/day02.md",
+    "originalBodySha256": "08f6ca29afe35bf95cc7b5f90456f08741a546348218298217fa5836fa7ea2ec",
+    "edits": [
+      {
+        "from": "![Day02 圖表學習筆記整理（1）_重新權釋並繪製](_img/day02/4.png)",
+        "to": "![Day02 圖表學習筆記整理（1）_重新權釋並繪製](/images/notebook/legacy/6f1684dc83426e787cb9.png)"
+      },
+      {
+        "from": "![Day02 圖表學習筆記整理（1）_興趣有多高](_img/day02/3.png)",
+        "to": "![Day02 圖表學習筆記整理（1）_興趣有多高](/images/notebook/legacy/f1b27f2436b4a61db83e.png)"
+      },
+      {
+        "from": "![Day02 圖表學習筆記整理（1）_視覺化類別區分成四個象限](_img/day02/2.png)",
+        "to": "![Day02 圖表學習筆記整理（1）_視覺化類別區分成四個象限](/images/notebook/legacy/528022c68440a86245f6.png)"
+      },
+      {
+        "from": "![Day02 圖表學習筆記整理（1）_美國各州最具代表性的品牌](_img/day02/1.png)",
+        "to": "![Day02 圖表學習筆記整理（1）_美國各州最具代表性的品牌](/images/notebook/legacy/0207a3544ecff1d517c9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/0207a3544ecff1d517c9.png",
+        "sha256": "0207a3544ecff1d517c9829c87a622c691b7ff6dcf4b76dcac848e7c3ae206ab"
+      },
+      {
+        "path": "/images/notebook/legacy/528022c68440a86245f6.png",
+        "sha256": "528022c68440a86245f6da728964bcee04fb0ec0c0abd7585c90a1788d345395"
+      },
+      {
+        "path": "/images/notebook/legacy/f1b27f2436b4a61db83e.png",
+        "sha256": "f1b27f2436b4a61db83edd41b0dde1786beba8b778ad30a4133695d806e1c59b"
+      },
+      {
+        "path": "/images/notebook/legacy/6f1684dc83426e787cb9.png",
+        "sha256": "6f1684dc83426e787cb97fd8fdc2243abfc84e640ddcebee396a73a8637f4ab9"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day03.md",
+    "target": "content/notebook/ithome2018/day03.md",
+    "originalBodySha256": "d2989a7845bcf5a2af5faf02f778c9bfd5eee633a23f70598c601af4bb7b349b",
+    "edits": [
+      {
+        "from": "![Day03 圖表學習筆記整理（2）_3](_img/day03/3.png)",
+        "to": "![Day03 圖表學習筆記整理（2）_3](/images/notebook/legacy/e52210c0919ff85d1bae.png)"
+      },
+      {
+        "from": "![Day03 圖表學習筆記整理（2）_2](_img/day03/2.png)",
+        "to": "![Day03 圖表學習筆記整理（2）_2](/images/notebook/legacy/466e9a4fe9ad94344947.png)"
+      },
+      {
+        "from": "![Day03 圖表學習筆記整理（2）_1](_img/day03/1.png)",
+        "to": "![Day03 圖表學習筆記整理（2）_1](/images/notebook/legacy/610b6e3e3dac7488759b.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/610b6e3e3dac7488759b.png",
+        "sha256": "610b6e3e3dac7488759be9ce9f857cdb9367c081d7ce18af429afc4a65187f85"
+      },
+      {
+        "path": "/images/notebook/legacy/466e9a4fe9ad94344947.png",
+        "sha256": "466e9a4fe9ad94344947def6b5a5cd6b829684eb483fde707ca8ba247bbc78a3"
+      },
+      {
+        "path": "/images/notebook/legacy/e52210c0919ff85d1bae.png",
+        "sha256": "e52210c0919ff85d1baec559952b6559f1b81db1ba0818e6026dd2e44e8ad3dd"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day04.md",
+    "target": "content/notebook/ithome2018/day04.md",
+    "originalBodySha256": "7fed790af6303276685ae966f62f8f1fdf4f14863b7cea904f0eb24707b4156c",
+    "edits": [
+      {
+        "from": "![Day04 初探SVG_3](_img/day04/3.png)",
+        "to": "![Day04 初探SVG_3](/images/notebook/legacy/4b0d4dc37a7eb1978195.png)"
+      },
+      {
+        "from": "![Day04 初探SVG_2](_img/day04/2.png)",
+        "to": "![Day04 初探SVG_2](/images/notebook/legacy/76bf560c254fc8f80465.png)"
+      },
+      {
+        "from": "![Day04 初探SVG_1](_img/day04/1.png)",
+        "to": "![Day04 初探SVG_1](/images/notebook/legacy/00874ea7fbdc43d94331.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/00874ea7fbdc43d94331.png",
+        "sha256": "00874ea7fbdc43d943316ee3a37edaf7326c056079d7794dcfd2e7c304667577"
+      },
+      {
+        "path": "/images/notebook/legacy/76bf560c254fc8f80465.png",
+        "sha256": "76bf560c254fc8f8046589a27438e59174e49b10be17b5d997641a1fefff7e3a"
+      },
+      {
+        "path": "/images/notebook/legacy/4b0d4dc37a7eb1978195.png",
+        "sha256": "4b0d4dc37a7eb1978195ad07edbceb48e0cf34d9a7735c7e2906dfc6f94be96c"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day05.md",
+    "target": "content/notebook/ithome2018/day05.md",
+    "originalBodySha256": "83a988b19b92ddfda27b91b8577a282fbee3ae159aa86c8e9de77b89a87ccbda",
+    "edits": [
+      {
+        "from": "![Day05 SVG元素繪製與樣式_3](_img/day05/3.png)",
+        "to": "![Day05 SVG元素繪製與樣式_3](/images/notebook/legacy/c2cc2fa5702d0b2a4cb9.png)"
+      },
+      {
+        "from": "![Day05 SVG元素繪製與樣式_2](_img/day05/2.png)",
+        "to": "![Day05 SVG元素繪製與樣式_2](/images/notebook/legacy/87a4fa58782ff4492763.png)"
+      },
+      {
+        "from": "![Day05 SVG元素繪製與樣式_1](_img/day05/1.png)",
+        "to": "![Day05 SVG元素繪製與樣式_1](/images/notebook/legacy/222a2d121d3f9c55aef6.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/222a2d121d3f9c55aef6.png",
+        "sha256": "222a2d121d3f9c55aef66e578a7e4b5010632261b6a782df9a8fec30e1ed23d3"
+      },
+      {
+        "path": "/images/notebook/legacy/87a4fa58782ff4492763.png",
+        "sha256": "87a4fa58782ff4492763c4810edadccfd4f6037bb301aef173356aa2aecfd415"
+      },
+      {
+        "path": "/images/notebook/legacy/c2cc2fa5702d0b2a4cb9.png",
+        "sha256": "c2cc2fa5702d0b2a4cb91bbe751a466f8b687a9c9bbfc41e3f276c790539e422"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day06.md",
+    "target": "content/notebook/ithome2018/day06.md",
+    "originalBodySha256": "e7d38d07c66757aa905331b49fa203f9f1933653ea9c4542e73ae0a0a4a08e55",
+    "edits": [
+      {
+        "from": "![Day06 D3 hello word_1](_img/day06/1.png)",
+        "to": "![Day06 D3 hello word_1](/images/notebook/legacy/e1aef476ba9d6bfcbaee.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e1aef476ba9d6bfcbaee.png",
+        "sha256": "e1aef476ba9d6bfcbaeea88c20a8b6cad6cf47d836d337d8eb29c1587c1ebbe6"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day07.md",
+    "target": "content/notebook/ithome2018/day07.md",
+    "originalBodySha256": "df8f3b0eee19c766575e45f6fcbe2c492ab86d2db15bab1b63e1464a35e40b3f",
+    "edits": [
+      {
+        "from": "![Day07 D3 資料綁定的理解(1)_2](_img/day07/2.png)",
+        "to": "![Day07 D3 資料綁定的理解(1)_2](/images/notebook/legacy/50e57497f3cfdf37d3d0.png)"
+      },
+      {
+        "from": "![Day07 D3 資料綁定的理解(1)_1](_img/day07/1.png)",
+        "to": "![Day07 D3 資料綁定的理解(1)_1](/images/notebook/legacy/bdb2bc3936f521718dbf.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/bdb2bc3936f521718dbf.png",
+        "sha256": "bdb2bc3936f521718dbfcaebdaac5bb73c9ec2cdbcd4e325486269f61719b2f2"
+      },
+      {
+        "path": "/images/notebook/legacy/50e57497f3cfdf37d3d0.png",
+        "sha256": "50e57497f3cfdf37d3d0ed7323063e194add915fe16e67d16687dfe87bed2bd8"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day08.md",
+    "target": "content/notebook/ithome2018/day08.md",
+    "originalBodySha256": "c8b1a5a2e518f965b18ecacabbe13ae5e6ef3850ab4ed66583791fb00b7856a1",
+    "edits": [
+      {
+        "from": "![Day08 D3 資料綁定的理解(2)_4](_img/day08/4.png)",
+        "to": "![Day08 D3 資料綁定的理解(2)_4](/images/notebook/legacy/957582690e3995451b56.png)"
+      },
+      {
+        "from": "![Day08 D3 資料綁定的理解(2)_3](_img/day08/3.png)",
+        "to": "![Day08 D3 資料綁定的理解(2)_3](/images/notebook/legacy/8012f7c5489b2198d867.png)"
+      },
+      {
+        "from": "![Day08 D3 資料綁定的理解(2)_2](_img/day08/2.png)",
+        "to": "![Day08 D3 資料綁定的理解(2)_2](/images/notebook/legacy/6784813071f96b626f35.png)"
+      },
+      {
+        "from": "![Day08 D3 資料綁定的理解(2)_1](_img/day08/1.png)",
+        "to": "![Day08 D3 資料綁定的理解(2)_1](/images/notebook/legacy/84d56ee31a4c4e514ee7.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/84d56ee31a4c4e514ee7.png",
+        "sha256": "84d56ee31a4c4e514ee7cc0428de21eac29d914e314e4b8f52d95ba3cef531df"
+      },
+      {
+        "path": "/images/notebook/legacy/6784813071f96b626f35.png",
+        "sha256": "6784813071f96b626f35bf5303b01817440594a7cfa1bee00c5df4ed859ddf56"
+      },
+      {
+        "path": "/images/notebook/legacy/8012f7c5489b2198d867.png",
+        "sha256": "8012f7c5489b2198d8670ca459a42c5170fb8681a3dd60816daa9d62f1556e5b"
+      },
+      {
+        "path": "/images/notebook/legacy/957582690e3995451b56.png",
+        "sha256": "957582690e3995451b56e9b8f7697b3df7f84326c3c2bb2b2f7a854ffac8454c"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day09.md",
+    "target": "content/notebook/ithome2018/day09.md",
+    "originalBodySha256": "ff30d8625a0c618c10b643b681a7148ea8bf0c51befdc65cb7a0c646330a5ba8",
+    "edits": [
+      {
+        "from": "![Day09 練習題準備 - 圖表類型的理解_1](_img/day09/1.png)",
+        "to": "![Day09 練習題準備 - 圖表類型的理解_1](/images/notebook/legacy/ad1d9de419d793f3e1ca.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/ad1d9de419d793f3e1ca.png",
+        "sha256": "ad1d9de419d793f3e1ca95f02b597d2b2369325d6b89c6d52be4415651c7123f"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day10.md",
+    "target": "content/notebook/ithome2018/day10.md",
+    "originalBodySha256": "b66eb54edb3f365edbb7dd0cc48127f52753b163df0a596029533e49cfd08a70",
+    "edits": [
+      {
+        "from": "![Day10 練習 - 直式長條圖(1)_3](_img/day10/3.png)",
+        "to": "![Day10 練習 - 直式長條圖(1)_3](/images/notebook/legacy/c48e3e9b50d774289657.png)"
+      },
+      {
+        "from": "![Day10 練習 - 直式長條圖(1)_2](_img/day10/2.png)",
+        "to": "![Day10 練習 - 直式長條圖(1)_2](/images/notebook/legacy/74c6a9cc7878eeccf0b7.png)"
+      },
+      {
+        "from": "![Day10 練習 - 直式長條圖(1)_1](_img/day10/1.png)",
+        "to": "![Day10 練習 - 直式長條圖(1)_1](/images/notebook/legacy/829fcd7eed75085cd975.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/829fcd7eed75085cd975.png",
+        "sha256": "829fcd7eed75085cd97537de25ce23d954de2fb36fe1e41c29e7edc8eb99dd17"
+      },
+      {
+        "path": "/images/notebook/legacy/74c6a9cc7878eeccf0b7.png",
+        "sha256": "74c6a9cc7878eeccf0b731307f42b2a9a22773b0ba6085a6a102722cc37d34e6"
+      },
+      {
+        "path": "/images/notebook/legacy/c48e3e9b50d774289657.png",
+        "sha256": "c48e3e9b50d7742896571da24be635972ac029037c155aafd3de1de7c652f6e6"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day11.md",
+    "target": "content/notebook/ithome2018/day11.md",
+    "originalBodySha256": "08a91f699fcf4802201bc0db62a47c3d14f438ce93e9129661fa8596791853e9",
+    "edits": [
+      {
+        "from": "![Day11 練習 - 直式長條圖(2)_2](_img/day11/2.png)",
+        "to": "![Day11 練習 - 直式長條圖(2)_2](/images/notebook/legacy/b23fcfed04e88b170f93.png)"
+      },
+      {
+        "from": "![Day11 練習 - 直式長條圖(2)_1](_img/day11/1.png)",
+        "to": "![Day11 練習 - 直式長條圖(2)_1](/images/notebook/legacy/beae2e95b0993d716808.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/beae2e95b0993d716808.png",
+        "sha256": "beae2e95b0993d716808cf75aee37f5ae2940c638fa7a11c2886b7e40a16cc06"
+      },
+      {
+        "path": "/images/notebook/legacy/b23fcfed04e88b170f93.png",
+        "sha256": "b23fcfed04e88b170f931c5bd7117293d6f0baa5111ddb76ea3ca2b92b0e4624"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day12.md",
+    "target": "content/notebook/ithome2018/day12.md",
+    "originalBodySha256": "c4180bd7119c96f38d1ad4c0098d1d7e8ca06062254a0d79632c5f04923fed27",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day13.md",
+    "target": "content/notebook/ithome2018/day13.md",
+    "originalBodySha256": "4883c294adccc6e8afeabfefdc5bd779776a28c6a863880add384a900d313312",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day14.md",
+    "target": "content/notebook/ithome2018/day14.md",
+    "originalBodySha256": "d04a48588ba36b6dc9182e743df0b457a5b0871f5f019c6535169a2a14ae1126",
+    "edits": [
+      {
+        "from": "![Day14 座標軸_2](_img/day14/2.png)",
+        "to": "![Day14 座標軸_2](/images/notebook/legacy/bb4e3026961ef2e646b4.png)"
+      },
+      {
+        "from": "![Day14 座標軸_1](_img/day14/1.png)",
+        "to": "![Day14 座標軸_1](/images/notebook/legacy/e547a1851ec70f57a003.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e547a1851ec70f57a003.png",
+        "sha256": "e547a1851ec70f57a0037fdad554b949ad08cae8ce1b0746a698a190075fc5f1"
+      },
+      {
+        "path": "/images/notebook/legacy/bb4e3026961ef2e646b4.png",
+        "sha256": "bb4e3026961ef2e646b420b5208c76f6fd0c337e63f1e5b255f74eae945cd7e3"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day15.md",
+    "target": "content/notebook/d3-scatter.md",
+    "originalBodySha256": "b2e895dd34df5ddd230c0c50db1dc37820f23640f643aa6e0d60269796a80fd0",
+    "edits": [
+      {
+        "from": "(_img/day15/1.png)",
+        "to": "(/images/notebook/d3-scatter/1.png)"
+      },
+      {
+        "from": "(_img/day15/2.png)",
+        "to": "(/images/notebook/d3-scatter/2.png)"
+      },
+      {
+        "from": "(_img/day15/3.png)",
+        "to": "(/images/notebook/d3-scatter/3.png)"
+      },
+      {
+        "from": "(_img/day15/4.png)",
+        "to": "(/images/notebook/d3-scatter/4.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/d3-scatter/1.png",
+        "sha256": "41f022cadd5bc028395e4d297b6fe073ae3255336982b933a9008c514c808491"
+      },
+      {
+        "path": "/images/notebook/d3-scatter/2.png",
+        "sha256": "ab51fa9936161a789c66fd24bd65716f8269574f7ffc98f6d4fd37d4492eab19"
+      },
+      {
+        "path": "/images/notebook/d3-scatter/3.png",
+        "sha256": "371cc2e305bc679b31c44330746a5bf1a7e235ba3ef260ae2bb8eb51ba7db073"
+      },
+      {
+        "path": "/images/notebook/d3-scatter/4.png",
+        "sha256": "2ea91fcfd02512eb64fafe5a72c4711f60068913f41782f87aca57ac78ff235a"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day16.md",
+    "target": "content/notebook/ithome2018/day16.md",
+    "originalBodySha256": "22e29a640a87f480a141d132b50d519d23a390fa6ef68ff07afd1e8723a35eb7",
+    "edits": [
+      {
+        "from": "![Day16 練習 - 散布圖 (2)_2](_img/day16/2.png)",
+        "to": "![Day16 練習 - 散布圖 (2)_2](/images/notebook/legacy/2b67a68ae18e78638291.png)"
+      },
+      {
+        "from": "![Day16 練習 - 散布圖 (2)_1](_img/day16/1.png)",
+        "to": "![Day16 練習 - 散布圖 (2)_1](/images/notebook/legacy/f323890d0b5e64adf604.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/f323890d0b5e64adf604.png",
+        "sha256": "f323890d0b5e64adf604ec7ec318314c4f7a9bd169b67e4df69db0ffd8a25e20"
+      },
+      {
+        "path": "/images/notebook/legacy/2b67a68ae18e78638291.png",
+        "sha256": "2b67a68ae18e786382915d4c13161c4bb42a1bdd68cd6cc7fc2af94609d05568"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day17.md",
+    "target": "content/notebook/ithome2018/day17.md",
+    "originalBodySha256": "91e588812fb6cc8be256c9a3985337ca214c41bd6740e01a354585f7fc3a0532",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day18.md",
+    "target": "content/notebook/ithome2018/day18.md",
+    "originalBodySha256": "0bdf22193a80d3be4859c022c3c75d987249991fde4074a99844743739883a61",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day19.md",
+    "target": "content/notebook/ithome2018/day19.md",
+    "originalBodySha256": "2d63f7a45d129dd402cd51944fc8d6a48e8f5b749347b57fc9080eaecdcf9b2a",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day20.md",
+    "target": "content/notebook/ithome2018/day20.md",
+    "originalBodySha256": "4823d0dc410467cd89be721be6f5f293b388420decdbf64cf6dcc5dfab2aa3f0",
+    "edits": [
+      {
+        "from": "![Day20 繪製產生器 (3)_5](_img/day20/5.png)",
+        "to": "![Day20 繪製產生器 (3)_5](/images/notebook/legacy/522048c024a9239ff15f.png)"
+      },
+      {
+        "from": "![Day20 繪製產生器 (3)_4](_img/day20/4.png)",
+        "to": "![Day20 繪製產生器 (3)_4](/images/notebook/legacy/114444b4cc3c7eb34e48.png)"
+      },
+      {
+        "from": "![Day20 繪製產生器 (3)_3](_img/day20/3.png)",
+        "to": "![Day20 繪製產生器 (3)_3](/images/notebook/legacy/86b38e85b2260982ce88.png)"
+      },
+      {
+        "from": "![Day20 繪製產生器 (3)_2](_img/day20/2.png)",
+        "to": "![Day20 繪製產生器 (3)_2](/images/notebook/legacy/74898f68418ab48ecd30.png)"
+      },
+      {
+        "from": "![Day20 繪製產生器 (3)_1](_img/day20/1.png)",
+        "to": "![Day20 繪製產生器 (3)_1](/images/notebook/legacy/f344bf4c098a0c83f98b.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/f344bf4c098a0c83f98b.png",
+        "sha256": "f344bf4c098a0c83f98b451e150e98400b7b3150dda2fe5448865d90d5e0c952"
+      },
+      {
+        "path": "/images/notebook/legacy/74898f68418ab48ecd30.png",
+        "sha256": "74898f68418ab48ecd302c10cab484af9f95b7ea5bb4c61c17f61fa7e8b299c4"
+      },
+      {
+        "path": "/images/notebook/legacy/86b38e85b2260982ce88.png",
+        "sha256": "86b38e85b2260982ce88b88abaa0e2ebd38ae31064ceb2b382b810a476125779"
+      },
+      {
+        "path": "/images/notebook/legacy/114444b4cc3c7eb34e48.png",
+        "sha256": "114444b4cc3c7eb34e480570fa7a9861a9680671d4adf7671aff4a73b94a80c5"
+      },
+      {
+        "path": "/images/notebook/legacy/522048c024a9239ff15f.png",
+        "sha256": "522048c024a9239ff15f6f66655724f5ec3c1eb3f3032bd2a2dfd54b0e03203d"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day21.md",
+    "target": "content/notebook/ithome2018/day21.md",
+    "originalBodySha256": "697a060b69db9699ee88f9388197713388fe2f86b48ec7561b8b7c725091e35c",
+    "edits": [
+      {
+        "from": "![Day21 練習 - 線圖_3](_img/day21/3.png)",
+        "to": "![Day21 練習 - 線圖_3](/images/notebook/legacy/78a6fd5bc4c2f763a709.png)"
+      },
+      {
+        "from": "![Day21 練習 - 線圖_2](_img/day21/2.png)",
+        "to": "![Day21 練習 - 線圖_2](/images/notebook/legacy/daa248c52823e81890f4.png)"
+      },
+      {
+        "from": "![Day21 練習 - 線圖_1](_img/day21/1.png)",
+        "to": "![Day21 練習 - 線圖_1](/images/notebook/legacy/c93e0ad37e67354ccde5.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/c93e0ad37e67354ccde5.png",
+        "sha256": "c93e0ad37e67354ccde5bd024aad8f91f96ad79918ba49e1e3a804b228e1719a"
+      },
+      {
+        "path": "/images/notebook/legacy/daa248c52823e81890f4.png",
+        "sha256": "daa248c52823e81890f42e7e66a0c26fc987562ae3605f9a0bc9a612c846f7db"
+      },
+      {
+        "path": "/images/notebook/legacy/78a6fd5bc4c2f763a709.png",
+        "sha256": "78a6fd5bc4c2f763a709f527368be0ce2d201f561d2b474dad7b83677ff035db"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day22.md",
+    "target": "content/notebook/ithome2018/day22.md",
+    "originalBodySha256": "3bb97a8944b670d90c7f6bd04ad8975efd5814ecd49f6752f6b0d8bb35f0a61e",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day23.md",
+    "target": "content/notebook/ithome2018/day23.md",
+    "originalBodySha256": "de9e949edfa2138726b83f7fb6349098ec788fc2c370aa2c1c0c50381d1dc46e",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day24.md",
+    "target": "content/notebook/ithome2018/day24.md",
+    "originalBodySha256": "2415b942c1cb39bd106ccff3ce729cfa12653f1a522fd7841b8b34aca27ce993",
+    "edits": [
+      {
+        "from": "![Day24 練習 - 圓餅圖 (1)_5](_img/day24/5.png)",
+        "to": "![Day24 練習 - 圓餅圖 (1)_5](/images/notebook/legacy/b5bce9c2f49c7cdfbd46.png)"
+      },
+      {
+        "from": "![Day24 練習 - 圓餅圖 (1)_4](_img/day24/4.png)",
+        "to": "![Day24 練習 - 圓餅圖 (1)_4](/images/notebook/legacy/f0ee91ad077076e06735.png)"
+      },
+      {
+        "from": "![Day24 練習 - 圓餅圖 (1)_3](_img/day24/3.png)",
+        "to": "![Day24 練習 - 圓餅圖 (1)_3](/images/notebook/legacy/bb2374445dd0ac2405ad.png)"
+      },
+      {
+        "from": "![Day24 練習 - 圓餅圖 (1)_2](_img/day24/2.png)",
+        "to": "![Day24 練習 - 圓餅圖 (1)_2](/images/notebook/legacy/b9b30287f0d737b5e93b.png)"
+      },
+      {
+        "from": "![Day24 練習 - 圓餅圖 (1)_1](_img/day24/1.png)",
+        "to": "![Day24 練習 - 圓餅圖 (1)_1](/images/notebook/legacy/25b57e342ce0b6b3e7b9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/25b57e342ce0b6b3e7b9.png",
+        "sha256": "25b57e342ce0b6b3e7b9560219effaeb48e6a5838b1aaf5032eb68978ef9d5bb"
+      },
+      {
+        "path": "/images/notebook/legacy/b9b30287f0d737b5e93b.png",
+        "sha256": "b9b30287f0d737b5e93b01e3e9a7c3a559204ea4dfec222fce61a93e05b4b339"
+      },
+      {
+        "path": "/images/notebook/legacy/bb2374445dd0ac2405ad.png",
+        "sha256": "bb2374445dd0ac2405adcce5a3d16a8fbdf1e17fcc03c2d774c8c2eb6b320735"
+      },
+      {
+        "path": "/images/notebook/legacy/f0ee91ad077076e06735.png",
+        "sha256": "f0ee91ad077076e0673595fcbfa8c5715e81c61e8995f5827de14d548c48d7bb"
+      },
+      {
+        "path": "/images/notebook/legacy/b5bce9c2f49c7cdfbd46.png",
+        "sha256": "b5bce9c2f49c7cdfbd466fd3d499aa42ea235d4adad4fdd21c931da4366ea710"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day25.md",
+    "target": "content/notebook/ithome2018/day25.md",
+    "originalBodySha256": "4fc368b15727808bd8b6db16a31d08050fd78b9bc90b01d18ba635b7def9313c",
+    "edits": [
+      {
+        "from": "![Day25 練習 - 圓餅圖 (2)_3](_img/day25/3.png)",
+        "to": "![Day25 練習 - 圓餅圖 (2)_3](/images/notebook/legacy/50e91bc85bc90b288c8c.png)"
+      },
+      {
+        "from": "![Day25 練習 - 圓餅圖 (2)_2](_img/day25/2.png)",
+        "to": "![Day25 練習 - 圓餅圖 (2)_2](/images/notebook/legacy/0b3b9e87283e7c76a26a.png)"
+      },
+      {
+        "from": "![Day25 練習 - 圓餅圖 (2)_1](_img/day25/1.png)",
+        "to": "![Day25 練習 - 圓餅圖 (2)_1](/images/notebook/legacy/e888aa915d6643bf9f9e.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/e888aa915d6643bf9f9e.png",
+        "sha256": "e888aa915d6643bf9f9e8870edbcb5baa233a5ccf7e1f25f68b7a3db3e6aed5a"
+      },
+      {
+        "path": "/images/notebook/legacy/0b3b9e87283e7c76a26a.png",
+        "sha256": "0b3b9e87283e7c76a26a1fbca6a84016d7783e4334fc8bf11ab318e31f7f625b"
+      },
+      {
+        "path": "/images/notebook/legacy/50e91bc85bc90b288c8c.png",
+        "sha256": "50e91bc85bc90b288c8c041eb13ce992283a849ae8117df162284c30a4eca548"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day26.md",
+    "target": "content/notebook/ithome2018/day26.md",
+    "originalBodySha256": "de0cbe47ae18ca5e787835dacd0a5cb72913dc32b3f07752c1ca942b4f08fc80",
+    "edits": [
+      {
+        "from": "![Day26 練習 - 圓餅圖 (3)_1](_img/day26/1.png)",
+        "to": "![Day26 練習 - 圓餅圖 (3)_1](/images/notebook/legacy/dd3a1bbe35962a74340d.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/dd3a1bbe35962a74340d.png",
+        "sha256": "dd3a1bbe35962a74340d6c094ee5fd475388ce359d38fa41f93e5d3ef820a3dd"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day27.md",
+    "target": "content/notebook/ithome2018/day27.md",
+    "originalBodySha256": "542d7242532659084f5e6820c0024c1adc821f833d38b348a05899a3bab5e5e1",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day28.md",
+    "target": "content/notebook/ithome2018/day28.md",
+    "originalBodySha256": "8fa258aa7b67fa7f078e2323d93dfdd3206852f262d62cee3e308455fe35c815",
+    "edits": [
+      {
+        "from": "![Day28 練習 - 直方圖 (1)_2](_img/day28/2.png)",
+        "to": "![Day28 練習 - 直方圖 (1)_2](/images/notebook/legacy/5d5d31901adfa7cd7f93.png)"
+      },
+      {
+        "from": "![Day28 練習 - 直方圖 (1)_1](_img/day28/1.png)",
+        "to": "![Day28 練習 - 直方圖 (1)_1](/images/notebook/legacy/3fce6d4b73846660f8ac.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/3fce6d4b73846660f8ac.png",
+        "sha256": "3fce6d4b73846660f8ac1986000acc12d7f78bcea018d70c118a51d04299e5ff"
+      },
+      {
+        "path": "/images/notebook/legacy/5d5d31901adfa7cd7f93.png",
+        "sha256": "5d5d31901adfa7cd7f935ea3bfe38e67e33b31f5ee7a5f6369d457742c7d6c09"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day29.md",
+    "target": "content/notebook/ithome2018/day29.md",
+    "originalBodySha256": "8ab8a86faed797cbbe858bdcc76cb22abb12ceef62041431697bb71ff93e7887",
+    "edits": [
+      {
+        "from": "![Day29 練習 - 直方圖 (2)_2](_img/day29/2.png)",
+        "to": "![Day29 練習 - 直方圖 (2)_2](/images/notebook/legacy/4d099ad8772472bd9c5e.png)"
+      },
+      {
+        "from": "![Day29 練習 - 直方圖 (2)_1](_img/day29/1.png)",
+        "to": "![Day29 練習 - 直方圖 (2)_1](/images/notebook/legacy/5095a4521bde40e7b214.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/5095a4521bde40e7b214.png",
+        "sha256": "5095a4521bde40e7b214075a0620a0a0fa2859d27d8f4e35c3ef55d1a75ccc09"
+      },
+      {
+        "path": "/images/notebook/legacy/4d099ad8772472bd9c5e.png",
+        "sha256": "4d099ad8772472bd9c5e95060fc4f3a2b21709cd90c8616966392b981cf1114c"
+      }
+    ]
+  },
+  {
+    "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day30.md",
+    "target": "content/notebook/ithome2018/day30.md",
+    "originalBodySha256": "40a87a4b9129b0408c454e9a30e448fcfd88dc26a28055f9a3789031deb7719f",
+    "edits": [],
+    "assets": []
+  },
+  {
+    "source": "docs/static site/[Gitbook] Gitbook(v2)架設在Gitlab Pages上.md",
+    "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md",
+    "originalBodySha256": "807a24ba52d8f355ca9b58a444dbcbaf5480d3b1894ae5f7234418d684dc5b39",
+    "edits": [
+      {
+        "from": "![](./_img/[Gitbook]Gitbook(v2)架設在GitlabPages上/gitlab_pages_gitbook_3.png)",
+        "to": "![](/images/notebook/legacy/84dc72a522be1f0e7365.png)"
+      },
+      {
+        "from": "![](./_img/[Gitbook]Gitbook(v2)架設在GitlabPages上/gitlab_pages_gitbook_2.png)",
+        "to": "![](/images/notebook/legacy/7f449bc3d2cc02a0a07b.png)"
+      },
+      {
+        "from": "![](./_img/[Gitbook]Gitbook(v2)架設在GitlabPages上/gitlab_pages_gitbook_1.png)",
+        "to": "![](/images/notebook/legacy/51d05449c3a5c8e36226.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/51d05449c3a5c8e36226.png",
+        "sha256": "51d05449c3a5c8e362260b9a62b4ddc0957f3dd1c4e0a6e6b68fe08802f82234"
+      },
+      {
+        "path": "/images/notebook/legacy/7f449bc3d2cc02a0a07b.png",
+        "sha256": "7f449bc3d2cc02a0a07b79f3073f23de95d247430100362624ccfdb4dda49809"
+      },
+      {
+        "path": "/images/notebook/legacy/84dc72a522be1f0e7365.png",
+        "sha256": "84dc72a522be1f0e7365f516b37a2eb64c85941658d64af3e6c84ddd9cbb4c16"
+      }
+    ]
+  },
+  {
+    "source": "docs/前端Libraries/[pdf-make] 匯出pdf.md",
+    "target": "content/notebook/frontend-libraries/pdf-make.md",
+    "originalBodySha256": "a407d077153b96e477b95b6a30119bfaf717f87199008ea3ccf478157e5c74e2",
+    "edits": [
+      {
+        "from": "![](./_img/[pdf-make]匯出PDF/pdfmake_2.png)",
+        "to": "![](/images/notebook/legacy/75de18b44bd585c31e52.png)"
+      },
+      {
+        "from": "![](./_img/[pdf-make]匯出PDF/pdfmake_1.png)",
+        "to": "![](/images/notebook/legacy/fb4973bb92dfc2254cee.png)"
+      },
+      {
+        "from": "![](./_img/[pdf-make]匯出PDF/pdfmake_3.png)",
+        "to": "![](/images/notebook/legacy/c0d6d7d02b336096f6d9.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/c0d6d7d02b336096f6d9.png",
+        "sha256": "c0d6d7d02b336096f6d9ba85537e67b77d7c5e533decd3c772bdf7062860c764"
+      },
+      {
+        "path": "/images/notebook/legacy/fb4973bb92dfc2254cee.png",
+        "sha256": "fb4973bb92dfc2254cee66903362ecee8d08ffeb5d38e74fc08edf1953a4b574"
+      },
+      {
+        "path": "/images/notebook/legacy/75de18b44bd585c31e52.png",
+        "sha256": "75de18b44bd585c31e52434b175b99c43ff9d66429588d21baaadfab5ef5c91e"
+      }
+    ]
+  },
+  {
+    "source": "docs/前端Libraries/[vue-gtag].md",
+    "target": "content/notebook/frontend-libraries/vue-gtag.md",
+    "originalBodySha256": "a765420226e306f93e296f94b9176b55d82dbe3dc9a8bc4d899a105e50a4bd12",
+    "edits": [
+      {
+        "from": "![image-20230419182908133](_img/[vue-gtag]Vue專案用的gtag/image-20230419182908133.png)",
+        "to": "![image-20230419182908133](/images/notebook/legacy/04cf6d050466f73fcaeb.png)"
+      },
+      {
+        "from": "![image-20230419182818491](_img/[vue-gtag]Vue專案用的gtag/image-20230419182818491.png)",
+        "to": "![image-20230419182818491](/images/notebook/legacy/3809073ecca1d25faf03.png)"
+      },
+      {
+        "from": "![image-20230419180823084](_img/[vue-gtag]Vue專案用的gtag/image-20230419180823084.png)",
+        "to": "![image-20230419180823084](/images/notebook/legacy/aef7cef2148973352b57.png)"
+      },
+      {
+        "from": "![image-20230418163755940](_img/[vue-gtag]Vue專案用的gtag/image-20230418163755940.png)",
+        "to": "![image-20230418163755940](/images/notebook/legacy/73a850617d1897f8417c.png)"
+      },
+      {
+        "from": "![image-20230419181631385](_img/[vue-gtag]Vue專案用的gtag/image-20230419181631385.png)",
+        "to": "![image-20230419181631385](/images/notebook/legacy/c78e49d2dfe37b1fd436.png)"
+      },
+      {
+        "from": "![image-20230419181944308](_img/[vue-gtag]Vue專案用的gtag/image-20230419181944308.png)",
+        "to": "![image-20230419181944308](/images/notebook/legacy/1fdace50936428f0e2e8.png)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "/images/notebook/legacy/1fdace50936428f0e2e8.png",
+        "sha256": "1fdace50936428f0e2e823b9efa1bf19377b210deee76c0029e2dacebbf2e5e6"
+      },
+      {
+        "path": "/images/notebook/legacy/c78e49d2dfe37b1fd436.png",
+        "sha256": "c78e49d2dfe37b1fd4362bd426b7da2c689a686d44a7baa2f58c05ea36409b97"
+      },
+      {
+        "path": "/images/notebook/legacy/73a850617d1897f8417c.png",
+        "sha256": "73a850617d1897f8417c23afbe4ac2174dca8eee92fc6d966eaeab57a4a8e280"
+      },
+      {
+        "path": "/images/notebook/legacy/aef7cef2148973352b57.png",
+        "sha256": "aef7cef2148973352b5726a203762b22d78b7ea5aeb038903eb92ee81a9dcc33"
+      },
+      {
+        "path": "/images/notebook/legacy/3809073ecca1d25faf03.png",
+        "sha256": "3809073ecca1d25faf03f31555886480abdb96be0af3776f4c72a3995bce8931"
+      },
+      {
+        "path": "/images/notebook/legacy/04cf6d050466f73fcaeb.png",
+        "sha256": "04cf6d050466f73fcaeb59f81311b8a2aa51b09b933edd5357b3961a9235881d"
+      }
+    ]
+  },
+  {
+    "source": "docs/前端Libraries/[xlsx-js-style] 匯出自訂樣式Excel檔.md",
+    "target": "content/notebook/frontend-libraries/xlsx-js-style.md",
+    "originalBodySha256": "05687178ef7b160d435f7f127e66e56d7f8b36c8eee4aad252748a61da4fec15",
+    "edits": [],
+    "assets": []
+  }
+]

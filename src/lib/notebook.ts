@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
+import { parseNoteDate } from "./notebook-dates";
 export interface Note {
   slug: string;
   title: string;
@@ -12,6 +13,11 @@ export interface Note {
   sample: boolean;
   draft: boolean;
   readingMinutes: number;
+  publishedAt: string | null;
+  updatedAt: string | null;
+  kind: "article" | "index" | "example";
+  collection: "technical" | "series";
+  order: number;
 }
 export function parseNote(raw: string, file: string): Note {
   const { data, content } = matter(raw);
@@ -28,11 +34,23 @@ export function parseNote(raw: string, file: string): Note {
     throw new Error(`Invalid tags in ${file}`);
   if (data.draft !== undefined && typeof data.draft !== "boolean")
     throw new Error(`Invalid draft flag in ${file}`);
+  const publishedAt = parseNoteDate(data.publishedAt, "publishedAt", file);
+  const updatedAt = parseNoteDate(data.updatedAt, "updatedAt", file);
+  if (publishedAt && updatedAt && updatedAt < publishedAt)
+    throw new Error(`updatedAt precedes publishedAt in ${file}`);
+  const kind = data.kind ?? "article";
+  if (!["article", "index", "example"].includes(kind))
+    throw new Error(`Invalid kind in ${file}`);
   const prose = content.replace(/```[\s\S]*?```/g, "");
   const chinese = (prose.match(/[\u3400-\u9fff]/g) ?? []).length;
   const words = (prose.match(/[a-zA-Z0-9]+/g) ?? []).length;
   return {
     slug,
+    publishedAt,
+    updatedAt,
+    kind,
+    collection: data.collection === "series" ? "series" : "technical",
+    order: typeof data.order === "number" ? data.order : 999,
     title: data.title,
     category: String(data.category ?? "Notes"),
     tags: data.tags ?? [],
@@ -64,4 +82,31 @@ export function getNotes(
 }
 export function noteHref(note: Pick<Note, "slug">) {
   return `/notebook/${note.slug}/`;
+}
+
+/** Latest means published, not edited or migrated. Future dates await a later build. */
+export function getLatestNotes(
+  notes: Note[],
+  limit = 6,
+  today = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Taipei",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date()),
+): Note[] {
+  return notes
+    .filter(
+      (note) =>
+        !note.draft &&
+        note.kind === "article" &&
+        note.publishedAt !== null &&
+        note.publishedAt <= today,
+    )
+    .sort(
+      (a, b) =>
+        b.publishedAt!.localeCompare(a.publishedAt!) ||
+        a.slug.localeCompare(b.slug),
+    )
+    .slice(0, limit);
 }

@@ -1,11 +1,16 @@
 ---
-slug: /ithome2018/day15
+slug: "/ithome2018/day15"
 title: "Day15 練習 - 散布圖 (1)"
-authors: thunderboy
-tags: [ithome, d3.js]
-category: "D3.js"
+authors: "thunderboy"
+tags: ["ithome","d3.js"]
+category: "D3.js 新手開發基本圖表"
+collection: "series"
+kind: "article"
+order: 15
 source: "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day15.md"
-sample: true
+draft: false
+publishedAt:
+updatedAt:
 ---
 
 ## 一、以比例尺繪制x,y軸座標軸

@@ -1,10 +1,15 @@
 ---
-slug: /rxjs/combinelatest-duplicate-events
+slug: "/rxjs/combinelatest-duplicate-events"
 title: "[主題]去除掉 combineLatest 中同時間的重覆事件"
-tags: [rxjs]
+tags: ["rxjs"]
 category: "RxJS"
+collection: "technical"
+kind: "article"
+order: 999
 source: "docs/RxJS/[主題]去除掉combineLatest中同時間的重覆事件.md"
-sample: true
+draft: false
+publishedAt:
+updatedAt:
 ---
 
 

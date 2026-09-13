@@ -7,8 +7,9 @@
       "legacyPath": "/docs/css/tailwind-concept",
       "plannedPath": "/notebook/css/tailwind-concept",
       "draft": false,
-      "status": "pending",
-      "sha256": "ee881b992985cae3634d1a87b653d619d7c005cc6a11fac3e66c2f618df1e3ad"
+      "status": "migrated",
+      "sha256": "ee881b992985cae3634d1a87b653d619d7c005cc6a11fac3e66c2f618df1e3ad",
+      "target": "content/notebook/css/tailwind-concept.md"
     },
     {
       "source": "docs/D3.js/[主題] 從D3.js的select(this)探討的函式中的this指向.md",
@@ -16,8 +17,9 @@
       "legacyPath": "/docs/d3/d3js-select-this",
       "plannedPath": "/notebook/d3/d3js-select-this",
       "draft": false,
-      "status": "pending",
-      "sha256": "85a9ba5ac785a08bc5f8d739482a29d40ff06982ed340f1ae9bad0118b7b27ed"
+      "status": "migrated",
+      "sha256": "85a9ba5ac785a08bc5f8d739482a29d40ff06982ed340f1ae9bad0118b7b27ed",
+      "target": "content/notebook/d3/d3js-select-this.md"
     },
     {
       "source": "docs/JS Modules & Build Tools/[主題] 用vite打包要發布npm的程式.md",
@@ -25,8 +27,9 @@
       "legacyPath": "/docs/js-build-tools/using-vite-to-build-node-packages",
       "plannedPath": "/notebook/js-build-tools/using-vite-to-build-node-packages",
       "draft": false,
-      "status": "pending",
-      "sha256": "20b2d13d72fa3a4e58374c6d6032a94c13092803d6add7d423e8dac7d158ec65"
+      "status": "migrated",
+      "sha256": "20b2d13d72fa3a4e58374c6d6032a94c13092803d6add7d423e8dac7d158ec65",
+      "target": "content/notebook/js-build-tools/using-vite-to-build-node-packages.md"
     },
     {
       "source": "docs/JS Modules & Build Tools/[主題] 第一次發布npm前端套件就上手.md",
@@ -34,8 +37,9 @@
       "legacyPath": "/docs/js-build-tools/publish-js-library-to-npm",
       "plannedPath": "/notebook/js-build-tools/publish-js-library-to-npm",
       "draft": false,
-      "status": "pending",
-      "sha256": "a27a75e467ea0039bf93f0fbf9cf3959968b6cd00fa5fbe644d7d5167064f9be"
+      "status": "migrated",
+      "sha256": "a27a75e467ea0039bf93f0fbf9cf3959968b6cd00fa5fbe644d7d5167064f9be",
+      "target": "content/notebook/js-build-tools/publish-js-library-to-npm.md"
     },
     {
       "source": "docs/JavaScript/[JS] 傳值&傳參考.md",
@@ -43,8 +47,9 @@
       "legacyPath": "/docs/javascript/js-call-by-value-call-by-reference",
       "plannedPath": "/notebook/javascript/js-call-by-value-call-by-reference",
       "draft": false,
-      "status": "pending",
-      "sha256": "f60ff87070aff9b2ff47afcd3b3255085591f3454bd93eb34f6bafac9ffcabcf"
+      "status": "migrated",
+      "sha256": "f60ff87070aff9b2ff47afcd3b3255085591f3454bd93eb34f6bafac9ffcabcf",
+      "target": "content/notebook/javascript/js-call-by-value-call-by-reference.md"
     },
     {
       "source": "docs/JavaScript/[讀書] 008天重新認識Javascript - 讀書筆記.md",
@@ -52,8 +57,9 @@
       "legacyPath": "/docs/javascript/book-008-javascript",
       "plannedPath": "/notebook/javascript/book-008-javascript",
       "draft": false,
-      "status": "pending",
-      "sha256": "74d9558ce9029bc234b92a5f488129df33c2c57ff456f30911ab000a77fa8801"
+      "status": "migrated",
+      "sha256": "74d9558ce9029bc234b92a5f488129df33c2c57ff456f30911ab000a77fa8801",
+      "target": "content/notebook/javascript/book-008-javascript.md"
     },
     {
       "source": "docs/JavaScript/[讀書] 前端三十 - 讀書筆記.md",
@@ -61,17 +67,19 @@
       "legacyPath": "/docs/javascript/book-frontend-30",
       "plannedPath": "/notebook/javascript/book-frontend-30",
       "draft": false,
-      "status": "pending",
-      "sha256": "7b1bf58e162be8f8d74063ec6b30db24cd557c1e6852510aea71024a4fde2bb5"
+      "status": "migrated",
+      "sha256": "7b1bf58e162be8f8d74063ec6b30db24cd557c1e6852510aea71024a4fde2bb5",
+      "target": "content/notebook/javascript/book-frontend-30.md"
     },
     {
       "source": "docs/README.md",
       "title": "README",
       "legacyPath": "/docs/README",
-      "plannedPath": "/notebook",
+      "plannedPath": "/notebook/about",
       "draft": false,
-      "status": "pending",
-      "sha256": "2ae8919076871a42fbb9fb3c030e94d5bbc01ade1a734245da63bb1c009613ef"
+      "status": "migrated",
+      "sha256": "2ae8919076871a42fbb9fb3c030e94d5bbc01ade1a734245da63bb1c009613ef",
+      "target": "content/notebook/about.md"
     },
     {
       "source": "docs/React/[Next.js] CSS.md",
@@ -79,8 +87,9 @@
       "legacyPath": "/docs/react/nextjs-css",
       "plannedPath": "/notebook/react/nextjs-css",
       "draft": false,
-      "status": "pending",
-      "sha256": "d461827430cf265f93047343809c9a533d344aa81c52f9c45e04868a07c50118"
+      "status": "migrated",
+      "sha256": "d461827430cf265f93047343809c9a533d344aa81c52f9c45e04868a07c50118",
+      "target": "content/notebook/react/nextjs-css.md"
     },
     {
       "source": "docs/React/[Next.js] Data Fetching.md",
@@ -88,7 +97,7 @@
       "legacyPath": "/docs/react/nextjs-data-fetching",
       "plannedPath": "/notebook/react/nextjs-data-fetching",
       "draft": false,
-      "status": "sample-migrated",
+      "status": "migrated",
       "sha256": "3e53eefe645886198e0a88f99337b4436227159fa54a14dca92b5cf18e9ff557",
       "target": "content/notebook/next-data-fetching.md"
     },
@@ -98,8 +107,9 @@
       "legacyPath": "/docs/react/nextjs-getting-starged",
       "plannedPath": "/notebook/react/nextjs-getting-starged",
       "draft": false,
-      "status": "pending",
-      "sha256": "0edeb53746b586e9d31eb783ee6492c60d1f8f4452af37652a75a6307c7e53b1"
+      "status": "migrated",
+      "sha256": "0edeb53746b586e9d31eb783ee6492c60d1f8f4452af37652a75a6307c7e53b1",
+      "target": "content/notebook/react/nextjs-getting-starged.md"
     },
     {
       "source": "docs/React/[Next.js] Router.md",
@@ -107,8 +117,9 @@
       "legacyPath": "/docs/react/nextjs-router",
       "plannedPath": "/notebook/react/nextjs-router",
       "draft": false,
-      "status": "pending",
-      "sha256": "a61aa86555b0133a8c341881662e9903c0c974314ebc83a3c778aeab806393b5"
+      "status": "migrated",
+      "sha256": "a61aa86555b0133a8c341881662e9903c0c974314ebc83a3c778aeab806393b5",
+      "target": "content/notebook/react/nextjs-router.md"
     },
     {
       "source": "docs/React/[Next.js] 環境設定.md",
@@ -116,8 +127,9 @@
       "legacyPath": "/docs/react/nextjs-env-setting",
       "plannedPath": "/notebook/react/nextjs-env-setting",
       "draft": false,
-      "status": "pending",
-      "sha256": "08974937999c5f89dcd4c1426c9accbd7711b8309ac0a5523b02cb5769434377"
+      "status": "migrated",
+      "sha256": "08974937999c5f89dcd4c1426c9accbd7711b8309ac0a5523b02cb5769434377",
+      "target": "content/notebook/react/nextjs-env-setting.md"
     },
     {
       "source": "docs/React/[React] Getting Started.md",
@@ -125,8 +137,9 @@
       "legacyPath": "/docs/react/react-getting-started",
       "plannedPath": "/notebook/react/react-getting-started",
       "draft": false,
-      "status": "pending",
-      "sha256": "139649f74418507ae6cbd5cb15272f882bcf5763ea08edbf9dd3ec9b9391af0a"
+      "status": "migrated",
+      "sha256": "139649f74418507ae6cbd5cb15272f882bcf5763ea08edbf9dd3ec9b9391af0a",
+      "target": "content/notebook/react/react-getting-started.md"
     },
     {
       "source": "docs/React/[React] Hooks.md",
@@ -134,8 +147,9 @@
       "legacyPath": "/docs/react/react-hooks",
       "plannedPath": "/notebook/react/react-hooks",
       "draft": false,
-      "status": "pending",
-      "sha256": "e7faf0f5d6665fda4fca3b7bc565ec0ed40230e22a3f6be64fa7d9a1440e348c"
+      "status": "migrated",
+      "sha256": "e7faf0f5d6665fda4fca3b7bc565ec0ed40230e22a3f6be64fa7d9a1440e348c",
+      "target": "content/notebook/react/react-hooks.md"
     },
     {
       "source": "docs/React/[React] State.md",
@@ -143,8 +157,9 @@
       "legacyPath": "/docs/react/react-state",
       "plannedPath": "/notebook/react/react-state",
       "draft": false,
-      "status": "pending",
-      "sha256": "1afeffd6d13dc682f61b6f3ce12e3950d65d471e865de9c48d7b89b329815a86"
+      "status": "migrated",
+      "sha256": "1afeffd6d13dc682f61b6f3ce12e3950d65d471e865de9c48d7b89b329815a86",
+      "target": "content/notebook/react/react-state.md"
     },
     {
       "source": "docs/React/[React] 效能優化.md",
@@ -152,8 +167,9 @@
       "legacyPath": "/docs/react/react-optimization",
       "plannedPath": "/notebook/react/react-optimization",
       "draft": false,
-      "status": "pending",
-      "sha256": "a13cb0dd9848f255ac0d070e66bff44aa25460479a7bc1ee6602904f3a9060b3"
+      "status": "migrated",
+      "sha256": "a13cb0dd9848f255ac0d070e66bff44aa25460479a7bc1ee6602904f3a9060b3",
+      "target": "content/notebook/react/react-optimization.md"
     },
     {
       "source": "docs/React/[上課] Modern React with Redux - 學習筆記.md",
@@ -161,8 +177,9 @@
       "legacyPath": "/docs/react/udemy-react-note",
       "plannedPath": "/notebook/react/udemy-react-note",
       "draft": false,
-      "status": "pending",
-      "sha256": "7dba8fb448e486163fe19a7b9e57cfc2c8ed704405d9f430df5f1037f458541e"
+      "status": "migrated",
+      "sha256": "7dba8fb448e486163fe19a7b9e57cfc2c8ed704405d9f430df5f1037f458541e",
+      "target": "content/notebook/react/udemy-react-note.md"
     },
     {
       "source": "docs/React/[主題] Next.js上使用 Redux四兄弟.md",
@@ -170,8 +187,9 @@
       "legacyPath": "/docs/react/redux-four-brothers",
       "plannedPath": "/notebook/react/redux-four-brothers",
       "draft": false,
-      "status": "pending",
-      "sha256": "7788f2f3d634ab8cb0fe1f8dcd8cd1a4d9642111bc837bf01e168bd2c328ba7e"
+      "status": "migrated",
+      "sha256": "7788f2f3d634ab8cb0fe1f8dcd8cd1a4d9642111bc837bf01e168bd2c328ba7e",
+      "target": "content/notebook/react/redux-four-brothers.md"
     },
     {
       "source": "docs/RxJS/[RxJS]Observable & Observer.md",
@@ -179,8 +197,9 @@
       "legacyPath": "/docs/rxjs/rxjs-observable-and-observer",
       "plannedPath": "/notebook/rxjs/rxjs-observable-and-observer",
       "draft": false,
-      "status": "pending",
-      "sha256": "d72f3d6bdff38168b7520948f6a2e0a6a922ac3c43c7aa9f8357068990ad02a0"
+      "status": "migrated",
+      "sha256": "d72f3d6bdff38168b7520948f6a2e0a6a922ac3c43c7aa9f8357068990ad02a0",
+      "target": "content/notebook/rxjs/rxjs-observable-and-observer.md"
     },
     {
       "source": "docs/RxJS/[RxJS]基礎知識.md",
@@ -188,8 +207,9 @@
       "legacyPath": "/docs/rxjs/rxjs-basic",
       "plannedPath": "/notebook/rxjs/rxjs-basic",
       "draft": false,
-      "status": "pending",
-      "sha256": "0a3fb8f5dd6b62c4822217d5ae9a561306e9a6e0a042b43f5522cc6122773585"
+      "status": "migrated",
+      "sha256": "0a3fb8f5dd6b62c4822217d5ae9a561306e9a6e0a042b43f5522cc6122773585",
+      "target": "content/notebook/rxjs/rxjs-basic.md"
     },
     {
       "source": "docs/RxJS/[主題]RxJS中一些容易混淆的名詞.md",
@@ -197,8 +217,9 @@
       "legacyPath": "/docs/rxjs/confusing-terms-in-rxjs",
       "plannedPath": "/notebook/rxjs/confusing-terms-in-rxjs",
       "draft": false,
-      "status": "pending",
-      "sha256": "db76110f9064202900517ce798126bd9ff6c99fcfaf4d76bdb4207c6c3ad05a2"
+      "status": "migrated",
+      "sha256": "db76110f9064202900517ce798126bd9ff6c99fcfaf4d76bdb4207c6c3ad05a2",
+      "target": "content/notebook/rxjs/confusing-terms-in-rxjs.md"
     },
     {
       "source": "docs/RxJS/[主題]去除掉combineLatest中同時間的重覆事件.md",
@@ -206,7 +227,7 @@
       "legacyPath": "/docs/rxjs/combinelatest-duplicate-events",
       "plannedPath": "/notebook/rxjs/combinelatest-duplicate-events",
       "draft": false,
-      "status": "sample-migrated",
+      "status": "migrated",
       "sha256": "85417c0ccdb209bd75e7d2fdc04899c6e55dcfdc674d43c61ebc0b8b8dec59be",
       "target": "content/notebook/rxjs.md"
     },
@@ -216,8 +237,9 @@
       "legacyPath": "/docs/rxjs/rxjs-operators",
       "plannedPath": "/notebook/rxjs/rxjs-operators",
       "draft": true,
-      "status": "pending",
-      "sha256": "41f83ed7839e83e5cb2f0dd8eeee3bedc0a99cecde6ba733cf4eddd0a49b5a68"
+      "status": "migrated-draft",
+      "sha256": "41f83ed7839e83e5cb2f0dd8eeee3bedc0a99cecde6ba733cf4eddd0a49b5a68",
+      "target": "content/notebook/rxjs/rxjs-operators.md"
     },
     {
       "source": "docs/Vue/[Vue] Recuresive Component.md",
@@ -225,8 +247,9 @@
       "legacyPath": "/docs/vue/recuresive-component",
       "plannedPath": "/notebook/vue/recuresive-component",
       "draft": false,
-      "status": "pending",
-      "sha256": "4f9032fde5db0e002cb440f4b35339e14199b722d69b22da2fd3110b8280b0ab"
+      "status": "migrated",
+      "sha256": "4f9032fde5db0e002cb440f4b35339e14199b722d69b22da2fd3110b8280b0ab",
+      "target": "content/notebook/vue/recuresive-component.md"
     },
     {
       "source": "docs/Vue/[主題] Vue Component資料流設計 (1)單向傳遞.md",
@@ -234,8 +257,9 @@
       "legacyPath": "/docs/vue/vue-component-data-flow-1",
       "plannedPath": "/notebook/vue/vue-component-data-flow-1",
       "draft": false,
-      "status": "pending",
-      "sha256": "ac77efacfab4c71793b19c6b56cc44304e8995612ef446b4ab4d29000cff3476"
+      "status": "migrated",
+      "sha256": "ac77efacfab4c71793b19c6b56cc44304e8995612ef446b4ab4d29000cff3476",
+      "target": "content/notebook/vue/vue-component-data-flow-1.md"
     },
     {
       "source": "docs/Vue/[主題] Vue Component資料流設計 (2)雙向綁定–通用組件.md",
@@ -243,8 +267,9 @@
       "legacyPath": "/docs/vue/vue-component-data-flow-2",
       "plannedPath": "/notebook/vue/vue-component-data-flow-2",
       "draft": false,
-      "status": "pending",
-      "sha256": "b6b013f75d71aca24f5f937604fa1bec71819bf7921ac9ce170a4b108bbf207f"
+      "status": "migrated",
+      "sha256": "b6b013f75d71aca24f5f937604fa1bec71819bf7921ac9ce170a4b108bbf207f",
+      "target": "content/notebook/vue/vue-component-data-flow-2.md"
     },
     {
       "source": "docs/Vue/[主題] Vue Component資料流設計 (3)雙向綁定–大組件.md",
@@ -252,8 +277,9 @@
       "legacyPath": "/docs/vue/vue-component-data-flow-3",
       "plannedPath": "/notebook/vue/vue-component-data-flow-3",
       "draft": false,
-      "status": "pending",
-      "sha256": "f7c1a6815f2ba6a9b89805a9fbe7b2de7633d93ef66fdd72e06d9f7450b89755"
+      "status": "migrated",
+      "sha256": "f7c1a6815f2ba6a9b89805a9fbe7b2de7633d93ef66fdd72e06d9f7450b89755",
+      "target": "content/notebook/vue/vue-component-data-flow-3.md"
     },
     {
       "source": "docs/Vue/[譯] Vue.js App 效能優化.md",
@@ -261,8 +287,9 @@
       "legacyPath": "/docs/vue/translation-vue-optimization",
       "plannedPath": "/notebook/vue/translation-vue-optimization",
       "draft": false,
-      "status": "pending",
-      "sha256": "597823dff0938cb6d40a56e213b416dabfe8c50444b8c2638369eb9ba4f60b18"
+      "status": "migrated",
+      "sha256": "597823dff0938cb6d40a56e213b416dabfe8c50444b8c2638369eb9ba4f60b18",
+      "target": "content/notebook/vue/translation-vue-optimization.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-1. Vue.js課程說明與準備.md",
@@ -270,8 +297,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day1-1",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day1-1",
       "draft": false,
-      "status": "pending",
-      "sha256": "033af09ead4274fc19339d8a7ee48c48f3f41b02abb94e26786798e833d045a6"
+      "status": "migrated",
+      "sha256": "033af09ead4274fc19339d8a7ee48c48f3f41b02abb94e26786798e833d045a6",
+      "target": "content/notebook/vuejs-ncut-course-2019/day1-1.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-2.  Javascript與Vue.js模板語法.md",
@@ -279,8 +307,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day1-2",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day1-2",
       "draft": false,
-      "status": "pending",
-      "sha256": "f5f1350e47ddf0397a0281ebb6074d3eb997cae40881f24cc2b95065a2bd6d53"
+      "status": "migrated",
+      "sha256": "f5f1350e47ddf0397a0281ebb6074d3eb997cae40881f24cc2b95065a2bd6d53",
+      "target": "content/notebook/vuejs-ncut-course-2019/day1-2.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/1-3. 事件處理.md",
@@ -288,7 +317,7 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day1-3",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day1-3",
       "draft": false,
-      "status": "sample-migrated",
+      "status": "migrated",
       "sha256": "7e12ac7418ddb3b0b7e329b0d59726fcdaf0276b7e1325f958e72a039903de55",
       "target": "content/notebook/vue-events.md"
     },
@@ -298,8 +327,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day1-4",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day1-4",
       "draft": false,
-      "status": "pending",
-      "sha256": "bc8ed4dac6543da86c40901cf06a97dacac18c13ab014e723da2ecb448168899"
+      "status": "migrated",
+      "sha256": "bc8ed4dac6543da86c40901cf06a97dacac18c13ab014e723da2ecb448168899",
+      "target": "content/notebook/vuejs-ncut-course-2019/day1-4.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-1. Webpack、Vue-Cli.md",
@@ -307,8 +337,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day2-1",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day2-1",
       "draft": false,
-      "status": "pending",
-      "sha256": "bf0bf9b0983fad9018e7501a86f19fc70a42ef3d5644b31a17bc96ad7835beb7"
+      "status": "migrated",
+      "sha256": "bf0bf9b0983fad9018e7501a86f19fc70a42ef3d5644b31a17bc96ad7835beb7",
+      "target": "content/notebook/vuejs-ncut-course-2019/day2-1.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-2. 網站樣式管理.md",
@@ -316,8 +347,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day2-2",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day2-2",
       "draft": false,
-      "status": "pending",
-      "sha256": "2212b314e8b2e03653aa776a42345242004e385f6ed4698a86cd4c9a4f92d0d7"
+      "status": "migrated",
+      "sha256": "2212b314e8b2e03653aa776a42345242004e385f6ed4698a86cd4c9a4f92d0d7",
+      "target": "content/notebook/vuejs-ncut-course-2019/day2-2.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-3. Component Slot.md",
@@ -325,8 +357,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day2-3",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day2-3",
       "draft": false,
-      "status": "pending",
-      "sha256": "eccd37710cf3b378e4522e51ea48a9b8e708f5e4b2bef767936fe7524a6947b5"
+      "status": "migrated",
+      "sha256": "eccd37710cf3b378e4522e51ea48a9b8e708f5e4b2bef767936fe7524a6947b5",
+      "target": "content/notebook/vuejs-ncut-course-2019/day2-3.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/2-4. Element-UI與表單綜合練習.md",
@@ -334,8 +367,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day2-4",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day2-4",
       "draft": false,
-      "status": "pending",
-      "sha256": "0d0e91c6c23e2f5c7b347d40b0809bb74509430548ca19077f97cdf6b3d7bcf1"
+      "status": "migrated",
+      "sha256": "0d0e91c6c23e2f5c7b347d40b0809bb74509430548ca19077f97cdf6b3d7bcf1",
+      "target": "content/notebook/vuejs-ncut-course-2019/day2-4.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-1. ajax及網頁測試.md",
@@ -343,8 +377,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day3-1",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day3-1",
       "draft": false,
-      "status": "pending",
-      "sha256": "d4fc214f3ef1f5b9e678b5cd78fa9827675a11ace12664cf97ab889b0b8810c0"
+      "status": "migrated",
+      "sha256": "d4fc214f3ef1f5b9e678b5cd78fa9827675a11ace12664cf97ab889b0b8810c0",
+      "target": "content/notebook/vuejs-ncut-course-2019/day3-1.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-2. 前端路由設計.md",
@@ -352,8 +387,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day3-2",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day3-2",
       "draft": false,
-      "status": "pending",
-      "sha256": "44984b8df3678d82a6aa756cef85b4fbd3f0272654059068062c501f3bc2dbcf"
+      "status": "migrated",
+      "sha256": "44984b8df3678d82a6aa756cef85b4fbd3f0272654059068062c501f3bc2dbcf",
+      "target": "content/notebook/vuejs-ncut-course-2019/day3-2.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/3-3. 查詢頁面實作練習.md",
@@ -361,8 +397,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019/day3-3",
       "plannedPath": "/notebook/vuejs-ncut-course-2019/day3-3",
       "draft": false,
-      "status": "pending",
-      "sha256": "537169e5ee4f5a8ccfe5b4f8a50f763f406891ad6ca12f64cce3d66ed509b849"
+      "status": "migrated",
+      "sha256": "537169e5ee4f5a8ccfe5b4f8a50f763f406891ad6ca12f64cce3d66ed509b849",
+      "target": "content/notebook/vuejs-ncut-course-2019/day3-3.md"
     },
     {
       "source": "docs/[講課]勤益科大教育訓練講課 - Vue.js前端開發課程/README.md",
@@ -370,8 +407,9 @@
       "legacyPath": "/docs/vuejs-ncut-course-2019",
       "plannedPath": "/notebook/vuejs-ncut-course-2019",
       "draft": false,
-      "status": "pending",
-      "sha256": "a7140c8cc52a5d199c46672b1e717642cfc70dae7c779bd8ea55bce1c0aad090"
+      "status": "migrated",
+      "sha256": "a7140c8cc52a5d199c46672b1e717642cfc70dae7c779bd8ea55bce1c0aad090",
+      "target": "content/notebook/vuejs-ncut-course-2019.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/README.md",
@@ -379,8 +417,9 @@
       "legacyPath": "/docs/ithome2018",
       "plannedPath": "/notebook/ithome2018",
       "draft": false,
-      "status": "pending",
-      "sha256": "dd89ede1091d393bd787f0e36ad4c343e023e67424fba2dc02b87f6f32f3ae1b"
+      "status": "migrated",
+      "sha256": "dd89ede1091d393bd787f0e36ad4c343e023e67424fba2dc02b87f6f32f3ae1b",
+      "target": "content/notebook/ithome2018.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day01.md",
@@ -388,8 +427,9 @@
       "legacyPath": "/docs/ithome2018/day01",
       "plannedPath": "/notebook/ithome2018/day01",
       "draft": false,
-      "status": "pending",
-      "sha256": "d911d9544dd2ae6ed947728ce43cb34cddedf64bf3409ff05ceb883754eb9f6d"
+      "status": "migrated",
+      "sha256": "d911d9544dd2ae6ed947728ce43cb34cddedf64bf3409ff05ceb883754eb9f6d",
+      "target": "content/notebook/ithome2018/day01.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day02.md",
@@ -397,8 +437,9 @@
       "legacyPath": "/docs/ithome2018/day02",
       "plannedPath": "/notebook/ithome2018/day02",
       "draft": false,
-      "status": "pending",
-      "sha256": "d2985560579524826e2619e406c907440cf26b4a923b6a7733ef8cf532ece20e"
+      "status": "migrated",
+      "sha256": "d2985560579524826e2619e406c907440cf26b4a923b6a7733ef8cf532ece20e",
+      "target": "content/notebook/ithome2018/day02.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day03.md",
@@ -406,8 +447,9 @@
       "legacyPath": "/docs/ithome2018/day03",
       "plannedPath": "/notebook/ithome2018/day03",
       "draft": false,
-      "status": "pending",
-      "sha256": "eda43eaae00b695f2ee020f5743c9ac006e659e91fe7cd4febac9bd2c0e700c3"
+      "status": "migrated",
+      "sha256": "eda43eaae00b695f2ee020f5743c9ac006e659e91fe7cd4febac9bd2c0e700c3",
+      "target": "content/notebook/ithome2018/day03.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day04.md",
@@ -415,8 +457,9 @@
       "legacyPath": "/docs/ithome2018/day04",
       "plannedPath": "/notebook/ithome2018/day04",
       "draft": false,
-      "status": "pending",
-      "sha256": "4ac42963ee2362b3d706dd91ce4832f0530aabb1d8be8795efd67a9aa21b9358"
+      "status": "migrated",
+      "sha256": "4ac42963ee2362b3d706dd91ce4832f0530aabb1d8be8795efd67a9aa21b9358",
+      "target": "content/notebook/ithome2018/day04.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day05.md",
@@ -424,8 +467,9 @@
       "legacyPath": "/docs/ithome2018/day05",
       "plannedPath": "/notebook/ithome2018/day05",
       "draft": false,
-      "status": "pending",
-      "sha256": "4e6be72b3a45ad995adb125a8b0ea5b83e8a870b3a41aae4d87baff31e0ef262"
+      "status": "migrated",
+      "sha256": "4e6be72b3a45ad995adb125a8b0ea5b83e8a870b3a41aae4d87baff31e0ef262",
+      "target": "content/notebook/ithome2018/day05.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day06.md",
@@ -433,8 +477,9 @@
       "legacyPath": "/docs/ithome2018/day06",
       "plannedPath": "/notebook/ithome2018/day06",
       "draft": false,
-      "status": "pending",
-      "sha256": "860553ebe39dfea19448116bc3d7a38337396c75f4260812050cfd17bff7993d"
+      "status": "migrated",
+      "sha256": "860553ebe39dfea19448116bc3d7a38337396c75f4260812050cfd17bff7993d",
+      "target": "content/notebook/ithome2018/day06.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day07.md",
@@ -442,8 +487,9 @@
       "legacyPath": "/docs/ithome2018/day07",
       "plannedPath": "/notebook/ithome2018/day07",
       "draft": false,
-      "status": "pending",
-      "sha256": "f5cf18b3f0654f830a37c8758eae72ab6a4f43889c27b9f51977c91756712848"
+      "status": "migrated",
+      "sha256": "f5cf18b3f0654f830a37c8758eae72ab6a4f43889c27b9f51977c91756712848",
+      "target": "content/notebook/ithome2018/day07.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day08.md",
@@ -451,8 +497,9 @@
       "legacyPath": "/docs/ithome2018/day08",
       "plannedPath": "/notebook/ithome2018/day08",
       "draft": false,
-      "status": "pending",
-      "sha256": "fea5609f4931b77e6ce6f993f688618267465450e003a7fc44345ca075101f95"
+      "status": "migrated",
+      "sha256": "fea5609f4931b77e6ce6f993f688618267465450e003a7fc44345ca075101f95",
+      "target": "content/notebook/ithome2018/day08.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day09.md",
@@ -460,8 +507,9 @@
       "legacyPath": "/docs/ithome2018/day09",
       "plannedPath": "/notebook/ithome2018/day09",
       "draft": false,
-      "status": "pending",
-      "sha256": "6b00c979ee3668a8bd28e0c31487598558dc7f1fb6caaa00a60a9fb0d33fe1fa"
+      "status": "migrated",
+      "sha256": "6b00c979ee3668a8bd28e0c31487598558dc7f1fb6caaa00a60a9fb0d33fe1fa",
+      "target": "content/notebook/ithome2018/day09.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day10.md",
@@ -469,8 +517,9 @@
       "legacyPath": "/docs/ithome2018/day10",
       "plannedPath": "/notebook/ithome2018/day10",
       "draft": false,
-      "status": "pending",
-      "sha256": "ea45abb5ac697b1afa5528c8f01c8d63bb2cc590eecb8adedfcfb854c90339a2"
+      "status": "migrated",
+      "sha256": "ea45abb5ac697b1afa5528c8f01c8d63bb2cc590eecb8adedfcfb854c90339a2",
+      "target": "content/notebook/ithome2018/day10.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day11.md",
@@ -478,8 +527,9 @@
       "legacyPath": "/docs/ithome2018/day11",
       "plannedPath": "/notebook/ithome2018/day11",
       "draft": false,
-      "status": "pending",
-      "sha256": "e7e9157e3a70e8a029338bc17e3f72d267bc375a43907c9f6023220febb0db09"
+      "status": "migrated",
+      "sha256": "e7e9157e3a70e8a029338bc17e3f72d267bc375a43907c9f6023220febb0db09",
+      "target": "content/notebook/ithome2018/day11.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day12.md",
@@ -487,8 +537,9 @@
       "legacyPath": "/docs/ithome2018/day12",
       "plannedPath": "/notebook/ithome2018/day12",
       "draft": false,
-      "status": "pending",
-      "sha256": "edaeab5583028db92bffe034d821230cccaf1fc52ab449267532b7b3602515eb"
+      "status": "migrated",
+      "sha256": "edaeab5583028db92bffe034d821230cccaf1fc52ab449267532b7b3602515eb",
+      "target": "content/notebook/ithome2018/day12.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day13.md",
@@ -496,8 +547,9 @@
       "legacyPath": "/docs/ithome2018/day13",
       "plannedPath": "/notebook/ithome2018/day13",
       "draft": false,
-      "status": "pending",
-      "sha256": "0d81f3c0aeb40120f8d98219bbd2a4ebeac5bd7a40d59a19e4e8b708fa681863"
+      "status": "migrated",
+      "sha256": "0d81f3c0aeb40120f8d98219bbd2a4ebeac5bd7a40d59a19e4e8b708fa681863",
+      "target": "content/notebook/ithome2018/day13.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day14.md",
@@ -505,8 +557,9 @@
       "legacyPath": "/docs/ithome2018/day14",
       "plannedPath": "/notebook/ithome2018/day14",
       "draft": false,
-      "status": "pending",
-      "sha256": "5e5ead59d43a65f2a7f8077d7a45a4f4ee66d6436155c2eaefa3987bf8012598"
+      "status": "migrated",
+      "sha256": "5e5ead59d43a65f2a7f8077d7a45a4f4ee66d6436155c2eaefa3987bf8012598",
+      "target": "content/notebook/ithome2018/day14.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day15.md",
@@ -514,7 +567,7 @@
       "legacyPath": "/docs/ithome2018/day15",
       "plannedPath": "/notebook/ithome2018/day15",
       "draft": false,
-      "status": "sample-migrated",
+      "status": "migrated",
       "sha256": "a1082b49ce7c45fb4183c54bd68cf2352e0d2ac770266877f2b60a4aa39a8354",
       "target": "content/notebook/d3-scatter.md"
     },
@@ -524,8 +577,9 @@
       "legacyPath": "/docs/ithome2018/day16",
       "plannedPath": "/notebook/ithome2018/day16",
       "draft": false,
-      "status": "pending",
-      "sha256": "87e155ef073747d8980172e38e81b49cc349d7ff8c5662c3416b00e92efe52ee"
+      "status": "migrated",
+      "sha256": "87e155ef073747d8980172e38e81b49cc349d7ff8c5662c3416b00e92efe52ee",
+      "target": "content/notebook/ithome2018/day16.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day17.md",
@@ -533,8 +587,9 @@
       "legacyPath": "/docs/ithome2018/day17",
       "plannedPath": "/notebook/ithome2018/day17",
       "draft": false,
-      "status": "pending",
-      "sha256": "2f5f2da3b11469bcc80fd77729c11d43457dfbb34163b26764a720cdd3941ca4"
+      "status": "migrated",
+      "sha256": "2f5f2da3b11469bcc80fd77729c11d43457dfbb34163b26764a720cdd3941ca4",
+      "target": "content/notebook/ithome2018/day17.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day18.md",
@@ -542,8 +597,9 @@
       "legacyPath": "/docs/ithome2018/day18",
       "plannedPath": "/notebook/ithome2018/day18",
       "draft": false,
-      "status": "pending",
-      "sha256": "b1f0fb723de328a28078f85a0ecca886bfa55bd19bc116c37d73422bf244b0e0"
+      "status": "migrated",
+      "sha256": "b1f0fb723de328a28078f85a0ecca886bfa55bd19bc116c37d73422bf244b0e0",
+      "target": "content/notebook/ithome2018/day18.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day19.md",
@@ -551,8 +607,9 @@
       "legacyPath": "/docs/ithome2018/day19",
       "plannedPath": "/notebook/ithome2018/day19",
       "draft": false,
-      "status": "pending",
-      "sha256": "654495758afbdcfbda6ddea48ec2e1d7b0c3ac8339aac80bcf6d9c4f3aded743"
+      "status": "migrated",
+      "sha256": "654495758afbdcfbda6ddea48ec2e1d7b0c3ac8339aac80bcf6d9c4f3aded743",
+      "target": "content/notebook/ithome2018/day19.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day20.md",
@@ -560,8 +617,9 @@
       "legacyPath": "/docs/ithome2018/day20",
       "plannedPath": "/notebook/ithome2018/day20",
       "draft": false,
-      "status": "pending",
-      "sha256": "916bacd7e7aeead8f61ae091a613c2ccb920cf253fca185a5a4363c86d5a79e9"
+      "status": "migrated",
+      "sha256": "916bacd7e7aeead8f61ae091a613c2ccb920cf253fca185a5a4363c86d5a79e9",
+      "target": "content/notebook/ithome2018/day20.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day21.md",
@@ -569,8 +627,9 @@
       "legacyPath": "/docs/ithome2018/day21",
       "plannedPath": "/notebook/ithome2018/day21",
       "draft": false,
-      "status": "pending",
-      "sha256": "65b9b5c5a564376a20d14ee92331cc3362d3f362ea8f4ae81b36c12fc8bcaa56"
+      "status": "migrated",
+      "sha256": "65b9b5c5a564376a20d14ee92331cc3362d3f362ea8f4ae81b36c12fc8bcaa56",
+      "target": "content/notebook/ithome2018/day21.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day22.md",
@@ -578,8 +637,9 @@
       "legacyPath": "/docs/ithome2018/day22",
       "plannedPath": "/notebook/ithome2018/day22",
       "draft": false,
-      "status": "pending",
-      "sha256": "2dd64bcdbb4b6d701d3d79101a63b7f9853f7078f09ef0df6792498ab848d7c7"
+      "status": "migrated",
+      "sha256": "2dd64bcdbb4b6d701d3d79101a63b7f9853f7078f09ef0df6792498ab848d7c7",
+      "target": "content/notebook/ithome2018/day22.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day23.md",
@@ -587,8 +647,9 @@
       "legacyPath": "/docs/ithome2018/day23",
       "plannedPath": "/notebook/ithome2018/day23",
       "draft": false,
-      "status": "pending",
-      "sha256": "dd9c1c5784d34b9917ee910d0617ddcc6253d50fae0dd111460801688a4fe080"
+      "status": "migrated",
+      "sha256": "dd9c1c5784d34b9917ee910d0617ddcc6253d50fae0dd111460801688a4fe080",
+      "target": "content/notebook/ithome2018/day23.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day24.md",
@@ -596,8 +657,9 @@
       "legacyPath": "/docs/ithome2018/day24",
       "plannedPath": "/notebook/ithome2018/day24",
       "draft": false,
-      "status": "pending",
-      "sha256": "96806233d1f2c00ac956b76036e18d88a4b3da0bc693bb4151466abb63d287d6"
+      "status": "migrated",
+      "sha256": "96806233d1f2c00ac956b76036e18d88a4b3da0bc693bb4151466abb63d287d6",
+      "target": "content/notebook/ithome2018/day24.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day25.md",
@@ -605,8 +667,9 @@
       "legacyPath": "/docs/ithome2018/day25",
       "plannedPath": "/notebook/ithome2018/day25",
       "draft": false,
-      "status": "pending",
-      "sha256": "0edbce87dfe192a9c89e79ed49581eb58f21de5fbfe28b4b95a3e4fef42c7447"
+      "status": "migrated",
+      "sha256": "0edbce87dfe192a9c89e79ed49581eb58f21de5fbfe28b4b95a3e4fef42c7447",
+      "target": "content/notebook/ithome2018/day25.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day26.md",
@@ -614,8 +677,9 @@
       "legacyPath": "/docs/ithome2018/day26",
       "plannedPath": "/notebook/ithome2018/day26",
       "draft": false,
-      "status": "pending",
-      "sha256": "d3a77ce988c3dce53ca4e39384d67931a8d7ad442acd2ab84593b7a71cf34785"
+      "status": "migrated",
+      "sha256": "d3a77ce988c3dce53ca4e39384d67931a8d7ad442acd2ab84593b7a71cf34785",
+      "target": "content/notebook/ithome2018/day26.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day27.md",
@@ -623,8 +687,9 @@
       "legacyPath": "/docs/ithome2018/day27",
       "plannedPath": "/notebook/ithome2018/day27",
       "draft": false,
-      "status": "pending",
-      "sha256": "40f3380d6495d33e7293d3b99ae0c4e77d09d9f9e469104e93b9fd2e184befed"
+      "status": "migrated",
+      "sha256": "40f3380d6495d33e7293d3b99ae0c4e77d09d9f9e469104e93b9fd2e184befed",
+      "target": "content/notebook/ithome2018/day27.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day28.md",
@@ -632,8 +697,9 @@
       "legacyPath": "/docs/ithome2018/day28",
       "plannedPath": "/notebook/ithome2018/day28",
       "draft": false,
-      "status": "pending",
-      "sha256": "328187d275b5072ad06f94fad8f492c11bc430cf1bf839cbf91c8c0fea27cef1"
+      "status": "migrated",
+      "sha256": "328187d275b5072ad06f94fad8f492c11bc430cf1bf839cbf91c8c0fea27cef1",
+      "target": "content/notebook/ithome2018/day28.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day29.md",
@@ -641,8 +707,9 @@
       "legacyPath": "/docs/ithome2018/day29",
       "plannedPath": "/notebook/ithome2018/day29",
       "draft": false,
-      "status": "pending",
-      "sha256": "42476f8881c09ab481a5cf387f0795fb01e9a6b6db9a2572f01225c342fcd837"
+      "status": "migrated",
+      "sha256": "42476f8881c09ab481a5cf387f0795fb01e9a6b6db9a2572f01225c342fcd837",
+      "target": "content/notebook/ithome2018/day29.md"
     },
     {
       "source": "docs/[鐵人賽]D3.js新手開發基本圖表/ithome2018-day30.md",
@@ -650,8 +717,9 @@
       "legacyPath": "/docs/ithome2018/day30",
       "plannedPath": "/notebook/ithome2018/day30",
       "draft": false,
-      "status": "pending",
-      "sha256": "857dc0c1bd760a884cb3f0f46c6c852d297ec26cd342afbeb49839ab1cc2157c"
+      "status": "migrated",
+      "sha256": "857dc0c1bd760a884cb3f0f46c6c852d297ec26cd342afbeb49839ab1cc2157c",
+      "target": "content/notebook/ithome2018/day30.md"
     },
     {
       "source": "docs/static site/[Gitbook] Gitbook(v2)架設在Gitlab Pages上.md",
@@ -659,8 +727,9 @@
       "legacyPath": "/docs/2020/02/23/gitlab-pages-gitbook",
       "plannedPath": "/notebook/2020/02/23/gitlab-pages-gitbook",
       "draft": false,
-      "status": "pending",
-      "sha256": "d9a98dd110e451302ecb2ef3a196760813e514747586541481b04793d0f23c6f"
+      "status": "migrated",
+      "sha256": "d9a98dd110e451302ecb2ef3a196760813e514747586541481b04793d0f23c6f",
+      "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md"
     },
     {
       "source": "docs/前端Libraries/[pdf-make] 匯出pdf.md",
@@ -668,8 +737,9 @@
       "legacyPath": "/docs/frontend-libraries/pdf-make",
       "plannedPath": "/notebook/frontend-libraries/pdf-make",
       "draft": false,
-      "status": "pending",
-      "sha256": "13768d29a84540a68a3a0b142fe79b236810fbee3ff0a4690fd6e19dbaff27a4"
+      "status": "migrated",
+      "sha256": "13768d29a84540a68a3a0b142fe79b236810fbee3ff0a4690fd6e19dbaff27a4",
+      "target": "content/notebook/frontend-libraries/pdf-make.md"
     },
     {
       "source": "docs/前端Libraries/[vue-gtag].md",
@@ -677,8 +747,9 @@
       "legacyPath": "/docs/frontend-libraries/vue-gtag",
       "plannedPath": "/notebook/frontend-libraries/vue-gtag",
       "draft": false,
-      "status": "pending",
-      "sha256": "2d7d0af78ea1393927bab54697b11260e0b12f9f704c72a9c7d642d2184a4ad3"
+      "status": "migrated",
+      "sha256": "2d7d0af78ea1393927bab54697b11260e0b12f9f704c72a9c7d642d2184a4ad3",
+      "target": "content/notebook/frontend-libraries/vue-gtag.md"
     },
     {
       "source": "docs/前端Libraries/[xlsx-js-style] 匯出自訂樣式Excel檔.md",
@@ -686,8 +757,9 @@
       "legacyPath": "/docs/frontend-libraries/xlsx-js-style",
       "plannedPath": "/notebook/frontend-libraries/xlsx-js-style",
       "draft": false,
-      "status": "pending",
-      "sha256": "1dd367461e3f8001caf98a0d00bfc1a985524291ef86a69deaa57e8450ce603e"
+      "status": "migrated",
+      "sha256": "1dd367461e3f8001caf98a0d00bfc1a985524291ef86a69deaa57e8450ce603e",
+      "target": "content/notebook/frontend-libraries/xlsx-js-style.md"
     }
   ],
   "counts": {
