@@ -3,6 +3,7 @@ const contact = {
   profiles: [
     { label: "GitHub", href: "https://github.com/upstairs0102" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/shangdeyou/" },
+    { label: "Medium", href: "https://medium.com/@upstairs0102" },
     { label: "Facebook", href: "https://www.facebook.com/upstairs0102/" },
     {
       label: "Flickr",

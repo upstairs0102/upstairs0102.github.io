@@ -86,7 +86,7 @@ export function HomeContent() {
             <div className="project-caption">
               <div>
                 <h3>Nocturne-district</h3>
-                <p>Interactive 3D / Creative coding</p>
+                <p>Interactive 3D / Creative design / Vibe coding</p>
                 <p className="project-description">
                   一座向《Stray》中城致敬的原創 3D
                   城市。霓虹、老建築與全息機器人，構成七個相連的夜間街區；在瀏覽器裡拉近、轉動視角，慢慢探索科技與日常交錯的城市風景。
