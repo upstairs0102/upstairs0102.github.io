@@ -56,7 +56,7 @@ export function Hero() {
         <div className="portrait-layer">
           <img
             className="portrait"
-            src="/images/adam-camera.png"
+            src="/images/adam-camera.webp"
             alt="Adam You, standing and holding a Canon camera up to take a photograph"
             width="1024"
             height="1536"
