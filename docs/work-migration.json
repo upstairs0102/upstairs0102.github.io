@@ -1,0 +1,451 @@
+{
+  "source": "src/components/HomepageAboutMe/index.tsx",
+  "sourceSha256": "590e3a5822888dc2f655e37aeb48939c068d03102e9ddb2d968332f5dce6d5db",
+  "sections": [
+    {
+      "id": "open-source",
+      "title": "開源",
+      "target": "content/work/open-source.md",
+      "entries": [
+        {
+          "text": "OrbCharts︱視覺化圖表函式庫。",
+          "links": [
+            {
+              "text": "OrbCharts",
+              "href": "https://bpbase.github.io/orbcharts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patents",
+      "title": "專利",
+      "target": "content/work/patents.md",
+      "entries": [
+        {
+          "text": "發明專利（美國）︱Method for generating a tree diagram from a capitalization table (2025)",
+          "links": [
+            {
+              "text": "發明專利（美國）︱Method for generating a tree diagram from a capitalization table (2025)",
+              "href": "https://ppubs.uspto.gov/dirsearch-public/print/downloadBasicPdf/12223158?requestToken=eyJzdWIiOiJhYTVjYjhlOS04YmY4LTQ3NzMtOTIxNi05NDczMGMwZGMxYzQiLCJ2ZXIiOiI1OWU1NzcyZC0wOWZhLTQzMjMtOTk1Ni1mYjdmMDM0ZTA2ZGYiLCJleHAiOjB9"
+            }
+          ]
+        },
+        {
+          "text": "發明專利︱樹狀網路圖產生方法 (2023)",
+          "links": [
+            {
+              "text": "發明專利︱樹狀網路圖產生方法 (2023)",
+              "href": "https://tiponet.tipo.gov.tw/gpss3/gpsskmc/gpssbkm?!!FRURLTW202324136A"
+            }
+          ]
+        },
+        {
+          "text": "發明專利︱股權結構樹狀圖產生方法 (2023)",
+          "links": [
+            {
+              "text": "發明專利︱股權結構樹狀圖產生方法 (2023)",
+              "href": "https://tiponet.tipo.gov.tw/gpss3/gpsskmc/gpssbkm?!!FRURLTW202401277A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "teaching",
+      "title": "講課",
+      "target": "content/work/teaching.md",
+      "entries": [
+        {
+          "text": "2019/10︱擔任勤益科技大學電算中心主辦「Vue.js教育訓練」講師（三天課程）。",
+          "links": [
+            {
+              "text": "擔任勤益科技大學電算中心主辦「Vue.js教育訓練」講師（三天課程）",
+              "href": "https://upstairs0102.github.io/docs/vuejs-ncut-course-2019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "competitions",
+      "title": "競賽",
+      "target": "content/work/competitions.md",
+      "entries": [
+        {
+          "text": "2018/10︱參加IT邦鐵人賽發展系列文章「 D3.js新手開發基本圖表」完賽。",
+          "links": [
+            {
+              "text": "「 D3.js新手開發基本圖表」",
+              "href": "https://ithelp.ithome.com.tw/users/20096057/ironman/1824"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharing",
+      "title": "讀書會 / 分享",
+      "target": "content/work/sharing.md",
+      "entries": [
+        {
+          "text": "2026/2/27︱簡約的軟體開發思維-用FP重構程式 - Ch16-17 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/12Q30Q1GOFP8Rq9P0zgQLHbfECYB_FG3b/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://youtu.be/WvABbo31q1o?si=ZiWevkPF-EBnoCYq"
+            }
+          ]
+        },
+        {
+          "text": "2026/2/12︱2025WebConf - AI agent 前後端整合實作練習 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1WyO5-ZDTKrwt5r9jik_6PqtWtzXp25Bx/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://youtu.be/S2fbnNyU0q8?si=XdgIRxbyiuYqorwl"
+            }
+          ]
+        },
+        {
+          "text": "2025/10/3︱簡約的軟體開發思維-用FP重構程式 - Ch4-5 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1YGJ_dqPAnFqyzhiBBTtcjQmbDwsfN0PK/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://youtu.be/I2zYXQJVzXc?si=VKMFzyvcwPgICd0Z"
+            }
+          ]
+        },
+        {
+          "text": "2025/7/4︱打造高速網站從網站指標開始 - 5~7章 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1pKAJPMXzvJivOPelpqnjBwQW4LmIxQOt/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2025/5/22︱Vue單元測試 - Pinia",
+          "links": []
+        },
+        {
+          "text": "2025/2/25︱OrbCharts公開發表會 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/14FFRUYfcmINscJHogA3XS1PcSxmJSRYo/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://youtu.be/QaF-e7OYnq0?si=s-_EG1gYKjs0UGPc"
+            }
+          ]
+        },
+        {
+          "text": "2025/1/17︱藍星球RD讀書會 - 2024 WebConf – React & Vue (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/159NOER1pmMpRgb57AgKl8g7dBvaCgDCg/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2024/3/1︱藍星球RD讀書會 - Bpcharts - 從視覺化到資料 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1WoXsUreLz6EavJSH2Sj6zZS5APNGEUHp/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2024/2/24︱藍星球前端讀書會 - React (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1WAsYsA-dqlY3Q5S9G_VLVOVswyiI1pjl/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2024/1/26︱藍星球RD讀書會 - Frontend Infra (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1RJY0PgsFJE-uYa3kkSZMyN5To2OIabNY/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2023/8/31︱藍星球Devops讀書會 - Bash資安管理手冊8~12章 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1MBGdiLoEbUVE4inPb1K3lUA6n4unYu42/edit?usp=drive_link&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2023/6/9︱藍星球IAAP讀書會 - CPACC - 第6章 Standards, Laws, and Management (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1KKihra5qF-a9Tyzn23fPJC7JYhr-ANM4/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2023/4/21︱藍星球前端讀書會 - vue-gtag (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1Fx1wEPA1ihgAgFXqn3lwVJ-Q3PJMgnGF/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://youtu.be/4GivQrP6Ckc"
+            }
+          ]
+        },
+        {
+          "text": "2023/4/21︱藍星球白話文運動 - 點開連結之後 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1FHep4HY8Cq92QHEA-0VfF-56UqHRvnx9/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2022/11/10︱藍星球Devops讀書會 - 讀書分享「Web應用系統安全」 Ch5~8 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1Aigl3BYaf6l4ozZSS3_SxUxEb8GfJLF4/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2022/10/7︱藍星球前端讀書會 - 讀書分享「Vue.js應用測試」 Ch6~7 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/19UHN7tEhhlkYQoGz_eBO3-XZAgjIW_sm/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2022/4/6︱藍星球Devops讀書會 - 讀書分享「The DevOps Handbook」 第二集 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/16jJJ4vdYXcilIN2CyVpVEfv3ZkDxc0WN/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=KpGojcwXzbs&t=712s"
+            }
+          ]
+        },
+        {
+          "text": "2022/3/28︱藍星球PM簡報 - BPCHART簡介&資料視覺化 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/16FpScCeoQPJJAYjL_iZf59svWoofmNE0/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=wwgzLCEuw3M&t=94s"
+            }
+          ]
+        },
+        {
+          "text": "2022/3/11︱前端打鐵呦Podcast（藍星球） - EP1 從junior到senior之路—談談前端技術與工作環境的轉變 (Youtube)",
+          "links": [
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=0c6duDDEUBE"
+            }
+          ]
+        },
+        {
+          "text": "2022/1/19︱藍星球產品RD互助會 - 給全端RD的Vue簡報 Part1 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/11nexPPZARLorXRvvqo5YLuHH5iZCQ0_t/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2021/9/23︱藍星球Devops讀書會 - Docker布署Nuxt專案 (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1KxEDxb8EA31JkSsawC5qvBEU--jPtrG5/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=sTbczc7WcXQ&t=6s"
+            }
+          ]
+        },
+        {
+          "text": "2021/9/10︱藍星球前端讀書會 - 讀書分享「008天重新認識Javascript」  (Youtube)",
+          "links": [
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=PaA135CIaeU"
+            }
+          ]
+        },
+        {
+          "text": "2021/6/25︱藍星球RD讀書會 - 跨平台app框架比較 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1__nKJKGGdkeFdRDxBQGvIRRYHIRNzHj1/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2021/6/4︱藍星球前端讀書會 - React (簡報、Youtube)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1R9rQJ8R3NTlDJK2TsurVlsQFP8KZfZOn/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            },
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=Wbg02nGtmh4&t=331s"
+            }
+          ]
+        },
+        {
+          "text": "2021/3/12︱藍星球前端讀書會 - 發布npm套件&Vue js單元測試 (Youtube)",
+          "links": [
+            {
+              "text": "Youtube",
+              "href": "https://www.youtube.com/watch?v=J34ldLhy9IM&t=246s"
+            }
+          ]
+        },
+        {
+          "text": "2020/12/25︱藍星球前端讀書會 - 讀書分享「讓Typescript成為你全端開發的ACE」 第七章 – 深入型別系統 III 泛用型別 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1enlC_KxuGE4ozJJkBx3_vTgL1gYSjbmQ/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2020/8/21︱藍星球前端讀書會 - 讀書分享「資料視覺化」(6~9章) (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/10xtI1f-f0APKpzTdwNWP7BeIIlSzdeoA/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2019/12/13︱藍星球前端讀書會 - Vue Component經驗談 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1HRfmjCZsuWaJHwH-Lz69qFNzJH5oy6PR/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2019/8/16︱藍星球RD讀書會 - D3.js (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1A3mO_dUf6M90gQJ565LCztyu9Dltw9Fi/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2019/4/25︱藍星球產品會 - Vue效能優化 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1kFyRxqRfowQBNvowp1i_ii-nJtI-lbAl/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2018/10/12︱藍星球前端讀書會 - Vue-cli架設網站的基本設置 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1evv6YZ2o1ZIOPVZU9XidgxJUfSS6Q8xB/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2018/8/17︱藍星球RD讀書會 - 讀書分享「無瑕的程式碼 – 敏捷完整篇」 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1rgyLqI35BafI2wfEsyh25aljrG2pp0ep/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2018/2/1︱藍星球RD讀書會 - Glue.js + Vue.js簡單介紹 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1w6VGUqOWX3jE0swzsp6zqmd5mW7iFp4Z/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        },
+        {
+          "text": "2018/1/11︱藍星球RD讀書會 - Glue.js介紹 (簡報)",
+          "links": [
+            {
+              "text": "簡報",
+              "href": "https://docs.google.com/presentation/d/1B1_bFdA2u2Vkk_FH2_3obgNxEpyGmB6D/edit?usp=sharing&ouid=105219735181929461917&rtpof=true&sd=true"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "工作",
+      "target": "content/work/experience.md",
+      "entries": [
+        {
+          "text": "2017/8 – 至今︱藍星球資訊股份有限公司．產品部．資深工程師",
+          "links": []
+        },
+        {
+          "text": "2015/4 - 2017/3︱中山醫學大學．圖書資訊室軟體系統組．約雇人員",
+          "links": []
+        },
+        {
+          "text": "2014/2 - 2015/2︱中國醫藥大學附設醫院．資訊室．助理程式設計師",
+          "links": []
+        }
+      ]
+    }
+  ]
+}

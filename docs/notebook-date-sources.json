@@ -1,0 +1,343 @@
+{
+  "source": "docusaurus.zip",
+  "precision": "day",
+  "dateKind": "publication",
+  "matching": "Reviewed title and body matches; whitespace-normalized 12-character body overlap >= 0.9 is supporting evidence, not an automatic future matching rule. Three Vue optimization posts are combined in one note and share the same date.",
+  "matches": [
+    {
+      "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md",
+      "title": "[Gitbook] Gitbook(v2)架設在Gitlab Pages上",
+      "publishedAt": "2020-02-23",
+      "updatedAt": null,
+      "noteBodySha256": "d6c79298cc53cbfa346491e3aaca48b2477095d903eb1a494e5ddd9ab28244cd",
+      "sources": [
+        {
+          "source": "blog/2020/2020-02-23-gitlab-pages-gitbook.md",
+          "title": "不需花錢將Gitbook(v2)架設在Gitlab Pages上",
+          "slug": "2020/02/23/gitlab-pages-gitbook",
+          "date": "2020-02-23",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "86e0f3c03b9ae63e35fa97c31dd27100fed0aa1be1fc5a447b7a87dd14bcddb2",
+          "bodyOverlap": 0.92206
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/d3/d3js-select-this.md",
+      "title": "[主題] 從D3.js的select(this)探討的函式中的this指向",
+      "publishedAt": "2019-12-22",
+      "updatedAt": null,
+      "noteBodySha256": "972e04824b0206993307d58e1dba922fb43c7ec1f0e72801e77ef36d87c090ea",
+      "sources": [
+        {
+          "source": "blog/2019/2019-12-22-從D3.js的select(this)探討的函式中的this指向.md",
+          "title": "從D3.js的select(this)探討的函式中的this指向",
+          "slug": "2019/12/22/d3js-select-this",
+          "date": "2019-12-22",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "f22f88fc5871ee2dc9c9b84837fb82b65fece7f057723c983178acbed22ca027",
+          "bodyOverlap": 1.0
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/frontend-libraries/pdf-make.md",
+      "title": "[pdf-make] 匯出PDF",
+      "publishedAt": "2020-02-23",
+      "updatedAt": null,
+      "noteBodySha256": "d4819dfa3f7a6d5a99a1d8e4f8b346f255912b4995d6b59f3e528d5c72dc993a",
+      "sources": [
+        {
+          "source": "blog/2020/2020-02-23-前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）.md",
+          "title": "前端PDF下載 | pdfmake自訂中文字型（使用NotoSansTC）",
+          "slug": "2020/02/23/pdfmake-chinese-font",
+          "date": "2020-02-23",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "cd1838c6dba72213eb783a683c93476542fa7cbb949b0ab53938ff379a3b05fe",
+          "bodyOverlap": 0.964849
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/frontend-libraries/xlsx-js-style.md",
+      "title": "[xlsx-js-style] 匯出自訂樣式Excel檔",
+      "publishedAt": "2022-12-07",
+      "updatedAt": null,
+      "noteBodySha256": "05687178ef7b160d435f7f127e66e56d7f8b36c8eee4aad252748a61da4fec15",
+      "sources": [
+        {
+          "source": "blog/2022/2022-12-07-xlsx-js-style 前端匯出自訂樣式Excel檔.md",
+          "title": "xlsx-js-style 前端匯出自訂樣式Excel檔",
+          "slug": "2022/12/07/xlsx-js-style",
+          "date": "2022-12-07",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "07d9b2d61af474f0a84d01fc5dce96201c5e079b53e2755d684ab5587cc96f63",
+          "bodyOverlap": 0.995833
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/javascript/js-call-by-value-call-by-reference.md",
+      "title": "[JS] 傳值 & 傳參考",
+      "publishedAt": "2020-02-28",
+      "updatedAt": null,
+      "noteBodySha256": "95cc652cf84788a18d4e989b44e0ed6d2fa81480b7e9ba84968010b37a59d888",
+      "sources": [
+        {
+          "source": "blog/2020/2020-02-28-簡單看Javascript的傳值以及傳參考.md",
+          "title": "簡單看Javascript的傳值以及傳參考",
+          "slug": "2020/02/28/js-call-by-reference",
+          "date": "2020-02-28",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "7c89fd28734a6f660de79a656dbf76691a8892bc7f6b83ff59bdea11661a4551",
+          "bodyOverlap": 0.996585
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/js-build-tools/publish-js-library-to-npm.md",
+      "title": "[主題] 第一次發布npm前端套件就上手",
+      "publishedAt": "2022-12-15",
+      "updatedAt": null,
+      "noteBodySha256": "7262c7ae5795a988e619a80a3c17a2940d427b5099c5ec2aa74a88008c1fc293",
+      "sources": [
+        {
+          "source": "blog/2022/2022-12-15-第一次發布 npm前端套件就上手.md",
+          "title": "第一次發布 npm前端套件就上手",
+          "slug": "2022/12/15/publish-js-library-to-npm",
+          "date": "2022-12-15",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "f7633fb719429e0485d06417e015b2725c34aa057e34e62fed3e4956205e6285",
+          "bodyOverlap": 0.993154
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/js-build-tools/using-vite-to-build-node-packages.md",
+      "title": "[主題] 用vite打包要發布npm的程式",
+      "publishedAt": "2023-11-10",
+      "updatedAt": null,
+      "noteBodySha256": "0169e988378240718790c20e413f56c97cdc862b38855f2175c5e695bf79239e",
+      "sources": [
+        {
+          "source": "blog/2023/2023-11-10-用vite打包要發布npm的程式.md",
+          "title": "用vite打包要發布npm的程式",
+          "slug": "2023/11/10/using-vite-to-build-node-packages",
+          "date": "2023-11-10",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "063066bc647f2e0aac029dc1517af751c89d0bf7e4ff1655a70bbf4eec28ccc9",
+          "bodyOverlap": 1.0
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/react/redux-four-brothers.md",
+      "title": "[主題] Next.js上使用 Redux四兄弟",
+      "publishedAt": "2021-05-23",
+      "updatedAt": null,
+      "noteBodySha256": "9295531cf5f5cdfd91a4d6a90a20069c6a7b676981fe4b9c440d8eaeae745359",
+      "sources": [
+        {
+          "source": "blog/2021/2021-05-23-Next.js上使用 Redux四兄弟.md",
+          "title": "Next.js上使用 Redux四兄弟",
+          "slug": "2021/05/23/lib-of-redux-on-next",
+          "date": "2021-05-23",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "c1a7a26fc09ad6df1573f74a8ab21088cfed6b47e0bda64f3533047c3bc707ae",
+          "bodyOverlap": 0.994271
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/rxjs.md",
+      "title": "[主題]去除掉 combineLatest 中同時間的重覆事件",
+      "publishedAt": "2023-09-12",
+      "updatedAt": null,
+      "noteBodySha256": "006a43408cb99845e676cc6c3c367f99cb1a800dd944decad0c541a09ad4db4f",
+      "sources": [
+        {
+          "source": "blog/2023/2023-09-12-[RxJS]去除掉 combineLatest中同時間的重覆事件.md",
+          "title": "[RxJS] 去除掉 combineLatest 中同時間的重覆事件",
+          "slug": "2023/09/12/combinelatest-duplicate-events",
+          "date": "2023-09-12",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "9bc435052ba1f550a8db8438cc4f88fce64030de55ea32597df1d5b04fd1542d",
+          "bodyOverlap": 0.992971
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/rxjs/confusing-terms-in-rxjs.md",
+      "title": "[主題] 一些容易混淆的名詞",
+      "publishedAt": "2023-09-12",
+      "updatedAt": null,
+      "noteBodySha256": "d50d7a4dcf333361db697dbacaf65014d83da5a5ca32c2a6f5c7d60b9e378709",
+      "sources": [
+        {
+          "source": "blog/2023/2023-09-12-RxJS中一些容易混淆的名詞.md",
+          "title": "RxJS中一些容易混淆的名詞",
+          "slug": "2023/09/12/confusing-terms-in-rxjs",
+          "date": "2023-09-12",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "d29e818cc0e091aafdc99608da77899ac072c505301f6e9ac2c74681525de98b",
+          "bodyOverlap": 0.960976
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/vue/recuresive-component.md",
+      "title": "[Vue] Recursive Component",
+      "publishedAt": "2021-06-24",
+      "updatedAt": null,
+      "noteBodySha256": "cf25804cbba0e7ef4b91a892389b798a68de45cdff964e3d28368eb40ccd320e",
+      "sources": [
+        {
+          "source": "blog/2021/2021-06-24-Vue Recursive Component.md",
+          "title": "Vue Recursive Component",
+          "slug": "2021/06/24/vue-recursive-component",
+          "date": "2021-06-24",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "274b007b67c937a80a9887c50bb6307ac137a24eefee4ff815e4c825d0d971da",
+          "bodyOverlap": 1.0
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/vue/translation-vue-optimization.md",
+      "title": "[譯] Vue.js App 效能優化",
+      "publishedAt": "2019-12-24",
+      "updatedAt": null,
+      "noteBodySha256": "4d5f8af0899e769b43eabce2a58d82f3c6aa6c548ac8773f83196dc23f64c358",
+      "sources": [
+        {
+          "source": "blog/2019/2019-12-24-(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading.md",
+          "title": "(譯)Vue.js App 效能優化: part1 – 效能優化和lazy loading",
+          "slug": "2019/12/24/vue-optimization1",
+          "date": "2019-12-24",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "410742362616a748c37808988a7dd41baea8258c0cac2ebf41d65c43597b57b3",
+          "bodyOverlap": 0.930737
+        },
+        {
+          "source": "blog/2019/2019-12-24-(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern).md",
+          "title": "(譯)Vue.js App效能優化: part2 – Lazy loading路由及第三方庫打包反向模式(anti-pattern)",
+          "slug": "2019/12/24/vue-optimization2",
+          "date": "2019-12-24",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "76231f97e160b04fa9358b7d8b2babd0e531fe4d3a631a244756ad2b86b95a65",
+          "bodyOverlap": 0.925857
+        },
+        {
+          "source": "blog/2019/2019-12-24-(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules.md",
+          "title": "(譯)Vue.js App效能優化: part3 – Lazy loading Vuex modules",
+          "slug": "2019/12/24/vue-optimization3",
+          "date": "2019-12-24",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "bc582e566d14b2465c2d61f752e5266934d46f980646f7580f95ebe92f4c1363",
+          "bodyOverlap": 0.925059
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/vue/vue-component-data-flow-1.md",
+      "title": "[主題] Vue Component資料流設計 (1) 單向傳遞",
+      "publishedAt": "2020-05-09",
+      "updatedAt": null,
+      "noteBodySha256": "71a9df1bf9bfc24bd7d5663a2e9f0587461a687684bcc238a0b156ea62e4c141",
+      "sources": [
+        {
+          "source": "blog/2020/2020-05-09-Vue父子組件資料流設計 (1) 單向傳遞.md",
+          "title": "Vue父子組件資料流設計 (1) 單向傳遞",
+          "slug": "2020/05/09/vue-component-dataflow-1",
+          "date": "2020-05-09",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "62e237b8ff9f4284570a2f469229cef9ca00c21fc3b8cc68fa4088a06a790e12",
+          "bodyOverlap": 0.97377
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/vue/vue-component-data-flow-2.md",
+      "title": "[主題] Vue Component資料流設計 (2) 雙向綁定–通用組件",
+      "publishedAt": "2020-05-09",
+      "updatedAt": null,
+      "noteBodySha256": "d5c20d2b307fff5aa0f24c9a51bc0e17568159fb0feb97cd307681c57b126057",
+      "sources": [
+        {
+          "source": "blog/2020/2020-05-09-Vue父子組件資料流設計 (2) 雙向綁定–通用組件.md",
+          "title": "Vue父子組件資料流設計 (2) 雙向綁定–通用組件",
+          "slug": "2020/05/09/vue-component-dataflow-2",
+          "date": "2020-05-09",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "bf4fd42e96cf3112f91362e2ba0b9ac2e81e31375349c229544efbd087c546e9",
+          "bodyOverlap": 0.9759
+        }
+      ]
+    },
+    {
+      "target": "content/notebook/vue/vue-component-data-flow-3.md",
+      "title": "[主題] Vue Component資料流設計 (3) 雙向綁定–大組件",
+      "publishedAt": "2020-05-09",
+      "updatedAt": null,
+      "noteBodySha256": "a61b0ad03ce3a0537ab27e0a3a174c8288591a454065625a09dd05236a6c6163",
+      "sources": [
+        {
+          "source": "blog/2020/2020-05-09-Vue父子組件資料流設計 (3) 雙向綁定–大組件.md",
+          "title": "Vue父子組件資料流設計 (3) 雙向綁定–大組件",
+          "slug": "2020/05/09/vue-component-dataflow-3",
+          "date": "2020-05-09",
+          "dateEvidence": "Blog filename date confirmed against Blog slug",
+          "sha256": "21862c7170232f6fac61cf1855020595ffe029d568a9db436fc083554bdd1605",
+          "bodyOverlap": 0.964541
+        }
+      ]
+    }
+  ],
+  "unmatchedBlog": [
+    {
+      "source": "blog/2021/2021-02-09-Vue2的 Option-Based Component中使用Typescript的簡易方式.md",
+      "title": "Vue2的 Option-Based Component中使用Typescript的簡易方式",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2021/2021-02-09-相容 Vue2及 Vue3環境的 Component寫法.md",
+      "title": "相容 Vue2及 Vue3環境的 Component寫法",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2021/2021-06-24-Vue2 的 Vuex使用 Typescript寫法.md",
+      "title": "Vue2 的 Vuex使用 Typescript寫法",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2021/2021-09-23-「Docker這樣學才有趣」讀書筆記.md",
+      "title": "「Docker這樣學才有趣」讀書筆記",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2021/2021-12-14-difference-between-vue-and-react.md",
+      "title": "Vue & React差異觀察",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2021/2021-12-14-瀑布或敏捷開發的選擇？三眼怪Podcast筆記.md",
+      "title": "瀑布或敏捷開發的選擇？三眼怪Podcast筆記",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2022/2022-12-21-node.js環境各種神秘問題解決.md",
+      "title": "node.js環境各種神秘問題解決",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2023/2023-01-02-2023部落格搬家到 Docusaurus.md",
+      "title": "2023部落格搬家到 Docusaurus",
+      "reason": "No matching Notebook article"
+    },
+    {
+      "source": "blog/2023/2023-07-09-工作心得-關於前後端.md",
+      "title": "工作心得 - 關於前後端",
+      "reason": "No matching Notebook article"
+    }
+  ]
+}

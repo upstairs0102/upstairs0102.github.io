@@ -1,0 +1,51 @@
+{
+  "name": "adam-you-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "serve": "python3 -m http.server 3000 --directory out",
+    "check:export": "node scripts/check-export.mjs",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"scripts/*.mjs\""
+  },
+  "dependencies": {
+    "@base-ui/react": "1.8.0",
+    "github-slugger": "2.0.0",
+    "gray-matter": "4.0.3",
+    "hast-util-to-text": "4.0.2",
+    "next": "16.3.5",
+    "next-mdx-remote": "6.0.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "rehype-pretty-code": "0.14.5",
+    "rehype-slug": "6.0.0",
+    "remark-directive": "4.0.0",
+    "remark-gfm": "4.0.1",
+    "unist-util-visit": "5.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@tailwindcss/typography": "0.5.20",
+    "@types/hast": "3.0.5",
+    "@types/mdast": "4.0.4",
+    "@types/node": "26.5.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "prettier": "3.9.6",
+    "remark-parse": "11.0.0",
+    "remark-stringify": "11.0.0",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "typescript-legacy": "npm:typescript@5.9.3",
+    "unified": "11.0.5"
+  },
+  "packageManager": "pnpm@11.19.0"
+}

@@ -1,0 +1,339 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./tokens.css";
+@import "./prototype.css";
+@import "./notebook.css";
+@import "./notebook-navigation.css";
+@import "./work.css";
+@import "./contact.css";
+@import "./header.css";
+@plugin "@tailwindcss/typography";
+
+/* Preflight is intentionally omitted: the baseline owns its element defaults. */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button,
+summary {
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+}
+.site-header nav a[aria-current="page"]:after {
+  transform: scaleX(1);
+}
+.page-shell {
+  padding: 50px var(--page-gutter) 100px;
+  min-height: 65vh;
+  border-top: 1px solid var(--line);
+}
+.page-intro {
+  margin: 50px 0 62px;
+  max-width: 950px;
+}
+.page-intro h1 {
+  font-size: clamp(52px, 7.3vw, 112px);
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+  font-weight: 500;
+  margin: 0 0 25px;
+}
+.page-intro p {
+  font-family: var(--font-reading);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 620px;
+}
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 65px;
+}
+.editorial-row {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 45px;
+}
+.editorial-row h2 {
+  margin: 12px 0 18px;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.editorial-row p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-family: var(--font-reading);
+}
+.quiet-link {
+  display: inline-block;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 5px;
+}
+.placeholder-note {
+  color: var(--muted);
+  font: 13px/1.8 var(--font-reading);
+  margin-top: 38px;
+}
+.contact-placeholder {
+  max-width: 750px;
+  margin: 75px 0;
+}
+.contact-placeholder h2 {
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+@media (max-width: 700px) {
+  .page-shell {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .page-intro {
+    margin: 35px 0 42px;
+  }
+  .page-intro p {
+    font-size: 15px;
+  }
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .editorial-row {
+    padding-bottom: 25px;
+  }
+}
+
+@media (width < 900px) {
+  .work-page .editorial-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+}
+.eyebrow {
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+.home .home-note-link {
+  min-width: 0;
+  display: block;
+  overflow-wrap: anywhere;
+}
+.home .home-note-link h3 {
+  font-family: var(--font-reading);
+  line-height: 1.5;
+}
+.home .home-note-link:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.home .note-index {
+  flex-shrink: 0;
+}
+.home .home-notebook-more {
+  margin-top: 30px;
+  font: 14px/1.8 var(--font-reading);
+}
+
+/* Featured work: preserve the prototype frame; keep the embedded canvas interactive. */
+.home .featured-project {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.home .orbcharts-art {
+  background: #e5e9e1;
+}
+.home .orbcharts-logo {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.home .hologram-art {
+  background: #e2e8e7;
+}
+.home .hologram-preview {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% - 92px);
+  border: 0;
+  background: transparent;
+  color-scheme: light;
+  pointer-events: auto;
+}
+.home .hologram-art .art-top,
+.home .hologram-hint {
+  pointer-events: none;
+}
+.home .hologram-hint {
+  font-family: var(--font-reading);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #49636a;
+}
+.home .featured-project .project-caption {
+  flex: 1;
+}
+.home .featured-project .project-caption > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.home .project-caption .project-description {
+  font: 15px/1.9 var(--font-reading);
+  color: var(--ink);
+  margin: 18px 0 22px;
+  overflow-wrap: anywhere;
+}
+.home .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: auto;
+  font: 14px/1.6 var(--font-reading);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--line);
+}
+.home .project-link:hover {
+  text-decoration-color: currentColor;
+}
+
+
+/*
+ALTERNATIVE LAYOUT — 文字放進卡片，左側預覽／右側介紹
+原版本：1e9367b。共用 HomeContent.tsx 的內容與 orbcharts-card／nocturne-card 類別。
+啟用方式：保留本說明，刪除下方含 BEGIN 與 END 的兩個完整標記行即可。
+這段位於檔案最後，會覆蓋目前兩張卡片並排的樣式；手機仍自動上下排列。
+停用方式：重新註解同一段樣式，即恢復目前版本。
+*/
+/* BEGIN ALTERNATIVE PROJECT CARD LAYOUT
+.home .projects {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+.home .featured-project {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+.home .orbcharts-card {
+  background: #e5e9e1;
+}
+.home .nocturne-card {
+  background: #e2e8e7;
+}
+.home .featured-project .project-art {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 350px;
+  height: 100%;
+  background: transparent;
+}
+.home .orbcharts-logo {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.home .hologram-preview {
+  position: absolute;
+  top: 54px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: calc(100% - 92px);
+  border: 0;
+  background: transparent;
+  color-scheme: light;
+  pointer-events: auto;
+}
+.home .hologram-art .art-top,
+.home .hologram-hint {
+  pointer-events: none;
+}
+.home .hologram-hint {
+  font-family: var(--font-reading);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #49636a;
+}
+.home .featured-project .project-caption {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 42px clamp(24px, 3vw, 52px);
+  align-self: center;
+}
+.home .featured-project .project-caption h3 {
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.home .featured-project .project-caption > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.home .project-caption .project-description {
+  font: 15px/1.9 var(--font-reading);
+  color: var(--ink);
+  margin: 18px 0 22px;
+  overflow-wrap: anywhere;
+}
+.home .project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-top: auto;
+  font: 14px/1.6 var(--font-reading);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--line);
+}
+.home .project-link:hover {
+  text-decoration-color: currentColor;
+}
+
+@media (width < 760px) {
+  .home .featured-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .home .featured-project .project-art {
+    height: 280px;
+    min-height: 280px;
+    padding: 24px;
+  }
+  .home .featured-project .project-caption {
+    padding: 12px 24px 28px;
+  }
+  .home .hologram-hint {
+    max-width: calc(100% - 48px);
+  }
+}
+END ALTERNATIVE PROJECT CARD LAYOUT */

@@ -1,0 +1,59 @@
+.contact-links {
+  width: 100%;
+  max-width: 1040px;
+  margin: 46px 0 56px;
+}
+.contact-email .overline {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+.contact-email > a {
+  display: inline-block;
+  padding: 6px 0 12px;
+  font-size: clamp(22px, 3.7vw, 48px);
+  line-height: 1.3;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 9px;
+  text-decoration-color: var(--line);
+}
+.contact-email > a:hover {
+  text-decoration-color: currentColor;
+}
+.contact-profiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 32px;
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+}
+.contact-profiles a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+}
+.contact-profiles a:hover {
+  border-color: var(--ink);
+}
+.contact-profiles a > span:last-child {
+  color: var(--muted);
+}
+.contact-page .page-intro > p {
+  margin-top: 28px;
+}
+@media (width < 700px) {
+  .contact-links {
+    margin: 32px 0 42px;
+  }
+  .contact-profiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 24px;
+  }
+}
