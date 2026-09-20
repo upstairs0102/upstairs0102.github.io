@@ -1789,7 +1789,7 @@
   },
   {
     "source": "docs/static site/[Gitbook] Gitbook(v2)架設在Gitlab Pages上.md",
-    "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md",
+    "target": "content/notebook/static-site/gitlab-pages-gitbook.md",
     "originalBodySha256": "807a24ba52d8f355ca9b58a444dbcbaf5480d3b1894ae5f7234418d684dc5b39",
     "edits": [
       {

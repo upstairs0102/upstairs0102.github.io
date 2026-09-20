@@ -725,11 +725,11 @@
       "source": "docs/static site/[Gitbook] Gitbook(v2)架設在Gitlab Pages上.md",
       "title": "[Gitbook] Gitbook(v2)架設在Gitlab Pages上",
       "legacyPath": "/docs/2020/02/23/gitlab-pages-gitbook",
-      "plannedPath": "/notebook/2020/02/23/gitlab-pages-gitbook",
+      "plannedPath": "/notebook/static-site/gitlab-pages-gitbook",
       "draft": false,
       "status": "migrated",
       "sha256": "d9a98dd110e451302ecb2ef3a196760813e514747586541481b04793d0f23c6f",
-      "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md"
+      "target": "content/notebook/static-site/gitlab-pages-gitbook.md"
     },
     {
       "source": "docs/前端Libraries/[pdf-make] 匯出pdf.md",

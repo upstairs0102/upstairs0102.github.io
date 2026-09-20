@@ -1,5 +1,5 @@
 ---
-slug: "/2020/02/23/gitlab-pages-gitbook"
+slug: "/static-site/gitlab-pages-gitbook"
 title: "[Gitbook] Gitbook(v2)架設在Gitlab Pages上"
 authors: "thunderboy"
 tags: ["gitbook","gitlab pages"]

@@ -5,7 +5,7 @@
   "matching": "Reviewed title and body matches; whitespace-normalized 12-character body overlap >= 0.9 is supporting evidence, not an automatic future matching rule. Three Vue optimization posts are combined in one note and share the same date.",
   "matches": [
     {
-      "target": "content/notebook/2020/02/23/gitlab-pages-gitbook.md",
+      "target": "content/notebook/static-site/gitlab-pages-gitbook.md",
       "title": "[Gitbook] Gitbook(v2)架設在Gitlab Pages上",
       "publishedAt": "2020-02-23",
       "updatedAt": null,

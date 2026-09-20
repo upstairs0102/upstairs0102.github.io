@@ -44,10 +44,10 @@ test("navigation includes every published original, preserves series order and s
   const notes = getNotes();
   const categories = getNotebookNavigation(notes);
   assert.equal(notes.filter((note) => note.source).length, 75);
-  assert.equal(categories.length, 11);
+  assert.equal(categories.length, 12);
   const entries = categories.flatMap((category) => category.notes);
-  assert.equal(entries.length, 74); // The root README is linked separately.
-  assert.equal(new Set(entries.map((note) => note.slug)).size, 74);
+  assert.equal(entries.length, 75); // The root README is linked separately.
+  assert.equal(new Set(entries.map((note) => note.slug)).size, 75);
   assert.equal(
     entries.some((note) => note.slug.includes("rxjs-operators")),
     false,

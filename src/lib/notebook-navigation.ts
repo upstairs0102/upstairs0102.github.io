@@ -23,6 +23,7 @@ const order = [
   "CSS & Tailwind",
   "Modules & Build Tools",
   "Frontend Libraries",
+  "AI Agent",
   "Static Site",
   "Vue.js 前端開發課程",
   "D3.js 新手開發基本圖表",
