@@ -32,7 +32,7 @@ pnpm serve
 - `src/components/`：共用元件；聯絡資訊集中在 `ContactLinks.tsx`。
 - `src/styles/`：網站樣式。
 - `content/notebook/`：Markdown / MDX 技術筆記。
-- `content/work/`：作品分類與內容。
+- `content/journey/`：經歷分類與內容。
 - `public/`：圖片、字體等靜態資源。
 
 筆記 frontmatter 範例：
@@ -51,7 +51,7 @@ updatedAt:
 
 文章網址為 `/notebook/<slug>/`；草稿不發布。日期使用 `YYYY-MM-DD`，不確定時留空。最新文章依發表日期排序，排除草稿、未來日期、系列介紹與格式示例；未來日期文章需重新建置才會進入最新清單。僅編譯受信任的本地 Markdown / MDX。
 
-Work 檔案使用 `id`、`title`、`order` frontmatter，內文以 Markdown 維護。舊文章網址透過靜態轉接頁導向 Notebook，保留 query 與 hash。
+Journey 檔案使用 `id`、`title`、`order` frontmatter，內文以 Markdown 維護。舊文章網址透過靜態轉接頁導向 Notebook，保留 query 與 hash。
 
 ## 部署
 

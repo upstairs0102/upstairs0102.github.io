@@ -5,7 +5,7 @@
 @import "./prototype.css";
 @import "./notebook.css";
 @import "./notebook-navigation.css";
-@import "./work.css";
+@import "./journey.css";
 @import "./contact.css";
 @import "./header.css";
 @plugin "@tailwindcss/typography";
@@ -114,7 +114,7 @@ summary:focus-visible {
 }
 
 @media (width < 900px) {
-  .work-page .editorial-grid {
+  .journey-page .editorial-grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 0;
   }

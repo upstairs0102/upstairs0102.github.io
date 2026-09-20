@@ -55,10 +55,13 @@ for (const doc of inventory.documents) {
   }
 }
 assert.ok(existsSync(path.join(root, "docs/index.html")));
-const work = readFileSync(path.join(root, "work/index.html"), "utf8");
-assert.ok(!work.includes("內容整理中"));
-assert.ok(work.includes('href="/notebook/vuejs-ncut-course-2019/"'));
-assert.equal((work.split("</main>")[0].match(/<li(?:\s|>)/g) ?? []).length, 43);
+const journey = readFileSync(path.join(root, "journey/index.html"), "utf8");
+assert.ok(!journey.includes("內容整理中"));
+assert.ok(journey.includes('href="/notebook/vuejs-ncut-course-2019/"'));
+assert.equal(
+  (journey.split("</main>")[0].match(/<li(?:\s|>)/g) ?? []).length,
+  43,
+);
 const today = new Intl.DateTimeFormat("en-CA", {
   timeZone: "Asia/Taipei",
   year: "numeric",

@@ -2,8 +2,8 @@ import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
-export function getWorkSections() {
-  const directory = path.join(process.cwd(), "content/work");
+export function getJourneySections() {
+  const directory = path.join(process.cwd(), "content/journey");
   return readdirSync(directory)
     .filter((file) => file.endsWith(".md"))
     .map((file) => {
@@ -16,7 +16,7 @@ export function getWorkSections() {
         typeof data.title !== "string" ||
         !Number.isInteger(data.order)
       )
-        throw new Error(`Invalid Work metadata: ${file}`);
+        throw new Error(`Invalid Journey metadata: ${file}`);
       return {
         id: data.id as string,
         title: data.title as string,

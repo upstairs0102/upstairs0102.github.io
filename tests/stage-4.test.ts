@@ -5,13 +5,13 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import { visit } from "unist-util-visit";
 import type { RootContent } from "mdast";
-import { getWorkSections } from "../src/lib/work";
+import { getJourneySections } from "../src/lib/journey";
 import { getNotes, noteHref } from "../src/lib/notebook";
 import { legacyRoutes, rewriteLegacyHref } from "../src/lib/legacy-routes";
 
-test("all 43 active Work entries preserve wording, order and every original link", () => {
+test("all 43 active Journey entries preserve wording, order and every original link", () => {
   const ledger = JSON.parse(readFileSync("docs/work-migration.json", "utf8"));
-  const sections = getWorkSections();
+  const sections = getJourneySections();
   assert.equal(sections.length, 6);
   assert.deepEqual(
     ledger.sections.map((s: { entries: unknown[] }) => s.entries.length),
